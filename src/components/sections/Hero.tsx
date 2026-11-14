@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { animate, splitText, stagger } from "animejs";
 import { authClient } from "@/lib/auth-client";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { scrollState } from "@/lib/scroll";
 import { LightningGlowText } from "@/components/effects/LightningGlowText";
-import { Play, X } from "lucide-react";
 
 const cards = [
   {
@@ -28,7 +27,6 @@ const cards = [
 export function Hero() {
   const root = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const { data } = authClient.useSession();
   const user = data?.user;
 
@@ -150,20 +148,6 @@ export function Hero() {
               </span>
               <span className="section-button__circle" aria-hidden="true" />
             </a>
-            <button
-              type="button"
-              onClick={() => setIsVideoModalOpen(true)}
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "h-11 px-4 cursor-pointer border-white/20 bg-black/40 hover:bg-white/10 hover:border-primary/60 backdrop-blur-md transition-all group",
-              )}
-            >
-              <span className="section-button__title relative z-10 inline-flex items-center gap-2 text-foreground/90 group-hover:text-foreground">
-                <Play className="size-3.5 fill-primary text-primary transition-transform group-hover:scale-110" />
-                Watch AI Pipeline (0:15)
-              </span>
-              <span className="section-button__circle" aria-hidden="true" />
-            </button>
           </div>
 
           <div data-hero-reveal className="mt-4 opacity-0">
@@ -193,50 +177,6 @@ export function Hero() {
           ))}
         </div>
       </div>
-
-      {/* Video Modal for Full-Quality Viewing */}
-      {isVideoModalOpen && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-md animate-in fade-in duration-200"
-          onClick={() => setIsVideoModalOpen(false)}
-        >
-          <div
-            className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-primary/30 bg-[#101210] p-3 shadow-[0_0_50px_rgba(214,227,106,0.2)]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between px-3 py-2 border-b border-border/40">
-              <div className="flex items-center gap-2">
-                <span className="size-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-xs font-mono text-primary font-medium tracking-wider uppercase">
-                  CatalogAugment AI Pipeline Demo (0:15)
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={() => setIsVideoModalOpen(false)}
-                className="rounded-lg p-1.5 text-muted-foreground hover:bg-white/10 hover:text-foreground transition-colors cursor-pointer"
-                aria-label="Close modal"
-              >
-                <X className="size-4" />
-              </button>
-            </div>
-            <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black mt-2">
-              <video
-                controls
-                autoPlay
-                playsInline
-                poster="/videos/poster.jpg"
-                className="h-full w-full object-contain"
-              >
-                <source src="/videos/hero-background.mp4" type="video/mp4" />
-                <source src="/videos/grok-video-b0292768-ed8e-42c3-b055-b829942dff03.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
