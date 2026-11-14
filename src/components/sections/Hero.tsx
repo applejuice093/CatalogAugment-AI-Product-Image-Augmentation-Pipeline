@@ -8,9 +8,21 @@ import { LightningGlowText } from "@/components/effects/LightningGlowText";
 import { Play, X } from "lucide-react";
 
 const cards = [
-  { src: "/images/lifestyle.jpg", alt: "Running shoe in a lifestyle interior", className: "left-[8%] top-[18%] w-28 md:w-36" },
-  { src: "/images/outdoor.jpg", alt: "Running shoe outdoors", className: "right-[6%] top-[28%] w-24 md:w-32" },
-  { src: "/images/commercial.jpg", alt: "Running shoe in a commercial setup", className: "bottom-[12%] left-[18%] w-24 md:w-32" },
+  {
+    src: "/images/lifestyle.jpg",
+    alt: "Running shoe in a lifestyle interior",
+    className: "left-[-2%] xl:left-[-4%] top-[6%] w-36 sm:w-44 md:w-52 lg:w-60 xl:w-68",
+  },
+  {
+    src: "/images/outdoor.jpg",
+    alt: "Running shoe outdoors",
+    className: "right-[0%] lg:-right-[4%] xl:-right-[6%] top-[14%] w-34 sm:w-42 md:w-48 lg:w-56 xl:w-64",
+  },
+  {
+    src: "/images/commercial.jpg",
+    alt: "Running shoe in a commercial setup",
+    className: "bottom-[2%] left-[22%] lg:left-[26%] xl:left-[28%] w-34 sm:w-42 md:w-48 lg:w-56 xl:w-64",
+  },
 ];
 
 export function Hero() {
@@ -78,7 +90,7 @@ export function Hero() {
       id="platform"
       data-scene="hero"
       ref={root}
-      className="relative z-10 flex min-h-[100dvh] items-center overflow-hidden px-5 pt-24 pb-16"
+      className="relative z-10 flex min-h-[100dvh] items-center overflow-hidden px-6 sm:px-10 lg:px-16 xl:px-24 pt-24 pb-16"
     >
       {/* Background Video Layer - Looping, muted, reduced opacity for readable text */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
@@ -90,27 +102,27 @@ export function Hero() {
           playsInline
           preload="auto"
           poster="/videos/poster.jpg"
-          className="h-full w-full object-cover opacity-25 md:opacity-35 filter brightness-[0.92] contrast-[1.06] transition-opacity duration-700"
+          className="h-full w-full object-cover opacity-30 md:opacity-40 filter brightness-[0.95] contrast-[1.05] transition-opacity duration-700"
         >
           <source src="/videos/hero-background.mp4" type="video/mp4" />
           <source src="/videos/grok-video-b0292768-ed8e-42c3-b055-b829942dff03.mp4" type="video/mp4" />
         </video>
 
         {/* Text protection: Deep horizontal gradient darkening the left content side */}
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#101210_0%,rgb(16_18_16/0.92)_36%,rgb(16_18_16/0.45)_68%,rgb(16_18_16/0.15)_85%,#101210_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#101210_0%,rgb(16_18_16/0.90)_30%,rgb(16_18_16/0.35)_55%,transparent_75%)]" />
 
         {/* Seamless edge blending: Top and bottom fades */}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,#101210_0%,transparent_18%,transparent_82%,#101210_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,#101210_0%,transparent_16%,transparent_84%,#101210_100%)]" />
 
-        {/* Subtle radial ambient vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#101210_95%)]" />
+        {/* Subtle radial ambient vignette that keeps the video open and visible across the wide viewport */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgb(16_18_16/0.75)_95%)]" />
       </div>
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-        <div>
+      <div className="relative z-10 mx-auto grid w-full max-w-[1760px] items-center gap-10 lg:gap-16 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+        <div className="max-w-xl lg:max-w-2xl xl:max-w-3xl">
           <LightningGlowText
             as="h1"
             data-hero-title=""
-            className="text-[clamp(2.15rem,3.3vw,3.05rem)] leading-[1.08] font-semibold tracking-[-0.04em]"
+            className="text-[clamp(2.4rem,4.2vw,4.1rem)] leading-[1.06] font-semibold tracking-[-0.04em]"
             speed={1.0}
             size={1.15}
             particleAmount={1.3}
@@ -122,10 +134,10 @@ export function Hero() {
             <span className="block">image search-ready.</span>
           </LightningGlowText>
 
-          <p data-hero-reveal className="mt-6 max-w-md text-base leading-7 text-muted-foreground opacity-0">
+          <p data-hero-reveal className="mt-6 max-w-xl text-base md:text-lg lg:text-xl leading-relaxed text-muted-foreground opacity-0">
             Turn one product photograph into a varied set that still reads as the same product.
           </p>
-          <div data-hero-reveal className="mt-8 flex flex-wrap items-center gap-3 opacity-0">
+          <div data-hero-reveal className="mt-8 flex flex-wrap items-center gap-4 opacity-0">
             <a
               href={user ? "#workspace" : "#login?redirect=workspace"}
               className={cn(
@@ -163,7 +175,7 @@ export function Hero() {
             </a>
           </div>
         </div>
-        <div className="pointer-events-none relative hidden h-[52vh] md:block" aria-hidden="true">
+        <div className="pointer-events-none relative hidden h-[58vh] lg:h-[66vh] xl:h-[72vh] md:block w-full" aria-hidden="true">
           {cards.map((card, index) => (
             <div
               key={card.src}

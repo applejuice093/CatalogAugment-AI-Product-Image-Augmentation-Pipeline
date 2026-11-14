@@ -7,9 +7,9 @@ export function Research() {
   return (
     <section
       id="research"
-      className="relative z-10 bg-background px-5 py-24 border-t border-border/40"
+      className="relative z-10 bg-background px-6 sm:px-10 lg:px-16 xl:px-24 py-24 border-t border-border/40"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-[1760px]">
         {/* Section Header */}
         <div className="max-w-2xl mb-12">
           <Badge variant="outline" className="border-primary/40 text-primary mb-4">

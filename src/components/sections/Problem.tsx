@@ -20,13 +20,13 @@ export function Problem() {
   const challengeIcons = [Sun, Layers, Camera];
 
   return (
-    <section id="problem" ref={root} className="relative z-10 bg-background px-5 py-28">
-      <div className="mx-auto max-w-6xl">
+    <section id="problem" ref={root} className="relative z-10 bg-background px-6 sm:px-10 lg:px-16 xl:px-24 py-28">
+      <div className="mx-auto max-w-[1760px]">
         <div className="flex flex-col gap-2">
           <span className="text-xs font-mono uppercase tracking-widest text-primary">
             Domain Shift Challenge
           </span>
-          <h2 className="section-title max-w-4xl">Studio-perfect images. Real-world imperfect conditions.</h2>
+          <h2 className="section-title max-w-5xl">Studio-perfect images. Real-world imperfect conditions.</h2>
         </div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-12 lg:items-stretch">
@@ -35,7 +35,7 @@ export function Problem() {
             data-reveal
             className="overflow-hidden rounded-xl border border-white/10 bg-card/90 p-0 opacity-0 shadow-2xl ring-foreground/10 lg:col-span-7 flex flex-col"
           >
-            <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[380px] w-full overflow-hidden bg-black">
+            <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[430px] w-full overflow-hidden bg-black">
               <video
                 ref={videoRef}
                 autoPlay

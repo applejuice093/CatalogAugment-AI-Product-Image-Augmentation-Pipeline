@@ -80,7 +80,7 @@ export function Navbar({ compact, active }: NavbarProps) {
           : "border-transparent bg-transparent"
       }`}
     >
-      <div className={`mx-auto flex max-w-6xl items-center justify-between px-5 ${compact ? "h-14" : "h-16"}`}>
+      <div className={`mx-auto flex w-full max-w-[1760px] items-center justify-between px-6 sm:px-10 lg:px-16 xl:px-24 ${compact ? "h-14" : "h-16"}`}>
         <a href="#platform" className="font-heading text-base font-semibold tracking-[-0.03em]">
           CatalogAugment
         </a>

@@ -51,8 +51,17 @@ export function HeroProduct({ visible }: { visible: boolean }) {
     const shrink = scrollState.scene === "hero" ? 1 - scrollState.sceneT * 0.25 : 1;
     groupRef.rotation.y = 0.18 + Math.sin(t * 0.4) * 0.22 + scrollState.mouseX * parallax;
     groupRef.rotation.x = -0.08 + scrollState.mouseY * parallax * 0.35;
-    groupRef.scale.setScalar(1.15 * shrink);
-    groupRef.position.x = scrollState.tier === "mobile" ? 0 : 1.35;
+    const is2Xl = typeof window !== "undefined" && window.innerWidth >= 1536;
+    const isXl = typeof window !== "undefined" && window.innerWidth >= 1280;
+    groupRef.scale.setScalar((is2Xl ? 1.38 : isXl ? 1.25 : 1.15) * shrink);
+    groupRef.position.x =
+      scrollState.tier === "mobile"
+        ? 0
+        : is2Xl
+          ? 2.1
+          : isXl
+            ? 1.7
+            : 1.35;
     groupRef.position.y = Math.sin(t * 0.8) * (scrollState.reduced ? 0 : 0.06);
   });
 

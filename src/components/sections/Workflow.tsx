@@ -102,7 +102,7 @@ export function Workflow() {
       className="relative z-10 bg-background md:min-h-[320vh]"
     >
       <div className="md:sticky md:top-16 md:flex md:h-[calc(100svh-4rem)] md:items-center">
-        <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-6 md:grid-cols-[280px_1fr]">
+        <div className="mx-auto grid w-full max-w-[1760px] gap-10 px-6 sm:px-10 lg:px-16 xl:px-24 py-6 md:grid-cols-[280px_1fr]">
           <div>
             <h2 className="section-title text-[clamp(1.75rem,2.4vw,2.4rem)]">From one image to an intelligent dataset.</h2>
             <div className="relative mt-8 flex items-stretch gap-4">

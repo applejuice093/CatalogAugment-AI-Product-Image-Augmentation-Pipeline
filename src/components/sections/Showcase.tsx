@@ -26,8 +26,8 @@ export function Showcase() {
   }, []);
 
   return (
-    <section id="showcase" data-scene="showcase" className="relative z-10 bg-background px-5 py-24 md:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section id="showcase" data-scene="showcase" className="relative z-10 bg-background px-6 sm:px-10 lg:px-16 xl:px-24 py-24 md:py-28">
+      <div className="mx-auto max-w-[1760px]">
         {/* Header Block */}
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
