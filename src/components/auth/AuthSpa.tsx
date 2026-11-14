@@ -151,10 +151,10 @@ export function AuthSpa({
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-[#0a0c0a] text-foreground flex flex-col justify-between p-4 sm:p-6 lg:p-10 isolate overflow-x-hidden font-sans">
+    <div className="relative h-screen h-dvh max-h-screen w-full bg-[#0a0c0a] text-foreground flex flex-col justify-between p-4 sm:p-5 lg:px-10 lg:py-6 isolate overflow-hidden font-sans select-none">
       {/* Background Ambient Neon Glows */}
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-[#d6e36a]/15 via-[#82c8ff]/05 to-transparent rounded-full blur-3xl -z-10"
+        className="pointer-events-none absolute -top-40 left-1/4 w-[700px] h-[450px] bg-gradient-to-b from-[#d6e36a]/15 via-[#82c8ff]/05 to-transparent rounded-full blur-3xl -z-10"
         aria-hidden="true"
       />
       <div
@@ -169,17 +169,17 @@ export function AuthSpa({
       />
 
       {/* Top Header Bar */}
-      <header className="relative z-20 flex items-center justify-between max-w-6xl w-full mx-auto pb-4">
+      <header className="relative z-20 flex items-center justify-between w-full shrink-0 pb-1">
         <button
           type="button"
           onClick={navigateBack}
-          className="group inline-flex items-center gap-2 rounded-xl border border-white/10 bg-[#121512]/80 px-3.5 py-2 text-xs font-mono text-muted-foreground transition-all duration-200 hover:border-white/20 hover:text-foreground hover:bg-[#1a1e1a] backdrop-blur-md cursor-pointer"
+          className="group inline-flex items-center gap-2 rounded-xl border border-white/10 bg-[#121512]/80 px-3.5 py-1.5 text-xs font-mono text-muted-foreground transition-all duration-200 hover:border-white/20 hover:text-foreground hover:bg-[#1a1e1a] backdrop-blur-md cursor-pointer"
         >
           <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-1" />
           <span>Back to Platform</span>
         </button>
 
-        <div className="hidden sm:flex items-center gap-2.5 rounded-full border border-white/10 bg-[#121512]/60 px-3.5 py-1 text-xs font-mono text-muted-foreground backdrop-blur-md">
+        <div className="flex items-center gap-2.5 rounded-full border border-white/10 bg-[#121512]/60 px-3.5 py-1 text-xs font-mono text-muted-foreground backdrop-blur-md">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
@@ -190,51 +190,54 @@ export function AuthSpa({
         </div>
       </header>
 
-      {/* Center Auth Card Container */}
-      <main className="relative z-10 flex flex-1 items-center justify-center my-6">
-        <div className="w-full max-w-md">
-          {/* External Notice Pill if redirected from protected route */}
+      {/* Main 2-Column Split: Left = Login Box, Right = Big Animated Project Title */}
+      <main className="relative z-10 flex-1 flex flex-col md:flex-row items-center justify-between gap-6 lg:gap-10 xl:gap-16 min-h-0 overflow-hidden my-auto py-1">
+        {/* Left-most Side: Login / Signup Box (Fits completely in single page, NO SCROLL) */}
+        <div className="w-full md:w-[410px] lg:w-[430px] xl:w-[450px] shrink-0 flex flex-col justify-center">
+          {/* External Notice Pill if redirected */}
           {notice && (
-            <div className="mb-4 flex items-center gap-2.5 rounded-xl border border-primary/30 bg-primary/10 px-4 py-2.5 text-xs text-primary shadow-[0_0_15px_rgba(214,227,106,0.15)] animate-in fade-in slide-in-from-top-2 duration-300">
-              <ShieldCheck className="h-4 w-4 shrink-0 text-primary" />
-              <span>{notice}</span>
+            <div className="mb-2.5 flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs text-primary shadow-[0_0_12px_rgba(214,227,106,0.15)] animate-in fade-in duration-200">
+              <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-primary" />
+              <span className="truncate">{notice}</span>
             </div>
           )}
 
           {/* Main Glass Card */}
-          <div className="relative rounded-2xl border border-white/10 bg-[#121512]/85 p-6 sm:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.85)] backdrop-blur-xl">
+          <div className="relative rounded-2xl border border-white/10 bg-[#121512]/90 p-4 sm:p-5 shadow-[0_20px_70px_rgba(0,0,0,0.85)] backdrop-blur-xl">
             {/* Corner Framing Marks */}
-            <div className="pointer-events-none absolute inset-0 p-3" aria-hidden="true">
-              <div className="absolute top-3 left-3 h-2.5 w-2.5 border-t-2 border-l-2 border-primary/60" />
-              <div className="absolute top-3 right-3 h-2.5 w-2.5 border-t-2 border-r-2 border-primary/60" />
-              <div className="absolute bottom-3 left-3 h-2.5 w-2.5 border-b-2 border-l-2 border-primary/60" />
-              <div className="absolute bottom-3 right-3 h-2.5 w-2.5 border-b-2 border-r-2 border-primary/60" />
+            <div className="pointer-events-none absolute inset-0 p-2.5" aria-hidden="true">
+              <div className="absolute top-2.5 left-2.5 h-2 w-2 border-t-2 border-l-2 border-primary/60" />
+              <div className="absolute top-2.5 right-2.5 h-2 w-2 border-t-2 border-r-2 border-primary/60" />
+              <div className="absolute bottom-2.5 left-2.5 h-2 w-2 border-b-2 border-l-2 border-primary/60" />
+              <div className="absolute bottom-2.5 right-2.5 h-2 w-2 border-b-2 border-r-2 border-primary/60" />
             </div>
 
-            {/* Brand Header */}
-            <div className="text-center mb-6">
-              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 shadow-[0_0_20px_rgba(214,227,106,0.2)]">
-                <Cpu className="h-6 w-6 text-primary" />
+            {/* Card Header */}
+            <div className="flex items-center gap-3 mb-3.5">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 shadow-[0_0_15px_rgba(214,227,106,0.2)]">
+                <Cpu className="h-4.5 w-4.5 text-primary" />
               </div>
-              <h1 className="font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                CatalogAugment
-              </h1>
-              <p className="mt-1.5 text-xs text-muted-foreground">
-                {mode === "sign-in"
-                  ? "Sign in to access your Studio Workspace and AI augmentation pipelines"
-                  : "Create an operator account to begin generating augmented catalog datasets"}
-              </p>
+              <div className="min-w-0 flex-1">
+                <h2 className="font-heading text-base font-bold tracking-tight text-foreground truncate">
+                  {mode === "sign-in" ? "Operator Sign In" : "Operator Registration"}
+                </h2>
+                <p className="text-[11px] text-muted-foreground truncate">
+                  {mode === "sign-in"
+                    ? "Access Studio Workspace & augmentation pipelines"
+                    : "Create an operator account to begin generating datasets"}
+                </p>
+              </div>
             </div>
 
             {/* Tab Selector: Sign In vs Create Account */}
-            <div className="grid grid-cols-2 gap-1 rounded-xl border border-white/10 bg-black/40 p-1 mb-6">
+            <div className="grid grid-cols-2 gap-1 rounded-xl border border-white/10 bg-black/40 p-1 mb-3">
               <button
                 type="button"
                 onClick={() => {
                   setMode("sign-in");
                   setError("");
                 }}
-                className={`py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
+                className={`py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
                   mode === "sign-in"
                     ? "bg-primary text-primary-foreground shadow-[0_0_12px_rgba(214,227,106,0.3)] font-bold"
                     : "text-muted-foreground hover:text-foreground hover:bg-white/5"
@@ -248,7 +251,7 @@ export function AuthSpa({
                   setMode("sign-up");
                   setError("");
                 }}
-                className={`py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
+                className={`py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
                   mode === "sign-up"
                     ? "bg-primary text-primary-foreground shadow-[0_0_12px_rgba(214,227,106,0.3)] font-bold"
                     : "text-muted-foreground hover:text-foreground hover:bg-white/5"
@@ -262,32 +265,32 @@ export function AuthSpa({
             {error && (
               <div
                 role="alert"
-                className="mb-4 flex items-start gap-2.5 rounded-xl border border-destructive/40 bg-destructive/10 p-3 text-xs text-destructive animate-in fade-in duration-200"
+                className="mb-2.5 flex items-start gap-2 rounded-lg border border-destructive/40 bg-destructive/10 p-2 text-xs text-destructive animate-in fade-in duration-200"
               >
-                <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
-                <span className="leading-snug">{error}</span>
+                <AlertCircle className="h-3.5 w-3.5 shrink-0 mt-0.5" />
+                <span className="leading-tight">{error}</span>
               </div>
             )}
 
             {successMsg && (
               <div
                 role="status"
-                className="mb-4 flex items-center gap-2.5 rounded-xl border border-primary/40 bg-primary/10 p-3 text-xs text-primary animate-in fade-in duration-200"
+                className="mb-2.5 flex items-center gap-2 rounded-lg border border-primary/40 bg-primary/10 p-2 text-xs text-primary animate-in fade-in duration-200"
               >
-                <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
-                <span className="font-medium">{successMsg}</span>
+                <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-primary" />
+                <span className="font-medium leading-tight">{successMsg}</span>
               </div>
             )}
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-2.5">
               {mode === "sign-up" && (
-                <div className="space-y-1.5">
-                  <Label htmlFor="auth-name" className="text-xs font-mono text-muted-foreground">
+                <div className="space-y-1">
+                  <Label htmlFor="auth-name" className="text-[11px] font-mono text-muted-foreground">
                     Operator / Organization Name
                   </Label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                    <User className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
                     <Input
                       id="auth-name"
                       name="name"
@@ -296,18 +299,18 @@ export function AuthSpa({
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required={mode === "sign-up"}
-                      className="h-10 pl-9 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
+                      className="h-9 pl-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                     />
                   </div>
                 </div>
               )}
 
-              <div className="space-y-1.5">
-                <Label htmlFor="auth-email" className="text-xs font-mono text-muted-foreground">
+              <div className="space-y-1">
+                <Label htmlFor="auth-email" className="text-[11px] font-mono text-muted-foreground">
                   Email Address
                 </Label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                  <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
                   <Input
                     id="auth-email"
                     name="email"
@@ -317,22 +320,22 @@ export function AuthSpa({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="h-10 pl-9 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
+                    className="h-9 pl-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                   />
                 </div>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="auth-password" className="text-xs font-mono text-muted-foreground">
+                  <Label htmlFor="auth-password" className="text-[11px] font-mono text-muted-foreground">
                     Password
                   </Label>
                   {mode === "sign-up" && (
-                    <span className="text-[10px] font-mono text-muted-foreground">Min. 8 characters</span>
+                    <span className="text-[10px] font-mono text-muted-foreground">Min. 8 chars</span>
                   )}
                 </div>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                  <Lock className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
                   <Input
                     id="auth-password"
                     name="password"
@@ -343,15 +346,15 @@ export function AuthSpa({
                     onChange={(e) => setPassword(e.target.value)}
                     minLength={8}
                     required
-                    className="h-10 pl-9 pr-9 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
+                    className="h-9 pl-8 pr-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                     aria-label={showPassword ? "Hide password" : "Show password"}
                   >
-                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                    {showPassword ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
                   </button>
                 </div>
               </div>
@@ -360,7 +363,7 @@ export function AuthSpa({
               <Button
                 type="submit"
                 disabled={pending}
-                className="w-full h-11 rounded-xl bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:bg-primary/90 shadow-[0_0_20px_rgba(214,227,106,0.3)] transition-all duration-200 mt-2 cursor-pointer"
+                className="w-full h-10 rounded-xl bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:bg-primary/90 shadow-[0_0_20px_rgba(214,227,106,0.3)] transition-all duration-200 mt-1 cursor-pointer"
               >
                 {pending ? (
                   <span className="inline-flex items-center gap-2">
@@ -370,35 +373,90 @@ export function AuthSpa({
                 ) : mode === "sign-up" ? (
                   <span className="inline-flex items-center gap-2">
                     <span>Create Account & Launch Studio</span>
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </span>
                 ) : (
                   <span className="inline-flex items-center gap-2">
                     <span>Sign In to Studio Workspace</span>
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </span>
                 )}
               </Button>
             </form>
 
             {/* Quick Demo Operator Assist */}
-            <div className="mt-5 pt-4 border-t border-white/10 text-center">
+            <div className="mt-3 pt-2.5 border-t border-white/10 text-center">
               <button
                 type="button"
                 onClick={handleQuickDemo}
-                className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors font-mono cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-[11px] text-primary hover:text-primary/80 transition-colors font-mono cursor-pointer"
               >
-                <Sparkles className="h-3.5 w-3.5" />
+                <Sparkles className="h-3 w-3" />
                 <span>Fill Demo Operator Credentials</span>
               </button>
             </div>
           </div>
         </div>
+
+        {/* Right Side: Big Animated Project Title "Catelog \n Augment" with Taglines */}
+        <div className="flex-1 hidden md:flex flex-col justify-between h-full pl-6 lg:pl-10 xl:pl-14 min-h-0 border-l border-white/10 relative">
+          {/* Top Pill / Badge */}
+          <div className="flex items-center gap-2.5 font-mono text-[11px] text-primary/90 tracking-widest uppercase">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-ping" />
+            <span>AI Product Image Augmentation Pipeline</span>
+          </div>
+
+          {/* Center: Big Animated Project Title "Catelog \n Augment" */}
+          <div className="relative my-auto py-2">
+            {/* Ambient Backlight Aura */}
+            <div
+              className="pointer-events-none absolute -inset-10 bg-gradient-to-r from-[#d6e36a]/20 via-[#82c8ff]/10 to-transparent rounded-full blur-3xl opacity-70 animate-pulse -z-10"
+              aria-hidden="true"
+            />
+
+            <h1 className="font-heading font-black tracking-[-0.04em] uppercase leading-[0.88] select-none text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[9.5rem]">
+              <span className="block text-white/95 cyber-title-glow drop-shadow-[0_0_35px_rgba(214,227,106,0.3)]">
+                Catelog
+              </span>
+              <span className="block cyber-title-gradient mt-2 drop-shadow-[0_0_45px_rgba(214,227,106,0.45)]">
+                Augment
+              </span>
+            </h1>
+
+            {/* Dynamic Cyber Scan Tracker Line */}
+            <div className="relative mt-5 h-1 w-56 sm:w-72 md:w-80 lg:w-96 bg-white/10 rounded-full overflow-hidden">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-[#d6e36a] to-transparent animate-cyber-scan" />
+            </div>
+          </div>
+
+          {/* Bottom Taglines Area */}
+          <div className="space-y-3 pt-3 border-t border-white/10 max-w-xl">
+            <p className="text-sm lg:text-base font-normal text-foreground/85 leading-snug">
+              Turn one product photograph into an intelligent, photorealistic dataset with studio isolation, relighting, and contextual lifestyle scenes.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-2 pt-0.5 text-[11px] font-mono text-muted-foreground/80">
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-2.5 py-1">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#d6e36a]" />
+                Alpha Foreground Preservation
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-2.5 py-1">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#82c8ff]" />
+                WF-01 · WF-02 · WF-03 Diffusion
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-2.5 py-1">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                Zero-Leakage Partitioning
+              </span>
+            </div>
+          </div>
+        </div>
       </main>
 
-      {/* Footer Info */}
-      <footer className="relative z-10 max-w-6xl w-full mx-auto pt-4 text-center text-xs text-muted-foreground/60 font-mono">
-        <p>CatalogAugment AI Pipeline • Enterprise Isolation • Local PostgreSQL Auth • Zero Third-Party Tracking</p>
+      {/* Footer Info (Minimal, single line) */}
+      <footer className="relative z-10 w-full shrink-0 pt-1 text-[10px] text-muted-foreground/50 font-mono flex items-center justify-between border-t border-white/5">
+        <p>CatalogAugment Enterprise AI Pipeline</p>
+        <p className="hidden sm:block">Local PostgreSQL & SQLite Auth • Zero Third-Party Tracking</p>
       </footer>
     </div>
   );

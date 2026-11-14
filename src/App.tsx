@@ -111,8 +111,10 @@ function Page() {
   useEffect(() => {
     if (session?.user) {
       setLocalUser(session.user as AuthUser);
+    } else if (session === null && !sessionLoading) {
+      setLocalUser(null);
     }
-  }, [session?.user]);
+  }, [session, sessionLoading]);
 
   // Initial check: if not in store, verify directly against backend session cookie
   useEffect(() => {
