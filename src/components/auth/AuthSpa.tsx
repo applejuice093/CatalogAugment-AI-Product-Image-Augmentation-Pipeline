@@ -168,9 +168,44 @@ export function AuthSpa({
         </button>
       </header>
 
-      {/* Main 2-Column Split: Left = Login Box, Right = Big Animated Project Title */}
-      <main className="relative z-10 flex-1 flex flex-col md:flex-row items-center justify-between gap-6 lg:gap-10 xl:gap-16 min-h-0 overflow-hidden my-auto py-2">
-        {/* Left-most Side: Login / Signup Box (Fits completely in single page, NO SCROLL) */}
+      {/* Main 2-Column Split: Left = Big Animated Project Title, Right = Login Box */}
+      <main className="relative z-10 flex-1 flex flex-col md:flex-row items-center justify-between gap-6 lg:gap-10 xl:gap-16 min-h-0 my-auto py-2">
+        {/* Left Side: Big Animated Project Title "Catelog \n Augment" with Taglines */}
+        <div className="flex-1 hidden md:flex flex-col justify-between h-full pl-2 lg:pl-6 pr-6 lg:pr-10 xl:pr-14 min-h-0 border-r border-white/10 relative">
+          <div />
+
+          {/* Center: Big Animated Project Title "Catelog \n Augment" */}
+          <div className="relative my-auto py-2">
+            {/* Ambient Backlight Aura with Smooth Radial Fade */}
+            <div
+              className="pointer-events-none absolute -inset-16 bg-[radial-gradient(ellipse_at_center,rgba(214,227,106,0.18)_0%,rgba(214,227,106,0.06)_45%,rgba(130,200,255,0.02)_65%,transparent_80%)] rounded-full blur-3xl opacity-75 animate-pulse -z-10"
+              aria-hidden="true"
+            />
+
+            <h1 className="font-heading font-black tracking-[-0.04em] uppercase leading-[0.88] select-none text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[9.5rem]">
+              <span className="block text-white/95 cyber-title-glow drop-shadow-[0_0_35px_rgba(214,227,106,0.3)]">
+                Catelog
+              </span>
+              <span className="block cyber-title-gradient mt-2 drop-shadow-[0_0_45px_rgba(214,227,106,0.45)]">
+                Augment
+              </span>
+            </h1>
+
+            {/* Dynamic Cyber Scan Tracker Line */}
+            <div className="relative mt-5 h-1 w-56 sm:w-72 md:w-80 lg:w-96 bg-white/10 rounded-full overflow-hidden">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-[#d6e36a] to-transparent animate-cyber-scan" />
+            </div>
+          </div>
+
+          {/* Bottom Taglines Area */}
+          <div className="pt-3 border-t border-white/10 max-w-xl pb-2">
+            <p className="text-sm lg:text-base font-normal text-foreground/85 leading-snug">
+              Turn one product photograph into an intelligent, photorealistic dataset with studio isolation, relighting, and contextual lifestyle scenes.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Side: Login / Signup Box (Fits completely in single page, NO SCROLL) */}
         <div className="w-full md:w-[410px] lg:w-[430px] xl:w-[450px] shrink-0 flex flex-col justify-center">
           {/* Main Glass Card with Soft Rounded Edges */}
           <div className="relative rounded-[28px] border border-white/10 bg-[#121512]/90 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.85),0_0_35px_rgba(214,227,106,0.05)] backdrop-blur-2xl ring-1 ring-white/5">
@@ -338,41 +373,6 @@ export function AuthSpa({
                 )}
               </Button>
             </form>
-          </div>
-        </div>
-
-        {/* Right Side: Big Animated Project Title "Catelog \n Augment" with Taglines */}
-        <div className="flex-1 hidden md:flex flex-col justify-between h-full pl-6 lg:pl-10 xl:pl-14 min-h-0 border-l border-white/10 relative">
-          <div />
-
-          {/* Center: Big Animated Project Title "Catelog \n Augment" */}
-          <div className="relative my-auto py-2">
-            {/* Ambient Backlight Aura */}
-            <div
-              className="pointer-events-none absolute -inset-10 bg-gradient-to-r from-[#d6e36a]/20 via-[#82c8ff]/10 to-transparent rounded-full blur-3xl opacity-70 animate-pulse -z-10"
-              aria-hidden="true"
-            />
-
-            <h1 className="font-heading font-black tracking-[-0.04em] uppercase leading-[0.88] select-none text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[9.5rem]">
-              <span className="block text-white/95 cyber-title-glow drop-shadow-[0_0_35px_rgba(214,227,106,0.3)]">
-                Catelog
-              </span>
-              <span className="block cyber-title-gradient mt-2 drop-shadow-[0_0_45px_rgba(214,227,106,0.45)]">
-                Augment
-              </span>
-            </h1>
-
-            {/* Dynamic Cyber Scan Tracker Line */}
-            <div className="relative mt-5 h-1 w-56 sm:w-72 md:w-80 lg:w-96 bg-white/10 rounded-full overflow-hidden">
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-[#d6e36a] to-transparent animate-cyber-scan" />
-            </div>
-          </div>
-
-          {/* Bottom Taglines Area */}
-          <div className="pt-3 border-t border-white/10 max-w-xl pb-2">
-            <p className="text-sm lg:text-base font-normal text-foreground/85 leading-snug">
-              Turn one product photograph into an intelligent, photorealistic dataset with studio isolation, relighting, and contextual lifestyle scenes.
-            </p>
           </div>
         </div>
       </main>
