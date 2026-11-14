@@ -85,7 +85,10 @@ export function Workflow() {
                   <li key={item.index}>
                     <Button
                       variant={index === stage ? "default" : "outline"}
-                      className="h-auto w-full justify-start px-4 py-3 text-left cursor-pointer transition-all duration-200"
+                      className={cn(
+                        "h-auto w-full justify-start px-4 py-3 text-left cursor-pointer transition-all duration-200 rounded-xl",
+                        index === stage && "section-button--active",
+                      )}
                       onClick={() => scrollWorkflowTo(index)}
                     >
                       {item.title}

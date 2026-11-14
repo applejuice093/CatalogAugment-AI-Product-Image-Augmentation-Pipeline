@@ -8,7 +8,6 @@ import { Hero } from "@/components/sections/Hero";
 import { Problem } from "@/components/sections/Problem";
 import { Research } from "@/components/sections/Research";
 import { Showcase } from "@/components/sections/Showcase";
-import { KageExperience } from "@/components/sections/KageExperience";
 import { Technology } from "@/components/sections/Technology";
 import { Workflow } from "@/components/sections/Workflow";
 import { SparkField } from "@/components/effects/SparkField";
@@ -66,7 +65,6 @@ function Page() {
         <Problem />
         <Workflow />
         <Showcase />
-        <KageExperience />
         <Research />
         <Technology active={node} onSelect={setNode} />
         <About />

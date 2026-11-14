@@ -96,8 +96,9 @@ export function Hero() {
             <Button className="h-11 px-5 cursor-pointer" onClick={openSignUp}>
               Get Started
             </Button>
-            <a href="#workflow" className={cn(buttonVariants({ variant: "outline" }), "h-11 cursor-pointer border-foreground/25 bg-background/50 px-5")}>
-              Explore Platform
+            <a href="#workflow" className={cn(buttonVariants({ variant: "outline" }), "cursor-pointer")}>
+              <span className="section-button__title relative z-10 inline-flex items-center gap-2">Explore Platform</span>
+              <span className="section-button__circle" aria-hidden="true" />
             </a>
           </div>
         </div>

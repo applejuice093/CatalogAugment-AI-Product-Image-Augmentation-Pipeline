@@ -85,8 +85,9 @@ export function FinalCta() {
               Get Started
             </Button>
           )}
-          <a href="#platform" className={cn(buttonVariants({ variant: "outline" }), "h-11 px-5")}>
-            Explore Platform
+          <a href="#platform" className={cn(buttonVariants({ variant: "outline" }), "cursor-pointer")}>
+            <span className="section-button__title relative z-10 inline-flex items-center gap-2">Explore Platform</span>
+            <span className="section-button__circle" aria-hidden="true" />
           </a>
         </div>
         {data?.user ? (
