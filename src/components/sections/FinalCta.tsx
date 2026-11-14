@@ -5,6 +5,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { LightningGlowText } from "@/components/effects/LightningGlowText";
 
 type UploadItem = {
   id: string;
@@ -63,7 +64,18 @@ export function FinalCta() {
   return (
     <section id="start" data-scene="start" className="relative z-10 px-5 py-32">
       <div className="mx-auto max-w-4xl text-center">
-        <h2 className="section-title">Build better visual-search experiences.</h2>
+        <LightningGlowText
+          as="h2"
+          className="section-title"
+          speed={0.9}
+          size={1.2}
+          particleAmount={1.1}
+          hue={-55}
+          brightness={1.25}
+          opacity={0.85}
+        >
+          Build better visual-search experiences.
+        </LightningGlowText>
         <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
           Start with a single product image. Create a dataset designed for the real world.
         </p>

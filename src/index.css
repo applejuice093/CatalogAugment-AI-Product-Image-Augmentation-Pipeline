@@ -5,6 +5,7 @@
 @import "@fontsource/syne/500.css";
 @import "@fontsource/syne/600.css";
 @import "@fontsource/syne/700.css";
+@import "./shaders/threeui.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -193,6 +194,7 @@ body {
   letter-spacing: -0.04em;
   line-height: 1.02;
   font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+  text-shadow: 0 0 16px rgba(214, 227, 106, 0.28), 0 0 36px rgba(214, 227, 106, 0.12);
 }
 
 [data-slot="button"],
@@ -227,5 +229,28 @@ body {
   .scan-line {
     animation: none;
     top: 50%;
+  }
+}
+
+.lightning-text-glow {
+  text-shadow:
+    0 0 12px rgba(214, 227, 106, 0.45),
+    0 0 28px rgba(214, 227, 106, 0.25),
+    0 0 52px rgba(130, 200, 255, 0.2);
+  animation: lightning-glow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes lightning-glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(214, 227, 106, 0.3)) drop-shadow(0 0 25px rgba(214, 227, 106, 0.15));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(214, 227, 106, 0.55)) drop-shadow(0 0 40px rgba(214, 227, 106, 0.3));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightning-text-glow {
+    animation: none;
   }
 }

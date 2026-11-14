@@ -4,6 +4,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useAuthUi } from "@/components/auth/AuthProvider";
 import { scrollState } from "@/lib/scroll";
+import { LightningGlowText } from "@/components/effects/LightningGlowText";
 
 const cards = [
   { src: "/images/lifestyle.jpg", alt: "Running shoe in a lifestyle interior", className: "left-[8%] top-[18%] w-28 md:w-36" },
@@ -73,13 +74,21 @@ export function Hero() {
       />
       <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <div>
-          <h1
-            data-hero-title
-            className="font-heading text-[clamp(2.15rem,3.3vw,3.05rem)] leading-[1.08] font-semibold tracking-[-0.04em]"
+          <LightningGlowText
+            as="h1"
+            data-hero-title=""
+            className="text-[clamp(2.15rem,3.3vw,3.05rem)] leading-[1.08] font-semibold tracking-[-0.04em]"
+            speed={1.0}
+            size={1.15}
+            particleAmount={1.3}
+            hue={-55}
+            brightness={1.35}
+            opacity={0.92}
           >
             <span className="block">Make every product</span>
             <span className="block">image search-ready.</span>
-          </h1>
+          </LightningGlowText>
+
           <p data-hero-reveal className="mt-6 max-w-md text-base leading-7 text-muted-foreground opacity-0">
             Turn one product photograph into a varied set that still reads as the same product.
           </p>

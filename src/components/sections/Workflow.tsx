@@ -35,10 +35,10 @@ export function Workflow() {
       ref={section}
       className="relative z-10 bg-background md:bg-transparent md:min-h-[320vh]"
     >
-      <div className="md:sticky md:top-0 md:flex md:h-svh md:items-center">
-        <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-24 md:grid-cols-[280px_1fr] md:py-0">
+      <div className="md:sticky md:top-16 md:flex md:h-[calc(100svh-4rem)] md:items-center">
+        <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-6 md:grid-cols-[280px_1fr]">
           <div>
-            <h2 className="section-title text-[clamp(2.2rem,4vw,3.6rem)]">From one image to an intelligent dataset.</h2>
+            <h2 className="section-title text-[clamp(1.75rem,2.4vw,2.4rem)]">From one image to an intelligent dataset.</h2>
             <div className="relative mt-8 flex items-stretch gap-4">
               <div className="relative flex w-4 shrink-0 justify-center py-2" aria-hidden="true">
                 <svg
@@ -96,7 +96,7 @@ export function Workflow() {
             </div>
           </div>
           <figure className="border border-border bg-card">
-            <div className="relative aspect-[4/3] overflow-hidden bg-card">
+            <div className="relative aspect-[16/10] max-h-[46vh] overflow-hidden bg-card">
               {stages.map((item, index) => {
                 const on = index === stage;
                 return (
