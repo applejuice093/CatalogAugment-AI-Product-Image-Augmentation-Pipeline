@@ -50,7 +50,7 @@ export function SceneCanvas({ scene, activeNode }: SceneCanvasProps) {
       <pointLight position={[2, -1, 2]} intensity={1.4} color="#e8e6df" distance={8} />
       <HeroProduct visible={scene === "hero"} />
       <Suspense fallback={null}>
-        <FloatingGallery visible={scene === "showcase"} />
+        <FloatingGallery visible={false} />
       </Suspense>
       <Suspense fallback={null}>
         <ProductScanner visible={scene === "research"} />

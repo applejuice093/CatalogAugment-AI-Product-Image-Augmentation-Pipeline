@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Slider } from "@/components/ui/slider";
+import { cn } from "@/lib/utils";
 
 type CompareSliderProps = {
   before: string;
   after: string;
   beforeAlt: string;
   afterAlt: string;
+  className?: string;
 };
 
-export function CompareSlider({ before, after, beforeAlt, afterAlt }: CompareSliderProps) {
+export function CompareSlider({ before, after, beforeAlt, afterAlt, className }: CompareSliderProps) {
   const [value, setValue] = useState(58);
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -31,7 +33,10 @@ export function CompareSlider({ before, after, beforeAlt, afterAlt }: CompareSli
   return (
     <div
       onPointerDown={handlePointerDown}
-      className="relative aspect-square overflow-hidden border border-border bg-card group cursor-ew-resize select-none"
+      className={cn(
+        "relative aspect-square overflow-hidden border border-border bg-card group cursor-ew-resize select-none",
+        className,
+      )}
     >
       <img
         src={after}
