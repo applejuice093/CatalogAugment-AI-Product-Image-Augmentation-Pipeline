@@ -1,16 +1,7 @@
-import { useState } from "react";
-import { Menu } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { navLinks } from "@/data/content";
 import { useAuthUi } from "@/components/auth/AuthProvider";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 
 type NavbarProps = {
   compact: boolean;
@@ -20,19 +11,17 @@ type NavbarProps = {
 export function Navbar({ compact, active }: NavbarProps) {
   const { data } = authClient.useSession();
   const { openSignIn, openSignUp } = useAuthUi();
-  const [open, setOpen] = useState(false);
   const user = data?.user;
 
   const links = (
-    <ul className="flex flex-col gap-1 md:flex-row md:items-center md:gap-6">
+    <ul className="flex items-center gap-6">
       {navLinks.map((link) => (
         <li key={link.id}>
           <a
             href={link.href}
             aria-current={active === link.id ? "true" : undefined}
-            onClick={() => setOpen(false)}
-            className={`block py-3 text-base tracking-wide transition-colors duration-200 md:py-2 md:text-sm ${
-              active === link.id ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            className={`block py-2 text-sm tracking-wide transition-colors duration-200 ${
+              active === link.id ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
             }`}
           >
             {link.label}
@@ -94,24 +83,7 @@ export function Navbar({ compact, active }: NavbarProps) {
         <nav className="hidden md:block" aria-label="Primary">
           {links}
         </nav>
-        <div className="hidden md:block">{actions}</div>
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger
-            render={<Button variant="outline" size="icon-sm" className="h-8 w-8 cursor-pointer md:hidden" />}
-          >
-            <Menu className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-full bg-background">
-            <SheetHeader>
-              <SheetTitle className="font-heading font-semibold tracking-[-0.03em]">CatalogAugment</SheetTitle>
-            </SheetHeader>
-            <nav aria-label="Mobile" className="px-4">
-              {links}
-            </nav>
-            <div className="px-4">{actions}</div>
-          </SheetContent>
-        </Sheet>
+        <div className="flex items-center">{actions}</div>
       </div>
     </header>
   );
