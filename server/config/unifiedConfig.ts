@@ -31,6 +31,12 @@ const envSchema = z.object({
   COMFYUI_WORKFLOWS_PATH: z.string().default("C:/A/ComfyUI_windows_portable/ComfyUI/user/default/workflows"),
   COMFYUI_CHECKPOINT: z.string().default("waiIllustriousSDXL_v170.safetensors"),
   COMFYUI_TIMEOUT_MS: z.coerce.number().default(180000),
+  OLLAMA_BASE_URL: z.string().default("http://127.0.0.1:11434"),
+  OLLAMA_VISION_MODEL: z.string().default("moondream"),
+  VLM_PROVIDER: z.enum(["auto", "ollama", "cloud", "mock"]).default("auto"),
+  VLM_CLOUD_API_KEY: z.string().optional().default(""),
+  VLM_CLOUD_MODEL: z.string().default("gemini-1.5-flash"),
+  VLM_TIMEOUT_MS: z.coerce.number().default(60000),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
@@ -88,6 +94,14 @@ export const config = {
     workflowsPath: env.COMFYUI_WORKFLOWS_PATH,
     checkpoint: env.COMFYUI_CHECKPOINT,
     timeoutMs: env.COMFYUI_TIMEOUT_MS,
+  },
+  vlm: {
+    ollamaBaseUrl: env.OLLAMA_BASE_URL,
+    ollamaModel: env.OLLAMA_VISION_MODEL,
+    defaultProvider: env.VLM_PROVIDER,
+    cloudApiKey: env.VLM_CLOUD_API_KEY,
+    cloudModel: env.VLM_CLOUD_MODEL,
+    timeoutMs: env.VLM_TIMEOUT_MS,
   },
 } as const;
 

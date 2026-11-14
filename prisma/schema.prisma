@@ -107,6 +107,7 @@ model Product {
 
   images      Asset[]
   jobs        AugmentationJob[]
+  vlmAnalyses VLMAnalysis[]
 
   @@index([userId])
   @@map("product")
@@ -161,9 +162,33 @@ model AugmentationResult {
   reviewDecision      String           @default("PENDING") // PENDING, APPROVED, REJECTED, NEEDS_REVIEW
   createdAt           DateTime         @default(now())
 
+  vlmAnalyses         VLMAnalysis[]
+
   @@index([jobId])
   @@index([productId])
   @@map("augmentation_result")
+}
+
+model VLMAnalysis {
+  id                   String              @id @default(uuid())
+  productId            String
+  product              Product             @relation(fields: [productId], references: [id], onDelete: Cascade)
+  augmentationResultId String?
+  augmentationResult   AugmentationResult? @relation(fields: [augmentationResultId], references: [id], onDelete: SetNull)
+  taskType             String              // "PRODUCT_ANALYSIS", "IMAGE_CONSISTENCY", "METADATA_ENRICHMENT"
+  provider             String              // "ollama", "cloud", "mock"
+  modelName            String
+  promptVersion        String              @default("1.0.0")
+  rawOutput            String?
+  normalizedData       Json
+  isConsistent         Boolean?
+  confidence           Float?
+  latencyMs            Int?
+  createdAt            DateTime            @default(now())
+
+  @@index([productId])
+  @@index([augmentationResultId])
+  @@map("vlm_analysis")
 }
 
 model Workflow {

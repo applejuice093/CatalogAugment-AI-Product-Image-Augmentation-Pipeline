@@ -266,7 +266,7 @@ export class ComfyUIClient implements IComfyUIClient {
           // Fall back to polling history if WebSocket encounters issues
           this.pollHistory(promptId, onProgress, finishSuccess, finishError);
         };
-      } catch (_wsInitError) {
+      } catch {
         // Fall back to HTTP polling if WebSocket initialization fails
         this.pollHistory(promptId, onProgress, finishSuccess, finishError);
       }

@@ -7,8 +7,6 @@ import { AugmentationService } from "../server/services/augmentationService.ts";
 import type { IComfyUIClient } from "../server/services/comfyui/comfyuiClient.ts";
 import type {
   AugmentationProgress,
-  ComfyImageOutput,
-  ComfyPromptGraph,
   ComfySystemStats,
 } from "../server/services/comfyui/types.ts";
 import { WorkflowRegistry } from "../server/services/comfyui/workflowRegistry.ts";
