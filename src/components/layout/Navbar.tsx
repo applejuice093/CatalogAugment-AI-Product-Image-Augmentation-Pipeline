@@ -54,15 +54,25 @@ export function Navbar({ compact, active }: NavbarProps) {
   ) : (
     <div className="flex items-center gap-2">
       <a
-        href="#workspace"
+        href="#login?redirect=workspace"
         className="inline-flex items-center justify-center h-8 px-3 text-xs font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_10px_rgba(214,227,106,0.2)] transition-colors cursor-pointer"
       >
         Launch Studio
       </a>
-      <Button variant="ghost" size="sm" className="h-8 px-2.5 text-xs font-medium cursor-pointer" onClick={openSignIn}>
+      <Button
+        variant="ghost"
+        size="sm"
+        className="h-8 px-2.5 text-xs font-medium cursor-pointer"
+        onClick={() => openSignIn("workspace")}
+      >
         Sign In
       </Button>
-      <Button variant="outline" size="sm" className="h-8 px-3 text-xs font-medium cursor-pointer hidden sm:inline-flex" onClick={openSignUp}>
+      <Button
+        variant="outline"
+        size="sm"
+        className="h-8 px-3 text-xs font-medium cursor-pointer hidden sm:inline-flex"
+        onClick={() => openSignUp("workspace")}
+      >
         Get Started
       </Button>
     </div>

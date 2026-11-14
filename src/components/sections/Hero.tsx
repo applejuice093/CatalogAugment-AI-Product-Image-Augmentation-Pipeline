@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { animate, splitText, stagger } from "animejs";
+import { authClient } from "@/lib/auth-client";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { scrollState } from "@/lib/scroll";
@@ -13,6 +14,8 @@ const cards = [
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
+  const { data } = authClient.useSession();
+  const user = data?.user;
 
   useEffect(() => {
     const scope = root.current;
@@ -92,7 +95,7 @@ export function Hero() {
           </p>
           <div data-hero-reveal className="mt-8 flex flex-wrap gap-3 opacity-0">
             <a
-              href="#workspace"
+              href={user ? "#workspace" : "#login?redirect=workspace"}
               className={cn(
                 buttonVariants(),
                 "h-11 px-5 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(214,227,106,0.3)]",

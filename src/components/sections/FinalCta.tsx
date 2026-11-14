@@ -81,7 +81,7 @@ export function FinalCta() {
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a
-            href="#workspace"
+            href={data?.user ? "#workspace" : "#login?redirect=workspace"}
             className={cn(
               buttonVariants(),
               "h-11 px-5 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_16px_rgba(214,227,106,0.25)]",
@@ -93,7 +93,7 @@ export function FinalCta() {
             <span className="section-button__circle" aria-hidden="true" />
           </a>
           {data?.user ? null : (
-            <Button variant="outline" className="h-11 px-5 cursor-pointer" onClick={openSignUp}>
+            <Button variant="outline" className="h-11 px-5 cursor-pointer" onClick={() => openSignUp("workspace")}>
               Sign Up
             </Button>
           )}

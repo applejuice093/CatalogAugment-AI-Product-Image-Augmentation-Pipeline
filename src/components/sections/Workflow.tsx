@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { animate, createDrawable, onScroll } from "animejs";
+import { authClient } from "@/lib/auth-client";
 import { stages } from "@/data/content";
 import { scrollState, scrollWorkflowTo, subscribeWorkflowStage } from "@/lib/scroll";
 import { mediaSwap } from "@/lib/reveal";
@@ -41,6 +42,8 @@ export function Workflow() {
   const section = useRef<HTMLElement>(null);
   const path = useRef<SVGPathElement>(null);
   const [stage, setStage] = useState(0);
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
 
   useEffect(() => subscribeWorkflowStage(setStage), []);
 
@@ -229,7 +232,7 @@ export function Workflow() {
                     </div>
                     <div className="shrink-0 flex items-center gap-2 pt-2 md:pt-0">
                       <a
-                        href="#workspace"
+                        href={user ? "#workspace" : "#login?redirect=workspace"}
                         className="inline-flex items-center gap-1.5 rounded-lg border border-primary/30 bg-primary/10 px-3.5 py-2 font-mono text-xs font-medium text-primary transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_15px_rgba(214,227,106,0.25)]"
                       >
                         <span>Open in Studio</span>
