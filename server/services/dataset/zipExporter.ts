@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { Writable } from "node:stream";
-import archiver from "archiver";
+import { ZipArchive } from "archiver";
 import { config } from "../../config/unifiedConfig.ts";
 import type { DatasetManifest } from "./types.ts";
 
@@ -38,7 +38,7 @@ export class ZipExporter {
     destination: Writable
   ): Promise<void> {
     return new Promise((resolve, reject) => {
-      const archive = archiver("zip", {
+      const archive = new ZipArchive({
         zlib: { level: 6 },
       });
 
