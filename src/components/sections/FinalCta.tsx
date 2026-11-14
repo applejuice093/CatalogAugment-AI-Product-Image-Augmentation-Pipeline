@@ -5,6 +5,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Scene } from "@/components/scenes/Scene";
 
 type UploadItem = {
   id: string;
@@ -67,13 +68,13 @@ export function FinalCta() {
         <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
           Start with a single product image. Create a dataset designed for the real world.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <div className="mt-8 flex flex-wrap justify-center items-center gap-4">
           {data?.user ? null : (
-            <Button className="h-11 px-5" onClick={openSignUp}>
-              Get Started
-            </Button>
+            <div onClick={openSignUp} className="inline-block cursor-pointer">
+              <Scene />
+            </div>
           )}
-          <a href="#platform" className={cn(buttonVariants({ variant: "outline" }), "h-11 px-5")}>
+          <a href="#platform" className={cn(buttonVariants({ variant: "outline" }), "h-[52px] cursor-pointer px-6")}>
             Explore Platform
           </a>
         </div>
