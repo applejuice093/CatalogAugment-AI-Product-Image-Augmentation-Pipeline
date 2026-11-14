@@ -8,6 +8,8 @@ interface WorkspaceHeaderProps {
   currentView: string;
   onNavigateHome: () => void;
   onRefresh?: () => void;
+  user?: { name?: string | null; email?: string | null; id?: string } | null;
+  onSignOut?: () => void;
 }
 
 const VIEW_TITLES: Record<string, { title: string; subtitle: string }> = {
@@ -53,8 +55,15 @@ const VIEW_TITLES: Record<string, { title: string; subtitle: string }> = {
   },
 };
 
-export function WorkspaceHeader({ currentView, onNavigateHome, onRefresh }: WorkspaceHeaderProps) {
+export function WorkspaceHeader({
+  currentView,
+  onNavigateHome,
+  onRefresh,
+  user,
+  onSignOut,
+}: WorkspaceHeaderProps) {
   const { data: session } = authClient.useSession();
+  const currentUser = user || session?.user;
   const [health, setHealth] = useState<SystemHealth | null>(null);
   const [ollamaReady, setOllamaReady] = useState<boolean | null>(null);
   const [comfyReady, setComfyReady] = useState<boolean | null>(null);
@@ -172,19 +181,22 @@ export function WorkspaceHeader({ currentView, onNavigateHome, onRefresh }: Work
         </div>
 
         {/* User Account / Signout */}
-        {session?.user ? (
+        {currentUser ? (
           <div className="flex items-center gap-2">
             <div className="hidden md:flex items-center gap-2 border border-border/40 rounded-md px-2.5 py-1 text-xs bg-muted/20">
               <User className="h-3.5 w-3.5 text-primary" />
               <span className="max-w-[130px] truncate text-foreground font-medium">
-                {session.user.name || session.user.email}
+                {currentUser.name || currentUser.email}
               </span>
             </div>
             <Button
               variant="outline"
               size="sm"
               className="h-8 px-2.5 text-xs cursor-pointer hover:bg-destructive/10 hover:text-destructive"
-              onClick={() => void authClient.signOut()}
+              onClick={async () => {
+                await authClient.signOut();
+                onSignOut?.();
+              }}
               title="Sign Out"
             >
               <LogOut className="h-3.5 w-3.5" />

@@ -20,11 +20,18 @@ import {
 
 export type AuthMode = "sign-in" | "sign-up";
 
+export type AuthUser = {
+  id: string;
+  email: string;
+  name?: string | null;
+  [key: string]: unknown;
+};
+
 interface AuthSpaProps {
   initialMode?: AuthMode;
   redirectTarget?: string;
   notice?: string;
-  onSuccess?: (target?: string) => void;
+  onSuccess?: (target?: string, user?: AuthUser) => void;
   onNavigateHome?: () => void;
 }
 
@@ -36,6 +43,7 @@ export function AuthSpa({
   onNavigateHome,
 }: AuthSpaProps) {
   const [mode, setMode] = useState<AuthMode>(initialMode);
+  const { refetch: refetchSession } = authClient.useSession();
 
   useEffect(() => {
     setMode(initialMode);
@@ -83,9 +91,21 @@ export function AuthSpa({
         }
 
         setSuccessMsg("Account created successfully! Preparing studio workspace...");
+
+        // Ensure session cache is synced immediately
+        try {
+          await refetchSession();
+        } catch {
+          // ignore
+        }
+        const sessionRes = await authClient.getSession().catch(() => null);
+        const resolvedUser =
+          (res.data?.user as AuthUser | undefined) ||
+          (sessionRes?.data?.user as AuthUser | undefined);
+
         setTimeout(() => {
-          onSuccess?.(redirectTarget);
-        }, 600);
+          onSuccess?.(redirectTarget, resolvedUser);
+        }, 350);
       } else {
         const res = await authClient.signIn.email({
           email: email.trim(),
@@ -99,9 +119,20 @@ export function AuthSpa({
         }
 
         setSuccessMsg("Welcome back! Redirecting to studio workspace...");
+
+        try {
+          await refetchSession();
+        } catch {
+          // ignore
+        }
+        const sessionRes = await authClient.getSession().catch(() => null);
+        const resolvedUser =
+          (res.data?.user as AuthUser | undefined) ||
+          (sessionRes?.data?.user as AuthUser | undefined);
+
         setTimeout(() => {
-          onSuccess?.(redirectTarget);
-        }, 500);
+          onSuccess?.(redirectTarget, resolvedUser);
+        }, 350);
       }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Authentication service error. Please try again.";

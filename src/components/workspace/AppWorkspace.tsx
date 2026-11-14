@@ -16,9 +16,16 @@ import { api } from "@/lib/api";
 interface AppWorkspaceProps {
   onExitWorkspace: () => void;
   initialTab?: WorkspaceTab;
+  user?: { name?: string | null; email?: string | null; id?: string } | null;
+  onSignOut?: () => void;
 }
 
-export function AppWorkspace({ onExitWorkspace, initialTab = "dashboard" }: AppWorkspaceProps) {
+export function AppWorkspace({
+  onExitWorkspace,
+  initialTab = "dashboard",
+  user,
+  onSignOut,
+}: AppWorkspaceProps) {
   const [currentTab, setCurrentTab] = useState<WorkspaceTab>(initialTab);
   const [selectedProductId, setSelectedProductId] = useState<string>("");
   const [pendingReviewsCount, setPendingReviewsCount] = useState<number>(0);
@@ -45,6 +52,8 @@ export function AppWorkspace({ onExitWorkspace, initialTab = "dashboard" }: AppW
         currentView={currentTab}
         onNavigateHome={onExitWorkspace}
         onRefresh={fetchPendingReviews}
+        user={user}
+        onSignOut={onSignOut}
       />
 
       {/* Main split: Sidebar + Viewport */}

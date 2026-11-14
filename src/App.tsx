@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { AuthProvider } from "@/components/auth/AuthProvider";
-import { AuthSpa, type AuthMode } from "@/components/auth/AuthSpa";
+import { AuthSpa, type AuthMode, type AuthUser } from "@/components/auth/AuthSpa";
 import { authClient } from "@/lib/auth-client";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
@@ -72,15 +72,17 @@ function parseCurrentRoute(): RouteState {
     hashParams.forEach((val, key) => searchParams.set(key, val));
   }
 
-  const isWorkspace = hashPath === "workspace" || searchParams.has("workspace");
-  const isScene = hashPath === "scene" || searchParams.has("scene");
+  const isWorkspace = hashPath === "workspace" || (!hashPath && searchParams.has("workspace"));
+  const isScene = hashPath === "scene" || (!hashPath && searchParams.has("scene"));
   const isAuth =
-    hashPath === "login" ||
-    hashPath === "signup" ||
-    hashPath === "auth" ||
-    searchParams.has("login") ||
-    searchParams.has("signup") ||
-    searchParams.has("auth");
+    !isWorkspace &&
+    !isScene &&
+    (hashPath === "login" ||
+      hashPath === "signup" ||
+      hashPath === "auth" ||
+      searchParams.has("login") ||
+      searchParams.has("signup") ||
+      searchParams.has("auth"));
 
   const authMode: AuthMode =
     hashPath === "signup" || searchParams.has("signup") ? "sign-up" : "sign-in";
@@ -101,8 +103,36 @@ function Page() {
   const [node, setNode] = useState("react");
   const [route, setRoute] = useState<RouteState>(parseCurrentRoute);
 
-  const { data: session, isPending: sessionLoading } = authClient.useSession();
-  const user = session?.user;
+  const { data: session, isPending: sessionLoading, refetch: refetchSession } = authClient.useSession();
+  const [localUser, setLocalUser] = useState<AuthUser | null>(null);
+  const user = (session?.user as AuthUser | undefined) || localUser;
+
+  // Keep localUser in sync with session
+  useEffect(() => {
+    if (session?.user) {
+      setLocalUser(session.user as AuthUser);
+    }
+  }, [session?.user]);
+
+  // Initial check: if not in store, verify directly against backend session cookie
+  useEffect(() => {
+    if (!user && !sessionLoading) {
+      let active = true;
+      authClient
+        .getSession()
+        .then((res) => {
+          if (!active) return;
+          if (res?.data?.user) {
+            setLocalUser(res.data.user as AuthUser);
+            void refetchSession();
+          }
+        })
+        .catch(() => {});
+      return () => {
+        active = false;
+      };
+    }
+  }, [user, sessionLoading, refetchSession]);
 
   useEffect(() => subscribeScroll(() => setSnap(readSnap())), []);
   useEffect(() => startScrollLoop(), []);
@@ -119,17 +149,39 @@ function Page() {
     };
   }, []);
 
-  // Auth Guard 1: If user navigates to workspace without authentication, redirect to login SPA
+  // Auth Guard 1: If user navigates to workspace without authentication, verify session before redirecting
   useEffect(() => {
     if (sessionLoading) return;
     if (route.isWorkspace && !user) {
-      const targetHash = "#login?redirect=workspace";
-      if (window.location.hash !== targetHash) {
-        window.location.hash = targetHash;
-        window.dispatchEvent(new HashChangeEvent("hashchange"));
-      }
+      let active = true;
+      authClient
+        .getSession()
+        .then((res) => {
+          if (!active) return;
+          if (res?.data?.user) {
+            setLocalUser(res.data.user as AuthUser);
+            void refetchSession();
+          } else {
+            const targetHash = "#login?redirect=workspace";
+            if (window.location.hash !== targetHash) {
+              window.location.hash = targetHash;
+              window.dispatchEvent(new HashChangeEvent("hashchange"));
+            }
+          }
+        })
+        .catch(() => {
+          if (!active) return;
+          const targetHash = "#login?redirect=workspace";
+          if (window.location.hash !== targetHash) {
+            window.location.hash = targetHash;
+            window.dispatchEvent(new HashChangeEvent("hashchange"));
+          }
+        });
+      return () => {
+        active = false;
+      };
     }
-  }, [route.isWorkspace, user, sessionLoading]);
+  }, [route.isWorkspace, user, sessionLoading, refetchSession]);
 
   // Auth Guard 2: If user is already authenticated and visits login/signup, redirect to workspace or target
   useEffect(() => {
@@ -158,10 +210,31 @@ function Page() {
     );
   }
 
+  const handleAuthSuccess = (target?: string, authenticatedUser?: AuthUser) => {
+    if (authenticatedUser) {
+      setLocalUser(authenticatedUser);
+    }
+    void refetchSession();
+    const dest = target || "workspace";
+    window.location.hash = `#${dest}`;
+    setRoute(parseCurrentRoute());
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+  };
+
+  const handleSignOut = () => {
+    setLocalUser(null);
+    void refetchSession();
+    window.location.hash = "#platform";
+    setRoute(parseCurrentRoute());
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+  };
+
   // Workspace View (Protected)
   if (route.isWorkspace && user) {
     return (
       <AppWorkspace
+        user={user}
+        onSignOut={handleSignOut}
         onExitWorkspace={() => {
           window.location.hash = "#platform";
           window.dispatchEvent(new HashChangeEvent("hashchange"));
@@ -177,11 +250,7 @@ function Page() {
         initialMode="sign-in"
         redirectTarget="workspace"
         notice="Authentication required. Please sign in or create an operator account to access the Studio Workspace."
-        onSuccess={(target) => {
-          const dest = target || "workspace";
-          window.location.hash = `#${dest}`;
-          window.dispatchEvent(new HashChangeEvent("hashchange"));
-        }}
+        onSuccess={handleAuthSuccess}
         onNavigateHome={() => {
           window.location.hash = "#platform";
           window.dispatchEvent(new HashChangeEvent("hashchange"));
@@ -201,11 +270,7 @@ function Page() {
             ? "Authentication required. Please sign in or create an operator account to access the Studio Workspace."
             : undefined
         }
-        onSuccess={(target) => {
-          const dest = target || "workspace";
-          window.location.hash = `#${dest}`;
-          window.dispatchEvent(new HashChangeEvent("hashchange"));
-        }}
+        onSuccess={handleAuthSuccess}
         onNavigateHome={() => {
           window.location.hash = "#platform";
           window.dispatchEvent(new HashChangeEvent("hashchange"));
