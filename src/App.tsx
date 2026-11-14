@@ -245,13 +245,12 @@ function Page() {
     );
   }
 
-  // If user unauthenticated on workspace route before redirect fires, render AuthSpa with notice
+  // If user unauthenticated on workspace route before redirect fires, render AuthSpa
   if (route.isWorkspace && !user && !sessionLoading) {
     return (
       <AuthSpa
         initialMode="sign-in"
         redirectTarget="workspace"
-        notice="Authentication required. Please sign in or create an operator account to access the Studio Workspace."
         onSuccess={handleAuthSuccess}
         onNavigateHome={() => {
           window.location.hash = "#platform";
@@ -267,11 +266,6 @@ function Page() {
       <AuthSpa
         initialMode={route.authMode}
         redirectTarget={route.redirectTarget}
-        notice={
-          route.redirectTarget === "workspace"
-            ? "Authentication required. Please sign in or create an operator account to access the Studio Workspace."
-            : undefined
-        }
         onSuccess={handleAuthSuccess}
         onNavigateHome={() => {
           window.location.hash = "#platform";

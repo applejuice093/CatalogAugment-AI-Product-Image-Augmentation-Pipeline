@@ -11,9 +11,7 @@ import {
   EyeOff,
   ArrowLeft,
   ArrowRight,
-  ShieldCheck,
   AlertCircle,
-  Sparkles,
   CheckCircle2,
   Cpu,
 } from "lucide-react";
@@ -30,7 +28,6 @@ export type AuthUser = {
 interface AuthSpaProps {
   initialMode?: AuthMode;
   redirectTarget?: string;
-  notice?: string;
   onSuccess?: (target?: string, user?: AuthUser) => void;
   onNavigateHome?: () => void;
 }
@@ -38,7 +35,6 @@ interface AuthSpaProps {
 export function AuthSpa({
   initialMode = "sign-in",
   redirectTarget = "workspace",
-  notice,
   onSuccess,
   onNavigateHome,
 }: AuthSpaProps) {
@@ -55,14 +51,6 @@ export function AuthSpa({
   const [error, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [pending, setPending] = useState(false);
-
-  // Quick fill demo credentials for reviewers/operators
-  const handleQuickDemo = () => {
-    setEmail("operator@catalogaugment.ai");
-    setPassword("CatalogAugment2026!");
-    setName("AI Operations Lead");
-    setError("");
-  };
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -178,32 +166,14 @@ export function AuthSpa({
           <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-1" />
           <span>Back to Platform</span>
         </button>
-
-        <div className="flex items-center gap-2.5 rounded-full border border-white/10 bg-[#121512]/60 px-3.5 py-1 text-xs font-mono text-muted-foreground backdrop-blur-md">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-          </span>
-          <span className="text-[11px] tracking-wider uppercase text-foreground/90 font-medium">
-            AUTH PROTOCOL // SQL VERIFIED
-          </span>
-        </div>
       </header>
 
       {/* Main 2-Column Split: Left = Login Box, Right = Big Animated Project Title */}
-      <main className="relative z-10 flex-1 flex flex-col md:flex-row items-center justify-between gap-6 lg:gap-10 xl:gap-16 min-h-0 overflow-hidden my-auto py-1">
+      <main className="relative z-10 flex-1 flex flex-col md:flex-row items-center justify-between gap-6 lg:gap-10 xl:gap-16 min-h-0 overflow-hidden my-auto py-2">
         {/* Left-most Side: Login / Signup Box (Fits completely in single page, NO SCROLL) */}
         <div className="w-full md:w-[410px] lg:w-[430px] xl:w-[450px] shrink-0 flex flex-col justify-center">
-          {/* External Notice Pill if redirected */}
-          {notice && (
-            <div className="mb-2.5 flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs text-primary shadow-[0_0_12px_rgba(214,227,106,0.15)] animate-in fade-in duration-200">
-              <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-primary" />
-              <span className="truncate">{notice}</span>
-            </div>
-          )}
-
           {/* Main Glass Card */}
-          <div className="relative rounded-2xl border border-white/10 bg-[#121512]/90 p-4 sm:p-5 shadow-[0_20px_70px_rgba(0,0,0,0.85)] backdrop-blur-xl">
+          <div className="relative rounded-2xl border border-white/10 bg-[#121512]/90 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.85)] backdrop-blur-xl">
             {/* Corner Framing Marks */}
             <div className="pointer-events-none absolute inset-0 p-2.5" aria-hidden="true">
               <div className="absolute top-2.5 left-2.5 h-2 w-2 border-t-2 border-l-2 border-primary/60" />
@@ -213,24 +183,17 @@ export function AuthSpa({
             </div>
 
             {/* Card Header */}
-            <div className="flex items-center gap-3 mb-3.5">
+            <div className="flex items-center gap-3 mb-4">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 shadow-[0_0_15px_rgba(214,227,106,0.2)]">
                 <Cpu className="h-4.5 w-4.5 text-primary" />
               </div>
-              <div className="min-w-0 flex-1">
-                <h2 className="font-heading text-base font-bold tracking-tight text-foreground truncate">
-                  {mode === "sign-in" ? "Operator Sign In" : "Operator Registration"}
-                </h2>
-                <p className="text-[11px] text-muted-foreground truncate">
-                  {mode === "sign-in"
-                    ? "Access Studio Workspace & augmentation pipelines"
-                    : "Create an operator account to begin generating datasets"}
-                </p>
-              </div>
+              <h2 className="font-heading text-lg font-bold tracking-tight text-foreground">
+                {mode === "sign-in" ? "Operator Sign In" : "Create Operator Account"}
+              </h2>
             </div>
 
             {/* Tab Selector: Sign In vs Create Account */}
-            <div className="grid grid-cols-2 gap-1 rounded-xl border border-white/10 bg-black/40 p-1 mb-3">
+            <div className="grid grid-cols-2 gap-1 rounded-xl border border-white/10 bg-black/40 p-1 mb-3.5">
               <button
                 type="button"
                 onClick={() => {
@@ -283,7 +246,7 @@ export function AuthSpa({
             )}
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-2.5">
+            <form onSubmit={handleSubmit} className="space-y-3">
               {mode === "sign-up" && (
                 <div className="space-y-1">
                   <Label htmlFor="auth-name" className="text-[11px] font-mono text-muted-foreground">
@@ -299,7 +262,7 @@ export function AuthSpa({
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required={mode === "sign-up"}
-                      className="h-9 pl-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
+                      className="h-9.5 pl-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                     />
                   </div>
                 </div>
@@ -320,7 +283,7 @@ export function AuthSpa({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="h-9 pl-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
+                    className="h-9.5 pl-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                   />
                 </div>
               </div>
@@ -346,7 +309,7 @@ export function AuthSpa({
                     onChange={(e) => setPassword(e.target.value)}
                     minLength={8}
                     required
-                    className="h-9 pl-8 pr-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
+                    className="h-9.5 pl-8 pr-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                   />
                   <button
                     type="button"
@@ -363,7 +326,7 @@ export function AuthSpa({
               <Button
                 type="submit"
                 disabled={pending}
-                className="w-full h-10 rounded-xl bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:bg-primary/90 shadow-[0_0_20px_rgba(214,227,106,0.3)] transition-all duration-200 mt-1 cursor-pointer"
+                className="w-full h-10 rounded-xl bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:bg-primary/90 shadow-[0_0_20px_rgba(214,227,106,0.3)] transition-all duration-200 mt-2 cursor-pointer"
               >
                 {pending ? (
                   <span className="inline-flex items-center gap-2">
@@ -383,28 +346,12 @@ export function AuthSpa({
                 )}
               </Button>
             </form>
-
-            {/* Quick Demo Operator Assist */}
-            <div className="mt-3 pt-2.5 border-t border-white/10 text-center">
-              <button
-                type="button"
-                onClick={handleQuickDemo}
-                className="inline-flex items-center gap-1.5 text-[11px] text-primary hover:text-primary/80 transition-colors font-mono cursor-pointer"
-              >
-                <Sparkles className="h-3 w-3" />
-                <span>Fill Demo Operator Credentials</span>
-              </button>
-            </div>
           </div>
         </div>
 
         {/* Right Side: Big Animated Project Title "Catelog \n Augment" with Taglines */}
         <div className="flex-1 hidden md:flex flex-col justify-between h-full pl-6 lg:pl-10 xl:pl-14 min-h-0 border-l border-white/10 relative">
-          {/* Top Pill / Badge */}
-          <div className="flex items-center gap-2.5 font-mono text-[11px] text-primary/90 tracking-widest uppercase">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-ping" />
-            <span>AI Product Image Augmentation Pipeline</span>
-          </div>
+          <div />
 
           {/* Center: Big Animated Project Title "Catelog \n Augment" */}
           <div className="relative my-auto py-2">
@@ -430,34 +377,13 @@ export function AuthSpa({
           </div>
 
           {/* Bottom Taglines Area */}
-          <div className="space-y-3 pt-3 border-t border-white/10 max-w-xl">
+          <div className="pt-3 border-t border-white/10 max-w-xl pb-2">
             <p className="text-sm lg:text-base font-normal text-foreground/85 leading-snug">
               Turn one product photograph into an intelligent, photorealistic dataset with studio isolation, relighting, and contextual lifestyle scenes.
             </p>
-
-            <div className="flex flex-wrap items-center gap-2 pt-0.5 text-[11px] font-mono text-muted-foreground/80">
-              <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-2.5 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#d6e36a]" />
-                Alpha Foreground Preservation
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-2.5 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#82c8ff]" />
-                WF-01 · WF-02 · WF-03 Diffusion
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-2.5 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                Zero-Leakage Partitioning
-              </span>
-            </div>
           </div>
         </div>
       </main>
-
-      {/* Footer Info (Minimal, single line) */}
-      <footer className="relative z-10 w-full shrink-0 pt-1 text-[10px] text-muted-foreground/50 font-mono flex items-center justify-between border-t border-white/5">
-        <p>CatalogAugment Enterprise AI Pipeline</p>
-        <p className="hidden sm:block">Local PostgreSQL & SQLite Auth • Zero Third-Party Tracking</p>
-      </footer>
     </div>
   );
 }
