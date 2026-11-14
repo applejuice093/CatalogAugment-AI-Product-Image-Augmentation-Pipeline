@@ -22,6 +22,14 @@ export function LightningGlowText<T extends ElementType = "h1">({
   children,
   className,
   containerClassName,
+  shaderClassName: _shaderClassName,
+  speed: _speed,
+  size: _size,
+  particleAmount: _particleAmount,
+  hue: _hue,
+  saturation: _saturation,
+  brightness: _brightness,
+  opacity: _opacity,
   showShader = true,
   ...rest
 }: LightningGlowTextProps<T>) {
