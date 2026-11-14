@@ -87,7 +87,10 @@ export function FinalCta() {
               "h-11 px-5 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_16px_rgba(214,227,106,0.25)]",
             )}
           >
-            Enter Studio Workspace
+            <span className="section-button__title relative z-10 inline-flex items-center gap-2">
+              Enter Studio Workspace
+            </span>
+            <span className="section-button__circle" aria-hidden="true" />
           </a>
           {data?.user ? null : (
             <Button variant="outline" className="h-11 px-5 cursor-pointer" onClick={openSignUp}>

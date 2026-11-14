@@ -62,6 +62,7 @@
 
 .section-button {
   position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -84,6 +85,12 @@
   inset: 0;
   border-radius: inherit;
   content: "";
+  z-index: 0;
+}
+
+.section-button > * {
+  position: relative;
+  z-index: 4;
 }
 
 .section-button::before {
