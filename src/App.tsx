@@ -6,6 +6,7 @@ import { About } from "@/components/sections/About";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Hero } from "@/components/sections/Hero";
 import { Problem } from "@/components/sections/Problem";
+import { CurtainReveal } from "@/components/sections/CurtainReveal";
 import { Research } from "@/components/sections/Research";
 import { Showcase } from "@/components/sections/Showcase";
 import { Technology } from "@/components/sections/Technology";
@@ -89,6 +90,7 @@ function Page() {
       <main id="main">
         <Hero />
         <Problem />
+        <CurtainReveal />
         <Workflow />
         <Showcase />
         <Research />
