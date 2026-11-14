@@ -1,0 +1,231 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist/wght.css";
+@import "@fontsource/syne/500.css";
+@import "@fontsource/syne/600.css";
+@import "@fontsource/syne/700.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: "Syne", sans-serif;
+    --font-sans: "Geist Variable", sans-serif;
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+    --background: #101210;
+    --foreground: #e8e6df;
+    --card: #191c18;
+    --card-foreground: #e8e6df;
+    --popover: #191c18;
+    --popover-foreground: #e8e6df;
+    --primary: #d6e36a;
+    --primary-foreground: #15170e;
+    --secondary: #23261f;
+    --secondary-foreground: #e8e6df;
+    --muted: #191c18;
+    --muted-foreground: #8a8d84;
+    --accent: #23261f;
+    --accent-foreground: #e8e6df;
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: rgb(232 230 223 / 12%);
+    --input: rgb(232 230 223 / 16%);
+    --ring: #d6e36a;
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --radius: 2px;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+    --background: #101210;
+    --foreground: #e8e6df;
+    --card: #191c18;
+    --card-foreground: #e8e6df;
+    --popover: #191c18;
+    --popover-foreground: #e8e6df;
+    --primary: #d6e36a;
+    --primary-foreground: #15170e;
+    --secondary: #23261f;
+    --secondary-foreground: #e8e6df;
+    --muted: #191c18;
+    --muted-foreground: #8a8d84;
+    --accent: #23261f;
+    --accent-foreground: #e8e6df;
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: rgb(232 230 223 / 12%);
+    --input: rgb(232 230 223 / 16%);
+    --ring: #d6e36a;
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: auto;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.media-swap {
+  transition-property: opacity, transform;
+  transition-duration: 520ms;
+  transition-timing-function: var(--ease-out);
+}
+
+@keyframes hero-float {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-float {
+  animation: hero-float 700ms var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-swap {
+    transition-duration: 120ms;
+    transition-property: opacity;
+    transform: none !important;
+  }
+
+  .hero-float {
+    animation: none;
+  }
+}
+
+body {
+  overflow-x: clip;
+  background:
+    radial-gradient(720px 420px at 88% 0%, rgb(214 227 106 / 8%), transparent 62%),
+    #101210;
+}
+
+::selection {
+  background: rgb(214 227 106 / 32%);
+  color: #15170e;
+}
+
+.font-heading {
+  font-family: "Syne", sans-serif;
+}
+
+.section-title {
+  font-family: "Syne", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+}
+
+[data-slot="button"],
+[data-slot="input"],
+[data-slot="dialog-content"],
+[data-slot="badge"] {
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.scan-line {
+  position: absolute;
+  top: 8%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #d6e36a;
+  animation: scan 2.4s ease-in-out infinite;
+}
+
+@keyframes scan {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, 12rem, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scan-line {
+    animation: none;
+    top: 50%;
+  }
+}
