@@ -11,8 +11,28 @@ type CompareSliderProps = {
 export function CompareSlider({ before, after, beforeAlt, afterAlt }: CompareSliderProps) {
   const [value, setValue] = useState(58);
 
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if ((event.target as HTMLElement).closest('[data-slot="slider"]')) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const update = (clientX: number) => {
+      const pct = Math.min(98, Math.max(2, Math.round(((clientX - rect.left) / rect.width) * 100)));
+      setValue(pct);
+    };
+    update(event.clientX);
+    const onMove = (e: PointerEvent) => update(e.clientX);
+    const onUp = () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  };
+
   return (
-    <div className="relative aspect-square overflow-hidden border border-border bg-card group">
+    <div
+      onPointerDown={handlePointerDown}
+      className="relative aspect-square overflow-hidden border border-border bg-card group cursor-ew-resize select-none"
+    >
       <img
         src={after}
         alt={afterAlt}
