@@ -108,6 +108,7 @@ model Product {
   images      Asset[]
   jobs        AugmentationJob[]
   vlmAnalyses VLMAnalysis[]
+  datasetItems DatasetItem[]
 
   @@index([userId])
   @@map("product")
@@ -167,6 +168,7 @@ model AugmentationResult {
 
   vlmAnalyses         VLMAnalysis[]
   qualityAssessment   QualityAssessment?
+  datasetItems        DatasetItem[]
 
   @@index([jobId])
   @@index([productId])
@@ -231,4 +233,44 @@ model Workflow {
   updatedAt   DateTime @updatedAt
 
   @@map("workflow")
+}
+
+model Dataset {
+  id            String        @id @default(uuid())
+  userId        String
+  name          String
+  version       String        @default("1.0.0")
+  description   String?
+  splitConfig   Json          // { train: 0.70, val: 0.15, test: 0.15, seed: 42 }
+  totalProducts Int           @default(0)
+  totalImages   Int           @default(0)
+  status        String        @default("READY") // "READY", "EXPORTING", "ARCHIVED"
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  items         DatasetItem[]
+
+  @@index([userId])
+  @@map("dataset")
+}
+
+model DatasetItem {
+  id                   String              @id @default(uuid())
+  datasetId            String
+  dataset              Dataset             @relation(fields: [datasetId], references: [id], onDelete: Cascade)
+  productId            String
+  product              Product             @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sku                  String
+  split                String              // "train", "val", "test"
+  augmentationResultId String?
+  augmentationResult   AugmentationResult? @relation(fields: [augmentationResultId], references: [id], onDelete: SetNull)
+  imagePath            String
+  isOriginal           Boolean             @default(false)
+  metadata             Json?               // Full lineage & provenance snapshot
+  createdAt            DateTime            @default(now())
+
+  @@index([datasetId])
+  @@index([split])
+  @@index([productId])
+  @@map("dataset_item")
 }

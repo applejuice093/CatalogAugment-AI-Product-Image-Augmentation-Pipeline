@@ -7,6 +7,7 @@ import { productRouter } from "./productRoutes.ts";
 import { uploadRouter } from "./uploadRoutes.ts";
 import { vlmRouter } from "./vlmRoutes.ts";
 import { qualityRouter } from "./qualityRoutes.ts";
+import { datasetRouter } from "./datasetRoutes.ts";
 
 export const apiRouter = Router();
 
@@ -28,6 +29,10 @@ apiRouter.use("/v1/vlm", vlmRouter);
 // Quality Control & Evaluation endpoints
 apiRouter.use("/quality", qualityRouter);
 apiRouter.use("/v1/quality", qualityRouter);
+
+// Dataset Management & Lineage Export endpoints
+apiRouter.use("/datasets", datasetRouter);
+apiRouter.use("/v1/datasets", datasetRouter);
 
 // General Uploads endpoint
 apiRouter.use("/uploads", uploadRouter);
