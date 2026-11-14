@@ -12,7 +12,7 @@ export default defineConfig({
     alias: {
       "@": path.resolve(root, "./src"),
       "@designcodeio/threeui/style.css": path.resolve(root, "./src/shaders/style.css"),
-      "@designcodeio/threeui": path.resolve(root, "./src/shaders/rectangle-buttons/RectangleButtons.tsx"),
+      "@designcodeio/threeui": path.resolve(root, "./src/shaders/index.ts"),
     },
   },
   server: {

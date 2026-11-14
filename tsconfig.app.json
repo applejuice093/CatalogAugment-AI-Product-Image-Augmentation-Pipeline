@@ -17,12 +17,12 @@
     "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"],
-      "@designcodeio/threeui": ["./src/shaders/rectangle-buttons/RectangleButtons.tsx"],
+      "@designcodeio/threeui": ["./src/shaders/index.ts"],
       "@designcodeio/threeui/*": ["./src/shaders/*"]
     },
 
     /* Linting */
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true

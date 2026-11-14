@@ -1,10 +1,9 @@
 import { useEffect, useRef } from "react";
 import { animate, splitText, stagger } from "animejs";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useAuthUi } from "@/components/auth/AuthProvider";
 import { scrollState } from "@/lib/scroll";
-import { Scene } from "@/components/scenes/Scene";
 
 const cards = [
   { src: "/images/lifestyle.jpg", alt: "Running shoe in a lifestyle interior", className: "left-[8%] top-[18%] w-28 md:w-36" },
@@ -84,11 +83,11 @@ export function Hero() {
           <p data-hero-reveal className="mt-6 max-w-md text-base leading-7 text-muted-foreground opacity-0">
             Turn one product photograph into a varied set that still reads as the same product.
           </p>
-          <div data-hero-reveal className="mt-8 flex flex-wrap items-center gap-3 opacity-0">
-            <div onClick={openSignUp} className="inline-block cursor-pointer">
-              <Scene />
-            </div>
-            <a href="#workflow" className={cn(buttonVariants({ variant: "outline" }), "h-[52px] cursor-pointer border-foreground/25 bg-background/50 px-6")}>
+          <div data-hero-reveal className="mt-8 flex flex-wrap gap-3 opacity-0">
+            <Button className="h-11 px-5 cursor-pointer" onClick={openSignUp}>
+              Get Started
+            </Button>
+            <a href="#workflow" className={cn(buttonVariants({ variant: "outline" }), "h-11 cursor-pointer border-foreground/25 bg-background/50 px-5")}>
               Explore Platform
             </a>
           </div>
