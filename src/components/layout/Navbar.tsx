@@ -43,17 +43,18 @@ export function Navbar({ compact, active }: NavbarProps) {
   );
 
   const actions = user ? (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-2">
       <a
         href="#workspace"
-        className="inline-flex items-center justify-center h-10 px-4 text-xs font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_12px_rgba(214,227,106,0.25)] transition-colors cursor-pointer"
+        className="inline-flex items-center justify-center h-8 px-3 text-xs font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_10px_rgba(214,227,106,0.2)] transition-colors cursor-pointer"
       >
         Studio Workspace
       </a>
-      <span className="max-w-40 truncate text-sm text-muted-foreground hidden lg:inline">{user.email}</span>
+      <span className="max-w-40 truncate text-xs text-muted-foreground hidden lg:inline">{user.email}</span>
       <Button
         variant="outline"
-        className="h-10 cursor-pointer text-xs"
+        size="sm"
+        className="h-8 px-2.5 text-xs font-medium cursor-pointer"
         onClick={() => {
           void authClient.signOut();
         }}
@@ -65,14 +66,14 @@ export function Navbar({ compact, active }: NavbarProps) {
     <div className="flex items-center gap-2">
       <a
         href="#workspace"
-        className="inline-flex items-center justify-center h-10 px-3.5 text-xs font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_12px_rgba(214,227,106,0.25)] transition-colors cursor-pointer"
+        className="inline-flex items-center justify-center h-8 px-3 text-xs font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_10px_rgba(214,227,106,0.2)] transition-colors cursor-pointer"
       >
         Launch Studio
       </a>
-      <Button variant="ghost" className="h-10 cursor-pointer text-xs" onClick={openSignIn}>
+      <Button variant="ghost" size="sm" className="h-8 px-2.5 text-xs font-medium cursor-pointer" onClick={openSignIn}>
         Sign In
       </Button>
-      <Button variant="outline" className="h-10 cursor-pointer text-xs hidden sm:inline-flex" onClick={openSignUp}>
+      <Button variant="outline" size="sm" className="h-8 px-3 text-xs font-medium cursor-pointer hidden sm:inline-flex" onClick={openSignUp}>
         Get Started
       </Button>
     </div>
@@ -96,9 +97,9 @@ export function Navbar({ compact, active }: NavbarProps) {
         <div className="hidden md:block">{actions}</div>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
-            render={<Button variant="outline" size="icon" className="h-11 w-11 cursor-pointer md:hidden" />}
+            render={<Button variant="outline" size="icon-sm" className="h-8 w-8 cursor-pointer md:hidden" />}
           >
-            <Menu />
+            <Menu className="h-4 w-4" />
             <span className="sr-only">Open menu</span>
           </SheetTrigger>
           <SheetContent side="right" className="w-full bg-background">
