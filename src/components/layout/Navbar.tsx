@@ -31,7 +31,7 @@ export function Navbar({ compact, active }: NavbarProps) {
             href={link.href}
             aria-current={active === link.id ? "true" : undefined}
             onClick={() => setOpen(false)}
-            className={`block py-2 text-sm tracking-wide transition-colors duration-200 ${
+            className={`block py-3 text-base tracking-wide transition-colors duration-200 md:py-2 md:text-sm ${
               active === link.id ? "text-foreground" : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -47,7 +47,7 @@ export function Navbar({ compact, active }: NavbarProps) {
       <span className="max-w-40 truncate text-sm text-muted-foreground">{user.email}</span>
       <Button
         variant="outline"
-        className="h-11"
+        className="h-11 cursor-pointer"
         onClick={() => {
           void authClient.signOut();
         }}
@@ -57,10 +57,10 @@ export function Navbar({ compact, active }: NavbarProps) {
     </div>
   ) : (
     <div className="flex items-center gap-2">
-      <Button variant="ghost" className="h-11" onClick={openSignIn}>
+      <Button variant="ghost" className="h-11 cursor-pointer" onClick={openSignIn}>
         Sign In
       </Button>
-      <Button className="h-11" onClick={openSignUp}>
+      <Button className="h-11 cursor-pointer" onClick={openSignUp}>
         Get Started
       </Button>
     </div>
@@ -84,7 +84,7 @@ export function Navbar({ compact, active }: NavbarProps) {
         <div className="hidden md:block">{actions}</div>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
-            render={<Button variant="outline" size="icon" className="h-11 w-11 md:hidden" />}
+            render={<Button variant="outline" size="icon" className="h-11 w-11 cursor-pointer md:hidden" />}
           >
             <Menu />
             <span className="sr-only">Open menu</span>

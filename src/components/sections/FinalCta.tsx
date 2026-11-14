@@ -17,12 +17,10 @@ export function FinalCta() {
   const { openSignUp } = useAuthUi();
   const [items, setItems] = useState<UploadItem[]>([]);
   const [message, setMessage] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
-    if (!data?.user) {
-      setItems([]);
-      return;
-    }
+    if (!data?.user) return;
     let ignore = false;
     void fetch("/api/uploads")
       .then((response) => response.json())
@@ -42,17 +40,24 @@ export function FinalCta() {
     const form = event.currentTarget;
     const body = new FormData(form);
     setMessage("");
-    const response = await fetch("/api/uploads", { method: "POST", body });
-    const payload = (await response.json()) as { error?: string; originalName?: string };
-    if (!response.ok) {
-      setMessage(payload.error ?? "Upload failed.");
-      return;
+    setUploading(true);
+    try {
+      const response = await fetch("/api/uploads", { method: "POST", body });
+      const payload = (await response.json()) as { error?: string; originalName?: string };
+      if (!response.ok) {
+        setMessage(payload.error ?? "Upload failed.");
+        return;
+      }
+      form.reset();
+      setMessage(`Saved ${payload.originalName ?? "image"} on disk.`);
+      const list = await fetch("/api/uploads");
+      const next = (await list.json()) as { items?: UploadItem[] };
+      setItems(next.items ?? []);
+    } catch {
+      setMessage("Network error during upload.");
+    } finally {
+      setUploading(false);
     }
-    form.reset();
-    setMessage(`Saved ${payload.originalName ?? "image"} on disk.`);
-    const list = await fetch("/api/uploads");
-    const next = (await list.json()) as { items?: UploadItem[] };
-    setItems(next.items ?? []);
   }
 
   return (
@@ -75,9 +80,17 @@ export function FinalCta() {
         {data?.user ? (
           <form className="mx-auto mt-12 max-w-md space-y-3 text-left" onSubmit={onUpload}>
             <Label htmlFor="product-file">Upload a product image</Label>
-            <Input id="product-file" name="file" type="file" accept="image/jpeg,image/png,image/webp" required className="h-11" />
-            <Button type="submit" className="h-11">
-              Save to filesystem
+            <Input
+              id="product-file"
+              name="file"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              disabled={uploading}
+              required
+              className="h-11"
+            />
+            <Button type="submit" disabled={uploading} className="h-11 cursor-pointer">
+              {uploading ? "Saving on disk…" : "Save to filesystem"}
             </Button>
             {message ? <p className="text-sm text-primary">{message}</p> : null}
             {items.length > 0 ? (

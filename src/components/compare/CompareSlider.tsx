@@ -12,19 +12,45 @@ export function CompareSlider({ before, after, beforeAlt, afterAlt }: CompareSli
   const [value, setValue] = useState(58);
 
   return (
-    <div className="relative aspect-square overflow-hidden border border-border bg-card">
-      <img src={after} alt={afterAlt} className="absolute inset-0 h-full w-full object-cover" />
+    <div className="relative aspect-square overflow-hidden border border-border bg-card group">
+      <img
+        src={after}
+        alt={afterAlt}
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
       <img
         src={before}
         alt={beforeAlt}
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 h-full w-full object-cover"
         style={{ clipPath: `inset(0 ${100 - value}% 0 0)` }}
       />
+
+      {/* Floating Corner Context Tags */}
+      <div className="pointer-events-none absolute top-3 left-3 z-20 flex items-center gap-1.5 rounded-xs border border-border bg-[#101210]/85 px-2 py-1 text-[10px] font-medium tracking-wider uppercase text-muted-foreground backdrop-blur-xs">
+        Studio Baseline
+      </div>
+      <div className="pointer-events-none absolute top-3 right-3 z-20 flex items-center gap-1.5 rounded-xs border border-primary/30 bg-[#101210]/85 px-2 py-1 text-[10px] font-medium tracking-wider uppercase text-primary backdrop-blur-xs">
+        Augmented
+      </div>
+
+      {/* Divider line & central grip badge */}
       <div
-        className="pointer-events-none absolute inset-y-0 w-px bg-foreground"
+        className="pointer-events-none absolute inset-y-0 z-20 w-px bg-foreground"
         style={{ left: `${value}%` }}
-      />
-      <div className="absolute inset-x-6 bottom-5">
+      >
+        <div
+          className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex h-6 w-6 items-center justify-center rounded-full border border-primary bg-[#101210] text-[10px] text-primary shadow-[0_0_12px_rgba(214,227,106,0.35)]"
+          aria-hidden="true"
+        >
+          ↔
+        </div>
+      </div>
+
+      <div className="absolute inset-x-6 bottom-5 z-20">
         <Slider
           aria-label="Compare studio photograph with the selected environment"
           min={2}

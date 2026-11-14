@@ -20,14 +20,20 @@ export function Research() {
             A vision-language pass is meant to read what the photograph contains, then a consistency check asks whether later frames are still that product. The values here are a fixed example for a running shoe. They are not the output of a live model.
           </p>
           <div ref={photo} data-reveal className="relative mt-8 aspect-[4/3] overflow-hidden border border-border opacity-0 md:hidden">
-            <img src="/images/studio.jpg" alt="Studio photograph used as the analysis example" className="h-full w-full object-cover" />
+            <img
+              src="/images/studio.jpg"
+              alt="Studio photograph used as the analysis example"
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
             <div className="scan-line" />
           </div>
         </div>
         <div className="grid content-center gap-3">
           {attributes.map((item) => (
             <Card key={item.label} className="rounded-sm bg-card px-5 py-4">
-              <p className="text-xs text-muted-foreground">{item.label}</p>
+              <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground/90">{item.label}</p>
               <p className="mt-1 font-heading text-xl">{item.value}</p>
             </Card>
           ))}

@@ -84,10 +84,10 @@ export function Hero() {
             Turn one product photograph into a varied set that still reads as the same product.
           </p>
           <div data-hero-reveal className="mt-8 flex flex-wrap gap-3 opacity-0">
-            <Button className="h-11 px-5" onClick={openSignUp}>
+            <Button className="h-11 px-5 cursor-pointer" onClick={openSignUp}>
               Get Started
             </Button>
-            <a href="#workflow" className={cn(buttonVariants({ variant: "outline" }), "h-11 border-foreground/25 bg-background/50 px-5")}>
+            <a href="#workflow" className={cn(buttonVariants({ variant: "outline" }), "h-11 cursor-pointer border-foreground/25 bg-background/50 px-5")}>
               Explore Platform
             </a>
           </div>
@@ -102,6 +102,7 @@ export function Hero() {
               <img
                 src={card.src}
                 alt=""
+                decoding="async"
                 className="hero-float block h-auto w-full object-cover"
                 style={{ animationDelay: `${280 + index * 90}ms` }}
               />

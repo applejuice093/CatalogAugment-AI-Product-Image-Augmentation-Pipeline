@@ -11,6 +11,7 @@ import { Showcase } from "@/components/sections/Showcase";
 import { Technology } from "@/components/sections/Technology";
 import { Workflow } from "@/components/sections/Workflow";
 import { SparkField } from "@/components/effects/SparkField";
+import { WebGLErrorBoundary } from "@/components/effects/WebGLErrorBoundary";
 import { scrollState, startScrollLoop, subscribeScroll, type SceneId, type Tier } from "@/lib/scroll";
 
 const SceneCanvas = lazy(() =>
@@ -51,9 +52,11 @@ function Page() {
         Skip to content
       </a>
       {snap.webgl ? (
-        <Suspense fallback={null}>
-          <SceneCanvas scene={snap.scene} activeNode={node} />
-        </Suspense>
+        <WebGLErrorBoundary>
+          <Suspense fallback={null}>
+            <SceneCanvas scene={snap.scene} activeNode={node} />
+          </Suspense>
+        </WebGLErrorBoundary>
       ) : null}
       <SparkField />
       <Navbar compact={snap.compact} active={snap.navId} />

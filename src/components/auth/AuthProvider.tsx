@@ -114,12 +114,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 {error}
               </p>
             ) : null}
-            <Button type="submit" disabled={pending} className="h-11">
+            <Button type="submit" disabled={pending} className="h-11 cursor-pointer">
               {pending ? "Working…" : mode === "sign-up" ? "Get Started" : "Sign In"}
             </Button>
             <button
               type="button"
-              className="text-left text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              className="text-left text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline cursor-pointer"
               onClick={() => {
                 setError("");
                 setMode(mode === "sign-up" ? "sign-in" : "sign-up");

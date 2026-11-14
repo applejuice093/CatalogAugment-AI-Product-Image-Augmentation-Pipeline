@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { animate, createDrawable, onScroll } from "animejs";
 import { technologies } from "@/data/content";
 import { scrollState } from "@/lib/scroll";
@@ -14,11 +14,6 @@ export function Technology({ active, onSelect }: TechnologyProps) {
   const root = useRef<HTMLElement>(null);
   const path = useRef<SVGPathElement>(null);
   const selected = technologies.find((item) => item.id === active) ?? technologies[0];
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    setReady(true);
-  }, []);
 
   useEffect(() => {
     const line = path.current;
@@ -33,7 +28,7 @@ export function Technology({ active, onSelect }: TechnologyProps) {
     return () => {
       animation.revert();
     };
-  }, [ready]);
+  }, []);
 
   return (
     <section id="technology" data-scene="technology" ref={root} className="relative z-10 bg-background px-5 py-28 md:bg-transparent">
@@ -48,7 +43,7 @@ export function Technology({ active, onSelect }: TechnologyProps) {
               <Button
                 key={item.id}
                 variant={item.id === active ? "default" : "outline"}
-                className="h-11"
+                className="h-11 cursor-pointer"
                 aria-pressed={item.id === active}
                 onClick={() => onSelect(item.id)}
               >

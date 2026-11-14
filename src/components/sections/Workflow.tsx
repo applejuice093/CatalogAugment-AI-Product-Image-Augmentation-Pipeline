@@ -48,7 +48,7 @@ export function Workflow() {
                   <li key={item.index}>
                     <Button
                       variant={index === stage ? "default" : "outline"}
-                      className="h-auto w-full justify-start px-4 py-3 text-left"
+                      className="h-auto w-full justify-start px-4 py-3 text-left cursor-pointer"
                       onClick={() => scrollWorkflowTo(index)}
                     >
                       {item.title}
@@ -67,6 +67,8 @@ export function Workflow() {
                     key={item.index}
                     src={item.image}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     className={cn(
                       "media-swap absolute inset-0 h-full w-full object-cover",
                       on ? "z-10" : "pointer-events-none z-0",

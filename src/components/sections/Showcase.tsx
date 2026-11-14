@@ -41,7 +41,7 @@ export function Showcase() {
         <Tabs value={environment} onValueChange={(value) => setEnvironment(value as typeof environment)}>
           <TabsList variant="line" className="h-auto flex-wrap justify-start bg-transparent">
             {environments.map((item) => (
-              <TabsTrigger key={item.id} value={item.id} className="h-11 px-3">
+              <TabsTrigger key={item.id} value={item.id} className="h-11 px-3 cursor-pointer">
                 {item.label}
               </TabsTrigger>
             ))}
