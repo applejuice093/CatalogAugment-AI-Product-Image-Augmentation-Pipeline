@@ -39,16 +39,53 @@ export function Workflow() {
         <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-24 md:grid-cols-[280px_1fr] md:py-0">
           <div>
             <h2 className="section-title text-[clamp(2.2rem,4vw,3.6rem)]">From one image to an intelligent dataset.</h2>
-            <div className="relative mt-8">
-              <svg className="absolute top-2 left-3 hidden h-[calc(100%-12px)] w-4 md:block" viewBox="0 0 16 280" aria-hidden="true">
-                <path ref={path} d="M8 0 V280" fill="none" stroke="#d6e36a" strokeWidth="1" />
-              </svg>
-              <ol className="grid gap-3">
+            <div className="relative mt-8 flex items-stretch gap-4">
+              <div className="relative flex w-4 shrink-0 justify-center py-2" aria-hidden="true">
+                <svg
+                  className="h-full w-4 overflow-visible"
+                  viewBox="0 0 16 280"
+                  preserveAspectRatio="none"
+                >
+                  <defs>
+                    <filter id="workflow-glow" x="-100%" y="-20%" width="300%" height="140%">
+                      <feGaussianBlur stdDeviation="3" result="glow" />
+                      <feMerge>
+                        <feMergeNode in="glow" />
+                        <feMergeNode in="glow" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  {/* Background guide rail */}
+                  <path
+                    d="M8 0 V280"
+                    fill="none"
+                    stroke="rgba(232, 230, 223, 0.14)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  {/* Active animated glowing laser path */}
+                  <path
+                    ref={path}
+                    d="M8 0 V280"
+                    fill="none"
+                    stroke="#d6e36a"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    filter="url(#workflow-glow)"
+                    style={{
+                      filter:
+                        "drop-shadow(0 0 4px #d6e36a) drop-shadow(0 0 8px #d6e36a) drop-shadow(0 0 16px rgba(214, 227, 106, 0.8))",
+                    }}
+                  />
+                </svg>
+              </div>
+              <ol className="grid flex-1 gap-3">
                 {stages.map((item, index) => (
                   <li key={item.index}>
                     <Button
                       variant={index === stage ? "default" : "outline"}
-                      className="h-auto w-full justify-start px-4 py-3 text-left cursor-pointer"
+                      className="h-auto w-full justify-start px-4 py-3 text-left cursor-pointer transition-all duration-200"
                       onClick={() => scrollWorkflowTo(index)}
                     >
                       {item.title}
