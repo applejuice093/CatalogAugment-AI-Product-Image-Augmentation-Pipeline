@@ -17,6 +17,8 @@ export interface CreateAugmentationResultInput {
   sampler?: string;
   workflowId: string;
   workflowVersion: string;
+  isComposited?: boolean;
+  compositionStrategy?: string;
   status?: string;
   reviewDecision?: string;
 }
@@ -63,6 +65,8 @@ export class AugmentationResultRepository {
         sampler: data.sampler,
         workflowId: data.workflowId,
         workflowVersion: data.workflowVersion,
+        isComposited: data.isComposited ?? true,
+        compositionStrategy: data.compositionStrategy ?? "alpha_feathered",
         status: data.status ?? "COMPLETED",
         reviewDecision: data.reviewDecision ?? "PENDING",
       },

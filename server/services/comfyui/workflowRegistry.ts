@@ -48,6 +48,44 @@ export const WORKFLOW_WF01: WorkflowDefinition = {
     sampler: "euler",
     seed: 42,
   },
+  recommendedConfig: {
+    minDenoise: 0.7,
+    maxDenoise: 0.95,
+    recommendedDenoise: 0.85,
+    recommendedSteps: 25,
+    recommendedCfg: 7.0,
+    recommendedSamplers: ["euler", "dpmpp_2m", "euler_ancestral"],
+    presets: [
+      {
+        name: "Minimal Studio Pedestal",
+        prompt:
+          "clean minimal studio pedestal, white concrete table, soft commercial shadows, high key studio lighting, professional product photography",
+        negativePrompt:
+          "distorted, disfigured, blurry, low quality, messy background, oversaturated",
+        denoise: 0.85,
+        steps: 25,
+        cfg: 7.0,
+      },
+      {
+        name: "Dark Obsidian Luxury",
+        prompt:
+          "luxury dark obsidian stone slab, dramatic rim light, moody reflections, matte black background, premium cosmetics editorial",
+        negativePrompt: "lowres, noisy, dust, fingerprints, deformed, overexposed",
+        denoise: 0.88,
+        steps: 28,
+        cfg: 7.5,
+      },
+      {
+        name: "Pastel Gradient Podium",
+        prompt:
+          "minimalist pastel studio, soft gradient background, circular display podium, diffused daylight, clean modern commercial",
+        negativePrompt: "harsh shadows, high grain, dirty surface, blurry",
+        denoise: 0.82,
+        steps: 25,
+        cfg: 6.8,
+      },
+    ],
+  },
   promptTemplate: {
     "1": {
       inputs: {
@@ -182,6 +220,34 @@ export const WORKFLOW_WF02: WorkflowDefinition = {
     sampler: "euler",
     seed: 101,
   },
+  recommendedConfig: {
+    minDenoise: 0.4,
+    maxDenoise: 0.7,
+    recommendedDenoise: 0.55,
+    recommendedSteps: 28,
+    recommendedCfg: 6.5,
+    recommendedSamplers: ["euler", "dpmpp_2m"],
+    presets: [
+      {
+        name: "Warm Golden Hour",
+        prompt:
+          "warm golden hour side light, gentle directional window sunbeam, soft organic shadow falloff, cinematic product illumination",
+        negativePrompt: "harsh blowout, oversaturated, unnatural color cast, muddy shadows",
+        denoise: 0.55,
+        steps: 28,
+        cfg: 6.5,
+      },
+      {
+        name: "Dramatic Split Lighting",
+        prompt:
+          "dramatic studio split lighting, sharp contrast edge definition, subtle contact ground shadow, bold luxury lookbook aesthetic",
+        negativePrompt: "pitch black crushed shadows, clipping, noisy dark areas",
+        denoise: 0.6,
+        steps: 30,
+        cfg: 7.0,
+      },
+    ],
+  },
   promptTemplate: {
     ...WORKFLOW_WF01.promptTemplate,
     "10": {
@@ -218,6 +284,43 @@ export const WORKFLOW_WF03: WorkflowDefinition = {
     denoise: 0.9,
     sampler: "euler",
     seed: 202,
+  },
+  recommendedConfig: {
+    minDenoise: 0.8,
+    maxDenoise: 0.95,
+    recommendedDenoise: 0.88,
+    recommendedSteps: 30,
+    recommendedCfg: 7.5,
+    recommendedSamplers: ["euler", "dpmpp_2m"],
+    presets: [
+      {
+        name: "Scandinavian Living Table",
+        prompt:
+          "sunlit modern Scandinavian kitchen counter, marble surface, blurred cozy interior background, depth of field, architectural digest",
+        negativePrompt: "unrealistic clutter, distorted geometry, noisy, low resolution",
+        denoise: 0.88,
+        steps: 30,
+        cfg: 7.5,
+      },
+      {
+        name: "Rustic Artisan Coffeehouse",
+        prompt:
+          "rustic artisan cafe tabletop, warm ambient bokeh, soft cafe interior background, lifestyle editorial magazine photography",
+        negativePrompt: "deformed, blurry foreground, awkward perspective, bad lighting",
+        denoise: 0.9,
+        steps: 30,
+        cfg: 7.2,
+      },
+      {
+        name: "Sun-drenched Garden Terrace",
+        prompt:
+          "outdoor sun-drenched stone patio table, dappled foliage shadows, lush blurred greenery, bright morning sunshine",
+        negativePrompt: "overexposed whites, chromatic aberration, low fidelity",
+        denoise: 0.87,
+        steps: 30,
+        cfg: 7.0,
+      },
+    ],
   },
   promptTemplate: {
     ...WORKFLOW_WF01.promptTemplate,

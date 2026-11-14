@@ -10,6 +10,10 @@ import type { CreateAugmentationJobInput } from "../validators/augmentation.sche
 import { type IComfyUIClient, defaultComfyUIClient } from "./comfyui/comfyuiClient.ts";
 import type { AugmentationProgress } from "./comfyui/types.ts";
 import { WorkflowRegistry, defaultWorkflowRegistry } from "./comfyui/workflowRegistry.ts";
+import {
+  ForegroundCompositingService,
+  defaultForegroundCompositingService,
+} from "./foregroundCompositingService.ts";
 import { SegmentationService } from "./segmentationService.ts";
 
 export class AugmentationService {
@@ -20,6 +24,7 @@ export class AugmentationService {
   private productRepo: ProductRepository;
   private assetRepo: AssetRepository;
   private segmentationService: SegmentationService;
+  private compositingService: ForegroundCompositingService;
 
   constructor(
     comfyuiClient: IComfyUIClient = defaultComfyUIClient,
@@ -28,7 +33,8 @@ export class AugmentationService {
     resultRepo: AugmentationResultRepository = new AugmentationResultRepository(),
     productRepo: ProductRepository = new ProductRepository(),
     assetRepo: AssetRepository = new AssetRepository(),
-    segmentationService: SegmentationService = new SegmentationService()
+    segmentationService: SegmentationService = new SegmentationService(),
+    compositingService: ForegroundCompositingService = defaultForegroundCompositingService
   ) {
     this.comfyuiClient = comfyuiClient;
     this.workflowRegistry = workflowRegistry;
@@ -37,6 +43,7 @@ export class AugmentationService {
     this.productRepo = productRepo;
     this.assetRepo = assetRepo;
     this.segmentationService = segmentationService;
+    this.compositingService = compositingService;
   }
 
   /**
@@ -58,7 +65,6 @@ export class AugmentationService {
       : null;
 
     if (!asset || asset.productId !== input.productId) {
-      // Pick the latest image of the product
       const productImages = (product as unknown as { images?: Array<{ id: string }> }).images;
       if (productImages && productImages.length > 0) {
         asset = await this.assetRepo.findById(productImages[0].id);
@@ -80,7 +86,6 @@ export class AugmentationService {
     let maskRelativePath = asset.maskPath;
 
     if (!maskRelativePath) {
-      // Run segmentation on the fly if mask was not previously saved
       const imageBuffer = await fs.readFile(inputImagePath);
       const segOutput = await this.segmentationService.segment(imageBuffer);
 
@@ -115,7 +120,6 @@ export class AugmentationService {
     });
 
     // 6. Execute Generation Pipeline
-    // Run generation asynchronously or inline depending on execution mode
     const executePromise = this.executeGeneration(
       job.id,
       product.id,
@@ -126,7 +130,6 @@ export class AugmentationService {
       maskFullPath
     );
 
-    // If running in development/local with live ComfyUI, await result or return running job
     return {
       job,
       results: await executePromise,
@@ -134,7 +137,8 @@ export class AugmentationService {
   }
 
   /**
-   * Internal pipeline executing ComfyUI workflow, tracking progress, and saving results
+   * Internal pipeline executing ComfyUI workflow with controlled batching,
+   * progress tracking, and foreground compositing preservation.
    */
   private async executeGeneration(
     jobId: string,
@@ -148,93 +152,117 @@ export class AugmentationService {
     try {
       await this.jobRepo.updateStatus(jobId, "PROCESSING", 5);
 
-      // Read image files
+      // Read image and mask files
       const inputBuffer = await fs.readFile(inputImagePath);
       const maskBuffer = await fs.readFile(maskFullPath);
 
-      // Upload to ComfyUI
+      // Upload to ComfyUI once for the job
       const comfyInputFilename = `input_${jobId}_${Date.now()}.png`;
       const comfyMaskFilename = `mask_${jobId}_${Date.now()}.png`;
 
       await this.comfyuiClient.uploadImage(inputBuffer, comfyInputFilename);
       await this.comfyuiClient.uploadImage(maskBuffer, comfyMaskFilename);
 
-      await this.jobRepo.updateStatus(jobId, "PROCESSING", 15);
-
-      // Construct Executable Prompt
-      const executablePrompt = this.workflowRegistry.buildExecutablePrompt(
-        workflow,
-        input,
-        comfyInputFilename,
-        comfyMaskFilename
-      );
-
-      // Queue Prompt
-      const promptId = await this.comfyuiClient.queuePrompt(executablePrompt, jobId);
-      await this.jobRepo.updateStatus(jobId, "PROCESSING", 25, undefined, promptId);
-
-      // Track Execution Progress
-      const imageOutputs = await this.comfyuiClient.trackExecution(
-        promptId,
-        jobId,
-        async (progress: AugmentationProgress) => {
-          await this.jobRepo.updateProgress(jobId, progress.progressPercent);
-        }
-      );
-
-      // Download and Persist Generated Variants
+      const numVariants = Math.max(1, Math.min(4, input.numVariants || 1));
       const savedResults: unknown[] = [];
+
       const outputSubdir = path.join("augmented", new Date().toISOString().slice(0, 10));
       const fullOutputDir = path.join(config.storage.uploadRoot, outputSubdir);
       await fs.mkdir(fullOutputDir, { recursive: true });
 
-      for (let i = 0; i < imageOutputs.length; i++) {
-        const output = imageOutputs[i];
-        const generatedBuffer = await this.comfyuiClient.downloadImage(output);
+      const baseSeed = input.seed ?? Math.floor(Math.random() * 1000000000);
 
-        const resultFilename = `aug_${jobId}_${i + 1}_${Date.now()}.png`;
-        const resultRelativePath = path
-          .join(outputSubdir, resultFilename)
-          .replace(/\\/g, "/");
-        const resultFullPath = path.join(fullOutputDir, resultFilename);
+      // Execute variants sequentially to strictly adhere to the 6GB VRAM budget
+      for (let v = 0; v < numVariants; v++) {
+        const variantSeed = baseSeed + v * 7919;
+        const variantConfig = {
+          ...input,
+          seed: variantSeed,
+        };
 
-        await fs.writeFile(resultFullPath, generatedBuffer);
+        const executablePrompt = this.workflowRegistry.buildExecutablePrompt(
+          workflow,
+          variantConfig,
+          comfyInputFilename,
+          comfyMaskFilename
+        );
 
-        // Generate thumbnail
-        const thumbFilename = `thumb_${resultFilename}`;
-        const thumbRelativePath = path
-          .join(outputSubdir, thumbFilename)
-          .replace(/\\/g, "/");
-        const thumbFullPath = path.join(fullOutputDir, thumbFilename);
+        const promptId = await this.comfyuiClient.queuePrompt(executablePrompt, `${jobId}_v${v + 1}`);
 
-        await sharp(generatedBuffer)
-          .resize(256, 256, { fit: "inside" })
-          .png()
-          .toFile(thumbFullPath);
+        // Base progress allocation for this variant
+        const progressBase = Math.floor((v / numVariants) * 90);
+        const progressSpan = Math.floor(90 / numVariants);
 
-        // Record in Database
-        const resultRecord = await this.resultRepo.create({
-          jobId,
-          productId,
-          originalAssetId: assetId,
-          imagePath: resultRelativePath,
-          thumbnailPath: thumbRelativePath,
-          comfyFilename: output.filename,
-          prompt: input.prompt ?? workflow.defaultParameters.prompt,
-          negativePrompt:
-            input.negativePrompt ?? workflow.defaultParameters.negativePrompt,
-          seed: input.seed ?? workflow.defaultParameters.seed,
-          cfg: input.cfg ?? workflow.defaultParameters.cfg,
-          steps: input.steps ?? workflow.defaultParameters.steps,
-          denoise: input.denoise ?? workflow.defaultParameters.denoise,
-          sampler: input.sampler ?? workflow.defaultParameters.sampler,
-          workflowId: workflow.id,
-          workflowVersion: workflow.version,
-          status: "COMPLETED",
-          reviewDecision: "PENDING",
-        });
+        const imageOutputs = await this.comfyuiClient.trackExecution(
+          promptId,
+          `${jobId}_v${v + 1}`,
+          async (progress: AugmentationProgress) => {
+            const currentTotal = progressBase + Math.floor((progress.progressPercent / 100) * progressSpan);
+            await this.jobRepo.updateProgress(jobId, currentTotal);
+          }
+        );
 
-        savedResults.push(resultRecord);
+        for (let i = 0; i < imageOutputs.length; i++) {
+          const output = imageOutputs[i];
+          const rawGeneratedBuffer = await this.comfyuiClient.downloadImage(output);
+
+          // Step 4 & 5: Original Foreground Compositing & Edge Refinement
+          const compositingResult = await this.compositingService.composite(
+            rawGeneratedBuffer,
+            inputBuffer,
+            maskBuffer,
+            {
+              preserveOriginalForeground: input.preserveOriginalForeground ?? true,
+              enableEdgeRefinement: input.enableEdgeRefinement ?? true,
+            }
+          );
+
+          const resultFilename = `aug_${jobId}_v${v + 1}_${i + 1}_${Date.now()}.png`;
+          const resultRelativePath = path
+            .join(outputSubdir, resultFilename)
+            .replace(/\\/g, "/");
+          const resultFullPath = path.join(fullOutputDir, resultFilename);
+
+          await fs.writeFile(resultFullPath, compositingResult.compositeBuffer);
+
+          // Generate fast thumbnail
+          const thumbFilename = `thumb_${resultFilename}`;
+          const thumbRelativePath = path
+            .join(outputSubdir, thumbFilename)
+            .replace(/\\/g, "/");
+          const thumbFullPath = path.join(fullOutputDir, thumbFilename);
+
+          await sharp(compositingResult.compositeBuffer)
+            .resize(256, 256, { fit: "inside" })
+            .png()
+            .toFile(thumbFullPath);
+
+          // Record in Database
+          const resultRecord = await this.resultRepo.create({
+            jobId,
+            productId,
+            originalAssetId: assetId,
+            imagePath: resultRelativePath,
+            thumbnailPath: thumbRelativePath,
+            comfyFilename: output.filename,
+            prompt: input.prompt ?? workflow.defaultParameters.prompt,
+            negativePrompt:
+              input.negativePrompt ?? workflow.defaultParameters.negativePrompt,
+            seed: variantSeed,
+            cfg: input.cfg ?? workflow.defaultParameters.cfg,
+            steps: input.steps ?? workflow.defaultParameters.steps,
+            denoise: input.denoise ?? workflow.defaultParameters.denoise,
+            sampler: input.sampler ?? workflow.defaultParameters.sampler,
+            workflowId: workflow.id,
+            workflowVersion: workflow.version,
+            isComposited: compositingResult.isComposited,
+            compositionStrategy: compositingResult.strategy,
+            status: "COMPLETED",
+            reviewDecision: "PENDING",
+          });
+
+          savedResults.push(resultRecord);
+        }
       }
 
       await this.jobRepo.updateStatus(jobId, "COMPLETED", 100);
@@ -267,7 +295,7 @@ export class AugmentationService {
   }
 
   /**
-   * List available workflows
+   * List available workflows with configuration presets
    */
   async listWorkflows(): Promise<unknown[]> {
     await this.workflowRegistry.loadExternalWorkflows();
@@ -278,6 +306,7 @@ export class AugmentationService {
       description: wf.description,
       category: wf.category,
       defaultParameters: wf.defaultParameters,
+      recommendedConfig: wf.recommendedConfig,
     }));
   }
 
@@ -291,5 +320,76 @@ export class AugmentationService {
     const existing = await this.resultRepo.findById(resultId);
     if (!existing) return null;
     return this.resultRepo.updateReviewDecision(resultId, decision);
+  }
+
+  /**
+   * Compare all generated variants for a product across workflows
+   */
+  async compareProductAugmentations(
+    productId: string,
+    userId: string
+  ): Promise<unknown | null> {
+    const product = await this.productRepo.findByIdAndUserId(productId, userId);
+    if (!product) return null;
+
+    const results = await this.resultRepo.findByProductId(productId);
+    const productImages = (product as unknown as { images?: Array<{ id: string; relativePath: string; maskPath?: string | null }> }).images || [];
+    const primaryAsset = productImages[0] || null;
+
+    // Group variants by workflow ID
+    const workflowGroups: Record<string, unknown[]> = {};
+    for (const res of results) {
+      if (!workflowGroups[res.workflowId]) {
+        workflowGroups[res.workflowId] = [];
+      }
+      workflowGroups[res.workflowId].push({
+        id: res.id,
+        imagePath: res.imagePath,
+        thumbnailPath: res.thumbnailPath,
+        prompt: res.prompt,
+        seed: res.seed ? String(res.seed) : null,
+        denoise: res.denoise,
+        isComposited: res.isComposited,
+        compositionStrategy: res.compositionStrategy,
+        reviewDecision: res.reviewDecision,
+        createdAt: res.createdAt,
+      });
+    }
+
+    const workflowSections = Object.entries(workflowGroups).map(([wfId, variants]) => {
+      const wfDef = this.workflowRegistry.getWorkflow(wfId);
+      return {
+        workflowId: wfId,
+        workflowName: wfDef?.name ?? wfId,
+        category: wfDef?.category ?? "custom",
+        variantsCount: variants.length,
+        variants,
+      };
+    });
+
+    return {
+      product: {
+        id: product.id,
+        name: product.name,
+        sku: product.sku,
+        category: product.category,
+        subcategory: product.subcategory,
+      },
+      originalImage: primaryAsset
+        ? {
+            id: primaryAsset.id,
+            relativePath: primaryAsset.relativePath,
+            maskPath: primaryAsset.maskPath,
+          }
+        : null,
+      totalVariants: results.length,
+      reviewStats: {
+        approved: results.filter((r) => r.reviewDecision === "APPROVED").length,
+        rejected: results.filter((r) => r.reviewDecision === "REJECTED").length,
+        needsReview: results.filter((r) => r.reviewDecision === "NEEDS_REVIEW").length,
+        pending: results.filter((r) => r.reviewDecision === "PENDING").length,
+      },
+      workflows: workflowSections,
+    };
   }
 }

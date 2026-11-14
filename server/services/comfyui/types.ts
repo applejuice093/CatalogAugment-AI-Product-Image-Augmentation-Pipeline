@@ -109,6 +109,15 @@ export interface WorkflowParameterMapping {
   latentImageNodeId?: string;
 }
 
+export interface WorkflowPreset {
+  name: string;
+  prompt: string;
+  negativePrompt?: string;
+  denoise: number;
+  steps: number;
+  cfg: number;
+}
+
 export interface WorkflowDefinition {
   id: string;
   name: string;
@@ -128,6 +137,15 @@ export interface WorkflowDefinition {
     width?: number;
     height?: number;
   };
+  recommendedConfig?: {
+    minDenoise: number;
+    maxDenoise: number;
+    recommendedDenoise: number;
+    recommendedSteps: number;
+    recommendedCfg: number;
+    recommendedSamplers: string[];
+    presets: WorkflowPreset[];
+  };
   promptTemplate: ComfyPromptGraph;
 }
 
@@ -143,6 +161,9 @@ export interface AugmentationJobConfig {
   sampler?: string;
   width?: number;
   height?: number;
+  numVariants?: number;
+  preserveOriginalForeground?: boolean;
+  enableEdgeRefinement?: boolean;
 }
 
 export interface AugmentationProgress {

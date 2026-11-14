@@ -51,6 +51,13 @@ describe("Augmentation Routes Integration Tests", () => {
     expect(res.body).toHaveProperty("error");
   });
 
+  it("GET /api/augmentations/compare/:productId requires authentication (401)", async () => {
+    const res = await request(app).get("/api/augmentations/compare/prod-123");
+
+    expect(res.status).toBe(401);
+    expect(res.body).toHaveProperty("error");
+  });
+
   it("GET /api/v1/augmentations/workflows route alias functions correctly", async () => {
     const res = await request(app).get("/api/v1/augmentations/workflows");
 

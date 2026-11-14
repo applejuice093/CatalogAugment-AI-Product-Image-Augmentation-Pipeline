@@ -8,6 +8,7 @@ import {
   augmentationJobParamsSchema,
   augmentationResultParamsSchema,
   createAugmentationJobSchema,
+  productComparisonParamsSchema,
   reviewDecisionSchema,
 } from "../validators/augmentation.schema.ts";
 import { BaseController } from "./BaseController.ts";
@@ -94,6 +95,31 @@ export class AugmentationController extends BaseController {
       return this.handleSuccess(res, { workflows });
     } catch (err) {
       return this.handleError(err, res, "AugmentationController.listWorkflows");
+    }
+  };
+
+  compareProduct = async (req: Request, res: Response): Promise<Response> => {
+    const userId = (req as unknown as { user?: { id: string } }).user?.id;
+    if (!userId) {
+      return this.handleUnauthorized(res);
+    }
+
+    const paramCheck = productComparisonParamsSchema.safeParse(req.params);
+    if (!paramCheck.success) {
+      return this.handleBadRequest(res, "Invalid product ID", paramCheck.error.format());
+    }
+
+    try {
+      const comparison = await this.augmentationService.compareProductAugmentations(
+        paramCheck.data.productId,
+        userId
+      );
+      if (!comparison) {
+        return this.handleNotFound(res, "Product not found or access denied");
+      }
+      return this.handleSuccess(res, comparison);
+    } catch (err) {
+      return this.handleError(err, res, "AugmentationController.compareProduct");
     }
   };
 

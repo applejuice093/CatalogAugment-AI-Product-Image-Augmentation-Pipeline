@@ -153,11 +153,13 @@ model AugmentationResult {
   steps           Int?
   denoise         Float?
   sampler         String?
-  workflowId      String
-  workflowVersion String
-  status          String           @default("COMPLETED")
-  reviewDecision  String           @default("PENDING") // PENDING, APPROVED, REJECTED, NEEDS_REVIEW
-  createdAt       DateTime         @default(now())
+  workflowId          String
+  workflowVersion     String
+  isComposited        Boolean          @default(true)
+  compositionStrategy String?          @default("alpha_feathered")
+  status              String           @default("COMPLETED")
+  reviewDecision      String           @default("PENDING") // PENDING, APPROVED, REJECTED, NEEDS_REVIEW
+  createdAt           DateTime         @default(now())
 
   @@index([jobId])
   @@index([productId])

@@ -14,12 +14,18 @@ export const createAugmentationJobSchema = z.object({
   width: z.number().int().min(256).max(2048).optional(),
   height: z.number().int().min(256).max(2048).optional(),
   numVariants: z.number().int().min(1).max(4).default(1),
+  preserveOriginalForeground: z.boolean().default(true),
+  enableEdgeRefinement: z.boolean().default(true),
 });
 
 export type CreateAugmentationJobInput = z.infer<typeof createAugmentationJobSchema>;
 
 export const augmentationJobParamsSchema = z.object({
   id: z.string().min(1, "Job ID is required"),
+});
+
+export const productComparisonParamsSchema = z.object({
+  productId: z.string().min(1, "Product ID is required"),
 });
 
 export const augmentationResultParamsSchema = z.object({

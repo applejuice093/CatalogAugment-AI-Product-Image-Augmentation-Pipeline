@@ -38,6 +38,13 @@ augmentationRouter.post(
   asyncErrorWrapper((req, res) => controller.reviewResult(req, res))
 );
 
+// Workflow Output Comparison across product variants
+augmentationRouter.get(
+  "/compare/:productId",
+  requireAuth,
+  asyncErrorWrapper((req, res) => controller.compareProduct(req, res))
+);
+
 // Image Preview / Serving
 augmentationRouter.get(
   "/results/:id/image",
