@@ -53,7 +53,7 @@ export function SceneCanvas({ scene, activeNode }: SceneCanvasProps) {
         <FloatingGallery visible={false} />
       </Suspense>
       <Suspense fallback={null}>
-        <ProductScanner visible={scene === "research"} />
+        <ProductScanner visible={false} />
       </Suspense>
       <PipelineScene active={activeNode} visible={scene === "technology"} />
     </Canvas>

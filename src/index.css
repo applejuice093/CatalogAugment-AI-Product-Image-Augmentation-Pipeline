@@ -212,17 +212,18 @@ body {
 
 .scan-line {
   position: absolute;
-  top: 8%;
+  top: 5%;
   left: 0;
   right: 0;
   height: 2px;
   background: #d6e36a;
-  animation: scan 2.4s ease-in-out infinite;
+  box-shadow: 0 0 8px #d6e36a, 0 0 18px rgba(214, 227, 106, 0.8);
+  animation: scan 3s ease-in-out infinite alternate;
 }
 
 @keyframes scan {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(0, 12rem, 0); }
+  from { top: 5%; }
+  to { top: 92%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
