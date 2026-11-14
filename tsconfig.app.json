@@ -18,7 +18,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@designcodeio/threeui": ["./src/shaders/index.ts"],
-      "@designcodeio/threeui/*": ["./src/shaders/*"]
+      "@designcodeio/threeui/*": ["./src/shaders/*"],
+      "three128": ["./node_modules/three"]
     },
 
     /* Linting */

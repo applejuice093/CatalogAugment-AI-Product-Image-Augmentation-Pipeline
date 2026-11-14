@@ -10,6 +10,7 @@ import { Research } from "@/components/sections/Research";
 import { Showcase } from "@/components/sections/Showcase";
 import { Technology } from "@/components/sections/Technology";
 import { Workflow } from "@/components/sections/Workflow";
+import { Scene } from "@/components/scenes/Scene";
 import { SparkField } from "@/components/effects/SparkField";
 import { WebGLErrorBoundary } from "@/components/effects/WebGLErrorBoundary";
 import { scrollState, startScrollLoop, subscribeScroll, type SceneId, type Tier } from "@/lib/scroll";
@@ -42,6 +43,31 @@ function Page() {
 
   useEffect(() => subscribeScroll(() => setSnap(readSnap())), []);
   useEffect(() => startScrollLoop(), []);
+
+  const [isScene, setIsScene] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.search.includes("scene") || window.location.hash === "#scene";
+  });
+
+  useEffect(() => {
+    const handlePop = () => {
+      setIsScene(window.location.search.includes("scene") || window.location.hash === "#scene");
+    };
+    window.addEventListener("popstate", handlePop);
+    window.addEventListener("hashchange", handlePop);
+    return () => {
+      window.removeEventListener("popstate", handlePop);
+      window.removeEventListener("hashchange", handlePop);
+    };
+  }, []);
+
+  if (isScene) {
+    return (
+      <div className="relative min-h-screen w-full bg-[#07080c] flex flex-col justify-start">
+        <Scene />
+      </div>
+    );
+  }
 
   return (
     <>
