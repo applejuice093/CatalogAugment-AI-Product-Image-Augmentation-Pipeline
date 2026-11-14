@@ -69,16 +69,27 @@ model Verification {
 }
 
 model Asset {
-  id           String   @id @default(uuid())
-  userId       String
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  originalName String
-  relativePath String
-  mime         String
-  bytes        Int
-  createdAt    DateTime @default(now())
+  id                  String   @id @default(uuid())
+  userId              String
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId           String?
+  product             Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
+  originalName        String
+  relativePath        String
+  mime                String
+  bytes               Int
+  width               Int?
+  height              Int?
+  format              String?
+  maskPath            String?
+  foregroundPath      String?
+  segmentationModel   String?
+  segmentationVersion String?
+  segmentationStatus  String?  @default("PENDING")
+  createdAt           DateTime @default(now())
 
   @@index([userId])
+  @@index([productId])
   @@map("asset")
 }
 
@@ -94,6 +105,7 @@ model Product {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
+  images      Asset[]
   jobs        AugmentationJob[]
 
   @@index([userId])
