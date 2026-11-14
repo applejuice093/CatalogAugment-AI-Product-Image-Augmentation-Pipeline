@@ -44,10 +44,16 @@ export function Navbar({ compact, active }: NavbarProps) {
 
   const actions = user ? (
     <div className="flex items-center gap-3">
-      <span className="max-w-40 truncate text-sm text-muted-foreground">{user.email}</span>
+      <a
+        href="#workspace"
+        className="inline-flex items-center justify-center h-10 px-4 text-xs font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_12px_rgba(214,227,106,0.25)] transition-colors cursor-pointer"
+      >
+        Studio Workspace
+      </a>
+      <span className="max-w-40 truncate text-sm text-muted-foreground hidden lg:inline">{user.email}</span>
       <Button
         variant="outline"
-        className="h-11 cursor-pointer"
+        className="h-10 cursor-pointer text-xs"
         onClick={() => {
           void authClient.signOut();
         }}
@@ -57,10 +63,16 @@ export function Navbar({ compact, active }: NavbarProps) {
     </div>
   ) : (
     <div className="flex items-center gap-2">
-      <Button variant="ghost" className="h-11 cursor-pointer" onClick={openSignIn}>
+      <a
+        href="#workspace"
+        className="inline-flex items-center justify-center h-10 px-3.5 text-xs font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_12px_rgba(214,227,106,0.25)] transition-colors cursor-pointer"
+      >
+        Launch Studio
+      </a>
+      <Button variant="ghost" className="h-10 cursor-pointer text-xs" onClick={openSignIn}>
         Sign In
       </Button>
-      <Button className="h-11 cursor-pointer" onClick={openSignUp}>
+      <Button variant="outline" className="h-10 cursor-pointer text-xs hidden sm:inline-flex" onClick={openSignUp}>
         Get Started
       </Button>
     </div>

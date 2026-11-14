@@ -80,12 +80,21 @@ export function FinalCta() {
           Start with a single product image. Create a dataset designed for the real world.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <a
+            href="#workspace"
+            className={cn(
+              buttonVariants(),
+              "h-11 px-5 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_16px_rgba(214,227,106,0.25)]",
+            )}
+          >
+            Enter Studio Workspace
+          </a>
           {data?.user ? null : (
-            <Button className="h-11 px-5" onClick={openSignUp}>
-              Get Started
+            <Button variant="outline" className="h-11 px-5 cursor-pointer" onClick={openSignUp}>
+              Sign Up
             </Button>
           )}
-          <a href="#platform" className={cn(buttonVariants({ variant: "outline" }), "cursor-pointer")}>
+          <a href="#workflow" className={cn(buttonVariants({ variant: "outline" }), "cursor-pointer")}>
             <span className="section-button__title relative z-10 inline-flex items-center gap-2">Explore Platform</span>
             <span className="section-button__circle" aria-hidden="true" />
           </a>

@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
 import { animate, splitText, stagger } from "animejs";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useAuthUi } from "@/components/auth/AuthProvider";
 import { scrollState } from "@/lib/scroll";
 import { LightningGlowText } from "@/components/effects/LightningGlowText";
 
@@ -14,7 +13,6 @@ const cards = [
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
-  const { openSignUp } = useAuthUi();
 
   useEffect(() => {
     const scope = root.current;
@@ -93,9 +91,15 @@ export function Hero() {
             Turn one product photograph into a varied set that still reads as the same product.
           </p>
           <div data-hero-reveal className="mt-8 flex flex-wrap gap-3 opacity-0">
-            <Button className="h-11 px-5 cursor-pointer" onClick={openSignUp}>
-              Get Started
-            </Button>
+            <a
+              href="#workspace"
+              className={cn(
+                buttonVariants(),
+                "h-11 px-5 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(214,227,106,0.3)]",
+              )}
+            >
+              Launch Studio Workspace
+            </a>
             <a href="#workflow" className={cn(buttonVariants({ variant: "outline" }), "cursor-pointer")}>
               <span className="section-button__title relative z-10 inline-flex items-center gap-2">Explore Platform</span>
               <span className="section-button__circle" aria-hidden="true" />

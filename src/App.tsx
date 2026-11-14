@@ -13,6 +13,7 @@ import { Workflow } from "@/components/sections/Workflow";
 import { Scene } from "@/components/scenes/Scene";
 import { SparkField } from "@/components/effects/SparkField";
 import { WebGLErrorBoundary } from "@/components/effects/WebGLErrorBoundary";
+import { AppWorkspace } from "@/components/workspace/AppWorkspace";
 import { scrollState, startScrollLoop, subscribeScroll, type SceneId, type Tier } from "@/lib/scroll";
 
 const SceneCanvas = lazy(() =>
@@ -49,9 +50,15 @@ function Page() {
     return window.location.search.includes("scene") || window.location.hash === "#scene";
   });
 
+  const [isWorkspace, setIsWorkspace] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.search.includes("workspace") || window.location.hash === "#workspace";
+  });
+
   useEffect(() => {
     const handlePop = () => {
       setIsScene(window.location.search.includes("scene") || window.location.hash === "#scene");
+      setIsWorkspace(window.location.search.includes("workspace") || window.location.hash === "#workspace");
     };
     window.addEventListener("popstate", handlePop);
     window.addEventListener("hashchange", handlePop);
@@ -60,6 +67,19 @@ function Page() {
       window.removeEventListener("hashchange", handlePop);
     };
   }, []);
+
+  if (isWorkspace) {
+    return (
+      <AppWorkspace
+        onExitWorkspace={() => {
+          setIsWorkspace(false);
+          if (window.location.hash === "#workspace") {
+            history.pushState(null, "", window.location.pathname);
+          }
+        }}
+      />
+    );
+  }
 
   if (isScene) {
     return (
