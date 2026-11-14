@@ -150,8 +150,9 @@ html {
 
 .media-swap {
   transition-property: opacity, transform;
-  transition-duration: 520ms;
+  transition-duration: 260ms;
   transition-timing-function: var(--ease-out);
+  will-change: opacity, transform;
 }
 
 @keyframes hero-float {

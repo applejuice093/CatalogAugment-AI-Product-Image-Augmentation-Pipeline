@@ -45,6 +45,38 @@ export function Workflow() {
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
+  useEffect(() => {
+    // Preload all workflow images so they switch instantly with zero lag
+    stages.forEach((item) => {
+      const img = new Image();
+      img.src = item.image;
+    });
+
+    const updateFromScroll = () => {
+      const el = section.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const view = window.innerHeight;
+      const range = el.offsetHeight - view;
+      if (range <= 0) return;
+
+      const topOffset = 64; // Header offset
+      const scrolled = topOffset - rect.top;
+      const t = Math.max(0, Math.min(1, scrolled / range));
+      const nextStage = Math.min(3, Math.floor(t * 4));
+      setStage((prev) => (prev !== nextStage ? nextStage : prev));
+    };
+
+    window.addEventListener("scroll", updateFromScroll, { passive: true });
+    window.addEventListener("resize", updateFromScroll);
+    updateFromScroll();
+
+    return () => {
+      window.removeEventListener("scroll", updateFromScroll);
+      window.removeEventListener("resize", updateFromScroll);
+    };
+  }, []);
+
   useEffect(() => subscribeWorkflowStage(setStage), []);
 
   useEffect(() => {
@@ -177,8 +209,8 @@ export function Workflow() {
                     <img
                       src={item.image}
                       alt={item.title}
-                      loading="lazy"
-                      decoding="async"
+                      loading="eager"
+                      decoding="sync"
                       className="h-full w-full object-cover"
                     />
                     {/* Viewfinder Framing Marks */}

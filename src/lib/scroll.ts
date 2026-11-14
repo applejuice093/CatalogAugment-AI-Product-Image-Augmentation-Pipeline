@@ -97,7 +97,9 @@ function measure() {
   const width = window.innerWidth;
   scrollState.tier = width < 760 ? "mobile" : width < 1100 ? "tablet" : "desktop";
 
-  if (sceneNodes.length === 0) collectNodes();
+  if (sceneNodes.length === 0 || sceneNodes.some((el) => !el.isConnected)) {
+    collectNodes();
+  }
 
   let best: SceneId = "none";
   let bestRatio = 0;
@@ -125,13 +127,28 @@ function measure() {
   }
   scrollState.navId = current;
 
-  if (scrollState.scene === "workflow") {
-    const next = Math.min(3, Math.floor(scrollState.sceneT * 4));
-    if (next !== workflowStage) {
-      workflowStage = next;
-      stageListeners.forEach((listener) => listener(next));
+  // Track workflow stage directly whenever workflow element is available,
+  // ensuring stage updates reliably regardless of cross-scene ratios or scroll velocity
+  const workflowEl =
+    sceneNodes.find((n) => n.dataset.scene === "workflow") ||
+    document.getElementById("workflow") ||
+    document.querySelector<HTMLElement>('[data-scene="workflow"]');
+
+  if (workflowEl) {
+    const rect = workflowEl.getBoundingClientRect();
+    const range = workflowEl.offsetHeight - view;
+    if (range > 0) {
+      const topOffset = 64; // Sticky top offset below navbar
+      const scrolled = topOffset - rect.top;
+      const t = Math.max(0, Math.min(1, scrolled / range));
+      const next = Math.min(3, Math.floor(t * 4));
+      if (next !== workflowStage) {
+        workflowStage = next;
+        stageListeners.forEach((listener) => listener(next));
+      }
     }
   }
+
   publish();
 }
 
