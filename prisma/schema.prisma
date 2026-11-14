@@ -160,13 +160,42 @@ model AugmentationResult {
   compositionStrategy String?          @default("alpha_feathered")
   status              String           @default("COMPLETED")
   reviewDecision      String           @default("PENDING") // PENDING, APPROVED, REJECTED, NEEDS_REVIEW
+  reviewNotes         String?
+  reviewedAt          DateTime?
+  reviewedBy          String?
   createdAt           DateTime         @default(now())
 
   vlmAnalyses         VLMAnalysis[]
+  qualityAssessment   QualityAssessment?
 
   @@index([jobId])
   @@index([productId])
   @@map("augmentation_result")
+}
+
+model QualityAssessment {
+  id                         String             @id @default(uuid())
+  augmentationResultId       String             @unique
+  augmentationResult         AugmentationResult @relation(fields: [augmentationResultId], references: [id], onDelete: Cascade)
+  productId                  String
+  foregroundPreservationScore Float
+  perceptualSimilarityScore   Float
+  sharpnessScore             Float
+  exposureScore              Float
+  vlmConsistencyScore        Float?
+  compositeScore             Float
+  decision                   String             // "PASS", "REJECT", "NEEDS_REVIEW"
+  signals                    Json               // Detailed signal breakdown
+  reviewerId                 String?
+  reviewedAt                 DateTime?
+  reviewNotes                String?
+  rejectionReason            String?
+  createdAt                  DateTime           @default(now())
+  updatedAt                  DateTime           @updatedAt
+
+  @@index([productId])
+  @@index([decision])
+  @@map("quality_assessment")
 }
 
 model VLMAnalysis {

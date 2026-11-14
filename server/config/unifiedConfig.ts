@@ -37,6 +37,14 @@ const envSchema = z.object({
   VLM_CLOUD_API_KEY: z.string().optional().default(""),
   VLM_CLOUD_MODEL: z.string().default("gemini-1.5-flash"),
   VLM_TIMEOUT_MS: z.coerce.number().default(60000),
+  QC_PASS_THRESHOLD: z.coerce.number().default(80),
+  QC_REJECT_THRESHOLD: z.coerce.number().default(50),
+  QC_CRITICAL_FG_THRESHOLD: z.coerce.number().default(65),
+  QC_WEIGHT_FG: z.coerce.number().default(0.35),
+  QC_WEIGHT_SIMILARITY: z.coerce.number().default(0.15),
+  QC_WEIGHT_SHARPNESS: z.coerce.number().default(0.15),
+  QC_WEIGHT_EXPOSURE: z.coerce.number().default(0.15),
+  QC_WEIGHT_VLM: z.coerce.number().default(0.20),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
@@ -102,6 +110,18 @@ export const config = {
     cloudApiKey: env.VLM_CLOUD_API_KEY,
     cloudModel: env.VLM_CLOUD_MODEL,
     timeoutMs: env.VLM_TIMEOUT_MS,
+  },
+  qc: {
+    passThreshold: env.QC_PASS_THRESHOLD,
+    rejectThreshold: env.QC_REJECT_THRESHOLD,
+    criticalFgThreshold: env.QC_CRITICAL_FG_THRESHOLD,
+    weights: {
+      foreground: env.QC_WEIGHT_FG,
+      similarity: env.QC_WEIGHT_SIMILARITY,
+      sharpness: env.QC_WEIGHT_SHARPNESS,
+      exposure: env.QC_WEIGHT_EXPOSURE,
+      vlm: env.QC_WEIGHT_VLM,
+    },
   },
 } as const;
 

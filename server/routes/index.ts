@@ -6,6 +6,7 @@ import { healthRouter } from "./healthRoutes.ts";
 import { productRouter } from "./productRoutes.ts";
 import { uploadRouter } from "./uploadRoutes.ts";
 import { vlmRouter } from "./vlmRoutes.ts";
+import { qualityRouter } from "./qualityRoutes.ts";
 
 export const apiRouter = Router();
 
@@ -23,6 +24,10 @@ apiRouter.use("/v1/augmentations", augmentationRouter);
 // Hybrid VLM Product Intelligence endpoints
 apiRouter.use("/vlm", vlmRouter);
 apiRouter.use("/v1/vlm", vlmRouter);
+
+// Quality Control & Evaluation endpoints
+apiRouter.use("/quality", qualityRouter);
+apiRouter.use("/v1/quality", qualityRouter);
 
 // General Uploads endpoint
 apiRouter.use("/uploads", uploadRouter);

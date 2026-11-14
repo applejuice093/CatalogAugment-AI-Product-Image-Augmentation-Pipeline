@@ -1,10 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  WORKFLOW_WF01,
-  WORKFLOW_WF02,
-  WORKFLOW_WF03,
-  WorkflowRegistry,
-} from "../server/services/comfyui/workflowRegistry.ts";
+import { WorkflowRegistry } from "../server/services/comfyui/workflowRegistry.ts";
 
 describe("WorkflowRegistry Unit Tests", () => {
   it("initializes with default workflows WF-01, WF-02, and WF-03", () => {
