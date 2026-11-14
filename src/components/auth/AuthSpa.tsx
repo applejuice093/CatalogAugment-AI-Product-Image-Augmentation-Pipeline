@@ -161,7 +161,7 @@ export function AuthSpa({
         <button
           type="button"
           onClick={navigateBack}
-          className="group inline-flex items-center gap-2 rounded-xl border border-white/10 bg-[#121512]/80 px-3.5 py-1.5 text-xs font-mono text-muted-foreground transition-all duration-200 hover:border-white/20 hover:text-foreground hover:bg-[#1a1e1a] backdrop-blur-md cursor-pointer"
+          className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#121512]/80 px-4 py-1.5 text-xs font-mono text-muted-foreground transition-all duration-200 hover:border-white/25 hover:text-foreground hover:bg-[#1a1e1a] backdrop-blur-md cursor-pointer"
         >
           <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-1" />
           <span>Back to Platform</span>
@@ -172,37 +172,29 @@ export function AuthSpa({
       <main className="relative z-10 flex-1 flex flex-col md:flex-row items-center justify-between gap-6 lg:gap-10 xl:gap-16 min-h-0 overflow-hidden my-auto py-2">
         {/* Left-most Side: Login / Signup Box (Fits completely in single page, NO SCROLL) */}
         <div className="w-full md:w-[410px] lg:w-[430px] xl:w-[450px] shrink-0 flex flex-col justify-center">
-          {/* Main Glass Card */}
-          <div className="relative rounded-2xl border border-white/10 bg-[#121512]/90 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.85)] backdrop-blur-xl">
-            {/* Corner Framing Marks */}
-            <div className="pointer-events-none absolute inset-0 p-2.5" aria-hidden="true">
-              <div className="absolute top-2.5 left-2.5 h-2 w-2 border-t-2 border-l-2 border-primary/60" />
-              <div className="absolute top-2.5 right-2.5 h-2 w-2 border-t-2 border-r-2 border-primary/60" />
-              <div className="absolute bottom-2.5 left-2.5 h-2 w-2 border-b-2 border-l-2 border-primary/60" />
-              <div className="absolute bottom-2.5 right-2.5 h-2 w-2 border-b-2 border-r-2 border-primary/60" />
-            </div>
-
+          {/* Main Glass Card with Soft Rounded Edges */}
+          <div className="relative rounded-[28px] border border-white/10 bg-[#121512]/90 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.85),0_0_35px_rgba(214,227,106,0.05)] backdrop-blur-2xl ring-1 ring-white/5">
             {/* Card Header */}
             <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 shadow-[0_0_15px_rgba(214,227,106,0.2)]">
-                <Cpu className="h-4.5 w-4.5 text-primary" />
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-primary/30 bg-primary/10 shadow-[0_0_15px_rgba(214,227,106,0.2)]">
+                <Cpu className="h-5 w-5 text-primary" />
               </div>
               <h2 className="font-heading text-lg font-bold tracking-tight text-foreground">
                 {mode === "sign-in" ? "Operator Sign In" : "Create Operator Account"}
               </h2>
             </div>
 
-            {/* Tab Selector: Sign In vs Create Account */}
-            <div className="grid grid-cols-2 gap-1 rounded-xl border border-white/10 bg-black/40 p-1 mb-3.5">
+            {/* Tab Selector: Sign In vs Create Account (Soft Pill Shape) */}
+            <div className="grid grid-cols-2 gap-1 rounded-full border border-white/10 bg-black/50 p-1 mb-4">
               <button
                 type="button"
                 onClick={() => {
                   setMode("sign-in");
                   setError("");
                 }}
-                className={`py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
+                className={`py-2 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
                   mode === "sign-in"
-                    ? "bg-primary text-primary-foreground shadow-[0_0_12px_rgba(214,227,106,0.3)] font-bold"
+                    ? "bg-primary text-primary-foreground shadow-[0_0_14px_rgba(214,227,106,0.35)] font-bold"
                     : "text-muted-foreground hover:text-foreground hover:bg-white/5"
                 }`}
               >
@@ -214,9 +206,9 @@ export function AuthSpa({
                   setMode("sign-up");
                   setError("");
                 }}
-                className={`py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
+                className={`py-2 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
                   mode === "sign-up"
-                    ? "bg-primary text-primary-foreground shadow-[0_0_12px_rgba(214,227,106,0.3)] font-bold"
+                    ? "bg-primary text-primary-foreground shadow-[0_0_14px_rgba(214,227,106,0.35)] font-bold"
                     : "text-muted-foreground hover:text-foreground hover:bg-white/5"
                 }`}
               >
@@ -224,11 +216,11 @@ export function AuthSpa({
               </button>
             </div>
 
-            {/* Error and Success Banners */}
+            {/* Error and Success Banners (Soft Edges) */}
             {error && (
               <div
                 role="alert"
-                className="mb-2.5 flex items-start gap-2 rounded-lg border border-destructive/40 bg-destructive/10 p-2 text-xs text-destructive animate-in fade-in duration-200"
+                className="mb-3 flex items-start gap-2 rounded-2xl border border-destructive/40 bg-destructive/10 p-2.5 text-xs text-destructive animate-in fade-in duration-200"
               >
                 <AlertCircle className="h-3.5 w-3.5 shrink-0 mt-0.5" />
                 <span className="leading-tight">{error}</span>
@@ -238,7 +230,7 @@ export function AuthSpa({
             {successMsg && (
               <div
                 role="status"
-                className="mb-2.5 flex items-center gap-2 rounded-lg border border-primary/40 bg-primary/10 p-2 text-xs text-primary animate-in fade-in duration-200"
+                className="mb-3 flex items-center gap-2 rounded-2xl border border-primary/40 bg-primary/10 p-2.5 text-xs text-primary animate-in fade-in duration-200"
               >
                 <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-primary" />
                 <span className="font-medium leading-tight">{successMsg}</span>
@@ -246,14 +238,14 @@ export function AuthSpa({
             )}
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <form onSubmit={handleSubmit} className="space-y-3.5">
               {mode === "sign-up" && (
                 <div className="space-y-1">
-                  <Label htmlFor="auth-name" className="text-[11px] font-mono text-muted-foreground">
+                  <Label htmlFor="auth-name" className="text-[11px] font-mono text-muted-foreground ml-1">
                     Operator / Organization Name
                   </Label>
                   <div className="relative">
-                    <User className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
+                    <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
                     <Input
                       id="auth-name"
                       name="name"
@@ -262,18 +254,18 @@ export function AuthSpa({
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required={mode === "sign-up"}
-                      className="h-9.5 pl-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
+                      className="h-10 pl-9 rounded-2xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                     />
                   </div>
                 </div>
               )}
 
               <div className="space-y-1">
-                <Label htmlFor="auth-email" className="text-[11px] font-mono text-muted-foreground">
+                <Label htmlFor="auth-email" className="text-[11px] font-mono text-muted-foreground ml-1">
                   Email Address
                 </Label>
                 <div className="relative">
-                  <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
+                  <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
                   <Input
                     id="auth-email"
                     name="email"
@@ -283,13 +275,13 @@ export function AuthSpa({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="h-9.5 pl-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
+                    className="h-10 pl-9 rounded-2xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between px-1">
                   <Label htmlFor="auth-password" className="text-[11px] font-mono text-muted-foreground">
                     Password
                   </Label>
@@ -298,7 +290,7 @@ export function AuthSpa({
                   )}
                 </div>
                 <div className="relative">
-                  <Lock className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
+                  <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
                   <Input
                     id="auth-password"
                     name="password"
@@ -309,12 +301,12 @@ export function AuthSpa({
                     onChange={(e) => setPassword(e.target.value)}
                     minLength={8}
                     required
-                    className="h-9.5 pl-8 pr-8 rounded-xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
+                    className="h-10 pl-9 pr-9 rounded-2xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                     aria-label={showPassword ? "Hide password" : "Show password"}
                   >
                     {showPassword ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
@@ -322,11 +314,11 @@ export function AuthSpa({
                 </div>
               </div>
 
-              {/* Submit CTA */}
+              {/* Submit CTA (Soft Pill Button) */}
               <Button
                 type="submit"
                 disabled={pending}
-                className="w-full h-10 rounded-xl bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:bg-primary/90 shadow-[0_0_20px_rgba(214,227,106,0.3)] transition-all duration-200 mt-2 cursor-pointer"
+                className="w-full h-10.5 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:bg-primary/90 shadow-[0_0_22px_rgba(214,227,106,0.32)] transition-all duration-200 mt-2 cursor-pointer"
               >
                 {pending ? (
                   <span className="inline-flex items-center gap-2">
