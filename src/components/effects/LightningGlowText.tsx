@@ -1,5 +1,4 @@
 import { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from "react";
-import { ElementsCollection } from "@/shaders/elements/ElementsBackground";
 import { cn } from "@/lib/utils";
 
 export type LightningGlowTextProps<T extends ElementType = "h1"> = {
@@ -23,14 +22,6 @@ export function LightningGlowText<T extends ElementType = "h1">({
   children,
   className,
   containerClassName,
-  shaderClassName,
-  speed = 1.0,
-  size = 1.15,
-  particleAmount = 1.3,
-  hue = -55,
-  saturation = 1.25,
-  brightness = 1.35,
-  opacity = 0.9,
   showShader = true,
   ...rest
 }: LightningGlowTextProps<T>) {
@@ -38,33 +29,16 @@ export function LightningGlowText<T extends ElementType = "h1">({
 
   return (
     <div className={cn("relative inline-block w-full isolate", containerClassName)}>
+      {/* Clean ambient radial glow backdrop without any background logo marks or letters */}
       {showShader ? (
         <div
-          className={cn(
-            "pointer-events-none absolute -inset-x-20 -inset-y-16 z-0 overflow-hidden mix-blend-screen select-none",
-            shaderClassName,
-          )}
+          className="pointer-events-none absolute -inset-x-12 -inset-y-8 z-0 overflow-hidden select-none opacity-60 blur-2xl"
           style={{
-            maskImage:
-              "radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.3) 75%, transparent 95%)",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.3) 75%, transparent 95%)",
+            background:
+              "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(214, 227, 106, 0.18) 0%, rgba(130, 200, 255, 0.08) 45%, transparent 80%)",
           }}
           aria-hidden="true"
-        >
-          <ElementsCollection
-            variant="lightning"
-            speed={speed}
-            size={size}
-            particleAmount={particleAmount}
-            hue={hue}
-            saturation={saturation}
-            brightness={brightness}
-            opacity={opacity}
-            style={{ background: "#000000" }}
-            className="h-full w-full"
-          />
-        </div>
+        />
       ) : null}
 
       <Component
