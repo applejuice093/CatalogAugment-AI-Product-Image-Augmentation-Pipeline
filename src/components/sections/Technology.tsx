@@ -31,7 +31,7 @@ export function Technology({ active, onSelect }: TechnologyProps) {
   }, []);
 
   return (
-    <section id="technology" data-scene="technology" ref={root} className="relative z-10 bg-background px-5 py-28 md:bg-transparent">
+    <section id="technology" data-scene="technology" ref={root} className="relative z-10 bg-background px-5 py-28">
       <div className="mx-auto max-w-6xl">
         <h2 className="section-title max-w-3xl">An intelligent pipeline. Built for scale.</h2>
         <div className="relative mt-12 grid gap-8 overflow-x-clip lg:grid-cols-[1.1fr_0.9fr]">

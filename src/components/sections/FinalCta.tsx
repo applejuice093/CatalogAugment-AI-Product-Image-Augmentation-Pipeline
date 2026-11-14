@@ -62,7 +62,7 @@ export function FinalCta() {
   }
 
   return (
-    <section id="start" data-scene="start" className="relative z-10 px-5 py-32">
+    <section id="start" data-scene="start" className="relative z-10 bg-background px-5 py-32">
       <div className="mx-auto max-w-4xl text-center">
         <LightningGlowText
           as="h2"

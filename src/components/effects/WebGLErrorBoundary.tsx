@@ -24,7 +24,7 @@ export class WebGLErrorBoundary extends Component<Props, State> {
 
   override render() {
     if (this.state.hasError) {
-      return this.props.fallback ?? null;
+      return this.props.fallback ?? <div className="fixed inset-0 bg-[#101210] pointer-events-none z-0" />;
     }
     return this.props.children;
   }

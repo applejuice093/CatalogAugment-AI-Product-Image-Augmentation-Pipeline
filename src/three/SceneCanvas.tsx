@@ -38,9 +38,10 @@ export function SceneCanvas({ scene, activeNode }: SceneCanvasProps) {
       camera={{ position: [0, 0.1, 6.2], fov: 38 }}
       frameloop={alive ? "always" : "demand"}
       gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
-      style={{ position: "fixed", inset: 0, zIndex: 0 }}
+      style={{ position: "fixed", inset: 0, zIndex: 0, backgroundColor: "#101210" }}
       onCreated={({ gl }) => {
-        gl.setClearColor("#101210");
+        gl.setClearColor("#101210", 1);
+        gl.clear();
       }}
     >
       <RenderBudget />
@@ -55,7 +56,7 @@ export function SceneCanvas({ scene, activeNode }: SceneCanvasProps) {
       <Suspense fallback={null}>
         <ProductScanner visible={false} />
       </Suspense>
-      <PipelineScene active={activeNode} visible={scene === "technology"} />
+      <PipelineScene active={activeNode} visible={false} />
     </Canvas>
   );
 }

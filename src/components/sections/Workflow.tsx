@@ -33,7 +33,7 @@ export function Workflow() {
       id="workflow"
       data-scene="workflow"
       ref={section}
-      className="relative z-10 bg-background md:bg-transparent md:min-h-[320vh]"
+      className="relative z-10 bg-background md:min-h-[320vh]"
     >
       <div className="md:sticky md:top-16 md:flex md:h-[calc(100svh-4rem)] md:items-center">
         <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-6 md:grid-cols-[280px_1fr]">
