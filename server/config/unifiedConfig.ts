@@ -26,6 +26,11 @@ const envSchema = z.object({
   BETTER_AUTH_URL: z.string().default("http://localhost:5173"),
   UPLOAD_DIR: z.string().default("data/uploads"),
   MAX_FILE_SIZE_MB: z.coerce.number().default(10),
+  COMFYUI_URL: z.string().default("http://127.0.0.1:8188"),
+  COMFYUI_WS_URL: z.string().default("ws://127.0.0.1:8188/ws"),
+  COMFYUI_WORKFLOWS_PATH: z.string().default("C:/A/ComfyUI_windows_portable/ComfyUI/user/default/workflows"),
+  COMFYUI_CHECKPOINT: z.string().default("waiIllustriousSDXL_v170.safetensors"),
+  COMFYUI_TIMEOUT_MS: z.coerce.number().default(180000),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
@@ -76,6 +81,13 @@ export const config = {
       "image/png": "png",
       "image/webp": "webp",
     } as Record<string, string>,
+  },
+  comfyui: {
+    baseUrl: env.COMFYUI_URL,
+    wsUrl: env.COMFYUI_WS_URL,
+    workflowsPath: env.COMFYUI_WORKFLOWS_PATH,
+    checkpoint: env.COMFYUI_CHECKPOINT,
+    timeoutMs: env.COMFYUI_TIMEOUT_MS,
   },
 } as const;
 

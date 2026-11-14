@@ -113,19 +113,55 @@ model Product {
 }
 
 model AugmentationJob {
-  id              String   @id @default(uuid())
+  id              String               @id @default(uuid())
   productId       String
-  product         Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-  status          String   @default("QUEUED")
+  product         Product              @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId          String?
+  inputAssetId    String?
+  promptId        String?
+  status          String               @default("QUEUED") // QUEUED, PROCESSING, COMPLETED, FAILED, CANCELLED
   workflowId      String
   workflowVersion String
   configJson      Json?
-  progress        Int      @default(0)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  progress        Int                  @default(0)
+  errorMessage    String?
+  startedAt       DateTime?
+  completedAt     DateTime?
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
+
+  results         AugmentationResult[]
 
   @@index([productId])
+  @@index([userId])
   @@map("augmentation_job")
+}
+
+model AugmentationResult {
+  id              String           @id @default(uuid())
+  jobId           String?
+  job             AugmentationJob? @relation(fields: [jobId], references: [id], onDelete: SetNull)
+  productId       String
+  originalAssetId String?
+  imagePath       String
+  thumbnailPath   String?
+  comfyFilename   String?
+  prompt          String?
+  negativePrompt  String?
+  seed            BigInt?
+  cfg             Float?
+  steps           Int?
+  denoise         Float?
+  sampler         String?
+  workflowId      String
+  workflowVersion String
+  status          String           @default("COMPLETED")
+  reviewDecision  String           @default("PENDING") // PENDING, APPROVED, REJECTED, NEEDS_REVIEW
+  createdAt       DateTime         @default(now())
+
+  @@index([jobId])
+  @@index([productId])
+  @@map("augmentation_result")
 }
 
 model Workflow {
