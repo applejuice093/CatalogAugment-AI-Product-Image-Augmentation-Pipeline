@@ -274,3 +274,22 @@ model DatasetItem {
   @@index([productId])
   @@map("dataset_item")
 }
+
+model EvaluationRun {
+  id               String    @id @default(uuid())
+  userId           String
+  datasetId        String?
+  name             String
+  encoderName      String    @default("clip-vit-b32")
+  encoderDimension Int       @default(512)
+  status           String    @default("COMPLETED") // "RUNNING", "COMPLETED", "FAILED"
+  metrics          Json      // Detailed results for Exp A, Exp B, Exp C, Exp D
+  config           Json      // topK, seed, sampleCount, etc.
+  summary          String?
+  durationMs       Int?
+  createdAt        DateTime  @default(now())
+  completedAt      DateTime?
+
+  @@index([userId])
+  @@map("evaluation_run")
+}
