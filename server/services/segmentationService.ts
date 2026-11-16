@@ -65,8 +65,8 @@ export class NativeAlphaSegmentationProvider implements ISegmentationProvider {
         create: {
           width: 512,
           height: 512,
-          channels: 1,
-          background: 255,
+          channels: 3,
+          background: { r: 255, g: 255, b: 255 },
         },
       })
         .png()
@@ -105,6 +105,10 @@ export class SegmentationService {
 
   async processSegmentation(inputImageId: string, imageBuffer: Buffer): Promise<SegmentationOutput> {
     return this.provider.segment(inputImageId, imageBuffer);
+  }
+
+  async segment(imageBuffer: Buffer, inputImageId = "asset"): Promise<SegmentationOutput> {
+    return this.processSegmentation(inputImageId, imageBuffer);
   }
 }
 

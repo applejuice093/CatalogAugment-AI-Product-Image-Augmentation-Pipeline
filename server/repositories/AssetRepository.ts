@@ -34,9 +34,35 @@ export class AssetRepository {
     });
   }
 
+  async findById(id: string): Promise<Asset | null> {
+    return prisma.asset.findUnique({
+      where: { id },
+    });
+  }
+
   async findByIdAndUserId(id: string, userId: string): Promise<Asset | null> {
     return prisma.asset.findFirst({
       where: { id, userId },
+    });
+  }
+
+  async updateSegmentation(
+    id: string,
+    maskPath?: string,
+    foregroundPath?: string,
+    segmentationModel?: string,
+    segmentationVersion?: string,
+    segmentationStatus?: string
+  ): Promise<Asset> {
+    return prisma.asset.update({
+      where: { id },
+      data: {
+        maskPath,
+        foregroundPath,
+        segmentationModel,
+        segmentationVersion,
+        segmentationStatus: segmentationStatus ?? (maskPath ? "COMPLETED" : undefined),
+      },
     });
   }
 

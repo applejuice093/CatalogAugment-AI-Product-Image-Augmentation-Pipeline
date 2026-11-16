@@ -51,6 +51,10 @@ export class EvaluationBenchmarkService {
     this.calculator = calculator;
   }
 
+  public getDatasetRepository(): DatasetRepository {
+    return this.datasetRepo;
+  }
+
   /**
    * Executes the 4 standard comparative experiments:
    * Exp A (Baseline): Original images only

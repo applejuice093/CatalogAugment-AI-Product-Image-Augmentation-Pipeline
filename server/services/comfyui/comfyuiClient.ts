@@ -220,7 +220,7 @@ export class ComfyUIClient implements IComfyUIClient {
                   jobId: clientId,
                   promptId,
                   progressPercent: 30,
-                  currentNode: message.data.node,
+                  currentNode: message.data.node ?? null,
                   statusText: `Executing node: ${message.data.node}`,
                 });
               }

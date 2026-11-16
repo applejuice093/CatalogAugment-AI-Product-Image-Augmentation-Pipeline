@@ -192,26 +192,36 @@ export function Workflow() {
               </div>
             </div>
 
-            {/* Media Canvas (FULL WIDTH, ZERO EMPTY VOID) */}
-            <div className="relative w-full aspect-[16/10] max-h-[48vh] overflow-hidden bg-black/40">
+            {/* Media Canvas with full product visibility */}
+            <div className="relative w-full aspect-[16/11] sm:aspect-[16/10] lg:aspect-[16/11] h-[50vh] sm:h-[55vh] lg:h-[60vh] max-h-[640px] overflow-hidden bg-black/60 flex items-center justify-center">
               {stages.map((item, index) => {
                 const on = index === stage;
                 return (
                   <div
                     key={item.index}
                     className={cn(
-                      "media-swap absolute inset-0 h-full w-full",
+                      "media-swap absolute inset-0 h-full w-full flex items-center justify-center",
                       on ? "z-10" : "pointer-events-none z-0",
                     )}
                     style={mediaSwap(on, index < stage)}
                     aria-hidden={!on}
                   >
+                    {/* Ambient blurred backdrop to seamlessly fill wide aspect ratios */}
+                    <img
+                      src={item.image}
+                      alt=""
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30 blur-2xl scale-110"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-black/20" />
+
+                    {/* Full product photo with zero cropping */}
                     <img
                       src={item.image}
                       alt={item.title}
                       loading="eager"
                       decoding="sync"
-                      className="h-full w-full object-cover"
+                      className="relative z-10 h-full w-full object-contain p-1 sm:p-2.5 drop-shadow-[0_20px_40px_rgba(0,0,0,0.65)]"
                     />
                     {/* Viewfinder Framing Marks */}
                     <div className="pointer-events-none absolute inset-0 z-20 p-4">

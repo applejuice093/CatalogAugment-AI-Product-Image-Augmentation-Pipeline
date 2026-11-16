@@ -5,12 +5,9 @@ import {
   ShieldCheck,
   AlertTriangle,
   ArrowRight,
-  Database,
   Sparkles,
   LineChart,
-  CheckCircle2,
   Activity,
-  Cpu,
   Layers,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -69,7 +66,7 @@ export function WorkspaceDashboard({ onNavigateTab }: WorkspaceDashboardProps) {
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
               <Sparkles className="h-3.5 w-3.5" />
-              Automated E-Commerce Catalog Augmentation Pipeline
+              Automated E-Commerce Catalog Augmentation Pipeline {health ? (health.ok ? "• Systems Online" : "• Degraded") : ""} {evalRuns.length > 0 ? `(${evalRuns.length} benchmarks)` : ""}
             </div>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground font-sans">
               Production Image Synthesis & Retrieval Evaluation

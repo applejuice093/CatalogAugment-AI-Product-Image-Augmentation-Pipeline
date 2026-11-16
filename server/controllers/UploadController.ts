@@ -4,8 +4,11 @@ import { uploadFileValidationSchema, uploadIdParamSchema } from "../validators/u
 import { BaseController } from "./BaseController.ts";
 
 export class UploadController extends BaseController {
-  constructor(private readonly service: UploadService = uploadService) {
+  private readonly service: UploadService;
+
+  constructor(service: UploadService = uploadService) {
     super();
+    this.service = service;
   }
 
   async listUploads(req: Request, res: Response): Promise<void> {

@@ -6,7 +6,7 @@ export const uploadIdParamSchema = z.object({
 
 export const uploadFileValidationSchema = z.object({
   mimetype: z.enum(["image/jpeg", "image/png", "image/webp"], {
-    errorMap: () => ({ message: "Only JPEG, PNG, and WebP images are allowed." }),
+    message: "Only JPEG, PNG, and WebP images are allowed.",
   }),
   size: z
     .number()

@@ -85,7 +85,7 @@ export function SettingsView() {
                 <div className="text-[11px] font-mono text-muted-foreground">http://localhost:3001</div>
               </div>
               <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-[10px]">
-                Online
+                {health?.ok ? "Online" : "Connected"}
               </Badge>
             </div>
 

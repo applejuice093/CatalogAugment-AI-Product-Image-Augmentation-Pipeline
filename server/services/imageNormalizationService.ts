@@ -1,4 +1,4 @@
-import sharp from "sharp";
+import sharp, { type Metadata } from "sharp";
 
 export interface NormalizedImageResult {
   buffer: Buffer;
@@ -19,9 +19,9 @@ export class ImageNormalizationService {
       throw new Error("Empty image buffer supplied for normalization.");
     }
 
-    let pipeline = sharp(inputBuffer, { failOnError: true });
+    let pipeline = sharp(inputBuffer, { failOn: "error" });
 
-    let metadata: sharp.Metadata;
+    let metadata: Metadata;
     try {
       metadata = await pipeline.metadata();
     } catch (err) {

@@ -38,12 +38,22 @@ export interface IngestedProductImageResult {
 }
 
 export class ProductService {
+  private readonly productRepo: ProductRepository;
+  private readonly assetRepo: AssetRepository;
+  private readonly normalizer: ImageNormalizationService;
+  private readonly segmenter: SegmentationService;
+
   constructor(
-    private readonly productRepo: ProductRepository = productRepository,
-    private readonly assetRepo: AssetRepository = assetRepository,
-    private readonly normalizer: ImageNormalizationService = imageNormalizationService,
-    private readonly segmenter: SegmentationService = segmentationService
-  ) {}
+    productRepo: ProductRepository = productRepository,
+    assetRepo: AssetRepository = assetRepository,
+    normalizer: ImageNormalizationService = imageNormalizationService,
+    segmenter: SegmentationService = segmentationService
+  ) {
+    this.productRepo = productRepo;
+    this.assetRepo = assetRepo;
+    this.normalizer = normalizer;
+    this.segmenter = segmenter;
+  }
 
   private isInsideRoot(targetPath: string): boolean {
     const rootWithSep = config.storage.uploadRoot.endsWith(path.sep)

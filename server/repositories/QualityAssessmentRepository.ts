@@ -87,6 +87,9 @@ export class QualityAssessmentRepository {
         reviewNotes: data.reviewNotes,
         rejectionReason: data.rejectionReason,
       },
+      include: {
+        augmentationResult: true,
+      },
     });
   }
 }

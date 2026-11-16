@@ -10,8 +10,11 @@ import { uploadFileValidationSchema } from "../validators/upload.schema.ts";
 import { BaseController } from "./BaseController.ts";
 
 export class ProductController extends BaseController {
-  constructor(private readonly service: ProductService = productService) {
+  private readonly service: ProductService;
+
+  constructor(service: ProductService = productService) {
     super();
+    this.service = service;
   }
 
   async listProducts(req: Request, res: Response): Promise<void> {

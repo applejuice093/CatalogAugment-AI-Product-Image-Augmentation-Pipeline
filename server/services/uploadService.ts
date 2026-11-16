@@ -19,7 +19,11 @@ export interface StoredUploadResult {
 }
 
 export class UploadService {
-  constructor(private readonly repository: AssetRepository = assetRepository) {}
+  private readonly repository: AssetRepository;
+
+  constructor(repository: AssetRepository = assetRepository) {
+    this.repository = repository;
+  }
 
   private isInsideRoot(targetPath: string): boolean {
     const rootWithSep = config.storage.uploadRoot.endsWith(path.sep)

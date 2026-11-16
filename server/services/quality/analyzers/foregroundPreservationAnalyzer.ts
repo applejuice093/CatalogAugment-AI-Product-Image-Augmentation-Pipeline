@@ -1,4 +1,4 @@
-import sharp from "sharp";
+import sharp, { type OutputInfo } from "sharp";
 import type { QualityForegroundSignal } from "../types.ts";
 
 export class ForegroundPreservationAnalyzer {
@@ -24,7 +24,7 @@ export class ForegroundPreservationAnalyzer {
       .raw()
       .toBuffer({ resolveWithObject: true });
 
-    let maskRaw: { data: Buffer; info: sharp.OutputInfo };
+    let maskRaw: { data: Buffer; info: OutputInfo };
     if (maskBuffer) {
       maskRaw = await sharp(maskBuffer)
         .resize(targetDim, targetDim, { fit: "fill" })

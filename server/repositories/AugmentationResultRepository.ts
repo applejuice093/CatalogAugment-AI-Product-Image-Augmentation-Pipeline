@@ -84,4 +84,23 @@ export class AugmentationResultRepository {
       },
     });
   }
+
+  async updateReview(
+    id: string,
+    data: {
+      reviewDecision?: string;
+      reviewNotes?: string;
+      reviewedBy?: string;
+    }
+  ): Promise<AugmentationResult> {
+    return prisma.augmentationResult.update({
+      where: { id },
+      data: {
+        reviewDecision: data.reviewDecision,
+        reviewNotes: data.reviewNotes,
+        reviewedBy: data.reviewedBy,
+        reviewedAt: data.reviewDecision ? new Date() : undefined,
+      },
+    });
+  }
 }
