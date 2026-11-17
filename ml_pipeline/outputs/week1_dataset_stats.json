@@ -1,0 +1,68 @@
+{
+  "source_dataset": "benitomartin/fashion-product-images-small-384x512",
+  "total_images": 240,
+  "num_categories": 6,
+  "categories": [
+    "Shirts",
+    "Casual Shoes",
+    "Watches",
+    "Backpacks",
+    "Sunglasses",
+    "Handbags"
+  ],
+  "normalized_resolution": "512x512",
+  "color_space": "RGB",
+  "splits": {
+    "train": 168,
+    "val": 36,
+    "test": 36
+  },
+  "per_category_splits": {
+    "Backpacks": {
+      "test": 6,
+      "train": 28,
+      "val": 6
+    },
+    "Casual Shoes": {
+      "test": 6,
+      "train": 28,
+      "val": 6
+    },
+    "Handbags": {
+      "test": 6,
+      "train": 28,
+      "val": 6
+    },
+    "Shirts": {
+      "test": 6,
+      "train": 28,
+      "val": 6
+    },
+    "Sunglasses": {
+      "test": 6,
+      "train": 28,
+      "val": 6
+    },
+    "Watches": {
+      "test": 6,
+      "train": 28,
+      "val": 6
+    }
+  },
+  "raw_resolution_summary": {
+    "width_min": 384,
+    "width_max": 384,
+    "width_median": 384.0,
+    "height_min": 512,
+    "height_max": 512,
+    "height_median": 512.0,
+    "aspect_ratio_mean": 0.75
+  },
+  "photometric_summary": {
+    "mean_brightness": 0.868,
+    "std_brightness": 0.0795,
+    "mean_contrast": 0.2481
+  },
+  "rejected_during_hygiene": {},
+  "random_seed": 42
+}

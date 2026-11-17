@@ -1,0 +1,21 @@
+experiment,model,train_size,condition,accuracy,macro_f1,recall_at_1,recall_at_5,map_at_5,mrr
+exp_a_baseline,Baseline (Clean Studio),168,clean_studio,0.9722,0.972,0.9722,1.0,0.9911,0.9861
+exp_a_baseline,Baseline (Clean Studio),168,lighting_shift,0.9444,0.9444,0.9444,0.9444,0.9444,0.9444
+exp_a_baseline,Baseline (Clean Studio),168,angle_viewpoint,1.0,1.0,1.0,1.0,0.9886,1.0
+exp_a_baseline,Baseline (Clean Studio),168,background_clutter,0.8333,0.8414,0.8611,0.8611,0.8503,0.8611
+exp_a_baseline,Baseline (Clean Studio),168,customer_photo_hard,0.3889,0.392,0.3611,0.3889,0.38,0.375
+exp_b_albumentations,Conventional (Albumentations),672,clean_studio,0.9444,0.9444,0.9722,1.0,0.9778,0.9778
+exp_b_albumentations,Conventional (Albumentations),672,lighting_shift,0.9444,0.9443,0.9722,0.9722,0.9653,0.9722
+exp_b_albumentations,Conventional (Albumentations),672,angle_viewpoint,0.9722,0.972,0.9722,0.9722,0.9722,0.9722
+exp_b_albumentations,Conventional (Albumentations),672,background_clutter,0.9167,0.9212,0.8889,0.9167,0.8958,0.8958
+exp_b_albumentations,Conventional (Albumentations),672,customer_photo_hard,0.6389,0.644,0.5556,0.6389,0.5937,0.5889
+exp_c_diffusers,Generative (Diffusers),336,clean_studio,0.9444,0.9459,0.9722,0.9722,0.9708,0.9722
+exp_c_diffusers,Generative (Diffusers),336,lighting_shift,0.9444,0.9459,0.9444,0.9444,0.9444,0.9444
+exp_c_diffusers,Generative (Diffusers),336,angle_viewpoint,0.9722,0.972,0.9444,0.9722,0.9583,0.9583
+exp_c_diffusers,Generative (Diffusers),336,background_clutter,1.0,1.0,1.0,1.0,0.9986,1.0
+exp_c_diffusers,Generative (Diffusers),336,customer_photo_hard,0.8333,0.8292,0.8333,0.8611,0.8319,0.8389
+exp_d_combined,Combined (CatalogAugment AI),840,clean_studio,0.9722,0.972,0.9722,1.0,0.9813,0.9792
+exp_d_combined,Combined (CatalogAugment AI),840,lighting_shift,1.0,1.0,1.0,1.0,1.0,1.0
+exp_d_combined,Combined (CatalogAugment AI),840,angle_viewpoint,1.0,1.0,1.0,1.0,1.0,1.0
+exp_d_combined,Combined (CatalogAugment AI),840,background_clutter,0.9167,0.9212,0.9167,0.9167,0.9167,0.9167
+exp_d_combined,Combined (CatalogAugment AI),840,customer_photo_hard,0.8056,0.8096,0.8056,0.8333,0.8126,0.8194

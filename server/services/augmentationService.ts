@@ -14,6 +14,11 @@ import {
   ForegroundCompositingService,
   defaultForegroundCompositingService,
 } from "./foregroundCompositingService.ts";
+import {
+  GeometricTransformationService,
+  defaultGeometricTransformationService,
+  type AnglePreset,
+} from "./geometricTransformationService.ts";
 import { SegmentationService } from "./segmentationService.ts";
 
 export class AugmentationService {
@@ -25,6 +30,7 @@ export class AugmentationService {
   private assetRepo: AssetRepository;
   private segmentationService: SegmentationService;
   private compositingService: ForegroundCompositingService;
+  private geometricService: GeometricTransformationService;
 
   constructor(
     comfyuiClient: IComfyUIClient = defaultComfyUIClient,
@@ -34,7 +40,8 @@ export class AugmentationService {
     productRepo: ProductRepository = new ProductRepository(),
     assetRepo: AssetRepository = new AssetRepository(),
     segmentationService: SegmentationService = new SegmentationService(),
-    compositingService: ForegroundCompositingService = defaultForegroundCompositingService
+    compositingService: ForegroundCompositingService = defaultForegroundCompositingService,
+    geometricService: GeometricTransformationService = defaultGeometricTransformationService
   ) {
     this.comfyuiClient = comfyuiClient;
     this.workflowRegistry = workflowRegistry;
@@ -44,6 +51,7 @@ export class AugmentationService {
     this.assetRepo = assetRepo;
     this.segmentationService = segmentationService;
     this.compositingService = compositingService;
+    this.geometricService = geometricService;
   }
 
   /**
@@ -156,13 +164,6 @@ export class AugmentationService {
       const inputBuffer = await fs.readFile(inputImagePath);
       const maskBuffer = await fs.readFile(maskFullPath);
 
-      // Upload to ComfyUI once for the job
-      const comfyInputFilename = `input_${jobId}_${Date.now()}.png`;
-      const comfyMaskFilename = `mask_${jobId}_${Date.now()}.png`;
-
-      await this.comfyuiClient.uploadImage(inputBuffer, comfyInputFilename);
-      await this.comfyuiClient.uploadImage(maskBuffer, comfyMaskFilename);
-
       const numVariants = Math.max(1, Math.min(4, input.numVariants || 1));
       const savedResults: unknown[] = [];
 
@@ -171,12 +172,75 @@ export class AugmentationService {
       await fs.mkdir(fullOutputDir, { recursive: true });
 
       const baseSeed = input.seed ?? Math.floor(Math.random() * 1000000000);
+      const presets = workflow.recommendedConfig.presets;
 
       // Execute variants sequentially to strictly adhere to the 6GB VRAM budget
       for (let v = 0; v < numVariants; v++) {
         const variantSeed = baseSeed + v * 7919;
+        
+        // Resolve camera angle for this variant
+        let chosenAngle: AnglePreset = "FRONTAL_STUDIO";
+        if (input.cameraAngle === "AUTO_ROTATE" || !input.cameraAngle) {
+          const rotationPresets: AnglePreset[] = [
+            "THREE_QUARTER_YAW",
+            "FLAT_LAY_TOPDOWN",
+            "LOW_ANGLE_HERO",
+            "CASUAL_HANDHELD_TILT",
+          ];
+          chosenAngle = numVariants > 1 ? rotationPresets[v % rotationPresets.length] : "FRONTAL_STUDIO";
+        } else if (input.cameraAngle === "THREE_QUARTER") {
+          chosenAngle = "THREE_QUARTER_YAW";
+        } else if (input.cameraAngle === "FLAT_LAY") {
+          chosenAngle = "FLAT_LAY_TOPDOWN";
+        } else if (input.cameraAngle === "LOW_ANGLE") {
+          chosenAngle = "LOW_ANGLE_HERO";
+        } else if (input.cameraAngle === "CASUAL_TILT") {
+          chosenAngle = "CASUAL_HANDHELD_TILT";
+        }
+
+        // Apply geometric 3D perspective warp to create authentic camera angles
+        let variantInputBuffer = inputBuffer;
+        let variantMaskBuffer = maskBuffer;
+        let variantCutoutBuffer = inputBuffer;
+
+        if (chosenAngle !== "FRONTAL_STUDIO") {
+          try {
+            const transformed = await this.geometricService.transformPerspective(
+              inputImagePath,
+              maskFullPath,
+              { preset: chosenAngle }
+            );
+            variantInputBuffer = await fs.readFile(transformed.paths.rgb);
+            variantMaskBuffer = await fs.readFile(transformed.paths.mask);
+            variantCutoutBuffer = await fs.readFile(transformed.paths.cutout);
+          } catch (geoErr) {
+            console.warn(
+              `[AugmentationService] Perspective transform failed for ${chosenAngle}, falling back to frontal:`,
+              geoErr
+            );
+          }
+        }
+
+        // Upload perspective-transformed assets to ComfyUI for this variant
+        const comfyInputFilename = `input_${jobId}_v${v + 1}_${Date.now()}.png`;
+        const comfyMaskFilename = `mask_${jobId}_v${v + 1}_${Date.now()}.png`;
+
+        await this.comfyuiClient.uploadImage(variantInputBuffer, comfyInputFilename);
+        await this.comfyuiClient.uploadImage(variantMaskBuffer, comfyMaskFilename);
+
+        // When multiple variants are requested, rotate through diverse curated style presets
+        const activePreset = presets && presets.length > 0 ? presets[v % presets.length] : null;
+
         const variantConfig = {
           ...input,
+          prompt:
+            numVariants > 1 && activePreset
+              ? activePreset.prompt
+              : (input.prompt || activePreset?.prompt),
+          negativePrompt:
+            input.negativePrompt || activePreset?.negativePrompt,
+          cfg: activePreset?.cfg ?? input.cfg,
+          denoise: activePreset?.denoise ?? input.denoise,
           seed: variantSeed,
         };
 
@@ -209,8 +273,8 @@ export class AugmentationService {
           // Step 4 & 5: Original Foreground Compositing & Edge Refinement
           const compositingResult = await this.compositingService.composite(
             rawGeneratedBuffer,
-            inputBuffer,
-            maskBuffer,
+            variantCutoutBuffer,
+            variantMaskBuffer,
             {
               preserveOriginalForeground: input.preserveOriginalForeground ?? true,
               enableEdgeRefinement: input.enableEdgeRefinement ?? true,
@@ -245,18 +309,21 @@ export class AugmentationService {
             imagePath: resultRelativePath,
             thumbnailPath: thumbRelativePath,
             comfyFilename: output.filename,
-            prompt: input.prompt ?? workflow.defaultParameters.prompt,
+            prompt: variantConfig.prompt ?? workflow.defaultParameters.prompt,
             negativePrompt:
-              input.negativePrompt ?? workflow.defaultParameters.negativePrompt,
+              variantConfig.negativePrompt ?? workflow.defaultParameters.negativePrompt,
             seed: variantSeed,
-            cfg: input.cfg ?? workflow.defaultParameters.cfg,
-            steps: input.steps ?? workflow.defaultParameters.steps,
-            denoise: input.denoise ?? workflow.defaultParameters.denoise,
-            sampler: input.sampler ?? workflow.defaultParameters.sampler,
+            cfg: variantConfig.cfg ?? workflow.defaultParameters.cfg,
+            steps: variantConfig.steps ?? workflow.defaultParameters.steps,
+            denoise: variantConfig.denoise ?? workflow.defaultParameters.denoise,
+            sampler: variantConfig.sampler ?? workflow.defaultParameters.sampler,
             workflowId: workflow.id,
             workflowVersion: workflow.version,
             isComposited: compositingResult.isComposited,
-            compositionStrategy: compositingResult.strategy,
+            compositionStrategy:
+              chosenAngle !== "FRONTAL_STUDIO"
+                ? `perspective_${chosenAngle.toLowerCase()}`
+                : compositingResult.strategy,
             status: "COMPLETED",
             reviewDecision: "PENDING",
           });

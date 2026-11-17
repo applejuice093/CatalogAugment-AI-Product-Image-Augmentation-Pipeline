@@ -29,7 +29,7 @@ const envSchema = z.object({
   COMFYUI_URL: z.string().default("http://127.0.0.1:8188"),
   COMFYUI_WS_URL: z.string().default("ws://127.0.0.1:8188/ws"),
   COMFYUI_WORKFLOWS_PATH: z.string().default("C:/A/ComfyUI_windows_portable/ComfyUI/user/default/workflows"),
-  COMFYUI_CHECKPOINT: z.string().default("waiIllustriousSDXL_v170.safetensors"),
+  COMFYUI_CHECKPOINT: z.string().default("Realistic_Vision_V6.0_NV_B1_inpainting_fp16.safetensors"),
   COMFYUI_TIMEOUT_MS: z.coerce.number().default(180000),
   OLLAMA_BASE_URL: z.string().default("http://127.0.0.1:11434"),
   OLLAMA_VISION_MODEL: z.string().default("moondream"),

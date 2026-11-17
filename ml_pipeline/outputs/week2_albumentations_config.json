@@ -1,0 +1,381 @@
+{
+  "albumentations_version": "2.0.8",
+  "variants_per_train_image": 3,
+  "random_seed": 42,
+  "rationale": [
+    {
+      "group": "Orientation & Scale",
+      "transforms": "HorizontalFlip (p=0.5), Affine (rotate \u00b118\u00b0, scale 0.82\u20131.12, shear \u00b18\u00b0), Perspective (0.03\u20130.08), RandomResizedCrop (0.78\u20131.0)",
+      "rationale": "Simulates casual handheld smartphone framing, slight camera tilt, and distance variation without inverting upright products.",
+      "unrealistic_pitfall": "Rotate \u00b1180\u00b0 or crop <40% destroys upright orientation cues and chops off key product geometry."
+    },
+    {
+      "group": "Lighting & Color",
+      "transforms": "RandomBrightnessContrast (\u00b125%), ColorJitter (hue \u00b10.03), RandomGamma (72\u2013132), RandomToneCurve (0.18)",
+      "rationale": "Models dim indoor rooms, warm tungsten vs. daylight shifts, and cast shadows while strictly bounding hue to protect true SKU color.",
+      "unrealistic_pitfall": "Large hue shifts (\u00b10.4) turn a red handbag blue, creating contradictory visual-search labels."
+    },
+    {
+      "group": "Image Quality",
+      "transforms": "MotionBlur / GaussianBlur / Defocus (k=3\u20137), GaussNoise / ISONoise, ImageCompression (JPEG quality 40\u201385)",
+      "rationale": "Replicates real customer uploads taken with shaky hands, low-light phone ISO grain, and social-media/WhatsApp JPEG recompression.",
+      "unrealistic_pitfall": "Heavy Gaussian blur (k>=17) erases fabric texture, dials, zippers, and logos."
+    },
+    {
+      "group": "Occlusion",
+      "transforms": "CoarseDropout (1\u20132 small patches, 20\u201352 px, p=0.30)",
+      "rationale": "Encourages the vision model to rely on global product structure even when hands, tags, or foreground objects partially occlude the item.",
+      "unrealistic_pitfall": "Large black cutouts (>30% area) hide entire small products like watches or sunglasses."
+    }
+  ],
+  "realistic_pipeline_dict": {
+    "__version__": "2.0.8",
+    "transform": {
+      "__class_fullname__": "Compose",
+      "p": 1.0,
+      "transforms": [
+        {
+          "__class_fullname__": "HorizontalFlip",
+          "p": 0.5
+        },
+        {
+          "__class_fullname__": "Affine",
+          "p": 0.8,
+          "balanced_scale": false,
+          "border_mode": 1,
+          "fill": 0.0,
+          "fill_mask": 0.0,
+          "fit_output": false,
+          "interpolation": 1,
+          "keep_ratio": false,
+          "mask_interpolation": 0,
+          "rotate": [
+            -18.0,
+            18.0
+          ],
+          "rotate_method": "largest_box",
+          "scale": {
+            "x": [
+              0.82,
+              1.12
+            ],
+            "y": [
+              0.82,
+              1.12
+            ]
+          },
+          "shear": {
+            "x": [
+              -8.0,
+              8.0
+            ],
+            "y": [
+              -8.0,
+              8.0
+            ]
+          },
+          "translate_percent": {
+            "x": [
+              -0.06,
+              0.06
+            ],
+            "y": [
+              -0.06,
+              0.06
+            ]
+          },
+          "translate_px": null
+        },
+        {
+          "__class_fullname__": "Perspective",
+          "p": 0.55,
+          "border_mode": 1,
+          "fill": 0.0,
+          "fill_mask": 0.0,
+          "fit_output": false,
+          "interpolation": 1,
+          "keep_size": true,
+          "mask_interpolation": 0,
+          "scale": [
+            0.03,
+            0.08
+          ]
+        },
+        {
+          "__class_fullname__": "RandomResizedCrop",
+          "p": 0.5,
+          "area_for_downscale": null,
+          "interpolation": 1,
+          "mask_interpolation": 0,
+          "ratio": [
+            0.88,
+            1.12
+          ],
+          "scale": [
+            0.78,
+            1.0
+          ],
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "__class_fullname__": "RandomBrightnessContrast",
+          "p": 0.8,
+          "brightness_by_max": true,
+          "brightness_limit": [
+            -0.28,
+            0.25
+          ],
+          "contrast_limit": [
+            -0.22,
+            0.25
+          ],
+          "ensure_safe_range": false
+        },
+        {
+          "__class_fullname__": "ColorJitter",
+          "p": 0.6,
+          "brightness": [
+            0.85,
+            1.15
+          ],
+          "contrast": [
+            0.85,
+            1.15
+          ],
+          "hue": [
+            -0.03,
+            0.03
+          ],
+          "saturation": [
+            0.78,
+            1.22
+          ]
+        },
+        {
+          "__class_fullname__": "RandomGamma",
+          "p": 0.5,
+          "gamma_limit": [
+            72.0,
+            132.0
+          ]
+        },
+        {
+          "__class_fullname__": "RandomToneCurve",
+          "p": 0.45,
+          "per_channel": false,
+          "scale": 0.18
+        },
+        {
+          "__class_fullname__": "OneOf",
+          "p": 0.45,
+          "transforms": [
+            {
+              "__class_fullname__": "MotionBlur",
+              "p": 1.0,
+              "allow_shifted": true,
+              "angle_range": [
+                0.0,
+                360.0
+              ],
+              "blur_limit": [
+                3,
+                7
+              ],
+              "direction_range": [
+                -1.0,
+                1.0
+              ]
+            },
+            {
+              "__class_fullname__": "GaussianBlur",
+              "p": 1.0,
+              "blur_limit": [
+                3,
+                5
+              ],
+              "sigma_limit": [
+                0.5,
+                3.0
+              ]
+            },
+            {
+              "__class_fullname__": "Defocus",
+              "p": 1.0,
+              "alias_blur": [
+                0.1,
+                0.3
+              ],
+              "radius": [
+                1,
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "__class_fullname__": "OneOf",
+          "p": 0.45,
+          "transforms": [
+            {
+              "__class_fullname__": "GaussNoise",
+              "p": 1.0,
+              "mean_range": [
+                0.0,
+                0.0
+              ],
+              "noise_scale_factor": 1.0,
+              "per_channel": true,
+              "std_range": [
+                0.02,
+                0.07
+              ]
+            },
+            {
+              "__class_fullname__": "ISONoise",
+              "p": 1.0,
+              "color_shift": [
+                0.01,
+                0.04
+              ],
+              "intensity": [
+                0.1,
+                0.35
+              ]
+            }
+          ]
+        },
+        {
+          "__class_fullname__": "ImageCompression",
+          "p": 0.5,
+          "compression_type": "jpeg",
+          "quality_range": [
+            40,
+            85
+          ]
+        },
+        {
+          "__class_fullname__": "CoarseDropout",
+          "p": 0.3,
+          "fill": 128.0,
+          "fill_mask": null,
+          "hole_height_range": [
+            20,
+            52
+          ],
+          "hole_width_range": [
+            20,
+            52
+          ],
+          "num_holes_range": [
+            1,
+            2
+          ]
+        }
+      ],
+      "bbox_params": null,
+      "keypoint_params": null,
+      "additional_targets": {},
+      "is_check_shapes": true
+    }
+  },
+  "unrealistic_pipeline_dict": {
+    "__version__": "2.0.8",
+    "transform": {
+      "__class_fullname__": "Compose",
+      "p": 1.0,
+      "transforms": [
+        {
+          "__class_fullname__": "Rotate",
+          "p": 1.0,
+          "border_mode": 0,
+          "crop_border": false,
+          "fill": 0.0,
+          "fill_mask": 0.0,
+          "interpolation": 1,
+          "limit": [
+            110.0,
+            180.0
+          ],
+          "mask_interpolation": 0,
+          "rotate_method": "largest_box"
+        },
+        {
+          "__class_fullname__": "ColorJitter",
+          "p": 1.0,
+          "brightness": [
+            0.5,
+            1.5
+          ],
+          "contrast": [
+            0.5,
+            1.5
+          ],
+          "hue": [
+            -0.42,
+            0.42
+          ],
+          "saturation": [
+            0.30000000000000004,
+            1.7
+          ]
+        },
+        {
+          "__class_fullname__": "GaussianBlur",
+          "p": 1.0,
+          "blur_limit": [
+            17,
+            23
+          ],
+          "sigma_limit": [
+            0.5,
+            3.0
+          ]
+        },
+        {
+          "__class_fullname__": "RandomResizedCrop",
+          "p": 1.0,
+          "area_for_downscale": null,
+          "interpolation": 1,
+          "mask_interpolation": 0,
+          "ratio": [
+            0.5,
+            1.8
+          ],
+          "scale": [
+            0.22,
+            0.38
+          ],
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "__class_fullname__": "CoarseDropout",
+          "p": 1.0,
+          "fill": 0.0,
+          "fill_mask": null,
+          "hole_height_range": [
+            70,
+            120
+          ],
+          "hole_width_range": [
+            70,
+            120
+          ],
+          "num_holes_range": [
+            4,
+            6
+          ]
+        }
+      ],
+      "bbox_params": null,
+      "keypoint_params": null,
+      "additional_targets": {},
+      "is_check_shapes": true
+    }
+  }
+}

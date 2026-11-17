@@ -13,9 +13,16 @@ dist
 data/*.sqlite
 data/*.sqlite-*
 data/uploads/
+data/showcase/
 dist-ssr
 *.local
 *.tsbuildinfo
+
+# Python & ML generated artifacts (reproducible via ml_pipeline/run_all.py)
+__pycache__/
+*.py[cod]
+ml_pipeline/data/
+ml_pipeline/outputs/models/
 
 # Editor directories and files
 .vscode/*

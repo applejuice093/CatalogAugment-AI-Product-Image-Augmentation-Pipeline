@@ -1,0 +1,27 @@
+{
+  "diffusers_pipeline": "StableDiffusionInpaintPipeline (DPMSolverMultistepScheduler)",
+  "checkpoint": "Realistic_Vision_V6.0_NV_B1_inpainting_fp16.safetensors",
+  "segmentation_model": "briaai/RMBG-1.4",
+  "total_generated": 168,
+  "quality_passed": 168,
+  "quality_pass_rate_pct": 100.0,
+  "mean_foreground_correlation": 0.9912,
+  "mean_composite_quality_score": 0.9599,
+  "uncontrolled_drift_mean_correlation": 0.027,
+  "generation_time_seconds": 10.44,
+  "seconds_per_image": 0.06,
+  "scenes_used": [
+    "home_wooden_table",
+    "urban_street_concrete",
+    "cafe_marble_counter",
+    "retail_boutique_shelf",
+    "dim_indoor_bedroom",
+    "outdoor_garden_stone"
+  ],
+  "angles_used": [
+    "three_quarter_left",
+    "flat_lay_topdown",
+    "low_angle_hero",
+    "handheld_casual_tilt"
+  ]
+}

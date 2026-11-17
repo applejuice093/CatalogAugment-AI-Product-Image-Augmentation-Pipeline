@@ -1,0 +1,241 @@
+product_id,category,category_slug,master_category,sub_category,base_colour,gender,product_name,raw_width,raw_height,raw_aspect_ratio,raw_mode,norm_width,norm_height,mean_brightness,contrast_std,split,relative_path
+15970,Shirts,shirts,Apparel,Topwear,Navy Blue,Men,Turtle Check Men Navy Blue Shirt,384,512,0.75,RGB,512,512,0.8307,0.2821,val,data/prepared/val/shirts/shirts_15970.png
+30805,Shirts,shirts,Apparel,Topwear,Green,Men,Fabindia Men Striped Green Shirt,384,512,0.75,RGB,512,512,0.8062,0.2744,train,data/prepared/train/shirts/shirts_30805.png
+26960,Shirts,shirts,Apparel,Topwear,Purple,Women,Jealous 21 Women Purple Shirt,384,512,0.75,RGB,512,512,0.8248,0.2771,test,data/prepared/test/shirts/shirts_26960.png
+12369,Shirts,shirts,Apparel,Topwear,Purple,Men,Reid & Taylor Men Check Purple Shirts,384,512,0.75,RGB,512,512,0.6174,0.3688,train,data/prepared/train/shirts/shirts_12369.png
+37812,Shirts,shirts,Apparel,Topwear,Navy Blue,Men,John Players Men Navy Blue Shirt,384,512,0.75,RGB,512,512,0.7533,0.3748,val,data/prepared/val/shirts/shirts_37812.png
+56825,Shirts,shirts,Apparel,Topwear,Brown,Men,John Players Men Brown Shirt,384,512,0.75,RGB,512,512,0.7448,0.378,train,data/prepared/train/shirts/shirts_56825.png
+9452,Shirts,shirts,Apparel,Topwear,Red,Men,John Miller Men Stripes White Red Shirts,384,512,0.75,RGB,512,512,0.8342,0.2733,train,data/prepared/train/shirts/shirts_9452.png
+4943,Shirts,shirts,Apparel,Topwear,White,Men,Gini and Jony Boy's Kaleb White Brown Kidswear,384,512,0.75,RGB,512,512,0.9203,0.2035,train,data/prepared/train/shirts/shirts_4943.png
+9660,Shirts,shirts,Apparel,Topwear,Pink,Men,Indigo Nation Men Reversible Bling Pink Shirts,384,512,0.75,RGB,512,512,0.6018,0.3814,train,data/prepared/train/shirts/shirts_9660.png
+15984,Shirts,shirts,Apparel,Topwear,Yellow,Men,Turtle Check Men Yellow Shirt,384,512,0.75,RGB,512,512,0.8996,0.2076,train,data/prepared/train/shirts/shirts_15984.png
+59297,Shirts,shirts,Apparel,Topwear,White,Men,U.S. Polo Assn. Men White & Navy Blue Shirt,384,512,0.75,RGB,512,512,0.8708,0.2298,train,data/prepared/train/shirts/shirts_59297.png
+7158,Shirts,shirts,Apparel,Topwear,Green,Men,Scullers Men  Green Check Shirt,384,512,0.75,RGB,512,512,0.8395,0.2722,train,data/prepared/train/shirts/shirts_7158.png
+16392,Shirts,shirts,Apparel,Topwear,Red,Men,Levis Men Check Red Shirts,384,512,0.75,RGB,512,512,0.842,0.2575,train,data/prepared/train/shirts/shirts_16392.png
+6617,Shirts,shirts,Apparel,Topwear,Black,Men,Spykar Men Black and white Check Shirt,384,512,0.75,RGB,512,512,0.8117,0.3008,test,data/prepared/test/shirts/shirts_6617.png
+22395,Shirts,shirts,Apparel,Topwear,Blue,Men,Mark Taylor Men Striped Blue Shirt,384,512,0.75,RGB,512,512,0.8877,0.2304,train,data/prepared/train/shirts/shirts_22395.png
+12500,Shirts,shirts,Apparel,Topwear,Black,Men,United Colors of Benetton Men Short Black Shirts,384,512,0.75,RGB,512,512,0.7851,0.3441,train,data/prepared/train/shirts/shirts_12500.png
+16530,Shirts,shirts,Apparel,Topwear,Red,Men,Locomotive Men Check Red Shirt,384,512,0.75,RGB,512,512,0.8844,0.21,train,data/prepared/train/shirts/shirts_16530.png
+7167,Shirts,shirts,Apparel,Topwear,Purple,Men,Scullers Men Scul Purple White Shirt,384,512,0.75,RGB,512,512,0.8654,0.2418,train,data/prepared/train/shirts/shirts_7167.png
+12190,Shirts,shirts,Apparel,Topwear,Blue,Men,Basics Men Blue Slim Fit Checked Shirt,384,512,0.75,RGB,512,512,0.8773,0.2207,train,data/prepared/train/shirts/shirts_12190.png
+14055,Shirts,shirts,Apparel,Topwear,Green,Men,Flying Machine Men Check Green Shirts,384,512,0.75,RGB,512,512,0.8585,0.2406,train,data/prepared/train/shirts/shirts_14055.png
+34036,Shirts,shirts,Apparel,Topwear,Blue,Boys,Palm Tree Boys Check Blue Shirt,384,512,0.75,RGB,512,512,0.9392,0.1821,train,data/prepared/train/shirts/shirts_34036.png
+8779,Shirts,shirts,Apparel,Topwear,Navy Blue,Men,Indigo Nation Men Club Satin Hot Stepper Navy Blue Shirt,384,512,0.75,RGB,512,512,0.7723,0.3291,test,data/prepared/test/shirts/shirts_8779.png
+11143,Shirts,shirts,Apparel,Topwear,Black,Men,Scullers Men Price Catch Black Shirts,384,512,0.75,RGB,512,512,0.822,0.2803,val,data/prepared/val/shirts/shirts_11143.png
+11371,Shirts,shirts,Apparel,Topwear,Black,Men,United Colors Of Benetton Men Summer Black Shirts,384,512,0.75,RGB,512,512,0.7403,0.4013,val,data/prepared/val/shirts/shirts_11371.png
+13846,Shirts,shirts,Apparel,Topwear,Blue,Men,John Miller Men Stripes Blue Shirts,384,512,0.75,RGB,512,512,0.8939,0.1976,train,data/prepared/train/shirts/shirts_13846.png
+15983,Shirts,shirts,Apparel,Topwear,Burgundy,Men,Turtle Solid Men  Burgundy Shirt,384,512,0.75,RGB,512,512,0.77,0.3417,val,data/prepared/val/shirts/shirts_15983.png
+43960,Shirts,shirts,Apparel,Topwear,Grey,Men,Indigo Nation Men Grey Striped Shirt,384,512,0.75,RGB,512,512,0.8211,0.3013,val,data/prepared/val/shirts/shirts_43960.png
+8741,Shirts,shirts,Apparel,Topwear,Navy Blue,Men,Indigo Nation Men Checks Shirt Navy Blue Shirts,384,512,0.75,RGB,512,512,0.8379,0.2698,train,data/prepared/train/shirts/shirts_8741.png
+22359,Shirts,shirts,Apparel,Topwear,Blue,Men,John Players Men Check Blue Shirt,384,512,0.75,RGB,512,512,0.791,0.3092,train,data/prepared/train/shirts/shirts_22359.png
+4944,Shirts,shirts,Apparel,Topwear,White,Men,Gini and Jony Boy's Kaleb White Brown Infant Kidswear,384,512,0.75,RGB,512,512,0.9203,0.2035,train,data/prepared/train/shirts/shirts_4944.png
+9667,Shirts,shirts,Apparel,Topwear,Purple,Men,Indigo Nation Men Bling Red Black Shirts,384,512,0.75,RGB,512,512,0.8056,0.3089,train,data/prepared/train/shirts/shirts_9667.png
+8587,Shirts,shirts,Apparel,Topwear,Red,Men,Scullers Men Red Check Shirt,384,512,0.75,RGB,512,512,0.8739,0.2282,train,data/prepared/train/shirts/shirts_8587.png
+9455,Shirts,shirts,Apparel,Topwear,Red,Men,John Miller Men Red Striped Shirt,384,512,0.75,RGB,512,512,0.8291,0.2831,train,data/prepared/train/shirts/shirts_9455.png
+26369,Shirts,shirts,Apparel,Topwear,Blue,Women,Arrow Woman Blue Shirt,384,512,0.75,RGB,512,512,0.8418,0.2729,test,data/prepared/test/shirts/shirts_26369.png
+33489,Shirts,shirts,Apparel,Topwear,Green,Men,Doodle Kids Boy Check Green Shirt,384,512,0.75,RGB,512,512,0.9493,0.1512,test,data/prepared/test/shirts/shirts_33489.png
+15977,Shirts,shirts,Apparel,Topwear,Red,Men,Turtle Solid Men Red Shirt,384,512,0.75,RGB,512,512,0.7854,0.3346,train,data/prepared/train/shirts/shirts_15977.png
+30802,Shirts,shirts,Apparel,Topwear,Blue,Men,Fabindia Men Blue Shirt,384,512,0.75,RGB,512,512,0.8881,0.217,test,data/prepared/test/shirts/shirts_30802.png
+16361,Shirts,shirts,Apparel,Topwear,Maroon,Men,Peter England Men Stripes Maroon Shirt,384,512,0.75,RGB,512,512,0.7823,0.3216,train,data/prepared/train/shirts/shirts_16361.png
+34031,Shirts,shirts,Apparel,Topwear,Blue,Boys,Gini and Jony Boys Check Blue Shirt,384,512,0.75,RGB,512,512,0.9519,0.1508,train,data/prepared/train/shirts/shirts_34031.png
+11144,Shirts,shirts,Apparel,Topwear,Black,Men,Scullers Men Price Catch Black Shirts,384,512,0.75,RGB,512,512,0.822,0.2803,train,data/prepared/train/shirts/shirts_11144.png
+9204,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Men,Puma Men Future Cat Remix SF Black Casual Shoes,384,512,0.75,RGB,512,512,0.8646,0.3055,train,data/prepared/train/casual_shoes/casual_shoes_9204.png
+39988,Casual Shoes,casual_shoes,Footwear,Shoes,White,Men,Gas Men Europa White Shoes,384,512,0.75,RGB,512,512,0.9597,0.1358,test,data/prepared/test/casual_shoes/casual_shoes_39988.png
+22198,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Men,Timberland Men Black Casual Shoes,384,512,0.75,RGB,512,512,0.8184,0.3382,train,data/prepared/train/casual_shoes/casual_shoes_22198.png
+29570,Casual Shoes,casual_shoes,Footwear,Shoes,Purple,Men,Vans Men Classic Slip-On Purple & Black Shoes,384,512,0.75,RGB,512,512,0.9088,0.2387,test,data/prepared/test/casual_shoes/casual_shoes_29570.png
+26538,Casual Shoes,casual_shoes,Footwear,Shoes,Red,Men,ID Men Red Shoes,384,512,0.75,RGB,512,512,0.9088,0.228,train,data/prepared/train/casual_shoes/casual_shoes_26538.png
+49495,Casual Shoes,casual_shoes,Footwear,Shoes,Khaki,Men,Vans Men Khaki Shoes,384,512,0.75,RGB,512,512,0.9313,0.1788,train,data/prepared/train/casual_shoes/casual_shoes_49495.png
+19311,Casual Shoes,casual_shoes,Footwear,Shoes,White,Men,Nike Men Air Rift MTR White Casual Shoe,384,512,0.75,RGB,512,512,0.9493,0.1358,train,data/prepared/train/casual_shoes/casual_shoes_19311.png
+49461,Casual Shoes,casual_shoes,Footwear,Shoes,Blue,Men,Vans Men Blue Era Scilla Plaid Shoes,384,512,0.75,RGB,512,512,0.9601,0.1203,train,data/prepared/train/casual_shoes/casual_shoes_49461.png
+23849,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Men,ADIDAS Men Black Anzo Breeze Casual Shoes,384,512,0.75,RGB,512,512,0.8652,0.2894,val,data/prepared/val/casual_shoes/casual_shoes_23849.png
+24250,Casual Shoes,casual_shoes,Footwear,Shoes,White,Men,Numero Uno Men White Casual Shoes,384,512,0.75,RGB,512,512,0.942,0.1554,train,data/prepared/train/casual_shoes/casual_shoes_24250.png
+15517,Casual Shoes,casual_shoes,Footwear,Shoes,Red,Men,Rockport Men LLandro Red Casual Shoes,384,512,0.75,RGB,512,512,0.9109,0.2235,train,data/prepared/train/casual_shoes/casual_shoes_15517.png
+4140,Casual Shoes,casual_shoes,Footwear,Shoes,Green,Women,Skechers Women Green Shoe,384,512,0.75,RGB,512,512,0.9497,0.1347,train,data/prepared/train/casual_shoes/casual_shoes_4140.png
+6425,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Unisex,Lotto Unisex Canvas Black Check Shoe,384,512,0.75,RGB,512,512,0.9411,0.1875,train,data/prepared/train/casual_shoes/casual_shoes_6425.png
+42270,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Unisex,Vans Unisex Black & Grey Classic Shoes,384,512,0.75,RGB,512,512,0.9371,0.1938,val,data/prepared/val/casual_shoes/casual_shoes_42270.png
+32751,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Men,FILA Men Liga II Black Shoes,384,512,0.75,RGB,512,512,0.9237,0.2035,train,data/prepared/train/casual_shoes/casual_shoes_32751.png
+39943,Casual Shoes,casual_shoes,Footwear,Shoes,Brown,Men,GAS Men Brown Count Casual Shoes,384,512,0.75,RGB,512,512,0.889,0.2522,train,data/prepared/train/casual_shoes/casual_shoes_39943.png
+22705,Casual Shoes,casual_shoes,Footwear,Shoes,White,Men,Nike Men White Capri II Casual Shoe,384,512,0.75,RGB,512,512,0.9523,0.1406,train,data/prepared/train/casual_shoes/casual_shoes_22705.png
+50741,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Men,Red Chief Men Black Shoes,384,512,0.75,RGB,512,512,0.8845,0.2688,val,data/prepared/val/casual_shoes/casual_shoes_50741.png
+20856,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Men,United Colors of Benetton Men Casual Black Shoes,384,512,0.75,RGB,512,512,0.8889,0.2804,train,data/prepared/train/casual_shoes/casual_shoes_20856.png
+19772,Casual Shoes,casual_shoes,Footwear,Shoes,Blue,Men,ADIDAS Men Vigor Blue Casual Shoes,384,512,0.75,RGB,512,512,0.8973,0.2685,test,data/prepared/test/casual_shoes/casual_shoes_19772.png
+5896,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Men,Puma Men Cavallino Black Shoe,384,512,0.75,RGB,512,512,0.8825,0.276,test,data/prepared/test/casual_shoes/casual_shoes_5896.png
+49492,Casual Shoes,casual_shoes,Footwear,Shoes,Maroon,Men,Vans Men Maroon & Grey Era Shoes,384,512,0.75,RGB,512,512,0.9474,0.1721,train,data/prepared/train/casual_shoes/casual_shoes_49492.png
+9031,Casual Shoes,casual_shoes,Footwear,Shoes,Tan,Men,Buckaroo Men loma Tan Casual Shoes,384,512,0.75,RGB,512,512,0.8813,0.2685,train,data/prepared/train/casual_shoes/casual_shoes_9031.png
+59056,Casual Shoes,casual_shoes,Footwear,Shoes,Blue,Women,Carlton London Women Blue & Cream Shoes,384,512,0.75,RGB,512,512,0.9625,0.1288,train,data/prepared/train/casual_shoes/casual_shoes_59056.png
+15379,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Men,Fila Men Lobato Black Casual Shoes,384,512,0.75,RGB,512,512,0.8947,0.27,val,data/prepared/val/casual_shoes/casual_shoes_15379.png
+19329,Casual Shoes,casual_shoes,Footwear,Shoes,Brown,Men,Puma Men Standpunkt Brown Casual Shoes,384,512,0.75,RGB,512,512,0.8811,0.272,val,data/prepared/val/casual_shoes/casual_shoes_19329.png
+39944,Casual Shoes,casual_shoes,Footwear,Shoes,Grey,Men,GAS Men Grey Namib Shoes,384,512,0.75,RGB,512,512,0.8742,0.2621,train,data/prepared/train/casual_shoes/casual_shoes_39944.png
+36130,Casual Shoes,casual_shoes,Footwear,Shoes,Grey,Men,Nike Men Dunk High Grey Shoes,384,512,0.75,RGB,512,512,0.9075,0.1954,val,data/prepared/val/casual_shoes/casual_shoes_36130.png
+44510,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Unisex,Converse Unisex Black Shoes,384,512,0.75,RGB,512,512,0.8967,0.2719,train,data/prepared/train/casual_shoes/casual_shoes_44510.png
+22702,Casual Shoes,casual_shoes,Footwear,Shoes,Beige,Women,Nike Women Beige Dunk High Casual Shoes,384,512,0.75,RGB,512,512,0.9531,0.1138,train,data/prepared/train/casual_shoes/casual_shoes_22702.png
+30233,Casual Shoes,casual_shoes,Footwear,Shoes,White,Men,Numero Uno Men White Shoes,384,512,0.75,RGB,512,512,0.9609,0.1319,train,data/prepared/train/casual_shoes/casual_shoes_30233.png
+6422,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Unisex,Lotto Unisex Canvas Black Grey Shoe,384,512,0.75,RGB,512,512,0.9182,0.2177,train,data/prepared/train/casual_shoes/casual_shoes_6422.png
+12507,Casual Shoes,casual_shoes,Footwear,Shoes,Black,Men,Red Tape Men Casual Black Casual Shoes,384,512,0.75,RGB,512,512,0.8642,0.3176,train,data/prepared/train/casual_shoes/casual_shoes_12507.png
+42045,Casual Shoes,casual_shoes,Footwear,Shoes,Yellow,Men,Nike Men Wardour Chukka Yellow Casual Shoes,384,512,0.75,RGB,512,512,0.9408,0.1494,train,data/prepared/train/casual_shoes/casual_shoes_42045.png
+24257,Casual Shoes,casual_shoes,Footwear,Shoes,Navy Blue,Men,Numero Uno Men Navy Blue Casual Shoes,384,512,0.75,RGB,512,512,0.8842,0.273,train,data/prepared/train/casual_shoes/casual_shoes_24257.png
+15510,Casual Shoes,casual_shoes,Footwear,Shoes,Charcoal,Men,Rockport Men CV Toe HI Charcoal Casual Shoes,384,512,0.75,RGB,512,512,0.8858,0.2496,train,data/prepared/train/casual_shoes/casual_shoes_15510.png
+20894,Casual Shoes,casual_shoes,Footwear,Shoes,Red,Men,Basics Men Red Casual Shoes,384,512,0.75,RGB,512,512,0.9098,0.2495,train,data/prepared/train/casual_shoes/casual_shoes_20894.png
+40971,Casual Shoes,casual_shoes,Footwear,Shoes,Brown,Men,Buckaroo Men Brown Casual Shoes,384,512,0.75,RGB,512,512,0.9138,0.2128,train,data/prepared/train/casual_shoes/casual_shoes_40971.png
+7364,Casual Shoes,casual_shoes,Footwear,Shoes,Brown,Men,Red Tape Men's Brown casual Shoe,384,512,0.75,RGB,512,512,0.9443,0.1529,test,data/prepared/test/casual_shoes/casual_shoes_7364.png
+13073,Casual Shoes,casual_shoes,Footwear,Shoes,White,Men,Numero Uno Men White Shoes,384,512,0.75,RGB,512,512,0.9734,0.1012,test,data/prepared/test/casual_shoes/casual_shoes_13073.png
+59263,Watches,watches,Accessories,Watches,Silver,Women,Titan Women Silver Watch,384,512,0.75,RGB,512,512,0.9687,0.0932,val,data/prepared/val/watches/watches_59263.png
+30039,Watches,watches,Accessories,Watches,Black,Men,Skagen Men Black Watch,384,512,0.75,RGB,512,512,0.7495,0.3879,val,data/prepared/val/watches/watches_30039.png
+29928,Watches,watches,Accessories,Watches,Black,Men,Police Men Black Dial Watch PL12889JVSB,384,512,0.75,RGB,512,512,0.7208,0.3568,val,data/prepared/val/watches/watches_29928.png
+17429,Watches,watches,Accessories,Watches,Black,Men,CASIO G-Shock Men Black Digital Watch G-7710-1DR G223,384,512,0.75,RGB,512,512,0.7332,0.3675,train,data/prepared/train/watches/watches_17429.png
+51658,Watches,watches,Accessories,Watches,Copper,Women,Fossil Women Copper Chronograph Watch CH2589,384,512,0.75,RGB,512,512,0.8926,0.237,val,data/prepared/val/watches/watches_51658.png
+23278,Watches,watches,Accessories,Watches,Off White,Men,Maxima Ssteele Men Off White Watch,384,512,0.75,RGB,512,512,0.8773,0.237,train,data/prepared/train/watches/watches_23278.png
+44984,Watches,watches,Accessories,Watches,White,Women,Maxima Women White Dial Watch,384,512,0.75,RGB,512,512,0.9243,0.2077,train,data/prepared/train/watches/watches_44984.png
+11188,Watches,watches,Accessories,Watches,Silver,Men,Carrera Men Dial steel finish strap Silver Watches,384,512,0.75,RGB,512,512,0.6735,0.4096,train,data/prepared/train/watches/watches_11188.png
+45258,Watches,watches,Accessories,Watches,Black,Men,CASIO EDIFICE Men Black Dial Chronograph Watch ED60,384,512,0.75,RGB,512,512,0.8156,0.3394,train,data/prepared/train/watches/watches_45258.png
+44970,Watches,watches,Accessories,Watches,White,Men,Maxima Men White Dial Analog Chronograph Watch,384,512,0.75,RGB,512,512,0.8107,0.2833,train,data/prepared/train/watches/watches_44970.png
+22950,Watches,watches,Accessories,Watches,Black,Unisex,Fastrack Unisex Black Dial Watch 9915PP13,384,512,0.75,RGB,512,512,0.7025,0.3825,train,data/prepared/train/watches/watches_22950.png
+13841,Watches,watches,Accessories,Watches,White,Unisex,ADIDAS Unisex Three Small Dials White Watches,384,512,0.75,RGB,512,512,0.883,0.1943,train,data/prepared/train/watches/watches_13841.png
+8110,Watches,watches,Accessories,Watches,Black,Men,Fastrack Men Economy 2 Analg Black Watch,384,512,0.75,RGB,512,512,0.7938,0.3286,train,data/prepared/train/watches/watches_8110.png
+43190,Watches,watches,Accessories,Watches,White,Women,Fastrack Women White Dial Watch,384,512,0.75,RGB,512,512,0.8331,0.303,train,data/prepared/train/watches/watches_43190.png
+32335,Watches,watches,Accessories,Watches,Silver,Men,Q&Q Men Silver-Toned Dial Analogue Watch Q252J404Y,384,512,0.75,RGB,512,512,0.8005,0.3048,train,data/prepared/train/watches/watches_32335.png
+56670,Watches,watches,Accessories,Watches,Black,Men,Maxima Men Black Dial Watch,384,512,0.75,RGB,512,512,0.8148,0.3133,train,data/prepared/train/watches/watches_56670.png
+36795,Watches,watches,Accessories,Watches,Silver,Men,Maxima Men Ssteele Silver Dial Watch,384,512,0.75,RGB,512,512,0.8488,0.2798,test,data/prepared/test/watches/watches_36795.png
+40527,Watches,watches,Accessories,Watches,Gold,Men,Titan Men Gold Dial Watch,384,512,0.75,RGB,512,512,0.9273,0.1607,train,data/prepared/train/watches/watches_40527.png
+45869,Watches,watches,Accessories,Watches,Brown,Men,Maxima Men Brown Dial Watch,384,512,0.75,RGB,512,512,0.6645,0.4104,val,data/prepared/val/watches/watches_45869.png
+4716,Watches,watches,Accessories,Watches,Black,Unisex,ADIDAS Unisex Response ST Analogue Black Watch,384,512,0.75,RGB,512,512,0.7784,0.3005,train,data/prepared/train/watches/watches_4716.png
+26351,Watches,watches,Accessories,Watches,White,Women,DKNY Women White Dial Watch NY8472,384,512,0.75,RGB,512,512,0.91,0.1528,train,data/prepared/train/watches/watches_26351.png
+29917,Watches,watches,Accessories,Watches,White,Men,Police Men White Dial Watch PL12698JS,384,512,0.75,RGB,512,512,0.8697,0.2211,train,data/prepared/train/watches/watches_29917.png
+43164,Watches,watches,Accessories,Watches,Black,Men,Fastrack Men Black Watch,384,512,0.75,RGB,512,512,0.7051,0.3928,test,data/prepared/test/watches/watches_43164.png
+45293,Watches,watches,Accessories,Watches,Red,Women,CASIO SHEEN Women Red Dial Watch SX017,384,512,0.75,RGB,512,512,0.9009,0.2388,train,data/prepared/train/watches/watches_45293.png
+36761,Watches,watches,Accessories,Watches,Black,Men,Maxima Men Black Watch,384,512,0.75,RGB,512,512,0.7717,0.3673,train,data/prepared/train/watches/watches_36761.png
+37481,Watches,watches,Accessories,Watches,White,Women,Esprit Women White Dial Watch,384,512,0.75,RGB,512,512,0.9726,0.0865,train,data/prepared/train/watches/watches_37481.png
+8117,Watches,watches,Accessories,Watches,Black,Men,Fastrack Men New Analog Black Navy Watch,384,512,0.75,RGB,512,512,0.8255,0.2978,train,data/prepared/train/watches/watches_8117.png
+39375,Watches,watches,Accessories,Watches,Silver,Women,Helix Women Silver Dial Watch,384,512,0.75,RGB,512,512,0.9534,0.1193,val,data/prepared/val/watches/watches_39375.png
+59290,Watches,watches,Accessories,Watches,Black,Men,Titan Men Black Dial Watch,384,512,0.75,RGB,512,512,0.8253,0.3412,train,data/prepared/train/watches/watches_59290.png
+52678,Watches,watches,Accessories,Watches,Black,Men,Morellato Men Black Watch,384,512,0.75,RGB,512,512,0.8043,0.3306,train,data/prepared/train/watches/watches_52678.png
+39711,Watches,watches,Accessories,Watches,Black,Men,ADIDAS Original Men Black Dial Chronograph Watch ADH2641,384,512,0.75,RGB,512,512,0.7863,0.3408,test,data/prepared/test/watches/watches_39711.png
+36759,Watches,watches,Accessories,Watches,White,Men,Maxima Men White Dial Watch,384,512,0.75,RGB,512,512,0.8531,0.2867,train,data/prepared/train/watches/watches_36759.png
+44977,Watches,watches,Accessories,Watches,Silver,Men,Maxima Men Silver Dial Attivo Watch,384,512,0.75,RGB,512,512,0.8214,0.2726,train,data/prepared/train/watches/watches_44977.png
+29745,Watches,watches,Accessories,Watches,Black,Men,Fossil Men Quartz Black Dial Chronograph Watch JR1303,384,512,0.75,RGB,512,512,0.7096,0.365,train,data/prepared/train/watches/watches_29745.png
+44983,Watches,watches,Accessories,Watches,Silver,Women,Maxima Women Silver Dial Watch,384,512,0.75,RGB,512,512,0.923,0.209,train,data/prepared/train/watches/watches_44983.png
+59264,Watches,watches,Accessories,Watches,White,Women,Titan Women White Watch,384,512,0.75,RGB,512,512,0.9585,0.1068,test,data/prepared/test/watches/watches_59264.png
+43163,Watches,watches,Accessories,Watches,White,Men,Fastrack Men White Dial Watch,384,512,0.75,RGB,512,512,0.7949,0.3298,test,data/prepared/test/watches/watches_43163.png
+36766,Watches,watches,Accessories,Watches,Black,Men,Maxima Men Black Watch,384,512,0.75,RGB,512,512,0.7579,0.3738,train,data/prepared/train/watches/watches_36766.png
+45294,Watches,watches,Accessories,Watches,Black,Women,CASIO SHEEN Women Black Dial Watch SX041,384,512,0.75,RGB,512,512,0.9055,0.2218,train,data/prepared/train/watches/watches_45294.png
+30001,Watches,watches,Accessories,Watches,White,Women,Aspen Women White Dial Watch,384,512,0.75,RGB,512,512,0.8898,0.2323,test,data/prepared/test/watches/watches_30001.png
+12732,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Nike Unisex Swoosh Black Backpack,384,512,0.75,RGB,512,512,0.7866,0.3476,train,data/prepared/train/backpacks/backpacks_12732.png
+29319,Backpacks,backpacks,Accessories,Bags,Red,Unisex,ADIDAS Unisex Chicago Bulls Red Backpack,384,512,0.75,RGB,512,512,0.8196,0.3328,train,data/prepared/train/backpacks/backpacks_29319.png
+19920,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Wildcraft Unisex Black Outdoor Backpack,384,512,0.75,RGB,512,512,0.765,0.3591,train,data/prepared/train/backpacks/backpacks_19920.png
+19316,Backpacks,backpacks,Accessories,Bags,Grey,Unisex,Nike Unisex Hayward 25M Grey Backpack,384,512,0.75,RGB,512,512,0.8187,0.3381,val,data/prepared/val/backpacks/backpacks_19316.png
+19918,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Wildcraft Unisex Black Backpack,384,512,0.75,RGB,512,512,0.7289,0.4013,train,data/prepared/train/backpacks/backpacks_19918.png
+46623,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Nike Unisex Ultimatum Max Backpack,384,512,0.75,RGB,512,512,0.727,0.3954,train,data/prepared/train/backpacks/backpacks_46623.png
+22968,Backpacks,backpacks,Accessories,Bags,Black,Unisex,U.S. Polo Assn. Unisex Casual Olive Backpack,384,512,0.75,RGB,512,512,0.7875,0.3515,train,data/prepared/train/backpacks/backpacks_22968.png
+19320,Backpacks,backpacks,Accessories,Bags,Pink,Unisex,Nike Unisex Classic Turf Pink Backpack,384,512,0.75,RGB,512,512,0.8789,0.2482,test,data/prepared/test/backpacks/backpacks_19320.png
+58146,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Puma Unisex Black Backpack,384,512,0.75,RGB,512,512,0.8016,0.3347,train,data/prepared/train/backpacks/backpacks_58146.png
+29317,Backpacks,backpacks,Accessories,Bags,Blue,Unisex,ADIDAS Unisex Blue Backpack,384,512,0.75,RGB,512,512,0.7701,0.3851,train,data/prepared/train/backpacks/backpacks_29317.png
+34463,Backpacks,backpacks,Accessories,Bags,Black,Unisex,ADIDAS Unisex Black Backpack,384,512,0.75,RGB,512,512,0.7465,0.3794,val,data/prepared/val/backpacks/backpacks_34463.png
+37682,Backpacks,backpacks,Accessories,Bags,Black,Unisex,American Tourister Unisex Black Backpack,384,512,0.75,RGB,512,512,0.7527,0.3633,train,data/prepared/train/backpacks/backpacks_37682.png
+37676,Backpacks,backpacks,Accessories,Bags,Black,Unisex,American Tourister Unisex Black Backpack,384,512,0.75,RGB,512,512,0.7361,0.3908,train,data/prepared/train/backpacks/backpacks_37676.png
+21189,Backpacks,backpacks,Accessories,Bags,Blue,Unisex,Quiksilver Unisex Blue Backpack,384,512,0.75,RGB,512,512,0.8241,0.2674,train,data/prepared/train/backpacks/backpacks_21189.png
+39512,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Peter England Unisex Black Backpack,384,512,0.75,RGB,512,512,0.8357,0.3075,test,data/prepared/test/backpacks/backpacks_39512.png
+9490,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Puma Unisex Deck Black Backpacks,384,512,0.75,RGB,512,512,0.743,0.3429,train,data/prepared/train/backpacks/backpacks_9490.png
+30202,Backpacks,backpacks,Accessories,Bags,Navy Blue,Unisex,Nike Unisex Classic Turf Navy Blue Backpack,384,512,0.75,RGB,512,512,0.8039,0.345,train,data/prepared/train/backpacks/backpacks_30202.png
+37671,Backpacks,backpacks,Accessories,Bags,Black,Unisex,American Tourister Unisex Black Backpack,384,512,0.75,RGB,512,512,0.7543,0.3783,train,data/prepared/train/backpacks/backpacks_37671.png
+37685,Backpacks,backpacks,Accessories,Bags,Black,Unisex,American Tourister Unisex Black Backpack,384,512,0.75,RGB,512,512,0.7335,0.3828,test,data/prepared/test/backpacks/backpacks_37685.png
+19318,Backpacks,backpacks,Accessories,Bags,Blue,Unisex,Nike Unisex Classic Base Blue Backpack,384,512,0.75,RGB,512,512,0.7866,0.3498,train,data/prepared/train/backpacks/backpacks_19318.png
+19916,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Wildcraft Unisex Black & Grey Printed Laptop Backpack,384,512,0.75,RGB,512,512,0.8146,0.3232,val,data/prepared/val/backpacks/backpacks_19916.png
+5262,Backpacks,backpacks,Accessories,Bags,Blue,Unisex,Wildcraft Unisex Blue & Grey Printed Backpack,384,512,0.75,RGB,512,512,0.8342,0.2603,train,data/prepared/train/backpacks/backpacks_5262.png
+12750,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Nike Unisex Swoosh Black Backpacks,384,512,0.75,RGB,512,512,0.8156,0.3135,test,data/prepared/test/backpacks/backpacks_12750.png
+35172,Backpacks,backpacks,Accessories,Bags,Red,Unisex,Wildcraft Unisex Cruiser Red Backpack,384,512,0.75,RGB,512,512,0.7918,0.3492,test,data/prepared/test/backpacks/backpacks_35172.png
+2221,Backpacks,backpacks,Accessories,Bags,Blue,Unisex,ADIDAS Classic Blue White Backpack,384,512,0.75,RGB,512,512,0.7835,0.3396,train,data/prepared/train/backpacks/backpacks_2221.png
+35186,Backpacks,backpacks,Accessories,Bags,Grey,Unisex,Wildcraft Unisex Grey & Black Backpack,384,512,0.75,RGB,512,512,0.8204,0.3056,train,data/prepared/train/backpacks/backpacks_35186.png
+7105,Backpacks,backpacks,Accessories,Bags,Green,Unisex,Wildcraft Unisex Green Backpack,384,512,0.75,RGB,512,512,0.7995,0.3198,train,data/prepared/train/backpacks/backpacks_7105.png
+8516,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Nike Unisex Ultimatum Max Black Backpacks,384,512,0.75,RGB,512,512,0.7502,0.385,train,data/prepared/train/backpacks/backpacks_8516.png
+7102,Backpacks,backpacks,Accessories,Bags,Orange,Unisex,Wildcraft Unisex Orange & Grey Backpack,384,512,0.75,RGB,512,512,0.8164,0.2983,test,data/prepared/test/backpacks/backpacks_7102.png
+43565,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Puma Unisex Black Echo Backpack,384,512,0.75,RGB,512,512,0.8139,0.3115,train,data/prepared/train/backpacks/backpacks_43565.png
+35181,Backpacks,backpacks,Accessories,Bags,Blue,Unisex,Wildcraft Unisex Blue Backpack,384,512,0.75,RGB,512,512,0.913,0.1622,train,data/prepared/train/backpacks/backpacks_35181.png
+53367,Backpacks,backpacks,Accessories,Bags,Pink,Unisex,Puma Unisex Pink Backpack,384,512,0.75,RGB,512,512,0.8499,0.2865,train,data/prepared/train/backpacks/backpacks_53367.png
+9437,Backpacks,backpacks,Accessories,Bags,Black,Unisex,Nike Unisex Brasilia 5 Me Black Backpacks,384,512,0.75,RGB,512,512,0.7896,0.3502,val,data/prepared/val/backpacks/backpacks_9437.png
+4583,Backpacks,backpacks,Accessories,Bags,Grey,Unisex,Wildcraft Unisex Grey Backpack,384,512,0.75,RGB,512,512,0.7728,0.3523,train,data/prepared/train/backpacks/backpacks_4583.png
+35188,Backpacks,backpacks,Accessories,Bags,Pink,Women,Wildcraft Women Pink Backpack,384,512,0.75,RGB,512,512,0.9401,0.133,train,data/prepared/train/backpacks/backpacks_35188.png
+24832,Backpacks,backpacks,Accessories,Bags,Blue,Unisex,Wildcraft Unisex Blue & Black Backpack,384,512,0.75,RGB,512,512,0.7531,0.3584,val,data/prepared/val/backpacks/backpacks_24832.png
+31984,Backpacks,backpacks,Accessories,Bags,Black,Unisex,ADIDAS Unisex Black Backpack,384,512,0.75,RGB,512,512,0.768,0.3503,train,data/prepared/train/backpacks/backpacks_31984.png
+15923,Backpacks,backpacks,Accessories,Bags,Black,Unisex,ADIDAS Unisex ADP1810 Black Backpack,384,512,0.75,RGB,512,512,0.8164,0.3117,train,data/prepared/train/backpacks/backpacks_15923.png
+18432,Backpacks,backpacks,Accessories,Bags,Pink,Unisex,Vital Gear Unisex Pink Daypack Backpack,384,512,0.75,RGB,512,512,0.8477,0.2707,val,data/prepared/val/backpacks/backpacks_18432.png
+9439,Backpacks,backpacks,Accessories,Bags,Blue,Unisex,Nike Unisex Brasilia 5 Me Blue Backpacks,384,512,0.75,RGB,512,512,0.8236,0.3139,train,data/prepared/train/backpacks/backpacks_9439.png
+16957,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,Image Men Sunglasses,384,512,0.75,RGB,512,512,0.9762,0.1012,test,data/prepared/test/sunglasses/sunglasses_16957.png
+28200,Sunglasses,sunglasses,Accessories,Eyewear,Copper,Men,Ray-Ban Men Active Lifestyle Copper Sunglasses,384,512,0.75,RGB,512,512,0.9749,0.1163,train,data/prepared/train/sunglasses/sunglasses_28200.png
+51667,Sunglasses,sunglasses,Accessories,Eyewear,Grey,Men,Louis Philippe Men Grey Sunglasses,384,512,0.75,RGB,512,512,0.9733,0.1129,train,data/prepared/train/sunglasses/sunglasses_51667.png
+21346,Sunglasses,sunglasses,Accessories,Eyewear,Gold,Men,Pal Zileri Men Casual Gold Frame Sunglasses,384,512,0.75,RGB,512,512,0.9751,0.1122,train,data/prepared/train/sunglasses/sunglasses_21346.png
+51693,Sunglasses,sunglasses,Accessories,Eyewear,Brown,Unisex,Van Heusen Unisex Brown Sunglasses,384,512,0.75,RGB,512,512,0.9573,0.1588,train,data/prepared/train/sunglasses/sunglasses_51693.png
+28207,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,Ray-Ban Men Active Lifestyle Black Sunglasses,384,512,0.75,RGB,512,512,0.9821,0.1061,val,data/prepared/val/sunglasses/sunglasses_28207.png
+16950,Sunglasses,sunglasses,Accessories,Eyewear,Brown,Men,Image Men Sunglasses,384,512,0.75,RGB,512,512,0.973,0.1193,test,data/prepared/test/sunglasses/sunglasses_16950.png
+30668,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,Park Avenue Men Black Sunglasses,384,512,0.75,RGB,512,512,0.9617,0.1571,train,data/prepared/train/sunglasses/sunglasses_30668.png
+51694,Sunglasses,sunglasses,Accessories,Eyewear,Brown,Unisex,Van Heusen Unisex Sunglasses VH216-C2,384,512,0.75,RGB,512,512,0.966,0.1288,train,data/prepared/train/sunglasses/sunglasses_51694.png
+21341,Sunglasses,sunglasses,Accessories,Eyewear,Steel,Men,Pal Zileri Men Casual Steel Frame Sunglasses,384,512,0.75,RGB,512,512,0.9717,0.1279,train,data/prepared/train/sunglasses/sunglasses_21341.png
+49662,Sunglasses,sunglasses,Accessories,Eyewear,Black,Women,United Colors of Benetton Women Sunglass,384,512,0.75,RGB,512,512,0.9521,0.1781,val,data/prepared/val/sunglasses/sunglasses_49662.png
+20860,Sunglasses,sunglasses,Accessories,Eyewear,Black,Women,United Colors of Benetton Women Casual Sunglasses,384,512,0.75,RGB,512,512,0.9604,0.1503,train,data/prepared/train/sunglasses/sunglasses_20860.png
+29125,Sunglasses,sunglasses,Accessories,Eyewear,White,Women,Vogue Women White Sunglasses,384,512,0.75,RGB,512,512,0.9804,0.0847,train,data/prepared/train/sunglasses/sunglasses_29125.png
+21348,Sunglasses,sunglasses,Accessories,Eyewear,Silver,Men,Pal Zileri Men Casual Metal Frame Sunglasses,384,512,0.75,RGB,512,512,0.9722,0.1252,train,data/prepared/train/sunglasses/sunglasses_21348.png
+51669,Sunglasses,sunglasses,Accessories,Eyewear,Silver,Men,Louis Philippe Men Grey Sunglasses,384,512,0.75,RGB,512,512,0.9738,0.1128,train,data/prepared/train/sunglasses/sunglasses_51669.png
+16959,Sunglasses,sunglasses,Accessories,Eyewear,Brown,Women,Image Women Classic Eyewear Brown Sunglasses,384,512,0.75,RGB,512,512,0.9658,0.1383,train,data/prepared/train/sunglasses/sunglasses_16959.png
+30661,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,Park Avenue Men Black Sunglasses,384,512,0.75,RGB,512,512,0.9726,0.1198,train,data/prepared/train/sunglasses/sunglasses_30661.png
+40172,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,Fastrack Men UV protected Sporty Wrap Sunglasses,384,512,0.75,RGB,512,512,0.9504,0.177,train,data/prepared/train/sunglasses/sunglasses_40172.png
+8784,Sunglasses,sunglasses,Accessories,Eyewear,Brown,Unisex,Fastrack Unisex Brown Sunglasses,384,512,0.75,RGB,512,512,0.961,0.1632,train,data/prepared/train/sunglasses/sunglasses_8784.png
+49665,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,United Colors of Benetton Men Sunglass,384,512,0.75,RGB,512,512,0.9624,0.1585,val,data/prepared/val/sunglasses/sunglasses_49665.png
+16961,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,Image Men Sunglasses,384,512,0.75,RGB,512,512,0.9706,0.1305,train,data/prepared/train/sunglasses/sunglasses_16961.png
+40175,Sunglasses,sunglasses,Accessories,Eyewear,Grey,Men,Fastrack Men Revo Coated Sporty Wrap Sunglasses,384,512,0.75,RGB,512,512,0.976,0.0853,train,data/prepared/train/sunglasses/sunglasses_40175.png
+30666,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,Park Avenue Men Black Sunglasses,384,512,0.75,RGB,512,512,0.9761,0.1015,train,data/prepared/train/sunglasses/sunglasses_30666.png
+28209,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,Ray-Ban Men High Street Black Sunglasses,384,512,0.75,RGB,512,512,0.9664,0.1604,train,data/prepared/train/sunglasses/sunglasses_28209.png
+20858,Sunglasses,sunglasses,Accessories,Eyewear,Olive,Women,United Colors of Benetton Women Casual Olive Sunglasses,384,512,0.75,RGB,512,512,0.9616,0.138,val,data/prepared/val/sunglasses/sunglasses_20858.png
+40181,Sunglasses,sunglasses,Accessories,Eyewear,Grey,Men,Fastrack Men Revo Coated Sporty Wrap Sunglasses,384,512,0.75,RGB,512,512,0.9748,0.114,train,data/prepared/train/sunglasses/sunglasses_40181.png
+21324,Sunglasses,sunglasses,Accessories,Eyewear,Brown,Men,Louis Philippe Men Aviator Sunglasses LP201-C1,384,512,0.75,RGB,512,512,0.9583,0.1664,train,data/prepared/train/sunglasses/sunglasses_21324.png
+38209,Sunglasses,sunglasses,Accessories,Eyewear,Silver,Women,Polaroid Women Sunglasses,384,512,0.75,RGB,512,512,0.966,0.1432,val,data/prepared/val/sunglasses/sunglasses_38209.png
+17222,Sunglasses,sunglasses,Accessories,Eyewear,Blue,Men,United Colors of Benetton Men Funky Eyewear Blue Sunglasses,384,512,0.75,RGB,512,512,0.9757,0.1078,train,data/prepared/train/sunglasses/sunglasses_17222.png
+30269,Sunglasses,sunglasses,Accessories,Eyewear,Brown,Men,Speedo Men Sheet Sunglasses,384,512,0.75,RGB,512,512,0.9591,0.1397,test,data/prepared/test/sunglasses/sunglasses_30269.png
+28296,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,Fastrack Men Sunglasses,384,512,0.75,RGB,512,512,0.9643,0.1258,test,data/prepared/test/sunglasses/sunglasses_28296.png
+38236,Sunglasses,sunglasses,Accessories,Eyewear,Black,Unisex,Polaroid Unisex Sunglasses,384,512,0.75,RGB,512,512,0.9507,0.1757,train,data/prepared/train/sunglasses/sunglasses_38236.png
+16109,Sunglasses,sunglasses,Accessories,Eyewear,Brown,Men,M tv Men My Fab Eyewear Brown Sunglasses,384,512,0.75,RGB,512,512,0.9687,0.1379,train,data/prepared/train/sunglasses/sunglasses_16109.png
+58549,Sunglasses,sunglasses,Accessories,Eyewear,Black,Women,Miami Blues Women Sunglasses,384,512,0.75,RGB,512,512,0.9604,0.1552,train,data/prepared/train/sunglasses/sunglasses_58549.png
+17225,Sunglasses,sunglasses,Accessories,Eyewear,Blue,Men,United Colors of Benetton Men Funky Eyewear Blue Sunglasses,384,512,0.75,RGB,512,512,0.9716,0.1224,train,data/prepared/train/sunglasses/sunglasses_17225.png
+9408,Sunglasses,sunglasses,Accessories,Eyewear,Blue,Women,Fastrack Women Sunglasses,384,512,0.75,RGB,512,512,0.9605,0.1523,val,data/prepared/val/sunglasses/sunglasses_9408.png
+21323,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,Louis Philippe Men Sunglasses LP045-C5,384,512,0.75,RGB,512,512,0.9649,0.1428,train,data/prepared/train/sunglasses/sunglasses_21323.png
+38231,Sunglasses,sunglasses,Accessories,Eyewear,Black,Women,Polaroid Women Sunglasses,384,512,0.75,RGB,512,512,0.9597,0.1469,test,data/prepared/test/sunglasses/sunglasses_38231.png
+28291,Sunglasses,sunglasses,Accessories,Eyewear,Black,Men,Fastrack Men Black Sunglasses,384,512,0.75,RGB,512,512,0.9624,0.1452,test,data/prepared/test/sunglasses/sunglasses_28291.png
+16107,Sunglasses,sunglasses,Accessories,Eyewear,Black,Women,M tv Women My Fab Eyewear Black Sunglasses,384,512,0.75,RGB,512,512,0.9571,0.1566,train,data/prepared/train/sunglasses/sunglasses_16107.png
+47957,Handbags,handbags,Accessories,Bags,Blue,Women,Murcia Women Blue Handbag,384,512,0.75,RGB,512,512,0.9275,0.1769,train,data/prepared/train/handbags/handbags_47957.png
+47359,Handbags,handbags,Accessories,Bags,Brown,Women,Baggit Women Brown Handbag,384,512,0.75,RGB,512,512,0.8471,0.2899,train,data/prepared/train/handbags/handbags_47359.png
+21977,Handbags,handbags,Accessories,Bags,Brown,Women,Murcia Women Casual Brown Handbag,384,512,0.75,RGB,512,512,0.8414,0.3113,train,data/prepared/train/handbags/handbags_21977.png
+58183,Handbags,handbags,Accessories,Bags,White,Women,Rocky S Women White Handbag,384,512,0.75,RGB,512,512,0.9706,0.1103,train,data/prepared/train/handbags/handbags_58183.png
+29742,Handbags,handbags,Accessories,Bags,Teal,Women,Kiara Women Teal Handbag,384,512,0.75,RGB,512,512,0.8762,0.2773,train,data/prepared/train/handbags/handbags_29742.png
+42841,Handbags,handbags,Accessories,Bags,Beige,Women,French Connection Women Beige Handbag,384,512,0.75,RGB,512,512,0.9296,0.1521,train,data/prepared/train/handbags/handbags_42841.png
+35913,Handbags,handbags,Accessories,Bags,Black,Women,Peperone Women Black & White Handbag,384,512,0.75,RGB,512,512,0.8487,0.3183,train,data/prepared/train/handbags/handbags_35913.png
+31923,Handbags,handbags,Accessories,Bags,Blue,Women,Fabindia Women Blue Silk Sling Bag,384,512,0.75,RGB,512,512,0.7632,0.3638,val,data/prepared/val/handbags/handbags_31923.png
+58177,Handbags,handbags,Accessories,Bags,Brown,Women,Rocky S Women Brown Handbag,384,512,0.75,RGB,512,512,0.8653,0.2527,train,data/prepared/train/handbags/handbags_58177.png
+21510,Handbags,handbags,Accessories,Bags,White,Women,Kiara Women Graphiti White Handbag,384,512,0.75,RGB,512,512,0.91,0.2079,train,data/prepared/train/handbags/handbags_21510.png
+21948,Handbags,handbags,Accessories,Bags,Brown,Women,Murcia Women Casual Brown Handbag,384,512,0.75,RGB,512,512,0.8552,0.2962,train,data/prepared/train/handbags/handbags_21948.png
+47366,Handbags,handbags,Accessories,Bags,Blue,Women,Baggit Women Blue Bag,384,512,0.75,RGB,512,512,0.8702,0.299,train,data/prepared/train/handbags/handbags_47366.png
+9009,Handbags,handbags,Accessories,Bags,Brown,Women,Murcia Women Snake Print Bag Brown Handbags,384,512,0.75,RGB,512,512,0.8256,0.3029,train,data/prepared/train/handbags/handbags_9009.png
+47392,Handbags,handbags,Accessories,Bags,Beige,Women,Baggit Women Beige Bag,384,512,0.75,RGB,512,512,0.9187,0.1768,test,data/prepared/test/handbags/handbags_47392.png
+3391,Handbags,handbags,Accessories,Bags,White,Women,Murcia Women White With Stitch Bag,384,512,0.75,RGB,512,512,0.9868,0.0458,val,data/prepared/val/handbags/handbags_3391.png
+20604,Handbags,handbags,Accessories,Bags,Brown,Women,Baggit Women Umbrella Dum Brown Handbag,384,512,0.75,RGB,512,512,0.8628,0.2781,val,data/prepared/val/handbags/handbags_20604.png
+25144,Handbags,handbags,Accessories,Bags,Orange,Women,Lino Perros Women Leatherite Orange Handbag,384,512,0.75,RGB,512,512,0.8778,0.257,train,data/prepared/train/handbags/handbags_25144.png
+31924,Handbags,handbags,Accessories,Bags,Black,Women,Fabindia Women Black Silk Handbag,384,512,0.75,RGB,512,512,0.787,0.337,test,data/prepared/test/handbags/handbags_31924.png
+42846,Handbags,handbags,Accessories,Bags,Multi,Women,French Connection Women Multi Stripe Hand Bag,384,512,0.75,RGB,512,512,0.9013,0.2426,train,data/prepared/train/handbags/handbags_42846.png
+53934,Handbags,handbags,Accessories,Bags,Brown,Women,Kiara Women Brown Handbag,384,512,0.75,RGB,512,512,0.8537,0.2583,train,data/prepared/train/handbags/handbags_53934.png
+25188,Handbags,handbags,Accessories,Bags,Brown,Women,Lino Perros Women Leatherite Brown Handbag,384,512,0.75,RGB,512,512,0.8563,0.2885,val,data/prepared/val/handbags/handbags_25188.png
+21528,Handbags,handbags,Accessories,Bags,Copper,Women,Kiara Women Sequins Copper Handbag,384,512,0.75,RGB,512,512,0.8822,0.2471,train,data/prepared/train/handbags/handbags_21528.png
+59432,Handbags,handbags,Accessories,Bags,Black,Women,Spice Art Women Black Handbag,384,512,0.75,RGB,512,512,0.8183,0.3261,test,data/prepared/test/handbags/handbags_59432.png
+58184,Handbags,handbags,Accessories,Bags,Beige,Women,Rocky S Women Beige Handbag,384,512,0.75,RGB,512,512,0.9181,0.1504,test,data/prepared/test/handbags/handbags_58184.png
+3396,Handbags,handbags,Accessories,Bags,Blue,Women,Murcia Women Turquoise Blue Handbag,384,512,0.75,RGB,512,512,0.8865,0.2358,test,data/prepared/test/handbags/handbags_3396.png
+20603,Handbags,handbags,Accessories,Bags,Black,Women,Baggit Women Selection Mayur Black Sling Bag,384,512,0.75,RGB,512,512,0.7521,0.3852,val,data/prepared/val/handbags/handbags_20603.png
+52647,Handbags,handbags,Accessories,Bags,Black,Women,Mod'acc Women Black Handbag,384,512,0.75,RGB,512,512,0.8907,0.2622,train,data/prepared/train/handbags/handbags_52647.png
+33442,Handbags,handbags,Accessories,Bags,Teal,Women,Baggit Women Rade Doko Teal Handbag,384,512,0.75,RGB,512,512,0.86,0.2873,test,data/prepared/test/handbags/handbags_33442.png
+47395,Handbags,handbags,Accessories,Bags,Green,Women,Baggit Women Green Handbag,384,512,0.75,RGB,512,512,0.8912,0.2218,train,data/prepared/train/handbags/handbags_47395.png
+47361,Handbags,handbags,Accessories,Bags,Black,Women,Baggit Women Black Voodoo Gang Handbag,384,512,0.75,RGB,512,512,0.8639,0.2969,val,data/prepared/val/handbags/handbags_47361.png
+48329,Handbags,handbags,Accessories,Bags,Purple,Women,Pitaraa Women Purple Sling Bag,384,512,0.75,RGB,512,512,0.8794,0.2502,train,data/prepared/train/handbags/handbags_48329.png
+10250,Handbags,handbags,Accessories,Bags,Brown,Women,Murcia Women Hahk Brown Handbags,384,512,0.75,RGB,512,512,0.838,0.2888,train,data/prepared/train/handbags/handbags_10250.png
+5854,Handbags,handbags,Accessories,Bags,Pink,Women,ADIDAS Women Pink Handbag,384,512,0.75,RGB,512,512,0.8781,0.2587,train,data/prepared/train/handbags/handbags_5854.png
+31912,Handbags,handbags,Accessories,Bags,Green,Women,Fabindia Women Green Sling Bag,384,512,0.75,RGB,512,512,0.8789,0.2801,train,data/prepared/train/handbags/handbags_31912.png
+8313,Handbags,handbags,Accessories,Bags,Black,Women,Fastrack Women Nylon Black Handbag,384,512,0.75,RGB,512,512,0.8829,0.2727,train,data/prepared/train/handbags/handbags_8313.png
+21946,Handbags,handbags,Accessories,Bags,Black,Women,Murcia Women Casual Black Handbag,384,512,0.75,RGB,512,512,0.8545,0.3085,train,data/prepared/train/handbags/handbags_21946.png
+47368,Handbags,handbags,Accessories,Bags,Brown,Women,Baggit Brown Handbag,384,512,0.75,RGB,512,512,0.889,0.2602,train,data/prepared/train/handbags/handbags_47368.png
+9007,Handbags,handbags,Accessories,Bags,Silver,Women,Murcia Women Silver Black Purse Silver Handbags,384,512,0.75,RGB,512,512,0.9144,0.2317,train,data/prepared/train/handbags/handbags_9007.png
+42870,Handbags,handbags,Accessories,Bags,Purple,Women,French Connection Women Purple Handbag,384,512,0.75,RGB,512,512,0.8392,0.3014,train,data/prepared/train/handbags/handbags_42870.png
+53902,Handbags,handbags,Accessories,Bags,Brown,Women,Kiara Women Brown Handbag,384,512,0.75,RGB,512,512,0.8444,0.2617,train,data/prepared/train/handbags/handbags_53902.png

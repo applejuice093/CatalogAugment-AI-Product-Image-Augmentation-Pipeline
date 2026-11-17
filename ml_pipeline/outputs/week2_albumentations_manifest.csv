@@ -1,0 +1,505 @@
+product_id,category,category_slug,source_path,relative_path,augmentation_type,variant_index,seed
+30805,Shirts,shirts,data/prepared/train/shirts/shirts_30805.png,data/augmented_conventional/shirts/shirts_30805_alb_v1.png,conventional_albumentations,1,42001
+30805,Shirts,shirts,data/prepared/train/shirts/shirts_30805.png,data/augmented_conventional/shirts/shirts_30805_alb_v2.png,conventional_albumentations,2,42002
+30805,Shirts,shirts,data/prepared/train/shirts/shirts_30805.png,data/augmented_conventional/shirts/shirts_30805_alb_v3.png,conventional_albumentations,3,42003
+12369,Shirts,shirts,data/prepared/train/shirts/shirts_12369.png,data/augmented_conventional/shirts/shirts_12369_alb_v1.png,conventional_albumentations,1,42011
+12369,Shirts,shirts,data/prepared/train/shirts/shirts_12369.png,data/augmented_conventional/shirts/shirts_12369_alb_v2.png,conventional_albumentations,2,42012
+12369,Shirts,shirts,data/prepared/train/shirts/shirts_12369.png,data/augmented_conventional/shirts/shirts_12369_alb_v3.png,conventional_albumentations,3,42013
+56825,Shirts,shirts,data/prepared/train/shirts/shirts_56825.png,data/augmented_conventional/shirts/shirts_56825_alb_v1.png,conventional_albumentations,1,42021
+56825,Shirts,shirts,data/prepared/train/shirts/shirts_56825.png,data/augmented_conventional/shirts/shirts_56825_alb_v2.png,conventional_albumentations,2,42022
+56825,Shirts,shirts,data/prepared/train/shirts/shirts_56825.png,data/augmented_conventional/shirts/shirts_56825_alb_v3.png,conventional_albumentations,3,42023
+9452,Shirts,shirts,data/prepared/train/shirts/shirts_9452.png,data/augmented_conventional/shirts/shirts_9452_alb_v1.png,conventional_albumentations,1,42031
+9452,Shirts,shirts,data/prepared/train/shirts/shirts_9452.png,data/augmented_conventional/shirts/shirts_9452_alb_v2.png,conventional_albumentations,2,42032
+9452,Shirts,shirts,data/prepared/train/shirts/shirts_9452.png,data/augmented_conventional/shirts/shirts_9452_alb_v3.png,conventional_albumentations,3,42033
+4943,Shirts,shirts,data/prepared/train/shirts/shirts_4943.png,data/augmented_conventional/shirts/shirts_4943_alb_v1.png,conventional_albumentations,1,42041
+4943,Shirts,shirts,data/prepared/train/shirts/shirts_4943.png,data/augmented_conventional/shirts/shirts_4943_alb_v2.png,conventional_albumentations,2,42042
+4943,Shirts,shirts,data/prepared/train/shirts/shirts_4943.png,data/augmented_conventional/shirts/shirts_4943_alb_v3.png,conventional_albumentations,3,42043
+9660,Shirts,shirts,data/prepared/train/shirts/shirts_9660.png,data/augmented_conventional/shirts/shirts_9660_alb_v1.png,conventional_albumentations,1,42051
+9660,Shirts,shirts,data/prepared/train/shirts/shirts_9660.png,data/augmented_conventional/shirts/shirts_9660_alb_v2.png,conventional_albumentations,2,42052
+9660,Shirts,shirts,data/prepared/train/shirts/shirts_9660.png,data/augmented_conventional/shirts/shirts_9660_alb_v3.png,conventional_albumentations,3,42053
+15984,Shirts,shirts,data/prepared/train/shirts/shirts_15984.png,data/augmented_conventional/shirts/shirts_15984_alb_v1.png,conventional_albumentations,1,42061
+15984,Shirts,shirts,data/prepared/train/shirts/shirts_15984.png,data/augmented_conventional/shirts/shirts_15984_alb_v2.png,conventional_albumentations,2,42062
+15984,Shirts,shirts,data/prepared/train/shirts/shirts_15984.png,data/augmented_conventional/shirts/shirts_15984_alb_v3.png,conventional_albumentations,3,42063
+59297,Shirts,shirts,data/prepared/train/shirts/shirts_59297.png,data/augmented_conventional/shirts/shirts_59297_alb_v1.png,conventional_albumentations,1,42071
+59297,Shirts,shirts,data/prepared/train/shirts/shirts_59297.png,data/augmented_conventional/shirts/shirts_59297_alb_v2.png,conventional_albumentations,2,42072
+59297,Shirts,shirts,data/prepared/train/shirts/shirts_59297.png,data/augmented_conventional/shirts/shirts_59297_alb_v3.png,conventional_albumentations,3,42073
+7158,Shirts,shirts,data/prepared/train/shirts/shirts_7158.png,data/augmented_conventional/shirts/shirts_7158_alb_v1.png,conventional_albumentations,1,42081
+7158,Shirts,shirts,data/prepared/train/shirts/shirts_7158.png,data/augmented_conventional/shirts/shirts_7158_alb_v2.png,conventional_albumentations,2,42082
+7158,Shirts,shirts,data/prepared/train/shirts/shirts_7158.png,data/augmented_conventional/shirts/shirts_7158_alb_v3.png,conventional_albumentations,3,42083
+16392,Shirts,shirts,data/prepared/train/shirts/shirts_16392.png,data/augmented_conventional/shirts/shirts_16392_alb_v1.png,conventional_albumentations,1,42091
+16392,Shirts,shirts,data/prepared/train/shirts/shirts_16392.png,data/augmented_conventional/shirts/shirts_16392_alb_v2.png,conventional_albumentations,2,42092
+16392,Shirts,shirts,data/prepared/train/shirts/shirts_16392.png,data/augmented_conventional/shirts/shirts_16392_alb_v3.png,conventional_albumentations,3,42093
+22395,Shirts,shirts,data/prepared/train/shirts/shirts_22395.png,data/augmented_conventional/shirts/shirts_22395_alb_v1.png,conventional_albumentations,1,42101
+22395,Shirts,shirts,data/prepared/train/shirts/shirts_22395.png,data/augmented_conventional/shirts/shirts_22395_alb_v2.png,conventional_albumentations,2,42102
+22395,Shirts,shirts,data/prepared/train/shirts/shirts_22395.png,data/augmented_conventional/shirts/shirts_22395_alb_v3.png,conventional_albumentations,3,42103
+12500,Shirts,shirts,data/prepared/train/shirts/shirts_12500.png,data/augmented_conventional/shirts/shirts_12500_alb_v1.png,conventional_albumentations,1,42111
+12500,Shirts,shirts,data/prepared/train/shirts/shirts_12500.png,data/augmented_conventional/shirts/shirts_12500_alb_v2.png,conventional_albumentations,2,42112
+12500,Shirts,shirts,data/prepared/train/shirts/shirts_12500.png,data/augmented_conventional/shirts/shirts_12500_alb_v3.png,conventional_albumentations,3,42113
+16530,Shirts,shirts,data/prepared/train/shirts/shirts_16530.png,data/augmented_conventional/shirts/shirts_16530_alb_v1.png,conventional_albumentations,1,42121
+16530,Shirts,shirts,data/prepared/train/shirts/shirts_16530.png,data/augmented_conventional/shirts/shirts_16530_alb_v2.png,conventional_albumentations,2,42122
+16530,Shirts,shirts,data/prepared/train/shirts/shirts_16530.png,data/augmented_conventional/shirts/shirts_16530_alb_v3.png,conventional_albumentations,3,42123
+7167,Shirts,shirts,data/prepared/train/shirts/shirts_7167.png,data/augmented_conventional/shirts/shirts_7167_alb_v1.png,conventional_albumentations,1,42131
+7167,Shirts,shirts,data/prepared/train/shirts/shirts_7167.png,data/augmented_conventional/shirts/shirts_7167_alb_v2.png,conventional_albumentations,2,42132
+7167,Shirts,shirts,data/prepared/train/shirts/shirts_7167.png,data/augmented_conventional/shirts/shirts_7167_alb_v3.png,conventional_albumentations,3,42133
+12190,Shirts,shirts,data/prepared/train/shirts/shirts_12190.png,data/augmented_conventional/shirts/shirts_12190_alb_v1.png,conventional_albumentations,1,42141
+12190,Shirts,shirts,data/prepared/train/shirts/shirts_12190.png,data/augmented_conventional/shirts/shirts_12190_alb_v2.png,conventional_albumentations,2,42142
+12190,Shirts,shirts,data/prepared/train/shirts/shirts_12190.png,data/augmented_conventional/shirts/shirts_12190_alb_v3.png,conventional_albumentations,3,42143
+14055,Shirts,shirts,data/prepared/train/shirts/shirts_14055.png,data/augmented_conventional/shirts/shirts_14055_alb_v1.png,conventional_albumentations,1,42151
+14055,Shirts,shirts,data/prepared/train/shirts/shirts_14055.png,data/augmented_conventional/shirts/shirts_14055_alb_v2.png,conventional_albumentations,2,42152
+14055,Shirts,shirts,data/prepared/train/shirts/shirts_14055.png,data/augmented_conventional/shirts/shirts_14055_alb_v3.png,conventional_albumentations,3,42153
+34036,Shirts,shirts,data/prepared/train/shirts/shirts_34036.png,data/augmented_conventional/shirts/shirts_34036_alb_v1.png,conventional_albumentations,1,42161
+34036,Shirts,shirts,data/prepared/train/shirts/shirts_34036.png,data/augmented_conventional/shirts/shirts_34036_alb_v2.png,conventional_albumentations,2,42162
+34036,Shirts,shirts,data/prepared/train/shirts/shirts_34036.png,data/augmented_conventional/shirts/shirts_34036_alb_v3.png,conventional_albumentations,3,42163
+13846,Shirts,shirts,data/prepared/train/shirts/shirts_13846.png,data/augmented_conventional/shirts/shirts_13846_alb_v1.png,conventional_albumentations,1,42171
+13846,Shirts,shirts,data/prepared/train/shirts/shirts_13846.png,data/augmented_conventional/shirts/shirts_13846_alb_v2.png,conventional_albumentations,2,42172
+13846,Shirts,shirts,data/prepared/train/shirts/shirts_13846.png,data/augmented_conventional/shirts/shirts_13846_alb_v3.png,conventional_albumentations,3,42173
+8741,Shirts,shirts,data/prepared/train/shirts/shirts_8741.png,data/augmented_conventional/shirts/shirts_8741_alb_v1.png,conventional_albumentations,1,42181
+8741,Shirts,shirts,data/prepared/train/shirts/shirts_8741.png,data/augmented_conventional/shirts/shirts_8741_alb_v2.png,conventional_albumentations,2,42182
+8741,Shirts,shirts,data/prepared/train/shirts/shirts_8741.png,data/augmented_conventional/shirts/shirts_8741_alb_v3.png,conventional_albumentations,3,42183
+22359,Shirts,shirts,data/prepared/train/shirts/shirts_22359.png,data/augmented_conventional/shirts/shirts_22359_alb_v1.png,conventional_albumentations,1,42191
+22359,Shirts,shirts,data/prepared/train/shirts/shirts_22359.png,data/augmented_conventional/shirts/shirts_22359_alb_v2.png,conventional_albumentations,2,42192
+22359,Shirts,shirts,data/prepared/train/shirts/shirts_22359.png,data/augmented_conventional/shirts/shirts_22359_alb_v3.png,conventional_albumentations,3,42193
+4944,Shirts,shirts,data/prepared/train/shirts/shirts_4944.png,data/augmented_conventional/shirts/shirts_4944_alb_v1.png,conventional_albumentations,1,42201
+4944,Shirts,shirts,data/prepared/train/shirts/shirts_4944.png,data/augmented_conventional/shirts/shirts_4944_alb_v2.png,conventional_albumentations,2,42202
+4944,Shirts,shirts,data/prepared/train/shirts/shirts_4944.png,data/augmented_conventional/shirts/shirts_4944_alb_v3.png,conventional_albumentations,3,42203
+9667,Shirts,shirts,data/prepared/train/shirts/shirts_9667.png,data/augmented_conventional/shirts/shirts_9667_alb_v1.png,conventional_albumentations,1,42211
+9667,Shirts,shirts,data/prepared/train/shirts/shirts_9667.png,data/augmented_conventional/shirts/shirts_9667_alb_v2.png,conventional_albumentations,2,42212
+9667,Shirts,shirts,data/prepared/train/shirts/shirts_9667.png,data/augmented_conventional/shirts/shirts_9667_alb_v3.png,conventional_albumentations,3,42213
+8587,Shirts,shirts,data/prepared/train/shirts/shirts_8587.png,data/augmented_conventional/shirts/shirts_8587_alb_v1.png,conventional_albumentations,1,42221
+8587,Shirts,shirts,data/prepared/train/shirts/shirts_8587.png,data/augmented_conventional/shirts/shirts_8587_alb_v2.png,conventional_albumentations,2,42222
+8587,Shirts,shirts,data/prepared/train/shirts/shirts_8587.png,data/augmented_conventional/shirts/shirts_8587_alb_v3.png,conventional_albumentations,3,42223
+9455,Shirts,shirts,data/prepared/train/shirts/shirts_9455.png,data/augmented_conventional/shirts/shirts_9455_alb_v1.png,conventional_albumentations,1,42231
+9455,Shirts,shirts,data/prepared/train/shirts/shirts_9455.png,data/augmented_conventional/shirts/shirts_9455_alb_v2.png,conventional_albumentations,2,42232
+9455,Shirts,shirts,data/prepared/train/shirts/shirts_9455.png,data/augmented_conventional/shirts/shirts_9455_alb_v3.png,conventional_albumentations,3,42233
+15977,Shirts,shirts,data/prepared/train/shirts/shirts_15977.png,data/augmented_conventional/shirts/shirts_15977_alb_v1.png,conventional_albumentations,1,42241
+15977,Shirts,shirts,data/prepared/train/shirts/shirts_15977.png,data/augmented_conventional/shirts/shirts_15977_alb_v2.png,conventional_albumentations,2,42242
+15977,Shirts,shirts,data/prepared/train/shirts/shirts_15977.png,data/augmented_conventional/shirts/shirts_15977_alb_v3.png,conventional_albumentations,3,42243
+16361,Shirts,shirts,data/prepared/train/shirts/shirts_16361.png,data/augmented_conventional/shirts/shirts_16361_alb_v1.png,conventional_albumentations,1,42251
+16361,Shirts,shirts,data/prepared/train/shirts/shirts_16361.png,data/augmented_conventional/shirts/shirts_16361_alb_v2.png,conventional_albumentations,2,42252
+16361,Shirts,shirts,data/prepared/train/shirts/shirts_16361.png,data/augmented_conventional/shirts/shirts_16361_alb_v3.png,conventional_albumentations,3,42253
+34031,Shirts,shirts,data/prepared/train/shirts/shirts_34031.png,data/augmented_conventional/shirts/shirts_34031_alb_v1.png,conventional_albumentations,1,42261
+34031,Shirts,shirts,data/prepared/train/shirts/shirts_34031.png,data/augmented_conventional/shirts/shirts_34031_alb_v2.png,conventional_albumentations,2,42262
+34031,Shirts,shirts,data/prepared/train/shirts/shirts_34031.png,data/augmented_conventional/shirts/shirts_34031_alb_v3.png,conventional_albumentations,3,42263
+11144,Shirts,shirts,data/prepared/train/shirts/shirts_11144.png,data/augmented_conventional/shirts/shirts_11144_alb_v1.png,conventional_albumentations,1,42271
+11144,Shirts,shirts,data/prepared/train/shirts/shirts_11144.png,data/augmented_conventional/shirts/shirts_11144_alb_v2.png,conventional_albumentations,2,42272
+11144,Shirts,shirts,data/prepared/train/shirts/shirts_11144.png,data/augmented_conventional/shirts/shirts_11144_alb_v3.png,conventional_albumentations,3,42273
+9204,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_9204.png,data/augmented_conventional/casual_shoes/casual_shoes_9204_alb_v1.png,conventional_albumentations,1,42281
+9204,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_9204.png,data/augmented_conventional/casual_shoes/casual_shoes_9204_alb_v2.png,conventional_albumentations,2,42282
+9204,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_9204.png,data/augmented_conventional/casual_shoes/casual_shoes_9204_alb_v3.png,conventional_albumentations,3,42283
+22198,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_22198.png,data/augmented_conventional/casual_shoes/casual_shoes_22198_alb_v1.png,conventional_albumentations,1,42291
+22198,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_22198.png,data/augmented_conventional/casual_shoes/casual_shoes_22198_alb_v2.png,conventional_albumentations,2,42292
+22198,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_22198.png,data/augmented_conventional/casual_shoes/casual_shoes_22198_alb_v3.png,conventional_albumentations,3,42293
+26538,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_26538.png,data/augmented_conventional/casual_shoes/casual_shoes_26538_alb_v1.png,conventional_albumentations,1,42301
+26538,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_26538.png,data/augmented_conventional/casual_shoes/casual_shoes_26538_alb_v2.png,conventional_albumentations,2,42302
+26538,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_26538.png,data/augmented_conventional/casual_shoes/casual_shoes_26538_alb_v3.png,conventional_albumentations,3,42303
+49495,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_49495.png,data/augmented_conventional/casual_shoes/casual_shoes_49495_alb_v1.png,conventional_albumentations,1,42311
+49495,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_49495.png,data/augmented_conventional/casual_shoes/casual_shoes_49495_alb_v2.png,conventional_albumentations,2,42312
+49495,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_49495.png,data/augmented_conventional/casual_shoes/casual_shoes_49495_alb_v3.png,conventional_albumentations,3,42313
+19311,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_19311.png,data/augmented_conventional/casual_shoes/casual_shoes_19311_alb_v1.png,conventional_albumentations,1,42321
+19311,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_19311.png,data/augmented_conventional/casual_shoes/casual_shoes_19311_alb_v2.png,conventional_albumentations,2,42322
+19311,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_19311.png,data/augmented_conventional/casual_shoes/casual_shoes_19311_alb_v3.png,conventional_albumentations,3,42323
+49461,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_49461.png,data/augmented_conventional/casual_shoes/casual_shoes_49461_alb_v1.png,conventional_albumentations,1,42331
+49461,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_49461.png,data/augmented_conventional/casual_shoes/casual_shoes_49461_alb_v2.png,conventional_albumentations,2,42332
+49461,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_49461.png,data/augmented_conventional/casual_shoes/casual_shoes_49461_alb_v3.png,conventional_albumentations,3,42333
+24250,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_24250.png,data/augmented_conventional/casual_shoes/casual_shoes_24250_alb_v1.png,conventional_albumentations,1,42341
+24250,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_24250.png,data/augmented_conventional/casual_shoes/casual_shoes_24250_alb_v2.png,conventional_albumentations,2,42342
+24250,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_24250.png,data/augmented_conventional/casual_shoes/casual_shoes_24250_alb_v3.png,conventional_albumentations,3,42343
+15517,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_15517.png,data/augmented_conventional/casual_shoes/casual_shoes_15517_alb_v1.png,conventional_albumentations,1,42351
+15517,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_15517.png,data/augmented_conventional/casual_shoes/casual_shoes_15517_alb_v2.png,conventional_albumentations,2,42352
+15517,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_15517.png,data/augmented_conventional/casual_shoes/casual_shoes_15517_alb_v3.png,conventional_albumentations,3,42353
+4140,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_4140.png,data/augmented_conventional/casual_shoes/casual_shoes_4140_alb_v1.png,conventional_albumentations,1,42361
+4140,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_4140.png,data/augmented_conventional/casual_shoes/casual_shoes_4140_alb_v2.png,conventional_albumentations,2,42362
+4140,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_4140.png,data/augmented_conventional/casual_shoes/casual_shoes_4140_alb_v3.png,conventional_albumentations,3,42363
+6425,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_6425.png,data/augmented_conventional/casual_shoes/casual_shoes_6425_alb_v1.png,conventional_albumentations,1,42371
+6425,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_6425.png,data/augmented_conventional/casual_shoes/casual_shoes_6425_alb_v2.png,conventional_albumentations,2,42372
+6425,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_6425.png,data/augmented_conventional/casual_shoes/casual_shoes_6425_alb_v3.png,conventional_albumentations,3,42373
+32751,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_32751.png,data/augmented_conventional/casual_shoes/casual_shoes_32751_alb_v1.png,conventional_albumentations,1,42381
+32751,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_32751.png,data/augmented_conventional/casual_shoes/casual_shoes_32751_alb_v2.png,conventional_albumentations,2,42382
+32751,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_32751.png,data/augmented_conventional/casual_shoes/casual_shoes_32751_alb_v3.png,conventional_albumentations,3,42383
+39943,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_39943.png,data/augmented_conventional/casual_shoes/casual_shoes_39943_alb_v1.png,conventional_albumentations,1,42391
+39943,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_39943.png,data/augmented_conventional/casual_shoes/casual_shoes_39943_alb_v2.png,conventional_albumentations,2,42392
+39943,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_39943.png,data/augmented_conventional/casual_shoes/casual_shoes_39943_alb_v3.png,conventional_albumentations,3,42393
+22705,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_22705.png,data/augmented_conventional/casual_shoes/casual_shoes_22705_alb_v1.png,conventional_albumentations,1,42401
+22705,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_22705.png,data/augmented_conventional/casual_shoes/casual_shoes_22705_alb_v2.png,conventional_albumentations,2,42402
+22705,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_22705.png,data/augmented_conventional/casual_shoes/casual_shoes_22705_alb_v3.png,conventional_albumentations,3,42403
+20856,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_20856.png,data/augmented_conventional/casual_shoes/casual_shoes_20856_alb_v1.png,conventional_albumentations,1,42411
+20856,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_20856.png,data/augmented_conventional/casual_shoes/casual_shoes_20856_alb_v2.png,conventional_albumentations,2,42412
+20856,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_20856.png,data/augmented_conventional/casual_shoes/casual_shoes_20856_alb_v3.png,conventional_albumentations,3,42413
+49492,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_49492.png,data/augmented_conventional/casual_shoes/casual_shoes_49492_alb_v1.png,conventional_albumentations,1,42421
+49492,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_49492.png,data/augmented_conventional/casual_shoes/casual_shoes_49492_alb_v2.png,conventional_albumentations,2,42422
+49492,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_49492.png,data/augmented_conventional/casual_shoes/casual_shoes_49492_alb_v3.png,conventional_albumentations,3,42423
+9031,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_9031.png,data/augmented_conventional/casual_shoes/casual_shoes_9031_alb_v1.png,conventional_albumentations,1,42431
+9031,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_9031.png,data/augmented_conventional/casual_shoes/casual_shoes_9031_alb_v2.png,conventional_albumentations,2,42432
+9031,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_9031.png,data/augmented_conventional/casual_shoes/casual_shoes_9031_alb_v3.png,conventional_albumentations,3,42433
+59056,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_59056.png,data/augmented_conventional/casual_shoes/casual_shoes_59056_alb_v1.png,conventional_albumentations,1,42441
+59056,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_59056.png,data/augmented_conventional/casual_shoes/casual_shoes_59056_alb_v2.png,conventional_albumentations,2,42442
+59056,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_59056.png,data/augmented_conventional/casual_shoes/casual_shoes_59056_alb_v3.png,conventional_albumentations,3,42443
+39944,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_39944.png,data/augmented_conventional/casual_shoes/casual_shoes_39944_alb_v1.png,conventional_albumentations,1,42451
+39944,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_39944.png,data/augmented_conventional/casual_shoes/casual_shoes_39944_alb_v2.png,conventional_albumentations,2,42452
+39944,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_39944.png,data/augmented_conventional/casual_shoes/casual_shoes_39944_alb_v3.png,conventional_albumentations,3,42453
+44510,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_44510.png,data/augmented_conventional/casual_shoes/casual_shoes_44510_alb_v1.png,conventional_albumentations,1,42461
+44510,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_44510.png,data/augmented_conventional/casual_shoes/casual_shoes_44510_alb_v2.png,conventional_albumentations,2,42462
+44510,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_44510.png,data/augmented_conventional/casual_shoes/casual_shoes_44510_alb_v3.png,conventional_albumentations,3,42463
+22702,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_22702.png,data/augmented_conventional/casual_shoes/casual_shoes_22702_alb_v1.png,conventional_albumentations,1,42471
+22702,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_22702.png,data/augmented_conventional/casual_shoes/casual_shoes_22702_alb_v2.png,conventional_albumentations,2,42472
+22702,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_22702.png,data/augmented_conventional/casual_shoes/casual_shoes_22702_alb_v3.png,conventional_albumentations,3,42473
+30233,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_30233.png,data/augmented_conventional/casual_shoes/casual_shoes_30233_alb_v1.png,conventional_albumentations,1,42481
+30233,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_30233.png,data/augmented_conventional/casual_shoes/casual_shoes_30233_alb_v2.png,conventional_albumentations,2,42482
+30233,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_30233.png,data/augmented_conventional/casual_shoes/casual_shoes_30233_alb_v3.png,conventional_albumentations,3,42483
+6422,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_6422.png,data/augmented_conventional/casual_shoes/casual_shoes_6422_alb_v1.png,conventional_albumentations,1,42491
+6422,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_6422.png,data/augmented_conventional/casual_shoes/casual_shoes_6422_alb_v2.png,conventional_albumentations,2,42492
+6422,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_6422.png,data/augmented_conventional/casual_shoes/casual_shoes_6422_alb_v3.png,conventional_albumentations,3,42493
+12507,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_12507.png,data/augmented_conventional/casual_shoes/casual_shoes_12507_alb_v1.png,conventional_albumentations,1,42501
+12507,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_12507.png,data/augmented_conventional/casual_shoes/casual_shoes_12507_alb_v2.png,conventional_albumentations,2,42502
+12507,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_12507.png,data/augmented_conventional/casual_shoes/casual_shoes_12507_alb_v3.png,conventional_albumentations,3,42503
+42045,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_42045.png,data/augmented_conventional/casual_shoes/casual_shoes_42045_alb_v1.png,conventional_albumentations,1,42511
+42045,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_42045.png,data/augmented_conventional/casual_shoes/casual_shoes_42045_alb_v2.png,conventional_albumentations,2,42512
+42045,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_42045.png,data/augmented_conventional/casual_shoes/casual_shoes_42045_alb_v3.png,conventional_albumentations,3,42513
+24257,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_24257.png,data/augmented_conventional/casual_shoes/casual_shoes_24257_alb_v1.png,conventional_albumentations,1,42521
+24257,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_24257.png,data/augmented_conventional/casual_shoes/casual_shoes_24257_alb_v2.png,conventional_albumentations,2,42522
+24257,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_24257.png,data/augmented_conventional/casual_shoes/casual_shoes_24257_alb_v3.png,conventional_albumentations,3,42523
+15510,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_15510.png,data/augmented_conventional/casual_shoes/casual_shoes_15510_alb_v1.png,conventional_albumentations,1,42531
+15510,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_15510.png,data/augmented_conventional/casual_shoes/casual_shoes_15510_alb_v2.png,conventional_albumentations,2,42532
+15510,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_15510.png,data/augmented_conventional/casual_shoes/casual_shoes_15510_alb_v3.png,conventional_albumentations,3,42533
+20894,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_20894.png,data/augmented_conventional/casual_shoes/casual_shoes_20894_alb_v1.png,conventional_albumentations,1,42541
+20894,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_20894.png,data/augmented_conventional/casual_shoes/casual_shoes_20894_alb_v2.png,conventional_albumentations,2,42542
+20894,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_20894.png,data/augmented_conventional/casual_shoes/casual_shoes_20894_alb_v3.png,conventional_albumentations,3,42543
+40971,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_40971.png,data/augmented_conventional/casual_shoes/casual_shoes_40971_alb_v1.png,conventional_albumentations,1,42551
+40971,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_40971.png,data/augmented_conventional/casual_shoes/casual_shoes_40971_alb_v2.png,conventional_albumentations,2,42552
+40971,Casual Shoes,casual_shoes,data/prepared/train/casual_shoes/casual_shoes_40971.png,data/augmented_conventional/casual_shoes/casual_shoes_40971_alb_v3.png,conventional_albumentations,3,42553
+17429,Watches,watches,data/prepared/train/watches/watches_17429.png,data/augmented_conventional/watches/watches_17429_alb_v1.png,conventional_albumentations,1,42561
+17429,Watches,watches,data/prepared/train/watches/watches_17429.png,data/augmented_conventional/watches/watches_17429_alb_v2.png,conventional_albumentations,2,42562
+17429,Watches,watches,data/prepared/train/watches/watches_17429.png,data/augmented_conventional/watches/watches_17429_alb_v3.png,conventional_albumentations,3,42563
+23278,Watches,watches,data/prepared/train/watches/watches_23278.png,data/augmented_conventional/watches/watches_23278_alb_v1.png,conventional_albumentations,1,42571
+23278,Watches,watches,data/prepared/train/watches/watches_23278.png,data/augmented_conventional/watches/watches_23278_alb_v2.png,conventional_albumentations,2,42572
+23278,Watches,watches,data/prepared/train/watches/watches_23278.png,data/augmented_conventional/watches/watches_23278_alb_v3.png,conventional_albumentations,3,42573
+44984,Watches,watches,data/prepared/train/watches/watches_44984.png,data/augmented_conventional/watches/watches_44984_alb_v1.png,conventional_albumentations,1,42581
+44984,Watches,watches,data/prepared/train/watches/watches_44984.png,data/augmented_conventional/watches/watches_44984_alb_v2.png,conventional_albumentations,2,42582
+44984,Watches,watches,data/prepared/train/watches/watches_44984.png,data/augmented_conventional/watches/watches_44984_alb_v3.png,conventional_albumentations,3,42583
+11188,Watches,watches,data/prepared/train/watches/watches_11188.png,data/augmented_conventional/watches/watches_11188_alb_v1.png,conventional_albumentations,1,42591
+11188,Watches,watches,data/prepared/train/watches/watches_11188.png,data/augmented_conventional/watches/watches_11188_alb_v2.png,conventional_albumentations,2,42592
+11188,Watches,watches,data/prepared/train/watches/watches_11188.png,data/augmented_conventional/watches/watches_11188_alb_v3.png,conventional_albumentations,3,42593
+45258,Watches,watches,data/prepared/train/watches/watches_45258.png,data/augmented_conventional/watches/watches_45258_alb_v1.png,conventional_albumentations,1,42601
+45258,Watches,watches,data/prepared/train/watches/watches_45258.png,data/augmented_conventional/watches/watches_45258_alb_v2.png,conventional_albumentations,2,42602
+45258,Watches,watches,data/prepared/train/watches/watches_45258.png,data/augmented_conventional/watches/watches_45258_alb_v3.png,conventional_albumentations,3,42603
+44970,Watches,watches,data/prepared/train/watches/watches_44970.png,data/augmented_conventional/watches/watches_44970_alb_v1.png,conventional_albumentations,1,42611
+44970,Watches,watches,data/prepared/train/watches/watches_44970.png,data/augmented_conventional/watches/watches_44970_alb_v2.png,conventional_albumentations,2,42612
+44970,Watches,watches,data/prepared/train/watches/watches_44970.png,data/augmented_conventional/watches/watches_44970_alb_v3.png,conventional_albumentations,3,42613
+22950,Watches,watches,data/prepared/train/watches/watches_22950.png,data/augmented_conventional/watches/watches_22950_alb_v1.png,conventional_albumentations,1,42621
+22950,Watches,watches,data/prepared/train/watches/watches_22950.png,data/augmented_conventional/watches/watches_22950_alb_v2.png,conventional_albumentations,2,42622
+22950,Watches,watches,data/prepared/train/watches/watches_22950.png,data/augmented_conventional/watches/watches_22950_alb_v3.png,conventional_albumentations,3,42623
+13841,Watches,watches,data/prepared/train/watches/watches_13841.png,data/augmented_conventional/watches/watches_13841_alb_v1.png,conventional_albumentations,1,42631
+13841,Watches,watches,data/prepared/train/watches/watches_13841.png,data/augmented_conventional/watches/watches_13841_alb_v2.png,conventional_albumentations,2,42632
+13841,Watches,watches,data/prepared/train/watches/watches_13841.png,data/augmented_conventional/watches/watches_13841_alb_v3.png,conventional_albumentations,3,42633
+8110,Watches,watches,data/prepared/train/watches/watches_8110.png,data/augmented_conventional/watches/watches_8110_alb_v1.png,conventional_albumentations,1,42641
+8110,Watches,watches,data/prepared/train/watches/watches_8110.png,data/augmented_conventional/watches/watches_8110_alb_v2.png,conventional_albumentations,2,42642
+8110,Watches,watches,data/prepared/train/watches/watches_8110.png,data/augmented_conventional/watches/watches_8110_alb_v3.png,conventional_albumentations,3,42643
+43190,Watches,watches,data/prepared/train/watches/watches_43190.png,data/augmented_conventional/watches/watches_43190_alb_v1.png,conventional_albumentations,1,42651
+43190,Watches,watches,data/prepared/train/watches/watches_43190.png,data/augmented_conventional/watches/watches_43190_alb_v2.png,conventional_albumentations,2,42652
+43190,Watches,watches,data/prepared/train/watches/watches_43190.png,data/augmented_conventional/watches/watches_43190_alb_v3.png,conventional_albumentations,3,42653
+32335,Watches,watches,data/prepared/train/watches/watches_32335.png,data/augmented_conventional/watches/watches_32335_alb_v1.png,conventional_albumentations,1,42661
+32335,Watches,watches,data/prepared/train/watches/watches_32335.png,data/augmented_conventional/watches/watches_32335_alb_v2.png,conventional_albumentations,2,42662
+32335,Watches,watches,data/prepared/train/watches/watches_32335.png,data/augmented_conventional/watches/watches_32335_alb_v3.png,conventional_albumentations,3,42663
+56670,Watches,watches,data/prepared/train/watches/watches_56670.png,data/augmented_conventional/watches/watches_56670_alb_v1.png,conventional_albumentations,1,42671
+56670,Watches,watches,data/prepared/train/watches/watches_56670.png,data/augmented_conventional/watches/watches_56670_alb_v2.png,conventional_albumentations,2,42672
+56670,Watches,watches,data/prepared/train/watches/watches_56670.png,data/augmented_conventional/watches/watches_56670_alb_v3.png,conventional_albumentations,3,42673
+40527,Watches,watches,data/prepared/train/watches/watches_40527.png,data/augmented_conventional/watches/watches_40527_alb_v1.png,conventional_albumentations,1,42681
+40527,Watches,watches,data/prepared/train/watches/watches_40527.png,data/augmented_conventional/watches/watches_40527_alb_v2.png,conventional_albumentations,2,42682
+40527,Watches,watches,data/prepared/train/watches/watches_40527.png,data/augmented_conventional/watches/watches_40527_alb_v3.png,conventional_albumentations,3,42683
+4716,Watches,watches,data/prepared/train/watches/watches_4716.png,data/augmented_conventional/watches/watches_4716_alb_v1.png,conventional_albumentations,1,42691
+4716,Watches,watches,data/prepared/train/watches/watches_4716.png,data/augmented_conventional/watches/watches_4716_alb_v2.png,conventional_albumentations,2,42692
+4716,Watches,watches,data/prepared/train/watches/watches_4716.png,data/augmented_conventional/watches/watches_4716_alb_v3.png,conventional_albumentations,3,42693
+26351,Watches,watches,data/prepared/train/watches/watches_26351.png,data/augmented_conventional/watches/watches_26351_alb_v1.png,conventional_albumentations,1,42701
+26351,Watches,watches,data/prepared/train/watches/watches_26351.png,data/augmented_conventional/watches/watches_26351_alb_v2.png,conventional_albumentations,2,42702
+26351,Watches,watches,data/prepared/train/watches/watches_26351.png,data/augmented_conventional/watches/watches_26351_alb_v3.png,conventional_albumentations,3,42703
+29917,Watches,watches,data/prepared/train/watches/watches_29917.png,data/augmented_conventional/watches/watches_29917_alb_v1.png,conventional_albumentations,1,42711
+29917,Watches,watches,data/prepared/train/watches/watches_29917.png,data/augmented_conventional/watches/watches_29917_alb_v2.png,conventional_albumentations,2,42712
+29917,Watches,watches,data/prepared/train/watches/watches_29917.png,data/augmented_conventional/watches/watches_29917_alb_v3.png,conventional_albumentations,3,42713
+45293,Watches,watches,data/prepared/train/watches/watches_45293.png,data/augmented_conventional/watches/watches_45293_alb_v1.png,conventional_albumentations,1,42721
+45293,Watches,watches,data/prepared/train/watches/watches_45293.png,data/augmented_conventional/watches/watches_45293_alb_v2.png,conventional_albumentations,2,42722
+45293,Watches,watches,data/prepared/train/watches/watches_45293.png,data/augmented_conventional/watches/watches_45293_alb_v3.png,conventional_albumentations,3,42723
+36761,Watches,watches,data/prepared/train/watches/watches_36761.png,data/augmented_conventional/watches/watches_36761_alb_v1.png,conventional_albumentations,1,42731
+36761,Watches,watches,data/prepared/train/watches/watches_36761.png,data/augmented_conventional/watches/watches_36761_alb_v2.png,conventional_albumentations,2,42732
+36761,Watches,watches,data/prepared/train/watches/watches_36761.png,data/augmented_conventional/watches/watches_36761_alb_v3.png,conventional_albumentations,3,42733
+37481,Watches,watches,data/prepared/train/watches/watches_37481.png,data/augmented_conventional/watches/watches_37481_alb_v1.png,conventional_albumentations,1,42741
+37481,Watches,watches,data/prepared/train/watches/watches_37481.png,data/augmented_conventional/watches/watches_37481_alb_v2.png,conventional_albumentations,2,42742
+37481,Watches,watches,data/prepared/train/watches/watches_37481.png,data/augmented_conventional/watches/watches_37481_alb_v3.png,conventional_albumentations,3,42743
+8117,Watches,watches,data/prepared/train/watches/watches_8117.png,data/augmented_conventional/watches/watches_8117_alb_v1.png,conventional_albumentations,1,42751
+8117,Watches,watches,data/prepared/train/watches/watches_8117.png,data/augmented_conventional/watches/watches_8117_alb_v2.png,conventional_albumentations,2,42752
+8117,Watches,watches,data/prepared/train/watches/watches_8117.png,data/augmented_conventional/watches/watches_8117_alb_v3.png,conventional_albumentations,3,42753
+59290,Watches,watches,data/prepared/train/watches/watches_59290.png,data/augmented_conventional/watches/watches_59290_alb_v1.png,conventional_albumentations,1,42761
+59290,Watches,watches,data/prepared/train/watches/watches_59290.png,data/augmented_conventional/watches/watches_59290_alb_v2.png,conventional_albumentations,2,42762
+59290,Watches,watches,data/prepared/train/watches/watches_59290.png,data/augmented_conventional/watches/watches_59290_alb_v3.png,conventional_albumentations,3,42763
+52678,Watches,watches,data/prepared/train/watches/watches_52678.png,data/augmented_conventional/watches/watches_52678_alb_v1.png,conventional_albumentations,1,42771
+52678,Watches,watches,data/prepared/train/watches/watches_52678.png,data/augmented_conventional/watches/watches_52678_alb_v2.png,conventional_albumentations,2,42772
+52678,Watches,watches,data/prepared/train/watches/watches_52678.png,data/augmented_conventional/watches/watches_52678_alb_v3.png,conventional_albumentations,3,42773
+36759,Watches,watches,data/prepared/train/watches/watches_36759.png,data/augmented_conventional/watches/watches_36759_alb_v1.png,conventional_albumentations,1,42781
+36759,Watches,watches,data/prepared/train/watches/watches_36759.png,data/augmented_conventional/watches/watches_36759_alb_v2.png,conventional_albumentations,2,42782
+36759,Watches,watches,data/prepared/train/watches/watches_36759.png,data/augmented_conventional/watches/watches_36759_alb_v3.png,conventional_albumentations,3,42783
+44977,Watches,watches,data/prepared/train/watches/watches_44977.png,data/augmented_conventional/watches/watches_44977_alb_v1.png,conventional_albumentations,1,42791
+44977,Watches,watches,data/prepared/train/watches/watches_44977.png,data/augmented_conventional/watches/watches_44977_alb_v2.png,conventional_albumentations,2,42792
+44977,Watches,watches,data/prepared/train/watches/watches_44977.png,data/augmented_conventional/watches/watches_44977_alb_v3.png,conventional_albumentations,3,42793
+29745,Watches,watches,data/prepared/train/watches/watches_29745.png,data/augmented_conventional/watches/watches_29745_alb_v1.png,conventional_albumentations,1,42801
+29745,Watches,watches,data/prepared/train/watches/watches_29745.png,data/augmented_conventional/watches/watches_29745_alb_v2.png,conventional_albumentations,2,42802
+29745,Watches,watches,data/prepared/train/watches/watches_29745.png,data/augmented_conventional/watches/watches_29745_alb_v3.png,conventional_albumentations,3,42803
+44983,Watches,watches,data/prepared/train/watches/watches_44983.png,data/augmented_conventional/watches/watches_44983_alb_v1.png,conventional_albumentations,1,42811
+44983,Watches,watches,data/prepared/train/watches/watches_44983.png,data/augmented_conventional/watches/watches_44983_alb_v2.png,conventional_albumentations,2,42812
+44983,Watches,watches,data/prepared/train/watches/watches_44983.png,data/augmented_conventional/watches/watches_44983_alb_v3.png,conventional_albumentations,3,42813
+36766,Watches,watches,data/prepared/train/watches/watches_36766.png,data/augmented_conventional/watches/watches_36766_alb_v1.png,conventional_albumentations,1,42821
+36766,Watches,watches,data/prepared/train/watches/watches_36766.png,data/augmented_conventional/watches/watches_36766_alb_v2.png,conventional_albumentations,2,42822
+36766,Watches,watches,data/prepared/train/watches/watches_36766.png,data/augmented_conventional/watches/watches_36766_alb_v3.png,conventional_albumentations,3,42823
+45294,Watches,watches,data/prepared/train/watches/watches_45294.png,data/augmented_conventional/watches/watches_45294_alb_v1.png,conventional_albumentations,1,42831
+45294,Watches,watches,data/prepared/train/watches/watches_45294.png,data/augmented_conventional/watches/watches_45294_alb_v2.png,conventional_albumentations,2,42832
+45294,Watches,watches,data/prepared/train/watches/watches_45294.png,data/augmented_conventional/watches/watches_45294_alb_v3.png,conventional_albumentations,3,42833
+12732,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_12732.png,data/augmented_conventional/backpacks/backpacks_12732_alb_v1.png,conventional_albumentations,1,42841
+12732,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_12732.png,data/augmented_conventional/backpacks/backpacks_12732_alb_v2.png,conventional_albumentations,2,42842
+12732,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_12732.png,data/augmented_conventional/backpacks/backpacks_12732_alb_v3.png,conventional_albumentations,3,42843
+29319,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_29319.png,data/augmented_conventional/backpacks/backpacks_29319_alb_v1.png,conventional_albumentations,1,42851
+29319,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_29319.png,data/augmented_conventional/backpacks/backpacks_29319_alb_v2.png,conventional_albumentations,2,42852
+29319,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_29319.png,data/augmented_conventional/backpacks/backpacks_29319_alb_v3.png,conventional_albumentations,3,42853
+19920,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_19920.png,data/augmented_conventional/backpacks/backpacks_19920_alb_v1.png,conventional_albumentations,1,42861
+19920,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_19920.png,data/augmented_conventional/backpacks/backpacks_19920_alb_v2.png,conventional_albumentations,2,42862
+19920,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_19920.png,data/augmented_conventional/backpacks/backpacks_19920_alb_v3.png,conventional_albumentations,3,42863
+19918,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_19918.png,data/augmented_conventional/backpacks/backpacks_19918_alb_v1.png,conventional_albumentations,1,42871
+19918,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_19918.png,data/augmented_conventional/backpacks/backpacks_19918_alb_v2.png,conventional_albumentations,2,42872
+19918,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_19918.png,data/augmented_conventional/backpacks/backpacks_19918_alb_v3.png,conventional_albumentations,3,42873
+46623,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_46623.png,data/augmented_conventional/backpacks/backpacks_46623_alb_v1.png,conventional_albumentations,1,42881
+46623,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_46623.png,data/augmented_conventional/backpacks/backpacks_46623_alb_v2.png,conventional_albumentations,2,42882
+46623,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_46623.png,data/augmented_conventional/backpacks/backpacks_46623_alb_v3.png,conventional_albumentations,3,42883
+22968,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_22968.png,data/augmented_conventional/backpacks/backpacks_22968_alb_v1.png,conventional_albumentations,1,42891
+22968,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_22968.png,data/augmented_conventional/backpacks/backpacks_22968_alb_v2.png,conventional_albumentations,2,42892
+22968,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_22968.png,data/augmented_conventional/backpacks/backpacks_22968_alb_v3.png,conventional_albumentations,3,42893
+58146,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_58146.png,data/augmented_conventional/backpacks/backpacks_58146_alb_v1.png,conventional_albumentations,1,42901
+58146,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_58146.png,data/augmented_conventional/backpacks/backpacks_58146_alb_v2.png,conventional_albumentations,2,42902
+58146,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_58146.png,data/augmented_conventional/backpacks/backpacks_58146_alb_v3.png,conventional_albumentations,3,42903
+29317,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_29317.png,data/augmented_conventional/backpacks/backpacks_29317_alb_v1.png,conventional_albumentations,1,42911
+29317,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_29317.png,data/augmented_conventional/backpacks/backpacks_29317_alb_v2.png,conventional_albumentations,2,42912
+29317,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_29317.png,data/augmented_conventional/backpacks/backpacks_29317_alb_v3.png,conventional_albumentations,3,42913
+37682,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_37682.png,data/augmented_conventional/backpacks/backpacks_37682_alb_v1.png,conventional_albumentations,1,42921
+37682,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_37682.png,data/augmented_conventional/backpacks/backpacks_37682_alb_v2.png,conventional_albumentations,2,42922
+37682,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_37682.png,data/augmented_conventional/backpacks/backpacks_37682_alb_v3.png,conventional_albumentations,3,42923
+37676,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_37676.png,data/augmented_conventional/backpacks/backpacks_37676_alb_v1.png,conventional_albumentations,1,42931
+37676,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_37676.png,data/augmented_conventional/backpacks/backpacks_37676_alb_v2.png,conventional_albumentations,2,42932
+37676,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_37676.png,data/augmented_conventional/backpacks/backpacks_37676_alb_v3.png,conventional_albumentations,3,42933
+21189,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_21189.png,data/augmented_conventional/backpacks/backpacks_21189_alb_v1.png,conventional_albumentations,1,42941
+21189,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_21189.png,data/augmented_conventional/backpacks/backpacks_21189_alb_v2.png,conventional_albumentations,2,42942
+21189,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_21189.png,data/augmented_conventional/backpacks/backpacks_21189_alb_v3.png,conventional_albumentations,3,42943
+9490,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_9490.png,data/augmented_conventional/backpacks/backpacks_9490_alb_v1.png,conventional_albumentations,1,42951
+9490,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_9490.png,data/augmented_conventional/backpacks/backpacks_9490_alb_v2.png,conventional_albumentations,2,42952
+9490,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_9490.png,data/augmented_conventional/backpacks/backpacks_9490_alb_v3.png,conventional_albumentations,3,42953
+30202,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_30202.png,data/augmented_conventional/backpacks/backpacks_30202_alb_v1.png,conventional_albumentations,1,42961
+30202,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_30202.png,data/augmented_conventional/backpacks/backpacks_30202_alb_v2.png,conventional_albumentations,2,42962
+30202,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_30202.png,data/augmented_conventional/backpacks/backpacks_30202_alb_v3.png,conventional_albumentations,3,42963
+37671,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_37671.png,data/augmented_conventional/backpacks/backpacks_37671_alb_v1.png,conventional_albumentations,1,42971
+37671,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_37671.png,data/augmented_conventional/backpacks/backpacks_37671_alb_v2.png,conventional_albumentations,2,42972
+37671,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_37671.png,data/augmented_conventional/backpacks/backpacks_37671_alb_v3.png,conventional_albumentations,3,42973
+19318,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_19318.png,data/augmented_conventional/backpacks/backpacks_19318_alb_v1.png,conventional_albumentations,1,42981
+19318,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_19318.png,data/augmented_conventional/backpacks/backpacks_19318_alb_v2.png,conventional_albumentations,2,42982
+19318,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_19318.png,data/augmented_conventional/backpacks/backpacks_19318_alb_v3.png,conventional_albumentations,3,42983
+5262,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_5262.png,data/augmented_conventional/backpacks/backpacks_5262_alb_v1.png,conventional_albumentations,1,42991
+5262,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_5262.png,data/augmented_conventional/backpacks/backpacks_5262_alb_v2.png,conventional_albumentations,2,42992
+5262,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_5262.png,data/augmented_conventional/backpacks/backpacks_5262_alb_v3.png,conventional_albumentations,3,42993
+2221,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_2221.png,data/augmented_conventional/backpacks/backpacks_2221_alb_v1.png,conventional_albumentations,1,43001
+2221,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_2221.png,data/augmented_conventional/backpacks/backpacks_2221_alb_v2.png,conventional_albumentations,2,43002
+2221,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_2221.png,data/augmented_conventional/backpacks/backpacks_2221_alb_v3.png,conventional_albumentations,3,43003
+35186,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_35186.png,data/augmented_conventional/backpacks/backpacks_35186_alb_v1.png,conventional_albumentations,1,43011
+35186,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_35186.png,data/augmented_conventional/backpacks/backpacks_35186_alb_v2.png,conventional_albumentations,2,43012
+35186,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_35186.png,data/augmented_conventional/backpacks/backpacks_35186_alb_v3.png,conventional_albumentations,3,43013
+7105,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_7105.png,data/augmented_conventional/backpacks/backpacks_7105_alb_v1.png,conventional_albumentations,1,43021
+7105,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_7105.png,data/augmented_conventional/backpacks/backpacks_7105_alb_v2.png,conventional_albumentations,2,43022
+7105,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_7105.png,data/augmented_conventional/backpacks/backpacks_7105_alb_v3.png,conventional_albumentations,3,43023
+8516,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_8516.png,data/augmented_conventional/backpacks/backpacks_8516_alb_v1.png,conventional_albumentations,1,43031
+8516,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_8516.png,data/augmented_conventional/backpacks/backpacks_8516_alb_v2.png,conventional_albumentations,2,43032
+8516,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_8516.png,data/augmented_conventional/backpacks/backpacks_8516_alb_v3.png,conventional_albumentations,3,43033
+43565,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_43565.png,data/augmented_conventional/backpacks/backpacks_43565_alb_v1.png,conventional_albumentations,1,43041
+43565,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_43565.png,data/augmented_conventional/backpacks/backpacks_43565_alb_v2.png,conventional_albumentations,2,43042
+43565,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_43565.png,data/augmented_conventional/backpacks/backpacks_43565_alb_v3.png,conventional_albumentations,3,43043
+35181,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_35181.png,data/augmented_conventional/backpacks/backpacks_35181_alb_v1.png,conventional_albumentations,1,43051
+35181,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_35181.png,data/augmented_conventional/backpacks/backpacks_35181_alb_v2.png,conventional_albumentations,2,43052
+35181,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_35181.png,data/augmented_conventional/backpacks/backpacks_35181_alb_v3.png,conventional_albumentations,3,43053
+53367,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_53367.png,data/augmented_conventional/backpacks/backpacks_53367_alb_v1.png,conventional_albumentations,1,43061
+53367,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_53367.png,data/augmented_conventional/backpacks/backpacks_53367_alb_v2.png,conventional_albumentations,2,43062
+53367,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_53367.png,data/augmented_conventional/backpacks/backpacks_53367_alb_v3.png,conventional_albumentations,3,43063
+4583,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_4583.png,data/augmented_conventional/backpacks/backpacks_4583_alb_v1.png,conventional_albumentations,1,43071
+4583,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_4583.png,data/augmented_conventional/backpacks/backpacks_4583_alb_v2.png,conventional_albumentations,2,43072
+4583,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_4583.png,data/augmented_conventional/backpacks/backpacks_4583_alb_v3.png,conventional_albumentations,3,43073
+35188,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_35188.png,data/augmented_conventional/backpacks/backpacks_35188_alb_v1.png,conventional_albumentations,1,43081
+35188,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_35188.png,data/augmented_conventional/backpacks/backpacks_35188_alb_v2.png,conventional_albumentations,2,43082
+35188,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_35188.png,data/augmented_conventional/backpacks/backpacks_35188_alb_v3.png,conventional_albumentations,3,43083
+31984,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_31984.png,data/augmented_conventional/backpacks/backpacks_31984_alb_v1.png,conventional_albumentations,1,43091
+31984,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_31984.png,data/augmented_conventional/backpacks/backpacks_31984_alb_v2.png,conventional_albumentations,2,43092
+31984,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_31984.png,data/augmented_conventional/backpacks/backpacks_31984_alb_v3.png,conventional_albumentations,3,43093
+15923,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_15923.png,data/augmented_conventional/backpacks/backpacks_15923_alb_v1.png,conventional_albumentations,1,43101
+15923,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_15923.png,data/augmented_conventional/backpacks/backpacks_15923_alb_v2.png,conventional_albumentations,2,43102
+15923,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_15923.png,data/augmented_conventional/backpacks/backpacks_15923_alb_v3.png,conventional_albumentations,3,43103
+9439,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_9439.png,data/augmented_conventional/backpacks/backpacks_9439_alb_v1.png,conventional_albumentations,1,43111
+9439,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_9439.png,data/augmented_conventional/backpacks/backpacks_9439_alb_v2.png,conventional_albumentations,2,43112
+9439,Backpacks,backpacks,data/prepared/train/backpacks/backpacks_9439.png,data/augmented_conventional/backpacks/backpacks_9439_alb_v3.png,conventional_albumentations,3,43113
+28200,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_28200.png,data/augmented_conventional/sunglasses/sunglasses_28200_alb_v1.png,conventional_albumentations,1,43121
+28200,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_28200.png,data/augmented_conventional/sunglasses/sunglasses_28200_alb_v2.png,conventional_albumentations,2,43122
+28200,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_28200.png,data/augmented_conventional/sunglasses/sunglasses_28200_alb_v3.png,conventional_albumentations,3,43123
+51667,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51667.png,data/augmented_conventional/sunglasses/sunglasses_51667_alb_v1.png,conventional_albumentations,1,43131
+51667,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51667.png,data/augmented_conventional/sunglasses/sunglasses_51667_alb_v2.png,conventional_albumentations,2,43132
+51667,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51667.png,data/augmented_conventional/sunglasses/sunglasses_51667_alb_v3.png,conventional_albumentations,3,43133
+21346,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21346.png,data/augmented_conventional/sunglasses/sunglasses_21346_alb_v1.png,conventional_albumentations,1,43141
+21346,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21346.png,data/augmented_conventional/sunglasses/sunglasses_21346_alb_v2.png,conventional_albumentations,2,43142
+21346,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21346.png,data/augmented_conventional/sunglasses/sunglasses_21346_alb_v3.png,conventional_albumentations,3,43143
+51693,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51693.png,data/augmented_conventional/sunglasses/sunglasses_51693_alb_v1.png,conventional_albumentations,1,43151
+51693,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51693.png,data/augmented_conventional/sunglasses/sunglasses_51693_alb_v2.png,conventional_albumentations,2,43152
+51693,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51693.png,data/augmented_conventional/sunglasses/sunglasses_51693_alb_v3.png,conventional_albumentations,3,43153
+30668,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_30668.png,data/augmented_conventional/sunglasses/sunglasses_30668_alb_v1.png,conventional_albumentations,1,43161
+30668,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_30668.png,data/augmented_conventional/sunglasses/sunglasses_30668_alb_v2.png,conventional_albumentations,2,43162
+30668,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_30668.png,data/augmented_conventional/sunglasses/sunglasses_30668_alb_v3.png,conventional_albumentations,3,43163
+51694,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51694.png,data/augmented_conventional/sunglasses/sunglasses_51694_alb_v1.png,conventional_albumentations,1,43171
+51694,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51694.png,data/augmented_conventional/sunglasses/sunglasses_51694_alb_v2.png,conventional_albumentations,2,43172
+51694,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51694.png,data/augmented_conventional/sunglasses/sunglasses_51694_alb_v3.png,conventional_albumentations,3,43173
+21341,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21341.png,data/augmented_conventional/sunglasses/sunglasses_21341_alb_v1.png,conventional_albumentations,1,43181
+21341,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21341.png,data/augmented_conventional/sunglasses/sunglasses_21341_alb_v2.png,conventional_albumentations,2,43182
+21341,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21341.png,data/augmented_conventional/sunglasses/sunglasses_21341_alb_v3.png,conventional_albumentations,3,43183
+20860,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_20860.png,data/augmented_conventional/sunglasses/sunglasses_20860_alb_v1.png,conventional_albumentations,1,43191
+20860,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_20860.png,data/augmented_conventional/sunglasses/sunglasses_20860_alb_v2.png,conventional_albumentations,2,43192
+20860,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_20860.png,data/augmented_conventional/sunglasses/sunglasses_20860_alb_v3.png,conventional_albumentations,3,43193
+29125,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_29125.png,data/augmented_conventional/sunglasses/sunglasses_29125_alb_v1.png,conventional_albumentations,1,43201
+29125,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_29125.png,data/augmented_conventional/sunglasses/sunglasses_29125_alb_v2.png,conventional_albumentations,2,43202
+29125,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_29125.png,data/augmented_conventional/sunglasses/sunglasses_29125_alb_v3.png,conventional_albumentations,3,43203
+21348,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21348.png,data/augmented_conventional/sunglasses/sunglasses_21348_alb_v1.png,conventional_albumentations,1,43211
+21348,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21348.png,data/augmented_conventional/sunglasses/sunglasses_21348_alb_v2.png,conventional_albumentations,2,43212
+21348,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21348.png,data/augmented_conventional/sunglasses/sunglasses_21348_alb_v3.png,conventional_albumentations,3,43213
+51669,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51669.png,data/augmented_conventional/sunglasses/sunglasses_51669_alb_v1.png,conventional_albumentations,1,43221
+51669,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51669.png,data/augmented_conventional/sunglasses/sunglasses_51669_alb_v2.png,conventional_albumentations,2,43222
+51669,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_51669.png,data/augmented_conventional/sunglasses/sunglasses_51669_alb_v3.png,conventional_albumentations,3,43223
+16959,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16959.png,data/augmented_conventional/sunglasses/sunglasses_16959_alb_v1.png,conventional_albumentations,1,43231
+16959,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16959.png,data/augmented_conventional/sunglasses/sunglasses_16959_alb_v2.png,conventional_albumentations,2,43232
+16959,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16959.png,data/augmented_conventional/sunglasses/sunglasses_16959_alb_v3.png,conventional_albumentations,3,43233
+30661,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_30661.png,data/augmented_conventional/sunglasses/sunglasses_30661_alb_v1.png,conventional_albumentations,1,43241
+30661,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_30661.png,data/augmented_conventional/sunglasses/sunglasses_30661_alb_v2.png,conventional_albumentations,2,43242
+30661,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_30661.png,data/augmented_conventional/sunglasses/sunglasses_30661_alb_v3.png,conventional_albumentations,3,43243
+40172,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_40172.png,data/augmented_conventional/sunglasses/sunglasses_40172_alb_v1.png,conventional_albumentations,1,43251
+40172,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_40172.png,data/augmented_conventional/sunglasses/sunglasses_40172_alb_v2.png,conventional_albumentations,2,43252
+40172,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_40172.png,data/augmented_conventional/sunglasses/sunglasses_40172_alb_v3.png,conventional_albumentations,3,43253
+8784,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_8784.png,data/augmented_conventional/sunglasses/sunglasses_8784_alb_v1.png,conventional_albumentations,1,43261
+8784,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_8784.png,data/augmented_conventional/sunglasses/sunglasses_8784_alb_v2.png,conventional_albumentations,2,43262
+8784,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_8784.png,data/augmented_conventional/sunglasses/sunglasses_8784_alb_v3.png,conventional_albumentations,3,43263
+16961,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16961.png,data/augmented_conventional/sunglasses/sunglasses_16961_alb_v1.png,conventional_albumentations,1,43271
+16961,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16961.png,data/augmented_conventional/sunglasses/sunglasses_16961_alb_v2.png,conventional_albumentations,2,43272
+16961,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16961.png,data/augmented_conventional/sunglasses/sunglasses_16961_alb_v3.png,conventional_albumentations,3,43273
+40175,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_40175.png,data/augmented_conventional/sunglasses/sunglasses_40175_alb_v1.png,conventional_albumentations,1,43281
+40175,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_40175.png,data/augmented_conventional/sunglasses/sunglasses_40175_alb_v2.png,conventional_albumentations,2,43282
+40175,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_40175.png,data/augmented_conventional/sunglasses/sunglasses_40175_alb_v3.png,conventional_albumentations,3,43283
+30666,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_30666.png,data/augmented_conventional/sunglasses/sunglasses_30666_alb_v1.png,conventional_albumentations,1,43291
+30666,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_30666.png,data/augmented_conventional/sunglasses/sunglasses_30666_alb_v2.png,conventional_albumentations,2,43292
+30666,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_30666.png,data/augmented_conventional/sunglasses/sunglasses_30666_alb_v3.png,conventional_albumentations,3,43293
+28209,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_28209.png,data/augmented_conventional/sunglasses/sunglasses_28209_alb_v1.png,conventional_albumentations,1,43301
+28209,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_28209.png,data/augmented_conventional/sunglasses/sunglasses_28209_alb_v2.png,conventional_albumentations,2,43302
+28209,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_28209.png,data/augmented_conventional/sunglasses/sunglasses_28209_alb_v3.png,conventional_albumentations,3,43303
+40181,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_40181.png,data/augmented_conventional/sunglasses/sunglasses_40181_alb_v1.png,conventional_albumentations,1,43311
+40181,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_40181.png,data/augmented_conventional/sunglasses/sunglasses_40181_alb_v2.png,conventional_albumentations,2,43312
+40181,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_40181.png,data/augmented_conventional/sunglasses/sunglasses_40181_alb_v3.png,conventional_albumentations,3,43313
+21324,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21324.png,data/augmented_conventional/sunglasses/sunglasses_21324_alb_v1.png,conventional_albumentations,1,43321
+21324,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21324.png,data/augmented_conventional/sunglasses/sunglasses_21324_alb_v2.png,conventional_albumentations,2,43322
+21324,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21324.png,data/augmented_conventional/sunglasses/sunglasses_21324_alb_v3.png,conventional_albumentations,3,43323
+17222,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_17222.png,data/augmented_conventional/sunglasses/sunglasses_17222_alb_v1.png,conventional_albumentations,1,43331
+17222,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_17222.png,data/augmented_conventional/sunglasses/sunglasses_17222_alb_v2.png,conventional_albumentations,2,43332
+17222,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_17222.png,data/augmented_conventional/sunglasses/sunglasses_17222_alb_v3.png,conventional_albumentations,3,43333
+38236,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_38236.png,data/augmented_conventional/sunglasses/sunglasses_38236_alb_v1.png,conventional_albumentations,1,43341
+38236,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_38236.png,data/augmented_conventional/sunglasses/sunglasses_38236_alb_v2.png,conventional_albumentations,2,43342
+38236,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_38236.png,data/augmented_conventional/sunglasses/sunglasses_38236_alb_v3.png,conventional_albumentations,3,43343
+16109,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16109.png,data/augmented_conventional/sunglasses/sunglasses_16109_alb_v1.png,conventional_albumentations,1,43351
+16109,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16109.png,data/augmented_conventional/sunglasses/sunglasses_16109_alb_v2.png,conventional_albumentations,2,43352
+16109,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16109.png,data/augmented_conventional/sunglasses/sunglasses_16109_alb_v3.png,conventional_albumentations,3,43353
+58549,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_58549.png,data/augmented_conventional/sunglasses/sunglasses_58549_alb_v1.png,conventional_albumentations,1,43361
+58549,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_58549.png,data/augmented_conventional/sunglasses/sunglasses_58549_alb_v2.png,conventional_albumentations,2,43362
+58549,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_58549.png,data/augmented_conventional/sunglasses/sunglasses_58549_alb_v3.png,conventional_albumentations,3,43363
+17225,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_17225.png,data/augmented_conventional/sunglasses/sunglasses_17225_alb_v1.png,conventional_albumentations,1,43371
+17225,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_17225.png,data/augmented_conventional/sunglasses/sunglasses_17225_alb_v2.png,conventional_albumentations,2,43372
+17225,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_17225.png,data/augmented_conventional/sunglasses/sunglasses_17225_alb_v3.png,conventional_albumentations,3,43373
+21323,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21323.png,data/augmented_conventional/sunglasses/sunglasses_21323_alb_v1.png,conventional_albumentations,1,43381
+21323,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21323.png,data/augmented_conventional/sunglasses/sunglasses_21323_alb_v2.png,conventional_albumentations,2,43382
+21323,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_21323.png,data/augmented_conventional/sunglasses/sunglasses_21323_alb_v3.png,conventional_albumentations,3,43383
+16107,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16107.png,data/augmented_conventional/sunglasses/sunglasses_16107_alb_v1.png,conventional_albumentations,1,43391
+16107,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16107.png,data/augmented_conventional/sunglasses/sunglasses_16107_alb_v2.png,conventional_albumentations,2,43392
+16107,Sunglasses,sunglasses,data/prepared/train/sunglasses/sunglasses_16107.png,data/augmented_conventional/sunglasses/sunglasses_16107_alb_v3.png,conventional_albumentations,3,43393
+47957,Handbags,handbags,data/prepared/train/handbags/handbags_47957.png,data/augmented_conventional/handbags/handbags_47957_alb_v1.png,conventional_albumentations,1,43401
+47957,Handbags,handbags,data/prepared/train/handbags/handbags_47957.png,data/augmented_conventional/handbags/handbags_47957_alb_v2.png,conventional_albumentations,2,43402
+47957,Handbags,handbags,data/prepared/train/handbags/handbags_47957.png,data/augmented_conventional/handbags/handbags_47957_alb_v3.png,conventional_albumentations,3,43403
+47359,Handbags,handbags,data/prepared/train/handbags/handbags_47359.png,data/augmented_conventional/handbags/handbags_47359_alb_v1.png,conventional_albumentations,1,43411
+47359,Handbags,handbags,data/prepared/train/handbags/handbags_47359.png,data/augmented_conventional/handbags/handbags_47359_alb_v2.png,conventional_albumentations,2,43412
+47359,Handbags,handbags,data/prepared/train/handbags/handbags_47359.png,data/augmented_conventional/handbags/handbags_47359_alb_v3.png,conventional_albumentations,3,43413
+21977,Handbags,handbags,data/prepared/train/handbags/handbags_21977.png,data/augmented_conventional/handbags/handbags_21977_alb_v1.png,conventional_albumentations,1,43421
+21977,Handbags,handbags,data/prepared/train/handbags/handbags_21977.png,data/augmented_conventional/handbags/handbags_21977_alb_v2.png,conventional_albumentations,2,43422
+21977,Handbags,handbags,data/prepared/train/handbags/handbags_21977.png,data/augmented_conventional/handbags/handbags_21977_alb_v3.png,conventional_albumentations,3,43423
+58183,Handbags,handbags,data/prepared/train/handbags/handbags_58183.png,data/augmented_conventional/handbags/handbags_58183_alb_v1.png,conventional_albumentations,1,43431
+58183,Handbags,handbags,data/prepared/train/handbags/handbags_58183.png,data/augmented_conventional/handbags/handbags_58183_alb_v2.png,conventional_albumentations,2,43432
+58183,Handbags,handbags,data/prepared/train/handbags/handbags_58183.png,data/augmented_conventional/handbags/handbags_58183_alb_v3.png,conventional_albumentations,3,43433
+29742,Handbags,handbags,data/prepared/train/handbags/handbags_29742.png,data/augmented_conventional/handbags/handbags_29742_alb_v1.png,conventional_albumentations,1,43441
+29742,Handbags,handbags,data/prepared/train/handbags/handbags_29742.png,data/augmented_conventional/handbags/handbags_29742_alb_v2.png,conventional_albumentations,2,43442
+29742,Handbags,handbags,data/prepared/train/handbags/handbags_29742.png,data/augmented_conventional/handbags/handbags_29742_alb_v3.png,conventional_albumentations,3,43443
+42841,Handbags,handbags,data/prepared/train/handbags/handbags_42841.png,data/augmented_conventional/handbags/handbags_42841_alb_v1.png,conventional_albumentations,1,43451
+42841,Handbags,handbags,data/prepared/train/handbags/handbags_42841.png,data/augmented_conventional/handbags/handbags_42841_alb_v2.png,conventional_albumentations,2,43452
+42841,Handbags,handbags,data/prepared/train/handbags/handbags_42841.png,data/augmented_conventional/handbags/handbags_42841_alb_v3.png,conventional_albumentations,3,43453
+35913,Handbags,handbags,data/prepared/train/handbags/handbags_35913.png,data/augmented_conventional/handbags/handbags_35913_alb_v1.png,conventional_albumentations,1,43461
+35913,Handbags,handbags,data/prepared/train/handbags/handbags_35913.png,data/augmented_conventional/handbags/handbags_35913_alb_v2.png,conventional_albumentations,2,43462
+35913,Handbags,handbags,data/prepared/train/handbags/handbags_35913.png,data/augmented_conventional/handbags/handbags_35913_alb_v3.png,conventional_albumentations,3,43463
+58177,Handbags,handbags,data/prepared/train/handbags/handbags_58177.png,data/augmented_conventional/handbags/handbags_58177_alb_v1.png,conventional_albumentations,1,43471
+58177,Handbags,handbags,data/prepared/train/handbags/handbags_58177.png,data/augmented_conventional/handbags/handbags_58177_alb_v2.png,conventional_albumentations,2,43472
+58177,Handbags,handbags,data/prepared/train/handbags/handbags_58177.png,data/augmented_conventional/handbags/handbags_58177_alb_v3.png,conventional_albumentations,3,43473
+21510,Handbags,handbags,data/prepared/train/handbags/handbags_21510.png,data/augmented_conventional/handbags/handbags_21510_alb_v1.png,conventional_albumentations,1,43481
+21510,Handbags,handbags,data/prepared/train/handbags/handbags_21510.png,data/augmented_conventional/handbags/handbags_21510_alb_v2.png,conventional_albumentations,2,43482
+21510,Handbags,handbags,data/prepared/train/handbags/handbags_21510.png,data/augmented_conventional/handbags/handbags_21510_alb_v3.png,conventional_albumentations,3,43483
+21948,Handbags,handbags,data/prepared/train/handbags/handbags_21948.png,data/augmented_conventional/handbags/handbags_21948_alb_v1.png,conventional_albumentations,1,43491
+21948,Handbags,handbags,data/prepared/train/handbags/handbags_21948.png,data/augmented_conventional/handbags/handbags_21948_alb_v2.png,conventional_albumentations,2,43492
+21948,Handbags,handbags,data/prepared/train/handbags/handbags_21948.png,data/augmented_conventional/handbags/handbags_21948_alb_v3.png,conventional_albumentations,3,43493
+47366,Handbags,handbags,data/prepared/train/handbags/handbags_47366.png,data/augmented_conventional/handbags/handbags_47366_alb_v1.png,conventional_albumentations,1,43501
+47366,Handbags,handbags,data/prepared/train/handbags/handbags_47366.png,data/augmented_conventional/handbags/handbags_47366_alb_v2.png,conventional_albumentations,2,43502
+47366,Handbags,handbags,data/prepared/train/handbags/handbags_47366.png,data/augmented_conventional/handbags/handbags_47366_alb_v3.png,conventional_albumentations,3,43503
+9009,Handbags,handbags,data/prepared/train/handbags/handbags_9009.png,data/augmented_conventional/handbags/handbags_9009_alb_v1.png,conventional_albumentations,1,43511
+9009,Handbags,handbags,data/prepared/train/handbags/handbags_9009.png,data/augmented_conventional/handbags/handbags_9009_alb_v2.png,conventional_albumentations,2,43512
+9009,Handbags,handbags,data/prepared/train/handbags/handbags_9009.png,data/augmented_conventional/handbags/handbags_9009_alb_v3.png,conventional_albumentations,3,43513
+25144,Handbags,handbags,data/prepared/train/handbags/handbags_25144.png,data/augmented_conventional/handbags/handbags_25144_alb_v1.png,conventional_albumentations,1,43521
+25144,Handbags,handbags,data/prepared/train/handbags/handbags_25144.png,data/augmented_conventional/handbags/handbags_25144_alb_v2.png,conventional_albumentations,2,43522
+25144,Handbags,handbags,data/prepared/train/handbags/handbags_25144.png,data/augmented_conventional/handbags/handbags_25144_alb_v3.png,conventional_albumentations,3,43523
+42846,Handbags,handbags,data/prepared/train/handbags/handbags_42846.png,data/augmented_conventional/handbags/handbags_42846_alb_v1.png,conventional_albumentations,1,43531
+42846,Handbags,handbags,data/prepared/train/handbags/handbags_42846.png,data/augmented_conventional/handbags/handbags_42846_alb_v2.png,conventional_albumentations,2,43532
+42846,Handbags,handbags,data/prepared/train/handbags/handbags_42846.png,data/augmented_conventional/handbags/handbags_42846_alb_v3.png,conventional_albumentations,3,43533
+53934,Handbags,handbags,data/prepared/train/handbags/handbags_53934.png,data/augmented_conventional/handbags/handbags_53934_alb_v1.png,conventional_albumentations,1,43541
+53934,Handbags,handbags,data/prepared/train/handbags/handbags_53934.png,data/augmented_conventional/handbags/handbags_53934_alb_v2.png,conventional_albumentations,2,43542
+53934,Handbags,handbags,data/prepared/train/handbags/handbags_53934.png,data/augmented_conventional/handbags/handbags_53934_alb_v3.png,conventional_albumentations,3,43543
+21528,Handbags,handbags,data/prepared/train/handbags/handbags_21528.png,data/augmented_conventional/handbags/handbags_21528_alb_v1.png,conventional_albumentations,1,43551
+21528,Handbags,handbags,data/prepared/train/handbags/handbags_21528.png,data/augmented_conventional/handbags/handbags_21528_alb_v2.png,conventional_albumentations,2,43552
+21528,Handbags,handbags,data/prepared/train/handbags/handbags_21528.png,data/augmented_conventional/handbags/handbags_21528_alb_v3.png,conventional_albumentations,3,43553
+52647,Handbags,handbags,data/prepared/train/handbags/handbags_52647.png,data/augmented_conventional/handbags/handbags_52647_alb_v1.png,conventional_albumentations,1,43561
+52647,Handbags,handbags,data/prepared/train/handbags/handbags_52647.png,data/augmented_conventional/handbags/handbags_52647_alb_v2.png,conventional_albumentations,2,43562
+52647,Handbags,handbags,data/prepared/train/handbags/handbags_52647.png,data/augmented_conventional/handbags/handbags_52647_alb_v3.png,conventional_albumentations,3,43563
+47395,Handbags,handbags,data/prepared/train/handbags/handbags_47395.png,data/augmented_conventional/handbags/handbags_47395_alb_v1.png,conventional_albumentations,1,43571
+47395,Handbags,handbags,data/prepared/train/handbags/handbags_47395.png,data/augmented_conventional/handbags/handbags_47395_alb_v2.png,conventional_albumentations,2,43572
+47395,Handbags,handbags,data/prepared/train/handbags/handbags_47395.png,data/augmented_conventional/handbags/handbags_47395_alb_v3.png,conventional_albumentations,3,43573
+48329,Handbags,handbags,data/prepared/train/handbags/handbags_48329.png,data/augmented_conventional/handbags/handbags_48329_alb_v1.png,conventional_albumentations,1,43581
+48329,Handbags,handbags,data/prepared/train/handbags/handbags_48329.png,data/augmented_conventional/handbags/handbags_48329_alb_v2.png,conventional_albumentations,2,43582
+48329,Handbags,handbags,data/prepared/train/handbags/handbags_48329.png,data/augmented_conventional/handbags/handbags_48329_alb_v3.png,conventional_albumentations,3,43583
+10250,Handbags,handbags,data/prepared/train/handbags/handbags_10250.png,data/augmented_conventional/handbags/handbags_10250_alb_v1.png,conventional_albumentations,1,43591
+10250,Handbags,handbags,data/prepared/train/handbags/handbags_10250.png,data/augmented_conventional/handbags/handbags_10250_alb_v2.png,conventional_albumentations,2,43592
+10250,Handbags,handbags,data/prepared/train/handbags/handbags_10250.png,data/augmented_conventional/handbags/handbags_10250_alb_v3.png,conventional_albumentations,3,43593
+5854,Handbags,handbags,data/prepared/train/handbags/handbags_5854.png,data/augmented_conventional/handbags/handbags_5854_alb_v1.png,conventional_albumentations,1,43601
+5854,Handbags,handbags,data/prepared/train/handbags/handbags_5854.png,data/augmented_conventional/handbags/handbags_5854_alb_v2.png,conventional_albumentations,2,43602
+5854,Handbags,handbags,data/prepared/train/handbags/handbags_5854.png,data/augmented_conventional/handbags/handbags_5854_alb_v3.png,conventional_albumentations,3,43603
+31912,Handbags,handbags,data/prepared/train/handbags/handbags_31912.png,data/augmented_conventional/handbags/handbags_31912_alb_v1.png,conventional_albumentations,1,43611
+31912,Handbags,handbags,data/prepared/train/handbags/handbags_31912.png,data/augmented_conventional/handbags/handbags_31912_alb_v2.png,conventional_albumentations,2,43612
+31912,Handbags,handbags,data/prepared/train/handbags/handbags_31912.png,data/augmented_conventional/handbags/handbags_31912_alb_v3.png,conventional_albumentations,3,43613
+8313,Handbags,handbags,data/prepared/train/handbags/handbags_8313.png,data/augmented_conventional/handbags/handbags_8313_alb_v1.png,conventional_albumentations,1,43621
+8313,Handbags,handbags,data/prepared/train/handbags/handbags_8313.png,data/augmented_conventional/handbags/handbags_8313_alb_v2.png,conventional_albumentations,2,43622
+8313,Handbags,handbags,data/prepared/train/handbags/handbags_8313.png,data/augmented_conventional/handbags/handbags_8313_alb_v3.png,conventional_albumentations,3,43623
+21946,Handbags,handbags,data/prepared/train/handbags/handbags_21946.png,data/augmented_conventional/handbags/handbags_21946_alb_v1.png,conventional_albumentations,1,43631
+21946,Handbags,handbags,data/prepared/train/handbags/handbags_21946.png,data/augmented_conventional/handbags/handbags_21946_alb_v2.png,conventional_albumentations,2,43632
+21946,Handbags,handbags,data/prepared/train/handbags/handbags_21946.png,data/augmented_conventional/handbags/handbags_21946_alb_v3.png,conventional_albumentations,3,43633
+47368,Handbags,handbags,data/prepared/train/handbags/handbags_47368.png,data/augmented_conventional/handbags/handbags_47368_alb_v1.png,conventional_albumentations,1,43641
+47368,Handbags,handbags,data/prepared/train/handbags/handbags_47368.png,data/augmented_conventional/handbags/handbags_47368_alb_v2.png,conventional_albumentations,2,43642
+47368,Handbags,handbags,data/prepared/train/handbags/handbags_47368.png,data/augmented_conventional/handbags/handbags_47368_alb_v3.png,conventional_albumentations,3,43643
+9007,Handbags,handbags,data/prepared/train/handbags/handbags_9007.png,data/augmented_conventional/handbags/handbags_9007_alb_v1.png,conventional_albumentations,1,43651
+9007,Handbags,handbags,data/prepared/train/handbags/handbags_9007.png,data/augmented_conventional/handbags/handbags_9007_alb_v2.png,conventional_albumentations,2,43652
+9007,Handbags,handbags,data/prepared/train/handbags/handbags_9007.png,data/augmented_conventional/handbags/handbags_9007_alb_v3.png,conventional_albumentations,3,43653
+42870,Handbags,handbags,data/prepared/train/handbags/handbags_42870.png,data/augmented_conventional/handbags/handbags_42870_alb_v1.png,conventional_albumentations,1,43661
+42870,Handbags,handbags,data/prepared/train/handbags/handbags_42870.png,data/augmented_conventional/handbags/handbags_42870_alb_v2.png,conventional_albumentations,2,43662
+42870,Handbags,handbags,data/prepared/train/handbags/handbags_42870.png,data/augmented_conventional/handbags/handbags_42870_alb_v3.png,conventional_albumentations,3,43663
+53902,Handbags,handbags,data/prepared/train/handbags/handbags_53902.png,data/augmented_conventional/handbags/handbags_53902_alb_v1.png,conventional_albumentations,1,43671
+53902,Handbags,handbags,data/prepared/train/handbags/handbags_53902.png,data/augmented_conventional/handbags/handbags_53902_alb_v2.png,conventional_albumentations,2,43672
+53902,Handbags,handbags,data/prepared/train/handbags/handbags_53902.png,data/augmented_conventional/handbags/handbags_53902_alb_v3.png,conventional_albumentations,3,43673

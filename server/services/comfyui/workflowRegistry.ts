@@ -69,11 +69,29 @@ export const WORKFLOW_WF01: WorkflowDefinition = {
       {
         name: "Dark Obsidian Luxury",
         prompt:
-          "luxury dark obsidian stone slab, dramatic rim light, moody reflections, matte black background, premium cosmetics editorial",
-        negativePrompt: "lowres, noisy, dust, fingerprints, deformed, overexposed",
+          "luxury dark obsidian stone slab, dramatic golden rim light, moody reflections, matte black background, premium editorial product photography, 8k",
+        negativePrompt: "lowres, noisy, dust, fingerprints, deformed, overexposed, washed out",
         denoise: 0.88,
-        steps: 28,
+        steps: 25,
         cfg: 7.5,
+      },
+      {
+        name: "Urban Streetwear Asphalt",
+        prompt:
+          "urban street asphalt pavement, natural outdoor daylight, textured city sidewalk, realistic ground shadow, modern streetwear lifestyle advertising, 8k sharp focus",
+        negativePrompt: "studio, cartoon, painting, blurry, distorted, low quality",
+        denoise: 0.88,
+        steps: 25,
+        cfg: 7.0,
+      },
+      {
+        name: "Warm Scandinavian Oak",
+        prompt:
+          "warm natural oak wooden table, sun-drenched morning light, soft architectural window shadows, scandinavian minimalist interior, high detail, 8k",
+        negativePrompt: "dark, gloomy, plastic, fake, blurry, low resolution, messy",
+        denoise: 0.86,
+        steps: 25,
+        cfg: 7.0,
       },
       {
         name: "Pastel Gradient Podium",

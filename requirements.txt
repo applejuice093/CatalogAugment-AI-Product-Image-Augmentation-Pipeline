@@ -1,0 +1,21 @@
+# CatalogAugment AI — Python ML/DL Pipeline Requirements
+# Core Deep Learning & Vision
+torch>=2.2.0
+torchvision>=0.17.0
+transformers>=4.40.0
+safetensors>=0.4.3
+
+# Conventional & Generative Augmentation (Rubric Core)
+albumentations>=1.4.0
+diffusers>=0.29.0
+accelerate>=0.30.0
+opencv-python-headless>=4.9.0
+Pillow>=10.0.0
+
+# Dataset Handling, Evaluation & Visualization
+datasets>=2.19.0
+huggingface-hub>=0.23.0
+numpy>=1.26.0
+pandas>=2.2.0
+scikit-learn>=1.4.0
+matplotlib>=3.8.0

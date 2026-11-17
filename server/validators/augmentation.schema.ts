@@ -16,6 +16,26 @@ export const createAugmentationJobSchema = z.object({
   numVariants: z.number().int().min(1).max(4).default(1),
   preserveOriginalForeground: z.boolean().default(true),
   enableEdgeRefinement: z.boolean().default(true),
+  cameraAngle: z
+    .enum([
+      "FRONTAL",
+      "THREE_QUARTER",
+      "FLAT_LAY",
+      "LOW_ANGLE",
+      "CASUAL_TILT",
+      "AUTO_ROTATE",
+    ])
+    .default("AUTO_ROTATE"),
+  customPerspective: z
+    .object({
+      yaw: z.number().optional(),
+      pitch: z.number().optional(),
+      roll: z.number().optional(),
+      scale: z.number().optional(),
+      dx: z.number().optional(),
+      dy: z.number().optional(),
+    })
+    .optional(),
 });
 
 export type CreateAugmentationJobInput = z.infer<typeof createAugmentationJobSchema>;

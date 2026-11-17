@@ -138,8 +138,8 @@ export class EvaluationBenchmarkService {
     const testQueries: TestQuery[] = [];
     for (let i = 0; i < preparedProducts.length; i++) {
       const p = preparedProducts[i];
-      // Create a test query variation simulating customer photo (flip/lighting variation)
-      const probeBuffer = await this.conventionalAug.augment(p.originalBuffer, i + 1);
+      // Create an independent customer-photo stress query (distinct from training augmentations)
+      const probeBuffer = await this.conventionalAug.createStressQuery(p.originalBuffer, i + 101);
       const queryEmbedding = await this.encoder.generateEmbedding(probeBuffer);
       testQueries.push({
         targetProductId: p.productId,

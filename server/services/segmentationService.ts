@@ -1,4 +1,11 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+import os from "node:os";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
 import sharp from "sharp";
+
+const execFileAsync = promisify(execFile);
 
 export interface SegmentationOutput {
   inputImageId: string;
@@ -17,23 +24,88 @@ export interface ISegmentationProvider {
 }
 
 /**
+ * RMBG-1.4 Neural Precision Background Removal Provider
+ * State-of-the-art commercial product segmentation on CUDA GPU.
+ */
+export class RmbgNeuralSegmentationProvider implements ISegmentationProvider {
+  readonly name = "briaai-rmbg-1.4";
+  readonly version = "1.4.0";
+
+  private pythonPath = "C:\\A\\ComfyUI_windows_portable\\python_embeded\\python.exe";
+  private scriptPath = path.resolve(process.cwd(), "server/scripts/segment_rmbg.py");
+
+  async segment(inputImageId: string, imageBuffer: Buffer): Promise<SegmentationOutput> {
+    const tmpDir = path.join(os.tmpdir(), "catalogaugment_seg");
+    await fs.mkdir(tmpDir, { recursive: true });
+
+    const nonce = `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+    const tmpInputPath = path.join(tmpDir, `input_${nonce}.png`);
+    const tmpMaskPath = path.join(tmpDir, `mask_${nonce}.png`);
+    const tmpCutoutPath = path.join(tmpDir, `cutout_${nonce}.png`);
+
+    try {
+      await fs.writeFile(tmpInputPath, imageBuffer);
+
+      await execFileAsync(
+        this.pythonPath,
+        [
+          this.scriptPath,
+          "--input",
+          tmpInputPath,
+          "--mask-out",
+          tmpMaskPath,
+          "--foreground-out",
+          tmpCutoutPath,
+        ],
+        { timeout: 30000 }
+      );
+
+      const [maskBuffer, foregroundBuffer] = await Promise.all([
+        fs.readFile(tmpMaskPath),
+        fs.readFile(tmpCutoutPath),
+      ]);
+
+      return {
+        inputImageId,
+        maskBuffer,
+        foregroundBuffer,
+        status: "COMPLETED",
+        modelName: this.name,
+        modelVersion: this.version,
+        confidence: 0.98,
+      };
+    } catch (error) {
+      console.warn("RMBG-1.4 neural segmentation failed, falling back to Native provider:", error);
+      const fallback = new NativeAlphaSegmentationProvider();
+      return fallback.segment(inputImageId, imageBuffer);
+    } finally {
+      // Clean up temp files silently
+      await Promise.allSettled([
+        fs.unlink(tmpInputPath),
+        fs.unlink(tmpMaskPath),
+        fs.unlink(tmpCutoutPath),
+      ]);
+    }
+  }
+}
+
+/**
  * Standard Saliency & Alpha Segmentation Provider (Native sharp implementation)
  * Detects foreground subject, creates a single-channel binary mask, and isolates foreground cutout.
  */
 export class NativeAlphaSegmentationProvider implements ISegmentationProvider {
-  readonly name = "rembg-u2net-standalone";
+  readonly name = "native-saliency-sharp";
   readonly version = "1.0.0";
 
   async segment(inputImageId: string, imageBuffer: Buffer): Promise<SegmentationOutput> {
     try {
       // 1. Generate grayscale mask by analyzing luminance & edge contrast
-      // In standalone mode, extracts subject mask with thresholding & blur smoothing
       const maskBuffer = await sharp(imageBuffer)
         .grayscale()
-        .linear(1.3, -20) // boost contrast to differentiate subject from background
-        .threshold(225, { grayscale: true }) // segment background from product
-        .negate() // background becomes black (0), subject becomes white (255)
-        .blur(0.8) // smooth antialiased boundary
+        .linear(1.4, -30)
+        .threshold(210, { grayscale: true })
+        .negate()
+        .blur(1.2)
         .png()
         .toBuffer();
 
@@ -56,11 +128,10 @@ export class NativeAlphaSegmentationProvider implements ISegmentationProvider {
         status: "COMPLETED",
         modelName: this.name,
         modelVersion: this.version,
-        confidence: 0.94,
+        confidence: 0.85,
       };
     } catch (error) {
       console.error("Segmentation failure:", error);
-      // Fallback empty mask on catastrophic error
       const blankMask = await sharp({
         create: {
           width: 512,
@@ -89,7 +160,7 @@ export class SegmentationService {
   private provider: ISegmentationProvider;
 
   constructor(provider?: ISegmentationProvider) {
-    this.provider = provider ?? new NativeAlphaSegmentationProvider();
+    this.provider = provider ?? new RmbgNeuralSegmentationProvider();
   }
 
   setProvider(provider: ISegmentationProvider): void {
