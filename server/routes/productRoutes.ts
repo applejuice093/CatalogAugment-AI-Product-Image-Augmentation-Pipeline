@@ -45,6 +45,30 @@ productRouter.delete(
   asyncErrorWrapper((req, res) => productController.deleteProduct(req, res))
 );
 
+productRouter.get(
+  "/:id/preview",
+  requireAuth,
+  asyncErrorWrapper((req, res) => productController.getProductPreview(req, res, "original"))
+);
+
+productRouter.get(
+  "/:id/mask",
+  requireAuth,
+  asyncErrorWrapper((req, res) => productController.getProductPreview(req, res, "mask"))
+);
+
+productRouter.get(
+  "/:id/cutout",
+  requireAuth,
+  asyncErrorWrapper((req, res) => productController.getProductPreview(req, res, "foreground"))
+);
+
+productRouter.get(
+  "/:id/foreground",
+  requireAuth,
+  asyncErrorWrapper((req, res) => productController.getProductPreview(req, res, "foreground"))
+);
+
 // Product Image Ingestion & Mask Retrieval
 productRouter.post(
   "/:id/images",

@@ -58,7 +58,7 @@ export class QualityAssessmentRepository {
   async findReviewQueue(limit = 50, offset = 0) {
     return prisma.qualityAssessment.findMany({
       where: {
-        decision: "NEEDS_REVIEW",
+        decision: { in: ["NEEDS_REVIEW", "REJECT", "PENDING"] },
       },
       include: {
         augmentationResult: true,

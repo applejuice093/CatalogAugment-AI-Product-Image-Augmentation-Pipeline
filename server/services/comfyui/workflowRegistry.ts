@@ -360,14 +360,48 @@ export class WorkflowRegistry {
     this.registerWorkflow(WORKFLOW_WF01);
     this.registerWorkflow(WORKFLOW_WF02);
     this.registerWorkflow(WORKFLOW_WF03);
+
+    // Register convenience aliases for UI presets
+    this.workflows.set("WF-01", WORKFLOW_WF01);
+    this.workflows.set("wf-01", WORKFLOW_WF01);
+    this.workflows.set("WF-02", WORKFLOW_WF02);
+    this.workflows.set("wf-02", WORKFLOW_WF02);
+    this.workflows.set("WF-03", WORKFLOW_WF03);
+    this.workflows.set("wf-03", WORKFLOW_WF03);
+    this.workflows.set("WF-04", WORKFLOW_WF01);
+    this.workflows.set("wf-04", WORKFLOW_WF01);
+    this.workflows.set("WF-05", WORKFLOW_WF01);
+    this.workflows.set("wf-05", WORKFLOW_WF01);
   }
 
   public registerWorkflow(workflow: WorkflowDefinition): void {
     this.workflows.set(workflow.id, workflow);
   }
 
-  public getWorkflow(workflowId: string): WorkflowDefinition | undefined {
-    return this.workflows.get(workflowId);
+  public getWorkflow(workflowId?: string): WorkflowDefinition {
+    if (!workflowId) return WORKFLOW_WF01;
+    const direct = this.workflows.get(workflowId);
+    if (direct) return direct;
+
+    const normalized = workflowId.trim().toLowerCase().replace(/[_\s]/g, "-");
+    const normDirect = this.workflows.get(normalized);
+    if (normDirect) return normDirect;
+
+    for (const [key, wf] of this.workflows.entries()) {
+      const lowerKey = key.toLowerCase();
+      const lowerId = wf.id.toLowerCase();
+      if (
+        lowerKey === normalized ||
+        lowerId === normalized ||
+        lowerId.includes(normalized) ||
+        normalized.includes(lowerKey) ||
+        normalized.includes(lowerId)
+      ) {
+        return wf;
+      }
+    }
+
+    return WORKFLOW_WF01;
   }
 
   public listWorkflows(): WorkflowDefinition[] {

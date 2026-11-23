@@ -34,3 +34,5 @@ ml_pipeline/outputs/models/
 *.njsproj
 *.sln
 *.sw?
+.playwright-mcp/
+.agents/

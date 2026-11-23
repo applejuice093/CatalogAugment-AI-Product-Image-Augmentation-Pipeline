@@ -299,7 +299,9 @@ export const api = {
     negativePrompt?: string;
     seed?: number;
     batchSize?: number;
+    numVariants?: number;
     compositeForeground?: boolean;
+    preserveOriginalForeground?: boolean;
     cfg?: number;
     steps?: number;
     denoise?: number;

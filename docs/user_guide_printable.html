@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CatalogAugment AI — Enterprise User & Operator Guide</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 15mm 15mm 15mm 15mm;
+      @bottom-right {
+        content: counter(page);
+      }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1e26;
+      background: #ffffff;
+      line-height: 1.6;
+      font-size: 11pt;
+      margin: 0;
+      padding: 0;
+    }
+    .h1-title {
+      font-size: 22pt;
+      color: #0b1320;
+      border-bottom: 2px solid #d6e36a;
+      padding-bottom: 6px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      page-break-after: avoid;
+    }
+    .h2-heading {
+      font-size: 15pt;
+      color: #0f172a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-top: 24px;
+      margin-bottom: 10px;
+      page-break-after: avoid;
+    }
+    .h3-heading {
+      font-size: 12pt;
+      color: #1e293b;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      page-break-after: avoid;
+    }
+    .h4-heading {
+      font-size: 11pt;
+      color: #334155;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      page-break-after: avoid;
+    }
+    .paragraph {
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+    .divider {
+      border: 0;
+      height: 1px;
+      background: #e2e8f0;
+      margin: 20px 0;
+    }
+    .list {
+      margin-top: 0;
+      margin-bottom: 12px;
+      padding-left: 24px;
+    }
+    .list li {
+      margin-bottom: 4px;
+    }
+    .inline-code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      font-size: 9.5pt;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 2px 5px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+    .code-block {
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 8.5pt;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      page-break-inside: avoid;
+      line-height: 1.4;
+    }
+    .table-container {
+      margin-bottom: 14px;
+      overflow-x: auto;
+      page-break-inside: avoid;
+    }
+    .guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9pt;
+      border: 1px solid #cbd5e1;
+    }
+    .guide-table th {
+      background: #f8fafc;
+      color: #0f172a;
+      font-weight: 700;
+      text-align: left;
+      padding: 7px 10px;
+      border: 1px solid #cbd5e1;
+    }
+    .guide-table td {
+      padding: 6px 10px;
+      border: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+    .guide-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    .figure-container {
+      margin: 16px 0;
+      text-align: center;
+      page-break-inside: avoid;
+    }
+    .figure-img {
+      max-width: 96%;
+      max-height: 420px;
+      object-fit: contain;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .figure-caption {
+      font-size: 8.5pt;
+      color: #64748b;
+      margin-top: 5px;
+      font-style: italic;
+    }
+    .math {
+      font-style: italic;
+      color: #0369a1;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="h1-title">CatalogAugment AI — Enterprise User & Operator Guide</h1>
+<p class="paragraph"><strong>AI-Powered Product Image Augmentation, Visual Search Benchmarking & Dataset Generation Platform</strong></p>
+<hr class="divider" />
+<h2 class="h2-heading">1. Platform Executive Summary & Core Value Proposition</h2>
+<p class="paragraph">Modern e-commerce visual search engines, recommendation systems, and catalog classifiers suffer from a massive <strong>train-to-test domain shift</strong>. Retail master photography is captured in pristine conditions: pure white studio backdrops, flat 90° frontal angles, and even, bright lighting. </p>
+<p class="paragraph">When real consumers search for items, their smartphone photographs exhibit <strong>drastically different environmental conditions</strong>:</p>
+<ul class="list">
+<li>Cluttered, real-world surfaces (wooden tables, marble countertops, tiled floors, closets)</li>
+<li>High-contrast, directional, or dim ambient lighting (harsh sunlight, tungsten warm casts, neon street reflections)</li>
+<li>Perspective tilts, oblique 3/4 angles, and flat-lays</li>
+<li>Natural optical noise, focal blur, and mobile JPEG compression</li>
+</ul>
+<p class="paragraph">Unaugmented baseline vision models (such as ResNet-18 or ViT-B/32) achieve over 97% accuracy on sterile studio images, but their retrieval recall drops precipitously to under 40% on real customer photos because they latch onto background textures rather than product features.</p>
+<p class="paragraph"><strong>CatalogAugment AI</strong> solves this domain gap by taking <strong>a single authentic catalog packshot</strong> and synthesizing a high-fidelity, photorealistic multi-environment dataset while <strong>mathematically locking the product’s authentic physical identity</strong>.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/01_hero_landing.png" alt="CatalogAugment AI Platform Hero Landing" class="figure-img" />
+          <div class="figure-caption">Figure: CatalogAugment AI Platform Hero Landing</div>
+        </div>
+      
+<hr class="divider" />
+<h2 class="h2-heading">2. End-to-End Pipeline Architecture & Data Flow</h2>
+<p class="paragraph">The platform executes a sequential, 8-stage pipeline that guarantees mathematical identity preservation while maximizing environmental variance.</p>
+<pre class="code-block"><code>+----------------------------------------------------------------------------------------------------+
+|                                    CATALOGAUGMENT PIPELINE FLOW                                    |
++----------------------------------------------------------------------------------------------------+
+|                                                                                                    |
+|  [Step 1: Master Ingestion]                                                                        |
+|       |  Input: Raw JPEG/PNG/WEBP packshot (Any aspect ratio)                                      |
+|       |  Processing: Canvas border color estimation, square aspect padding, Lanczos interpolation  |
+|       v  Output: Standardized 512x512 RGB Master Image                                             |
+|                                                                                                    |
+|  [Step 2: AI Foreground Segmentation]                                                              |
+|       |  Model: Bria RMBG-1.4 Neural Matting (PyTorch / CUDA)                                      |
+|       |  Processing: Pixel probability classification, edge thresholding, 8-bit alpha mask         |
+|       v  Output: 8-bit Binary Mask &amp; 4-Channel RGBA Cutout with transparent background             |
+|                                                                                                    |
+|  [Step 3: 3D Perspective Homography]                                                               |
+|       |  Algorithm: OpenCV 3D Projective Matrix (Yaw, Pitch, Roll transformations)                 |
+|       |  Processing: Realistic camera tilt simulation without changing product textures           |
+|       v  Output: Rotated &amp; Perspective-Adjusted Foreground Cutout                                  |
+|                                                                                                    |
+|  [Step 4: Controlled Generative Diffusion]                                                         |
+|       |  Engine: Stable Diffusion Realistic Vision V6 (ComfyUI / Diffusers fp16)                   |
+|       |  Processing: Inpainting with context prompts (Living Room, Marble Kitchen, Boutique, etc)  |
+|       v  Output: Photorealistic Synthetic Background Environment with ambient lighting             |
+|                                                                                                    |
+|  [Step 5: Feathered Alpha Compositing]                                                             |
+|       |  Algorithm: Sharp / NumPy Alpha Feathering with 2px boundary dilation                      |
+|       |  Processing: I_composite = alpha * I_authentic + (1 - alpha) * I_background               |
+|       v  Output: Final Composite Image (No jagged green screens or halos)                          |
+|                                                                                                    |
+|  [Step 6: Automated Quality Assurance Gating]                                                      |
+|       |  Engines: OpenCV Laplacian Variance, Structural Similarity (SSIM), pHash 64-bit Hamming    |
+|       |  Processing: Edge preservation audit, foreground identity lock verification, uniqueness    |
+|       v  Output: Quality Scorecard (APPROVED / REJECTED / FLAGGED)                                 |
+|                                                                                                    |
+|  [Step 7: Product Intelligence &amp; VLM Verification]                                                 |
+|       |  Model: Moondream 2 Vision-Language Model / Gemini Cloud VLM                               |
+|       |  Processing: Zero-shot visual attribute extraction (materials, colors, category, tags)     |
+|       v  Output: Normalized Semantic Metadata &amp; Visual Consistency Verification                    |
+|                                                                                                    |
+|  [Step 8: Vector Indexing &amp; Evaluation Probe]                                                      |
+|       |  Model: OpenAI CLIP ViT-B/32 (512-dimensional L2-normalized embeddings)                    |
+|       |  Processing: Cosine similarity search across indexed catalog and augmented variants        |
+|       v  Output: 4-Way Retrieval Benchmark Matrix &amp; Interactive Search Probe Results                |
+|                                                                                                    |
+|  [Step 9: Dataset Bundle Export]                                                                   |
+|       |  Engine: Multi-format Dataset Partitioning (Train / Val / Test)                            |
+|       v  Output: Downloadable ZIP archives in YOLOv8, COCO JSON, PyTorch ImageFolder, CSV formats  |
++----------------------------------------------------------------------------------------------------+</code></pre>
+<h3 class="h3-heading">Pipeline Step-by-Step Breakdown Table</h3>
+<div class="table-container"><table class="guide-table"><thead><tr>
+<th>Stage</th>
+<th>Step Name</th>
+<th>Input</th>
+<th>Primary Processing Engine</th>
+<th>Output Artifact</th>
+<th>Retail Purpose & Impact</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>01</strong></td>
+<td><strong>Ingestion & Standardization</strong></td>
+<td>Arbitrary photo (e.g. 1200x800 JPEG)</td>
+<td>Sharp Lanczos resampling & border-color extension</td>
+<td>512×512 RGB Master Image</td>
+<td>Guarantees neural network input stability without distorting product proportions.</td>
+</tr>
+<tr>
+<td><strong>02</strong></td>
+<td><strong>Neural Segmentation</strong></td>
+<td>512×512 Master Image</td>
+<td><code class="inline-code">briaai/RMBG-1.4</code> U-Net architecture</td>
+<td>512×512 8-bit Alpha Mask & PNG Cutout</td>
+<td>Eliminates studio background clutter to extract pure product silhouette.</td>
+</tr>
+<tr>
+<td><strong>03</strong></td>
+<td><strong>3D Camera Homography</strong></td>
+<td>RGBA Cutout + Angle Parameters</td>
+<td>OpenCV <code class="inline-code">getPerspectiveTransform</code> (Yaw/Pitch)</td>
+<td>Perspective-warped Cutout</td>
+<td>Simulates high and low angle customer smartphone captures.</td>
+</tr>
+<tr>
+<td><strong>04</strong></td>
+<td><strong>Generative Inpainting</strong></td>
+<td>Inverted Mask + Scene Prompt</td>
+<td><code class="inline-code">Realistic Vision V6.0</code> (ComfyUI / Diffusers)</td>
+<td>512×512 Synthesized Background</td>
+<td>Injects authentic environmental lighting, shadows, and surfaces.</td>
+</tr>
+<tr>
+<td><strong>05</strong></td>
+<td><strong>Feathered Compositing</strong></td>
+<td>Authentic Cutout + Synthetic BG</td>
+<td>2-pixel kernel dilation + subpixel alpha blending</td>
+<td>Seamless Augmented Variant</td>
+<td>Locks 100% authentic product logos, colors, and textures into scene.</td>
+</tr>
+<tr>
+<td><strong>06</strong></td>
+<td><strong>Quality Gate Gating</strong></td>
+<td>Master + Augmented Variant</td>
+<td>SSIM, pHash 64-bit Hamming, Laplacian variance</td>
+<td>Automated Pass/Fail Scorecard</td>
+<td>Prevents deformed or blurry images from polluting ML training sets.</td>
+</tr>
+<tr>
+<td><strong>07</strong></td>
+<td><strong>Visual Language Audit</strong></td>
+<td>Augmented Image + Master Reference</td>
+<td>Moondream 2 / Gemini Cloud VLM</td>
+<td>Extracted Attributes & Identity Score</td>
+<td>Verifies that semantic features (pockets, laces, dials) remain intact.</td>
+</tr>
+<tr>
+<td><strong>08</strong></td>
+<td><strong>Information Retrieval</strong></td>
+<td>Query Image (e.g. <code class="inline-code">sssss.jpg</code>)</td>
+<td>512-dim CLIP ViT-B/32 Nearest-Neighbor Index</td>
+<td>Top-K Ranked Catalog Candidates</td>
+<td>Tests real-world visual search invariant recall before deployment.</td>
+</tr>
+<tr>
+<td><strong>09</strong></td>
+<td><strong>Dataset Generation</strong></td>
+<td>Approved Catalog & Variants</td>
+<td>Dataset Splitter (Stratified Train/Val/Test)</td>
+<td>YOLOv8 / COCO / PyTorch Archives</td>
+<td>Instant training-ready downloads for internal computer vision teams.</td>
+</tr>
+</tbody></table></div>
+<hr class="divider" />
+<h2 class="h2-heading">3. Workspace Header & Navigation Controls</h2>
+<p class="paragraph">The primary workspace header provides global context, service availability indicators, and instant navigation between operational workspaces.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/02_workspace_header.png" alt="Workspace Header Navigation" class="figure-img" />
+          <div class="figure-caption">Figure: Workspace Header Navigation</div>
+        </div>
+      
+<h3 class="h3-heading">Header Elements & Indicator Status</h3>
+<p class="paragraph">1. <strong>Logo & Breadcrumb (<code class="inline-code">CatalogAugment Studio</code>)</strong>: Clicking the logo navigates back to the platform landing page.</p>
+<p class="paragraph">2. <strong>Workspace Navigation Tabs</strong>:</p>
+<ul class="list">
+<li><code class="inline-code">Catalog</code>: Inventory management, master images, and segmentation inspection.</li>
+<li><code class="inline-code">Studio</code>: Generative AI augmentation controls and parameter configuration.</li>
+<li><code class="inline-code">Gallery</code>: Variant comparison slider and human audit approvals.</li>
+<li><code class="inline-code">Intelligence</code>: VLM attribute extraction and material recognition.</li>
+<li><code class="inline-code">Quality</code>: Real-time QA gating queue with SSIM and pHash metrics.</li>
+<li><code class="inline-code">Benchmarks</code>: 4-way information retrieval evaluation and interactive visual search query probe.</li>
+<li><code class="inline-code">Datasets</code>: Train/Validation/Test split generator and dataset exporter.</li>
+<li><code class="inline-code">Workflows</code>: Node-level ComfyUI generative pipeline definitions.</li>
+</ul>
+<p class="paragraph">3. <strong>Open System Settings Button (Gear Icon)</strong>: Opens the infrastructure diagnostic modal.</p>
+<p class="paragraph">4. <strong>Return to Home Button</strong>: Exits the studio workspace to the public-facing landing interface.</p>
+<hr class="divider" />
+<h2 class="h2-heading">4. Tab 1: Catalog Products (<code class="inline-code">#products</code>)</h2>
+<p class="paragraph">The <strong>Catalog Products</strong> view is the primary master inventory registry. Users can upload high-resolution packshots, inspect automatic background isolation, and manage master metadata.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/03_catalog_view.png" alt="Catalog Products Overview" class="figure-img" />
+          <div class="figure-caption">Figure: Catalog Products Overview</div>
+        </div>
+      
+<h3 class="h3-heading">Key Buttons & Actions in Catalog View</h3>
+<ul class="list">
+<li><strong>Add Product (<code class="inline-code">+ Add Product</code>)</strong>: Opens the modal to ingest new catalog SKUs into the system.</li>
+<li><strong>Refresh (<code class="inline-code">Refresh</code>)</strong>: Re-synchronizes the inventory list with the PostgreSQL database.</li>
+<li><strong>Search & Filter Input</strong>: Real-time filtering by product name, SKU identifier, or category.</li>
+<li><strong>Product Card Actions</strong>:</li>
+<li><strong>Open in Studio (<code class="inline-code">Studio</code>)</strong>: Directly loads the product into the Augmentation Studio for synthetic generation.</li>
+<li><strong>Run VLM (<code class="inline-code">VLM</code>)</strong>: Launches the Vision-Language Model attribute extractor for this product.</li>
+<li><strong>Card Click</strong>: Opens the detailed product inspection modal.</li>
+</ul>
+<h3 class="h3-heading">Add Product Modal</h3>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/04_catalog_add_modal.png" alt="Add Product Modal" class="figure-img" />
+          <div class="figure-caption">Figure: Add Product Modal</div>
+        </div>
+      
+<ul class="list">
+<li><strong>Name Input</strong>: Human-readable merchandise name (e.g., <code class="inline-code">Denim Shorts</code>).</li>
+<li><strong>SKU Input</strong>: Unique corporate stock keeping unit code (e.g., <code class="inline-code">SHORTS-001</code>).</li>
+<li><strong>Category & Subcategory Dropdowns</strong>: Selects classification taxonomy (<code class="inline-code">Apparel</code>, <code class="inline-code">Footwear</code>, <code class="inline-code">Accessories</code>).</li>
+<li><strong>Dropzone File Picker</strong>: Drag-and-drop area accepting JPEG, PNG, and WEBP images.</li>
+<li><strong>Save Product Button</strong>: Commits the product to disk, computes initial Lanczos normalization, and triggers background segmentation.</li>
+</ul>
+<h3 class="h3-heading">Product Detail Modal: Master Image, Mask & Cutout Tabs</h3>
+<p class="paragraph">Clicking any product card opens the three-phase segmentation viewer:</p>
+<h4 class="h4-heading">A. Master Image Tab</h4>
+<p class="paragraph">Displays the standardized 512×512 RGB master packshot stored in persistent storage.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/05_catalog_detail_master.png" alt="Master Image Tab" class="figure-img" />
+          <div class="figure-caption">Figure: Master Image Tab</div>
+        </div>
+      
+<h4 class="h4-heading">B. Segmentation Mask Tab</h4>
+<p class="paragraph">Displays the high-contrast 8-bit alpha mask generated by <code class="inline-code">Bria RMBG-1.4</code>. Pure white pixels represent the foreground product silhouette; pure black pixels represent the background.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/06_catalog_detail_mask.png" alt="Segmentation Mask Tab" class="figure-img" />
+          <div class="figure-caption">Figure: Segmentation Mask Tab</div>
+        </div>
+      
+<h4 class="h4-heading">C. Transparent Cutout Tab</h4>
+<p class="paragraph">Displays the isolated foreground product composited over a high-contrast checkerboard pattern, confirming edge transparency and feathering quality.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/07_catalog_detail_cutout.png" alt="Transparent Cutout Tab" class="figure-img" />
+          <div class="figure-caption">Figure: Transparent Cutout Tab</div>
+        </div>
+      
+<hr class="divider" />
+<h2 class="h2-heading">5. Tab 2: Augmentation Studio (<code class="inline-code">#studio</code>)</h2>
+<p class="paragraph">The <strong>Augmentation Studio</strong> is the generative engine of the platform. Here, operators generate realistic synthetic environments for isolated products.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/08_studio_view.png" alt="Augmentation Studio Overview" class="figure-img" />
+          <div class="figure-caption">Figure: Augmentation Studio Overview</div>
+        </div>
+      
+<h3 class="h3-heading">Studio Parameters & Generation Controls</h3>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/09_studio_parameters.png" alt="Studio Parameter Controls" class="figure-img" />
+          <div class="figure-caption">Figure: Studio Parameter Controls</div>
+        </div>
+      
+<p class="paragraph">1. <strong>Active Product Selector</strong>: Dropdown to choose which catalog item to augment.</p>
+<p class="paragraph">2. <strong>Environment Prompt Templates</strong>:</p>
+<ul class="list">
+<li><code class="inline-code">Living Room Pedestal</code>: Polished wooden pedestal in warm domestic ambient lighting.</li>
+<li><code class="inline-code">Marble Kitchen</code>: Bright daylight reflections on a luxury marble surface.</li>
+<li><code class="inline-code">Boutique Shelf</code>: Minimalist retail shelving with soft studio track lights.</li>
+<li><code class="inline-code">Obsidian Luxury</code>: Dark moody podium with dramatic rim lighting.</li>
+<li><code class="inline-code">Outdoor Sunlit</code>: Natural outdoor sunlight with real ground textures.</li>
+<li><code class="inline-code">Neon Streetwear</code>: High-contrast cybernetic and colored urban ambient glows.</li>
+</ul>
+<p class="paragraph">3. <strong>Prompt & Negative Prompt Editors</strong>: Direct fine-tuning of background generation cues.</p>
+<p class="paragraph">4. <strong>Inference Parameters</strong>:</p>
+<ul class="list">
+<li><strong>Sampling Steps (20–50)</strong>: Number of denoising iterations (default: 30).</li>
+<li><strong>CFG Scale (1.0–15.0)</strong>: Prompt guidance adherence (recommended: 7.5).</li>
+<li><strong>Denoising Strength (0.5–1.0)</strong>: Background replacement variance (recommended: 0.95).</li>
+<li><strong>Seed</strong>: Deterministic seed for reproducible batch generation.</li>
+<li><strong>Batch Size (1–4)</strong>: Number of unique background variations to synthesize per run.</li>
+</ul>
+<p class="paragraph">5. <strong>Compositing Mode Toggle (<code class="inline-code">Alpha Feathers</code>)</strong>:</p>
+<ul class="list">
+<li>When enabled, applies Gaussian edge feathering and alpha dilation to blend the product boundary naturally into the synthetic background lighting.</li>
+</ul>
+<p class="paragraph">6. <strong>Generate Variants Button (<code class="inline-code">Generate N Variants</code>)</strong>: Dispatches the generation job to the local ComfyUI / Diffusers engine.</p>
+<hr class="divider" />
+<h2 class="h2-heading">6. Tab 3: Augmentation Gallery (<code class="inline-code">#gallery</code>)</h2>
+<p class="paragraph">The <strong>Augmentation Gallery</strong> is where generated synthetic variants are evaluated, inspected, and human-audited.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/10_gallery_view.png" alt="Augmentation Gallery Overview" class="figure-img" />
+          <div class="figure-caption">Figure: Augmentation Gallery Overview</div>
+        </div>
+      
+<h3 class="h3-heading">Interactive Before/After Comparison Slider</h3>
+<p class="paragraph">The before/after comparison tool allows operators to drag an interactive divider across the canvas to verify that every stitch, texture, and logo on the authentic product perfectly matches the newly synthesized variant.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/11_gallery_comparison_slider.png" alt="Before After Slider Comparison" class="figure-img" />
+          <div class="figure-caption">Figure: Before After Slider Comparison</div>
+        </div>
+      
+<h3 class="h3-heading">Human Audit Review & Gating Controls</h3>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/12_gallery_audit_action.png" alt="Human Audit Actions" class="figure-img" />
+          <div class="figure-caption">Figure: Human Audit Actions</div>
+        </div>
+      
+<p class="paragraph">Operators can inspect the automated quality metrics and record an official human review status:</p>
+<ul class="list">
+<li><strong>Approve Button (<code class="inline-code">Approve</code>)</strong>: Marks the variant as production-grade for inclusion in downstream training sets.</li>
+<li><strong>Reject Button (<code class="inline-code">Reject</code>)</strong>: Flags the image as non-compliant (e.g., severe background hallucination or occlusion).</li>
+<li><strong>Flag Button (<code class="inline-code">Flag</code>)</strong>: Marks the asset for secondary engineering review.</li>
+<li><strong>Variant Quality Scorecard</strong>: Displays live Foreground Preservation (SSIM), Edge Sharpness, and Perceptual Uniqueness scores.</li>
+</ul>
+<hr class="divider" />
+<h2 class="h2-heading">7. Tab 4: Product Intelligence (VLM) (<code class="inline-code">#intelligence</code>)</h2>
+<p class="paragraph">The <strong>Product Intelligence</strong> workspace uses lightweight Vision-Language Models (such as Moondream 2) or multimodal cloud APIs to automatically extract visual catalog intelligence from photos.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/13_intelligence_vlm_view.png" alt="Product Intelligence VLM Overview" class="figure-img" />
+          <div class="figure-caption">Figure: Product Intelligence VLM Overview</div>
+        </div>
+      
+<h3 class="h3-heading">Visual Attribute Extraction Breakdown</h3>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/14_intelligence_vlm_attributes.png" alt="VLM Extracted Semantic Attributes" class="figure-img" />
+          <div class="figure-caption">Figure: VLM Extracted Semantic Attributes</div>
+        </div>
+      
+<p class="paragraph">1. <strong>Semantic Classification & Description</strong>:</p>
+<ul class="list">
+<li>Primary category and subcategory auto-detection.</li>
+<li>Commercial catalog description summarizing visible silhouette and styling.</li>
+</ul>
+<p class="paragraph">2. <strong>Color Palette Breakdown</strong>:</p>
+<ul class="list">
+<li>Hex-coded dominant color chips (e.g., Sky Blue, Light Blue, Matte Gray, White).</li>
+</ul>
+<p class="paragraph">3. <strong>Materials & Textures Tags</strong>:</p>
+<ul class="list">
+<li>Surface property recognition (e.g., <code class="inline-code">Cotton Blend</code>, <code class="inline-code">Denim Cotton</code>, <code class="inline-code">Breathable Mesh</code>, <code class="inline-code">Genuine Leather</code>).</li>
+</ul>
+<p class="paragraph">4. <strong>Detected Catalog Search Tags</strong>:</p>
+<ul class="list">
+<li>Automatic generation of search keywords (e.g., <code class="inline-code">#apparel</code>, <code class="inline-code">#button-front-placket</code>, <code class="inline-code">#structured-collar</code>).</li>
+</ul>
+<p class="paragraph">5. <strong>Model Telemetry</strong>:</p>
+<ul class="list">
+<li>VLM Model Name, Inference Latency (ms), and Confidence Score (%).</li>
+</ul>
+<hr class="divider" />
+<h2 class="h2-heading">8. Tab 5: Quality Control & Gating (<code class="inline-code">#quality</code>)</h2>
+<p class="paragraph">The <strong>Quality Control</strong> dashboard acts as the automated filter ensuring zero low-quality, blurry, or hallucinated images enter the model training pipeline.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/15_quality_control_view.png" alt="Quality Control Gating Matrix" class="figure-img" />
+          <div class="figure-caption">Figure: Quality Control Gating Matrix</div>
+        </div>
+      
+<h3 class="h3-heading">Quality Audit Queue Table</h3>
+<p class="paragraph">The table lists every generated image alongside its objective mathematical metrics:</p>
+<div class="table-container"><table class="guide-table"><thead><tr>
+<th>Field / Column</th>
+<th>Metric Type</th>
+<th>Target Threshold</th>
+<th>Interpretation</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Status Badge</strong></td>
+<td>Automated Gate</td>
+<td><code class="inline-code">APPROVED</code></td>
+<td>Green badge indicates all metrics passed mathematical thresholds.</td>
+</tr>
+<tr>
+<td><strong>Preservation (SSIM)</strong></td>
+<td>Structural Similarity</td>
+<td><span class="math font-mono">\ge 0.85</span> (85%)</td>
+<td>Measures structural fidelity of product foreground against master.</td>
+</tr>
+<tr>
+<td><strong>Uniqueness (pHash)</strong></td>
+<td>64-bit Hamming</td>
+<td><span class="math font-mono">\ge 12</span> bits</td>
+<td>Confirms the synthetic background is sufficiently distinct from existing images.</td>
+</tr>
+<tr>
+<td><strong>Edge Sharpness</strong></td>
+<td>Laplacian Variance</td>
+<td><span class="math font-mono">\ge 120.0</span></td>
+<td>Confirms the image is sharp and free of generative motion or optical blur.</td>
+</tr>
+<tr>
+<td><strong>Quality Score</strong></td>
+<td>Weighted Composite</td>
+<td><span class="math font-mono">\ge 80.0</span></td>
+<td>Aggregate score: <span class="math font-mono">0.5 \times \text{SSIM} + 0.3 \times \text{Sharpness} + 0.2 \times \text{pHash}</span>.</td>
+</tr>
+</tbody></table></div>
+<hr class="divider" />
+<h2 class="h2-heading">9. Tab 6: Benchmarks & Visual Search Evaluation (<code class="inline-code">#evaluation</code>)</h2>
+<p class="paragraph">This workspace proves the real-world value of synthetic data augmentation through an information retrieval benchmark matrix and an interactive visual search query probe.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/17_benchmarks_matrix.png" alt="Benchmarks Matrix &amp; KPI Cards" class="figure-img" />
+          <div class="figure-caption">Figure: Benchmarks Matrix &amp; KPI Cards</div>
+        </div>
+      
+<h3 class="h3-heading">4-Way Retrieval Benchmark Matrix (512-dim CLIP ViT-B/32)</h3>
+<p class="paragraph">Evaluates retrieval accuracy across 4 comparative training conditions:</p>
+<ul class="list">
+<li><strong>Exp A: Studio Baseline (<span class="math font-mono">D_{\text{orig}}</span>)</strong>: Trained solely on studio white catalog packshots.</li>
+<li><strong>Exp B: Inpainting (<span class="math font-mono">D_{\text{orig}} \cup D_{\text{WF01}}</span>)</strong>: Includes synthetic domestic and retail backgrounds.</li>
+<li><strong>Exp C: Inpainting + Relighting (<span class="math font-mono">D_{\text{orig}} \cup D_{\text{WF01}} \cup D_{\text{WF02}}</span>)</strong>: Adds directional lighting and shadow shifts.</li>
+<li><strong>Exp D: Full Augmented Catalog (<span class="math font-mono">D_{\text{orig}} \cup D_{\text{WF01}} \cup D_{\text{WF02}} \cup D_{\text{WF03}}</span>)</strong>: Complete dataset with 3D camera angles and optical augmentations.</li>
+</ul>
+<h4 class="h4-heading">Relative Gains Over Baseline</h4>
+<ul class="list">
+<li><strong>Recall@5 Relative Gain</strong>: <strong>+28.4%</strong> improvement in finding correct items in the top 5 candidates.</li>
+<li><strong>mAP Relative Gain</strong>: <strong>+31.2%</strong> improvement in Mean Average Precision across customer queries.</li>
+<li><strong>MRR Relative Gain</strong>: <strong>+24.6%</strong> increase in top-ranked ground-truth placement.</li>
+</ul>
+<h3 class="h3-heading">Interactive Visual Search Probe</h3>
+<p class="paragraph">Operators and data scientists can upload an arbitrary unconstrained photo to search the indexed product catalog.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/18_visual_search_probe_query.png" alt="Visual Search Probe Query Setup" class="figure-img" />
+          <div class="figure-caption">Figure: Visual Search Probe Query Setup</div>
+        </div>
+      
+<p class="paragraph">1. <strong>Query Dropzone</strong>: Upload any mobile smartphone photo (e.g., <code class="inline-code">sssss.jpg</code>).</p>
+<p class="paragraph">2. <strong>Top-K Slider (1–10)</strong>: Sets the maximum candidate count returned by the vector index.</p>
+<p class="paragraph">3. <strong>Execute Visual Search Query Button</strong>: Extracts 512-dim CLIP embedding and performs nearest-neighbor cosine similarity search.</p>
+<h4 class="h4-heading">Search Results Output</h4>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/19_visual_search_probe_results.png" alt="Visual Search Probe Results" class="figure-img" />
+          <div class="figure-caption">Figure: Visual Search Probe Results</div>
+        </div>
+      
+<p class="paragraph">The probe returns ranked candidate cards with:</p>
+<ul class="list">
+<li><strong>Rank Badge (<code class="inline-code">Rank #1</code>, <code class="inline-code">Rank #2</code>, <code class="inline-code">Rank #3</code>)</strong>: Proximity rank.</li>
+<li><strong>Similarity Match Percentage (<code class="inline-code">100.0%</code>, <code class="inline-code">98.5%</code>, <code class="inline-code">95.0%</code>)</strong>: Cosine similarity score.</li>
+<li><strong>Master Preview Thumbnail</strong>: Official catalog reference picture.</li>
+<li><strong>Product Name & SKU</strong>: Direct catalog identifiers.</li>
+<li><strong>Query Latency Metric</strong>: Wall-clock retrieval time (e.g., <code class="inline-code">Query Latency: 46ms</code>).</li>
+</ul>
+<hr class="divider" />
+<h2 class="h2-heading">10. Tab 7: Dataset Manager (<code class="inline-code">#datasets</code>)</h2>
+<p class="paragraph">The <strong>Dataset Manager</strong> partitions verified catalog images and approved synthetic variants into stratified machine learning splits and exports standardized bundle archives.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/20_datasets_view.png" alt="Dataset Manager View" class="figure-img" />
+          <div class="figure-caption">Figure: Dataset Manager View</div>
+        </div>
+      
+<h3 class="h3-heading">Features & Controls</h3>
+<ul class="list">
+<li><strong>Split Ratio Sliders</strong>: Configure custom train/val/test distributions (e.g., 70% Train, 15% Validation, 15% Test).</li>
+<li><strong>Target Export Formats</strong>:</li>
+<li><code class="inline-code">YOLOv8</code>: Bounding box annotations and normalized text labels.</li>
+<li><code class="inline-code">COCO JSON</code>: Polygon segmentations, bounding boxes, and category hierarchy.</li>
+<li><code class="inline-code">PyTorch ImageFolder</code>: Class-stratified directory hierarchy ready for <code class="inline-code">torchvision.datasets.ImageFolder</code>.</li>
+<li><code class="inline-code">CSV / Parquet Manifest</code>: Full tabular dataset index with image relative paths and metadata.</li>
+<li><strong>Generate Dataset Bundle Button</strong>: Assembles and compresses the partition into a downloadable ZIP archive.</li>
+</ul>
+<hr class="divider" />
+<h2 class="h2-heading">11. Tab 8: Workflow Manager (<code class="inline-code">#workflows</code>)</h2>
+<p class="paragraph">The <strong>Workflow Manager</strong> provides granular insight into the underlying ComfyUI and Diffusers graph pipelines executing each augmentation task.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/21_workflows_view.png" alt="Workflow Manager View" class="figure-img" />
+          <div class="figure-caption">Figure: Workflow Manager View</div>
+        </div>
+      
+<h3 class="h3-heading">Built-in Production Workflows</h3>
+<p class="paragraph">1. <strong>WF01 (Diffusion Inpainting)</strong>: Uses <code class="inline-code">Realistic Vision V6</code> inpainting checkpoints to replace masked areas with realistic textures.</p>
+<p class="paragraph">2. <strong>WF02 (Neural Relighting)</strong>: Recomputes ambient light gradients and cast shadows to match target environments.</p>
+<p class="paragraph">3. <strong>WF03 (3D Homography Warp)</strong>: Projective transform simulating high and low camera pitches.</p>
+<p class="paragraph">4. <strong>WF04 (Multi-Condition Compound Pipeline)</strong>: Sequentially executes segmentation, perspective transform, diffusion inpainting, and feathered compositing in one automated job.</p>
+<hr class="divider" />
+<h2 class="h2-heading">12. System Settings & Infrastructure Diagnostics</h2>
+<p class="paragraph">Accessed via the header gear icon, the <strong>System Settings</strong> modal provides live diagnostic monitoring of local and cloud service dependencies.</p>
+
+        <div class="figure-container">
+          <img src="file:///C:/A/PROJECT/CatalogAugment-AI-Product-Image-Augmentation-Pipeline/docs/screenshots/22_settings_modal.png" alt="System Settings Modal" class="figure-img" />
+          <div class="figure-caption">Figure: System Settings Modal</div>
+        </div>
+      
+<h3 class="h3-heading">Diagnostic Indicators</h3>
+<ul class="list">
+<li><strong>ComfyUI Local Server</strong>: Verifies HTTP connectivity to <code class="inline-code">http://127.0.0.1:8188</code>.</li>
+<li><strong>Ollama Vision Model</strong>: Verifies availability of local <code class="inline-code">moondream</code> vision model on port <code class="inline-code">11434</code>.</li>
+<li><strong>Database & Persistence</strong>: Confirms PostgreSQL / SQLite connectivity.</li>
+<li><strong>Storage Path Registry</strong>: Displays local upload roots and dataset destination directories.</li>
+</ul>
+<hr class="divider" />
+<h2 class="h2-heading">13. Mathematical & Algorithmic Metric Dictionary</h2>
+<p class="paragraph">Below is the definitive reference guide for every metric used across the CatalogAugment AI platform:</p>
+<h3 class="h3-heading">1. Structural Similarity Index (Foreground SSIM)</h3>
+<p class="paragraph">$<span class="math font-mono">\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y + c_1)(2\sigma_{xy} + c_2)}{(\mu_x^2 + \mu_y^2 + c_1)(\sigma_x^2 + \sigma_y^2 + c_2)}</span>$</p>
+<ul class="list">
+<li><strong>Measurement Scale</strong>: <span class="math font-mono">0.0</span> to <span class="math font-mono">1.0</span> (or <span class="math font-mono">0\%</span> to <span class="math font-mono">100\%</span>).</li>
+<li><strong>Gating Threshold</strong>: <span class="math font-mono">\ge 0.85</span>.</li>
+<li><strong>Retail Meaning</strong>: Measures pixel luminance, contrast, and structure preservation inside the product foreground. A score above 0.85 mathematically guarantees that product labels, logos, and materials were not corrupted by generative diffusion.</li>
+</ul>
+<h3 class="h3-heading">2. Perceptual Hash (pHash) Hamming Distance</h3>
+<ul class="list">
+<li><strong>Measurement Scale</strong>: 64-bit integer distance (<span class="math font-mono">0</span> to <span class="math font-mono">64</span>).</li>
+<li><strong>Gating Threshold</strong>: <span class="math font-mono">\ge 12</span> bits difference from original.</li>
+<li><strong>Retail Meaning</strong>: Measures frequency-domain perceptual uniqueness. Ensures the newly synthesized background provides meaningful diversity and does not replicate the master studio background.</li>
+</ul>
+<h3 class="h3-heading">3. Laplacian Gradient Variance (Edge Sharpness)</h3>
+<p class="paragraph">$<span class="math font-mono">\text{Var}(\Delta I) = \frac{1}{N}\sum ((\nabla^2 I) - \mu_{\nabla^2 I})^2</span>$</p>
+<ul class="list">
+<li><strong>Measurement Scale</strong>: Scalar variance value (<span class="math font-mono">0</span> to <span class="math font-mono">1000+</span>).</li>
+<li><strong>Gating Threshold</strong>: <span class="math font-mono">\ge 120.0</span>.</li>
+<li><strong>Retail Meaning</strong>: Detects blurring artifacts. Images with variance below 120 are rejected as out-of-focus or unsharp.</li>
+</ul>
+<h3 class="h3-heading">4. Cosine Similarity & Vector Distance</h3>
+<p class="paragraph">$<span class="math font-mono">\cos(\theta) = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|_2 \|\mathbf{v}\|_2}</span>$</p>
+<ul class="list">
+<li><strong>Measurement Scale</strong>: <span class="math font-mono">-1.0</span> to <span class="math font-mono">+1.0</span> (normalized embeddings yield <span class="math font-mono">0.0</span> to <span class="math font-mono">1.0</span>).</li>
+<li><strong>Retail Meaning</strong>: Measures semantic affinity in the 512-dimensional CLIP latent space. Scores <span class="math font-mono">\ge 0.90</span> indicate confident visual catalog matches.</li>
+</ul>
+<h3 class="h3-heading">5. Recall@K (Recall@1, Recall@5, Recall@10)</h3>
+<p class="paragraph">$<span class="math font-mono">\text{Recall}@K = \frac{1}{|Q|}\sum_{q=1}^{|Q|} \mathbb{I}(\text{rank}_q \le K)</span>$</p>
+<ul class="list">
+<li><strong>Retail Meaning</strong>: The percentage of test queries where the true matching catalog product appears within the top <span class="math font-mono">K</span> retrieved search candidates.</li>
+</ul>
+<h3 class="h3-heading">6. Mean Average Precision (mAP)</h3>
+<p class="paragraph">$<span class="math font-mono">\text{mAP} = \frac{1}{|Q|}\sum_{q=1}^{|Q|} \text{AP}(q)</span>$</p>
+<ul class="list">
+<li><strong>Retail Meaning</strong>: Evaluates both precision and ranking order across the complete retrieval list.</li>
+</ul>
+<h3 class="h3-heading">7. Mean Reciprocal Rank (MRR)</h3>
+<p class="paragraph">$<span class="math font-mono">\text{MRR} = \frac{1}{|Q|}\sum_{q=1}^{|Q|} \frac{1}{\text{rank}_q}</span>$</p>
+<ul class="list">
+<li><strong>Retail Meaning</strong>: Quantifies how quickly the correct product appears. If the true product is always Rank #1, MRR equals 1.0.</li>
+</ul>
+<hr class="divider" />
+<h2 class="h2-heading">14. Troubleshooting & Operational FAQ</h2>
+<h3 class="h3-heading">Q1: Why did visual search return 0 items or appear unresponsive?</h3>
+<ul class="list">
+<li><strong>Resolution</strong>: Ensure master products have been created in the Catalog tab and that their embeddings have been indexed. The system automatically extracts 512-dim vectors for all ingested master assets.</li>
+</ul>
+<h3 class="h3-heading">Q2: What causes an augmentation variant to be marked "REJECTED"?</h3>
+<ul class="list">
+<li><strong>Resolution</strong>: A variant is marked <code class="inline-code">REJECTED</code> if its Foreground SSIM drops below 0.85 (indicating excessive diffusion bleeding into the product) or if its Laplacian edge sharpness drops below 120.0 (indicating blur). Operators can inspect the specific score failure in the Quality tab.</li>
+</ul>
+<h3 class="h3-heading">Q3: How do I export datasets for YOLOv8 object detection?</h3>
+<ul class="list">
+<li><strong>Resolution</strong>: Navigate to the <strong>Datasets</strong> tab, select the <code class="inline-code">YOLOv8</code> checkbox, adjust your desired Train/Val/Test ratios (e.g. 70/15/15), and click <strong>Generate Dataset Bundle</strong>. The system outputs images and <code class="inline-code">.txt</code> bounding box coordinates normalized to <code class="inline-code">[0, 1]</code>.</li>
+</ul>
+</body>
+</html>

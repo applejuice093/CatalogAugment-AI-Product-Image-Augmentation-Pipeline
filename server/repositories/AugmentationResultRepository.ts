@@ -43,6 +43,9 @@ export class AugmentationResultRepository {
   async findByProductId(productId: string): Promise<AugmentationResult[]> {
     return prisma.augmentationResult.findMany({
       where: { productId },
+      include: {
+        qualityAssessment: true,
+      },
       orderBy: { createdAt: "desc" },
     });
   }

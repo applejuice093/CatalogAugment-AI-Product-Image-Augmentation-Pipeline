@@ -51,7 +51,7 @@ export function ProductLibraryView({
     setLoading(true);
     try {
       const res = await api.getProducts();
-      setProducts(res.products || []);
+      setProducts(res.products || (res as any).items || []);
     } catch (err: any) {
       console.error("Error loading products:", err);
     } finally {
@@ -80,7 +80,7 @@ export function ProductLibraryView({
         description: formDescription.trim() || undefined,
       });
 
-      const productId = newProductRes.product.id;
+      const productId = newProductRes.product?.id || (newProductRes as any)?.id;
 
       if (selectedFile) {
         await api.uploadProductImage(productId, selectedFile);
@@ -122,7 +122,7 @@ export function ProductLibraryView({
   });
 
   return (
-    <div className="space-y-6 p-8 max-w-7xl mx-auto">
+    <div className="space-y-6 p-6 sm:p-10 max-w-[1760px] mx-auto animate-in fade-in duration-300">
       {/* Action Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -469,18 +469,24 @@ export function ProductLibraryView({
               </div>
 
               {/* Preview Canvas */}
-              <div className="relative aspect-video w-full rounded-lg bg-[#14171d] flex items-center justify-center overflow-hidden border border-border/60">
+              <div
+                className={`relative aspect-video w-full rounded-lg flex items-center justify-center overflow-hidden border border-border/60 ${
+                  previewTab === "cutout"
+                    ? "bg-[#101216] bg-[linear-gradient(45deg,#161922_25%,transparent_25%),linear-gradient(-45deg,#161922_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#161922_75%),linear-gradient(-45deg,transparent_75%,#161922_75%)] bg-[size:24px_24px] bg-[position:0_0,0_12px,12px_-12px,-12px_0px]"
+                    : "bg-[#14171d]"
+                }`}
+              >
                 <img
+                  key={`${selectedProduct.id}-${previewTab}`}
                   src={
                     previewTab === "mask"
-                      ? `/api/products/${selectedProduct.id}/mask`
-                      : `/api/products/${selectedProduct.id}/preview`
+                      ? `/api/products/${selectedProduct.id}/mask?t=${selectedProduct.updatedAt || "1"}`
+                      : previewTab === "cutout"
+                      ? `/api/products/${selectedProduct.id}/cutout?t=${selectedProduct.updatedAt || "1"}`
+                      : `/api/products/${selectedProduct.id}/preview?t=${selectedProduct.updatedAt || "1"}`
                   }
                   alt={selectedProduct.name}
                   className="h-full w-full object-contain p-4"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "/images/commercial.jpg";
-                  }}
                 />
               </div>
 

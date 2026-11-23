@@ -137,7 +137,7 @@ export function Hero() {
           </p>
           <div data-hero-reveal className="mt-8 flex flex-wrap items-center gap-4 opacity-0">
             <a
-              href={user ? "#workspace" : "#login?redirect=workspace"}
+              href={user ? "#products" : "#login?redirect=products"}
               className={cn(
                 buttonVariants(),
                 "h-11 px-5 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(214,227,106,0.3)]",

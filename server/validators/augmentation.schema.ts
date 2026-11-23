@@ -13,8 +13,10 @@ export const createAugmentationJobSchema = z.object({
   sampler: z.string().optional(),
   width: z.number().int().min(256).max(2048).optional(),
   height: z.number().int().min(256).max(2048).optional(),
-  numVariants: z.number().int().min(1).max(4).default(1),
-  preserveOriginalForeground: z.boolean().default(true),
+  numVariants: z.number().int().min(1).max(4).optional(),
+  batchSize: z.number().int().min(1).max(4).optional(),
+  preserveOriginalForeground: z.boolean().optional(),
+  compositeForeground: z.boolean().optional(),
   enableEdgeRefinement: z.boolean().default(true),
   cameraAngle: z
     .enum([

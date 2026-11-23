@@ -70,8 +70,12 @@ export function ModelEvaluationView() {
 
     try {
       const res = await api.searchCatalog(searchImage, topK);
-      setSearchResults(res.results || []);
+      const items = (res as any).results || (res as any).queryMatches || [];
+      setSearchResults(items);
       setSearchLatency(res.queryMetrics?.latencyMs ?? 18);
+      if (items.length === 0) {
+        setSearchError("No matching catalog items found. Ensure products exist in your catalog.");
+      }
     } catch (err: any) {
       setSearchError(err.message || "Failed to search product catalog.");
     } finally {
@@ -87,7 +91,7 @@ export function ModelEvaluationView() {
   };
 
   return (
-    <div className="space-y-8 p-8 max-w-7xl mx-auto">
+    <div className="space-y-6 p-6 sm:p-10 max-w-[1760px] mx-auto animate-in fade-in duration-300">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>

@@ -20,6 +20,7 @@ import {
   type AnglePreset,
 } from "./geometricTransformationService.ts";
 import { SegmentationService } from "./segmentationService.ts";
+import { defaultQualityAssessmentService } from "./quality/qualityAssessmentService.ts";
 
 export class AugmentationService {
   private comfyuiClient: IComfyUIClient;
@@ -127,20 +128,22 @@ export class AugmentationService {
       configJson: input as unknown as Record<string, unknown>,
     });
 
-    // 6. Execute Generation Pipeline
-    const executePromise = this.executeGeneration(
+    // 6. Execute Generation Pipeline asynchronously in background
+    void this.executeGeneration(
       job.id,
       product.id,
       asset.id,
       workflow,
       input,
       inputImagePath,
-      maskFullPath
-    );
+      maskFullPath,
+      userId
+    ).catch((err) => {
+      console.error(`[AugmentationService] Generation pipeline failed for job ${job.id}:`, err);
+    });
 
     return {
       job,
-      results: await executePromise,
     };
   }
 
@@ -155,7 +158,8 @@ export class AugmentationService {
     workflow: ReturnType<WorkflowRegistry["getWorkflow"]> & object,
     input: CreateAugmentationJobInput,
     inputImagePath: string,
-    maskFullPath: string
+    maskFullPath: string,
+    userId: string
   ): Promise<unknown[]> {
     try {
       await this.jobRepo.updateStatus(jobId, "PROCESSING", 5);
@@ -164,7 +168,7 @@ export class AugmentationService {
       const inputBuffer = await fs.readFile(inputImagePath);
       const maskBuffer = await fs.readFile(maskFullPath);
 
-      const numVariants = Math.max(1, Math.min(4, input.numVariants || 1));
+      const numVariants = Math.max(1, Math.min(4, input.numVariants || input.batchSize || 1));
       const savedResults: unknown[] = [];
 
       const outputSubdir = path.join("augmented", new Date().toISOString().slice(0, 10));
@@ -172,7 +176,7 @@ export class AugmentationService {
       await fs.mkdir(fullOutputDir, { recursive: true });
 
       const baseSeed = input.seed ?? Math.floor(Math.random() * 1000000000);
-      const presets = workflow.recommendedConfig.presets;
+      const presets = workflow.recommendedConfig?.presets;
 
       // Execute variants sequentially to strictly adhere to the 6GB VRAM budget
       for (let v = 0; v < numVariants; v++) {
@@ -276,7 +280,7 @@ export class AugmentationService {
             variantCutoutBuffer,
             variantMaskBuffer,
             {
-              preserveOriginalForeground: input.preserveOriginalForeground ?? true,
+              preserveOriginalForeground: input.preserveOriginalForeground ?? input.compositeForeground ?? true,
               enableEdgeRefinement: input.enableEdgeRefinement ?? true,
             }
           );
@@ -329,6 +333,11 @@ export class AugmentationService {
           });
 
           savedResults.push(resultRecord);
+
+          // Automatically trigger quality assessment in background
+          void defaultQualityAssessmentService
+            .assessResult(resultRecord.id, userId, false)
+            .catch((e) => console.warn(`[QualityAssessment] Auto-assessment failed for ${resultRecord.id}:`, e));
         }
       }
 
@@ -445,10 +454,12 @@ export class AugmentationService {
       originalImage: primaryAsset
         ? {
             id: primaryAsset.id,
+            path: primaryAsset.relativePath,
             relativePath: primaryAsset.relativePath,
             maskPath: primaryAsset.maskPath,
           }
         : null,
+      variants: results,
       totalVariants: results.length,
       reviewStats: {
         approved: results.filter((r) => r.reviewDecision === "APPROVED").length,

@@ -61,7 +61,7 @@ export class AugmentationController extends BaseController {
       if (!job) {
         return this.handleNotFound(res, "Augmentation job not found");
       }
-      return this.handleSuccess(res, job);
+      return this.handleSuccess(res, { job, ...job });
     } catch (err) {
       return this.handleError(err, res, "AugmentationController.getJob");
     }

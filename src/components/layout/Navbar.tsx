@@ -1,3 +1,4 @@
+import { User } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { navLinks } from "@/data/content";
 import { useAuthUi } from "@/components/auth/AuthProvider";
@@ -32,14 +33,16 @@ export function Navbar({ compact, active }: NavbarProps) {
   );
 
   const actions = user ? (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2.5">
       <a
-        href="#workspace"
-        className="inline-flex items-center justify-center h-8 px-3 text-xs font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_10px_rgba(214,227,106,0.2)] transition-colors cursor-pointer"
+        href="#products"
+        className="relative flex items-center justify-center size-8 rounded-full bg-white/5 border border-white/10 text-muted-foreground hover:text-foreground hover:border-white/20 hover:bg-white/10 transition-colors cursor-pointer"
+        title={user.email ? `Open Workspace (${user.email})` : "Open Workspace"}
+        aria-label="Open Workspace"
       >
-        Studio Workspace
+        <User className="size-3.5 text-zinc-300" />
+        <span className="absolute 0 top-0.5 right-0.5 size-2 rounded-full bg-emerald-400 ring-2 ring-[#101210]" />
       </a>
-      <span className="max-w-40 truncate text-xs text-muted-foreground hidden lg:inline">{user.email}</span>
       <Button
         variant="outline"
         size="sm"

@@ -1,7 +1,10 @@
 import { spawn } from "node:child_process";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { config } from "../config/unifiedConfig.ts";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export type AnglePreset =
   | "THREE_QUARTER_YAW"

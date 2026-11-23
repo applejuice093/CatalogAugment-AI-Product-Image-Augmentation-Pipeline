@@ -16,6 +16,7 @@ import { Scene } from "@/components/scenes/Scene";
 import { SparkField } from "@/components/effects/SparkField";
 import { WebGLErrorBoundary } from "@/components/effects/WebGLErrorBoundary";
 import { AppWorkspace } from "@/components/workspace/AppWorkspace";
+import type { WorkspaceTab } from "@/components/layout/WorkspaceNavbar";
 import { scrollState, startScrollLoop, subscribeScroll, type SceneId, type Tier } from "@/lib/scroll";
 
 const SceneCanvas = lazy(() =>
@@ -42,20 +43,34 @@ function readSnap(): Snap {
 
 interface RouteState {
   isWorkspace: boolean;
+  workspaceTab: WorkspaceTab;
   isScene: boolean;
   isAuth: boolean;
   authMode: AuthMode;
   redirectTarget: string;
 }
 
+const WORKSPACE_TABS: readonly string[] = [
+  "workspace",
+  "products",
+  "studio",
+  "gallery",
+  "intelligence",
+  "quality",
+  "evaluation",
+  "datasets",
+  "workflows",
+];
+
 function parseCurrentRoute(): RouteState {
   if (typeof window === "undefined") {
     return {
       isWorkspace: false,
+      workspaceTab: "products",
       isScene: false,
       isAuth: false,
       authMode: "sign-in",
-      redirectTarget: "workspace",
+      redirectTarget: "products",
     };
   }
 
@@ -72,7 +87,14 @@ function parseCurrentRoute(): RouteState {
     hashParams.forEach((val, key) => searchParams.set(key, val));
   }
 
-  const isWorkspace = hashPath === "workspace" || (!hashPath && searchParams.has("workspace"));
+  const isWorkspace =
+    WORKSPACE_TABS.includes(hashPath) || (!hashPath && searchParams.has("workspace"));
+
+  const workspaceTab: WorkspaceTab =
+    hashPath === "workspace" || hashPath === "overview" || !hashPath || !WORKSPACE_TABS.includes(hashPath)
+      ? "products"
+      : (hashPath as WorkspaceTab);
+
   const isScene = hashPath === "scene" || (!hashPath && searchParams.has("scene"));
   const isAuth =
     !isWorkspace &&
@@ -87,10 +109,11 @@ function parseCurrentRoute(): RouteState {
   const authMode: AuthMode =
     hashPath === "signup" || searchParams.has("signup") ? "sign-up" : "sign-in";
 
-  const redirectTarget = searchParams.get("redirect") || "workspace";
+  const redirectTarget = searchParams.get("redirect") || "products";
 
   return {
     isWorkspace,
+    workspaceTab,
     isScene,
     isAuth,
     authMode,
@@ -236,6 +259,7 @@ function Page() {
     return (
       <AppWorkspace
         user={user}
+        initialTab={route.workspaceTab}
         onSignOut={handleSignOut}
         onExitWorkspace={() => {
           window.location.hash = "#platform";

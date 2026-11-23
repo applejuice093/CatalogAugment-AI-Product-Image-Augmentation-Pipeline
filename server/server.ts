@@ -4,6 +4,11 @@ import { config } from "./config/unifiedConfig.ts";
 import { prisma } from "./db/prisma.ts";
 import { redisConnection } from "./queue/connection.ts";
 
+// Handle Prisma BigInt serialization in JSON.stringify / express res.json
+(BigInt.prototype as unknown as { toJSON: () => number }).toJSON = function () {
+  return Number(this);
+};
+
 const server = http.createServer(app);
 
 server.listen(config.server.port, config.server.host, () => {

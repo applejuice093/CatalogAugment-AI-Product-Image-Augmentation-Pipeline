@@ -28,14 +28,17 @@ redisConnection.on("error", (err) => {
 export const imagePreprocessingQueue = new Queue("image-preprocessing", {
   connection: redisConnection,
 });
+imagePreprocessingQueue.on("error", () => {});
 
 export const imageGenerationQueue = new Queue("image-generation", {
   connection: redisConnection,
 });
+imageGenerationQueue.on("error", () => {});
 
 export const vlmAnalysisQueue = new Queue("vlm-analysis", {
   connection: redisConnection,
 });
+vlmAnalysisQueue.on("error", () => {});
 
 export async function checkRedisHealth(): Promise<{ status: "connected" | "disconnected"; latencyMs?: number; error?: string }> {
   if (config.server.isTest) {

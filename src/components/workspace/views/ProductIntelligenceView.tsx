@@ -98,7 +98,7 @@ export function ProductIntelligenceView({ initialProductId }: ProductIntelligenc
   const data = latestAnalysis?.normalizedData || {};
 
   return (
-    <div className="space-y-8 p-8 max-w-7xl mx-auto">
+    <div className="space-y-6 p-6 sm:p-10 max-w-[1760px] mx-auto animate-in fade-in duration-300">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -287,28 +287,38 @@ export function ProductIntelligenceView({ initialProductId }: ProductIntelligenc
                       Dominant Colors:
                     </span>
                     <div className="flex flex-wrap gap-1.5">
-                      {(data.dominantColors || ["Obsidian Black", "Solar Yellow", "Matte Gray"]).map(
-                        (col: string, idx: number) => (
-                          <span
-                            key={idx}
-                            className="inline-flex items-center gap-1.5 rounded-md border border-border/70 bg-[#14171d] px-2 py-1 text-xs text-foreground"
-                          >
+                      {(data.dominantColors || [])
+                        .filter((col: string) => col && !/^\.?\d+$/.test(col.trim()))
+                        .map((col: string, idx: number) => {
+                          const lower = col.toLowerCase();
+                          const bg = lower.includes("yellow") || lower.includes("gold")
+                            ? "#d6e36a"
+                            : lower.includes("blue") || lower.includes("navy") || lower.includes("sky")
+                            ? "#3b82f6"
+                            : lower.includes("black") || lower.includes("dark")
+                            ? "#1a1a1a"
+                            : lower.includes("white") || lower.includes("light")
+                            ? "#ffffff"
+                            : lower.includes("green") || lower.includes("olive")
+                            ? "#22c55e"
+                            : lower.includes("red") || lower.includes("crimson")
+                            ? "#ef4444"
+                            : "#6b7280";
+                          return (
                             <span
-                              className="h-2.5 w-2.5 rounded-full border border-white/20"
-                              style={{
-                                backgroundColor:
-                                  col.toLowerCase().includes("yellow")
-                                    ? "#d6e36a"
-                                    : col.toLowerCase().includes("black")
-                                    ? "#1a1a1a"
-                                    : col.toLowerCase().includes("white")
-                                    ? "#ffffff"
-                                    : "#6b7280",
-                              }}
-                            />
-                            {col}
-                          </span>
-                        )
+                              key={idx}
+                              className="inline-flex items-center gap-1.5 rounded-md border border-border/70 bg-[#14171d] px-2 py-1 text-xs text-foreground"
+                            >
+                              <span
+                                className="h-2.5 w-2.5 rounded-full border border-white/20"
+                                style={{ backgroundColor: bg }}
+                              />
+                              {col}
+                            </span>
+                          );
+                        })}
+                      {(!data.dominantColors || data.dominantColors.filter((col: string) => col && !/^\.?\d+$/.test(col.trim())).length === 0) && (
+                        <span className="text-xs text-muted-foreground italic">No dominant colors specified</span>
                       )}
                     </div>
                   </div>
@@ -343,7 +353,7 @@ export function ProductIntelligenceView({ initialProductId }: ProductIntelligenc
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-1.5">
-                    {(data.materials || ["Breathable Engineered Mesh", "Carbon Fiber Plate", "Blown Rubber Outsole"]).map(
+                    {(data.identifiableMaterials || data.materials || []).map(
                       (mat: string, idx: number) => (
                         <Badge
                           key={idx}
@@ -353,6 +363,9 @@ export function ProductIntelligenceView({ initialProductId }: ProductIntelligenc
                           {mat}
                         </Badge>
                       )
+                    )}
+                    {(!data.identifiableMaterials && !data.materials || (data.identifiableMaterials || data.materials || []).length === 0) && (
+                      <span className="text-xs text-muted-foreground italic">No specific materials detected</span>
                     )}
                   </div>
                 </CardContent>
@@ -369,21 +382,17 @@ export function ProductIntelligenceView({ initialProductId }: ProductIntelligenc
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  {(data.suggestedTags || data.styleTags || [
-                    "athletics",
-                    "performance-running",
-                    "marathon",
-                    "lightweight",
-                    "carbon-plate",
-                    "studio-shot",
-                  ]).map((tag: string, idx: number) => (
+                  {(data.searchTags || data.suggestedTags || data.styleTags || []).map((tag: string, idx: number) => (
                     <span
                       key={idx}
                       className="rounded-full bg-primary/10 border border-primary/25 px-2.5 py-0.5 text-xs font-mono text-primary"
                     >
-                      #{tag}
+                      #{tag.replace(/^#/, "")}
                     </span>
                   ))}
+                  {(!data.searchTags && !data.suggestedTags && !data.styleTags || (data.searchTags || data.suggestedTags || data.styleTags || []).length === 0) && (
+                    <span className="text-xs text-muted-foreground italic">No search tags generated</span>
+                  )}
                 </div>
               </CardContent>
             </Card>

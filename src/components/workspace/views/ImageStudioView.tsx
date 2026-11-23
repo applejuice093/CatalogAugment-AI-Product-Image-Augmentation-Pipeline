@@ -133,10 +133,12 @@ export function ImageStudioView({ initialProductId, onNavigateGallery }: ImageSt
         negativePrompt: negativePrompt.trim(),
         seed,
         batchSize,
+        numVariants: batchSize,
         compositeForeground,
+        preserveOriginalForeground: compositeForeground,
       });
 
-      const job = res.job;
+      const job = res.job || (res as any);
       setActiveJob(job);
 
       // Start polling job status
@@ -144,7 +146,7 @@ export function ImageStudioView({ initialProductId, onNavigateGallery }: ImageSt
       pollIntervalRef.current = setInterval(async () => {
         try {
           const pollRes = await api.getJob(job.id);
-          const currentJob = pollRes.job;
+          const currentJob = pollRes.job || (pollRes as any);
           setActiveJob(currentJob);
 
           if (currentJob.status === "COMPLETED") {
@@ -169,7 +171,7 @@ export function ImageStudioView({ initialProductId, onNavigateGallery }: ImageSt
   const selectedProduct = products.find((p) => p.id === selectedProductId);
 
   return (
-    <div className="space-y-8 p-8 max-w-7xl mx-auto">
+    <div className="space-y-6 p-6 sm:p-10 max-w-[1760px] mx-auto animate-in fade-in duration-300">
       {/* Header */}
       <div>
         <h2 className="text-xl font-bold tracking-tight text-foreground">Augmentation Studio</h2>
@@ -390,6 +392,13 @@ export function ImageStudioView({ initialProductId, onNavigateGallery }: ImageSt
                   </>
                 )}
               </Button>
+
+              {error && (
+                <div className="p-2.5 text-xs rounded-lg bg-destructive/10 border border-destructive/20 text-destructive flex items-center gap-2 mt-2">
+                  <AlertCircle className="h-4 w-4 shrink-0" />
+                  <span>{error}</span>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>

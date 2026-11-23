@@ -89,6 +89,40 @@ export class RmbgNeuralSegmentationProvider implements ISegmentationProvider {
   }
 }
 
+export async function applyMaskAsAlpha(imageBuffer: Buffer, maskBuffer: Buffer): Promise<Buffer> {
+  const origMeta = await sharp(imageBuffer).metadata();
+  const width = origMeta.width || 512;
+  const height = origMeta.height || 512;
+
+  const origRaw = await sharp(imageBuffer).removeAlpha().raw().toBuffer();
+  const maskRaw = await sharp(maskBuffer)
+    .resize(width, height)
+    .toColourspace("b-w")
+    .extractChannel(0)
+    .raw()
+    .toBuffer();
+
+  const numPixels = width * height;
+  const rgba = Buffer.alloc(numPixels * 4);
+
+  for (let i = 0; i < numPixels; i++) {
+    rgba[i * 4] = origRaw[i * 3];
+    rgba[i * 4 + 1] = origRaw[i * 3 + 1];
+    rgba[i * 4 + 2] = origRaw[i * 3 + 2];
+    rgba[i * 4 + 3] = maskRaw[i];
+  }
+
+  return sharp(rgba, {
+    raw: {
+      width,
+      height,
+      channels: 4,
+    },
+  })
+    .png()
+    .toBuffer();
+}
+
 /**
  * Standard Saliency & Alpha Segmentation Provider (Native sharp implementation)
  * Detects foreground subject, creates a single-channel binary mask, and isolates foreground cutout.
@@ -109,17 +143,8 @@ export class NativeAlphaSegmentationProvider implements ISegmentationProvider {
         .png()
         .toBuffer();
 
-      // 2. Composite mask onto original image to create transparent PNG foreground cutout
-      const foregroundBuffer = await sharp(imageBuffer)
-        .ensureAlpha()
-        .composite([
-          {
-            input: maskBuffer,
-            blend: "dest-in",
-          },
-        ])
-        .png()
-        .toBuffer();
+      // 2. Apply binary mask as alpha channel to create genuine transparent PNG foreground cutout
+      const foregroundBuffer = await applyMaskAsAlpha(imageBuffer, maskBuffer);
 
       return {
         inputImageId,

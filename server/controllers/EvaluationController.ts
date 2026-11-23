@@ -1,4 +1,5 @@
 import type { Request, Response } from "express";
+import { prisma } from "../db/prisma.ts";
 import { defaultEvaluationService, EvaluationBenchmarkService } from "../services/evaluation/evaluationBenchmarkService.ts";
 import { evaluationIdParamSchema, runEvaluationSchema } from "../validators/evaluation.schema.ts";
 import { BaseController } from "./BaseController.ts";
@@ -89,10 +90,41 @@ export class EvaluationController extends BaseController {
     }
 
     const topK = req.body?.topK ? Math.min(20, Math.max(1, Number(req.body.topK))) : 5;
+    const startTime = Date.now();
 
     try {
-      const results = await this.evalService.searchCatalog(userId, imageBuffer, topK);
-      return this.handleSuccess(res, { queryMatches: results, count: results.length });
+      const rawResults = await this.evalService.searchCatalog(userId, imageBuffer, topK);
+      const latencyMs = Date.now() - startTime;
+
+      // Enrich with product names and SKUs
+      const productIds = rawResults.map((r) => r.productId);
+      const products = await prisma.product.findMany({
+        where: { id: { in: productIds } },
+        select: { id: true, name: true, sku: true, category: true },
+      });
+      const prodMap = new Map(products.map((p) => [p.id, p]));
+
+      const results = rawResults.map((r, idx) => {
+        const prod = prodMap.get(r.productId);
+        return {
+          rank: idx + 1,
+          productId: r.productId,
+          sku: prod?.sku || r.sku,
+          name: prod?.name || r.sku || "Catalog Product",
+          category: prod?.category || "Apparel",
+          score: r.similarityScore,
+          similarityScore: r.similarityScore,
+          matchType: (r as any).isAugmented ? "Augmented Variant" : "Original Reference",
+          imagePath: r.imagePath,
+        };
+      });
+
+      return this.handleSuccess(res, {
+        results,
+        queryMatches: results,
+        queryMetrics: { latencyMs, topK },
+        count: results.length,
+      });
     } catch (err) {
       return this.handleError(err, res, "EvaluationController.searchCatalog");
     }

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { WorkspaceHeader } from "./WorkspaceHeader";
-import { WorkspaceSidebar, type WorkspaceTab } from "./WorkspaceSidebar";
-import { WorkspaceDashboard } from "./views/WorkspaceDashboard";
+import { WorkspaceNavbar, type WorkspaceTab } from "@/components/layout/WorkspaceNavbar";
+import { SettingsDialog } from "./SettingsDialog";
 import { ProductLibraryView } from "./views/ProductLibraryView";
 import { ImageStudioView } from "./views/ImageStudioView";
 import { AugmentationGalleryView } from "./views/AugmentationGalleryView";
@@ -10,7 +9,6 @@ import { QualityControlView } from "./views/QualityControlView";
 import { DatasetManagerView } from "./views/DatasetManagerView";
 import { ModelEvaluationView } from "./views/ModelEvaluationView";
 import { WorkflowManagerView } from "./views/WorkflowManagerView";
-import { SettingsView } from "./views/SettingsView";
 import { api } from "@/lib/api";
 
 interface AppWorkspaceProps {
@@ -22,13 +20,26 @@ interface AppWorkspaceProps {
 
 export function AppWorkspace({
   onExitWorkspace,
-  initialTab = "dashboard",
+  initialTab = "products",
   user,
   onSignOut,
 }: AppWorkspaceProps) {
   const [currentTab, setCurrentTab] = useState<WorkspaceTab>(initialTab);
   const [selectedProductId, setSelectedProductId] = useState<string>("");
   const [pendingReviewsCount, setPendingReviewsCount] = useState<number>(0);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  // Sync currentTab when initialTab or hash changes
+  useEffect(() => {
+    if (initialTab) {
+      setCurrentTab(initialTab);
+    }
+  }, [initialTab]);
+
+  const handleSelectTab = (tab: WorkspaceTab) => {
+    setCurrentTab(tab);
+    window.location.hash = `#${tab}`;
+  };
 
   const fetchPendingReviews = async () => {
     try {
@@ -46,73 +57,67 @@ export function AppWorkspace({
   }, []);
 
   return (
-    <div className="flex h-screen w-full flex-col bg-[#07080c] text-foreground font-sans antialiased overflow-hidden">
-      {/* Header bar */}
-      <WorkspaceHeader
-        currentView={currentTab}
-        onNavigateHome={onExitWorkspace}
-        onRefresh={fetchPendingReviews}
+    <div className="flex min-h-screen w-full flex-col bg-[#07080c] text-foreground font-sans antialiased">
+      {/* Top Navigation Bar - Exact same style and language as Landing Page Navbar */}
+      <WorkspaceNavbar
+        activeTab={currentTab}
+        onSelectTab={handleSelectTab}
+        pendingReviewsCount={pendingReviewsCount}
+        onOpenSettings={() => setIsSettingsOpen(true)}
+        onExitWorkspace={onExitWorkspace}
         user={user}
         onSignOut={onSignOut}
       />
 
-      {/* Main split: Sidebar + Viewport */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* Persistent Workspace Sidebar */}
-        <WorkspaceSidebar
-          currentTab={currentTab}
-          onSelectTab={setCurrentTab}
-          pendingReviewsCount={pendingReviewsCount}
-        />
+      {/* Settings Modal Dialog - Everything related to setting in this setting icon */}
+      <SettingsDialog
+        open={isSettingsOpen}
+        onOpenChange={setIsSettingsOpen}
+        user={user}
+        onSignOut={onSignOut}
+      />
 
-        {/* Viewport container with scroll */}
-        <main className="flex-1 overflow-y-auto bg-[#07080c] relative">
-          {currentTab === "dashboard" && (
-            <WorkspaceDashboard onNavigateTab={setCurrentTab} />
-          )}
+      {/* Main Full-Width SPA Viewport (No cramped sidebar) */}
+      <main className="flex-1 w-full pt-16 pb-12 overflow-y-auto">
+        {currentTab === "products" && (
+          <ProductLibraryView
+            onSelectProductForStudio={(id) => {
+              setSelectedProductId(id);
+              handleSelectTab("studio");
+            }}
+            onSelectProductForVlm={(id) => {
+              setSelectedProductId(id);
+              handleSelectTab("intelligence");
+            }}
+          />
+        )}
 
-          {currentTab === "products" && (
-            <ProductLibraryView
-              onSelectProductForStudio={(id) => {
-                setSelectedProductId(id);
-                setCurrentTab("studio");
-              }}
-              onSelectProductForVlm={(id) => {
-                setSelectedProductId(id);
-                setCurrentTab("intelligence");
-              }}
-            />
-          )}
+        {currentTab === "studio" && (
+          <ImageStudioView
+            initialProductId={selectedProductId}
+            onNavigateGallery={(id) => {
+              setSelectedProductId(id);
+              handleSelectTab("gallery");
+            }}
+          />
+        )}
 
-          {currentTab === "studio" && (
-            <ImageStudioView
-              initialProductId={selectedProductId}
-              onNavigateGallery={(id) => {
-                setSelectedProductId(id);
-                setCurrentTab("gallery");
-              }}
-            />
-          )}
+        {currentTab === "gallery" && (
+          <AugmentationGalleryView initialProductId={selectedProductId} />
+        )}
 
-          {currentTab === "gallery" && (
-            <AugmentationGalleryView initialProductId={selectedProductId} />
-          )}
+        {currentTab === "intelligence" && (
+          <ProductIntelligenceView initialProductId={selectedProductId} />
+        )}
 
-          {currentTab === "intelligence" && (
-            <ProductIntelligenceView initialProductId={selectedProductId} />
-          )}
+        {currentTab === "quality" && <QualityControlView />}
 
-          {currentTab === "quality" && <QualityControlView />}
+        {currentTab === "datasets" && <DatasetManagerView />}
 
-          {currentTab === "datasets" && <DatasetManagerView />}
+        {currentTab === "evaluation" && <ModelEvaluationView />}
 
-          {currentTab === "evaluation" && <ModelEvaluationView />}
-
-          {currentTab === "workflows" && <WorkflowManagerView />}
-
-          {currentTab === "settings" && <SettingsView />}
-        </main>
-      </div>
+        {currentTab === "workflows" && <WorkflowManagerView />}
+      </main>
     </div>
   );
 }
