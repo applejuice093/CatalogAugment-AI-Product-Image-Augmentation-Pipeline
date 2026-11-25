@@ -8,8 +8,7 @@ export type WorkspaceTab =
   | "intelligence"
   | "quality"
   | "evaluation"
-  | "datasets"
-  | "workflows";
+  | "datasets";
 
 export interface WorkspaceNavbarProps {
   activeTab: WorkspaceTab;
@@ -42,7 +41,6 @@ export function WorkspaceNavbar({
     { id: "quality", label: "Quality", badge: pendingReviewsCount > 0 ? pendingReviewsCount : undefined },
     { id: "evaluation", label: "Benchmarks" },
     { id: "datasets", label: "Datasets" },
-    { id: "workflows", label: "Workflows" },
   ];
 
   return (

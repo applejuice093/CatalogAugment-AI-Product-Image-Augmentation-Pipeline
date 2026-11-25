@@ -16,19 +16,24 @@ import { api, type QualityAssessment } from "@/lib/api";
 export function QualityControlView() {
   const [queue, setQueue] = useState<QualityAssessment[]>([]);
   const [selectedAssessment, setSelectedAssessment] = useState<QualityAssessment | null>(null);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
-  const [decision, setDecision] = useState<"PASS" | "FAIL" | "NEEDS_REVIEW">("PASS");
+  const [decision, setDecision] = useState<"PASS" | "REJECT" | "NEEDS_REVIEW">("PASS");
   const [feedbackNotes, setFeedbackNotes] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [submittingBulk, setSubmittingBulk] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
+
+  const formatScorePct = (val: number) =>
+    val <= 1 ? Math.round(val * 100) : Math.round(val);
 
   const loadQueue = async () => {
     setLoading(true);
-    setStatusMessage("");
     try {
       const res = await api.getQualityQueue();
       const items = res.queue || [];
       setQueue(items);
+      setSelectedIds(new Set());
       if (items.length > 0) {
         setSelectedAssessment(items[0]);
       } else {
@@ -46,6 +51,51 @@ export function QualityControlView() {
     void loadQueue();
   }, []);
 
+  const toggleSelectId = (resultId: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(resultId)) {
+        next.delete(resultId);
+      } else {
+        next.add(resultId);
+      }
+      return next;
+    });
+  };
+
+  const allSelected = queue.length > 0 && queue.every((item) => selectedIds.has(item.augmentationResultId));
+
+  const toggleSelectAll = () => {
+    if (allSelected) {
+      setSelectedIds(new Set());
+    } else {
+      setSelectedIds(new Set(queue.map((item) => item.augmentationResultId)));
+    }
+  };
+
+  const handleBulkReview = async (bulkDecision: "PASS" | "REJECT") => {
+    if (selectedIds.size === 0) return;
+    setSubmittingBulk(true);
+    setStatusMessage("");
+    try {
+      const ids = Array.from(selectedIds);
+      await Promise.all(
+        ids.map((resultId) =>
+          api.submitQualityReview(resultId, bulkDecision, feedbackNotes || undefined)
+        )
+      );
+      setStatusMessage(
+        `${ids.length} ${ids.length === 1 ? "image" : "images"} marked as ${bulkDecision === "PASS" ? "Accepted (PASS)" : "Rejected (REJECT)"}`
+      );
+      setFeedbackNotes("");
+      await loadQueue();
+    } catch (err: any) {
+      alert(err.message || "Failed to submit bulk review.");
+    } finally {
+      setSubmittingBulk(false);
+    }
+  };
+
   const handleSubmitReview = async () => {
     if (!selectedAssessment) return;
     setSubmitting(true);
@@ -54,7 +104,7 @@ export function QualityControlView() {
       await api.submitQualityReview(
         selectedAssessment.augmentationResultId,
         decision,
-        feedbackNotes
+        feedbackNotes || undefined
       );
       setStatusMessage(`Decision submitted: ${decision}`);
       setFeedbackNotes("");
@@ -107,15 +157,52 @@ export function QualityControlView() {
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Left Column: Queue Items List (4 Cols) */}
+          {/* Left Column: Queue Items List with Checkboxes & Bulk Actions (4 Cols) */}
           <div className="lg:col-span-4 space-y-3">
-            <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground px-1">
-              Flagged Items ({queue.length})
+            <div className="flex items-center justify-between px-1">
+              <label className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={allSelected}
+                  onChange={toggleSelectAll}
+                  className="h-3.5 w-3.5 rounded border-border/70 bg-[#14171d] accent-primary cursor-pointer"
+                />
+                <span>Flagged Items ({queue.length})</span>
+              </label>
+              {selectedIds.size > 0 && (
+                <span className="text-[11px] font-mono text-primary font-semibold">
+                  {selectedIds.size} selected
+                </span>
+              )}
             </div>
+
+            {selectedIds.size > 0 && (
+              <div className="flex items-center gap-2 p-2.5 rounded-lg border border-primary/30 bg-primary/10">
+                <Button
+                  size="sm"
+                  onClick={() => handleBulkReview("PASS")}
+                  disabled={submittingBulk}
+                  className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs h-8 cursor-pointer"
+                >
+                  <CheckCircle2 className="mr-1.5 h-3.5 w-3.5" />
+                  Accept ({selectedIds.size})
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() => handleBulkReview("REJECT")}
+                  disabled={submittingBulk}
+                  className="flex-1 bg-destructive hover:bg-destructive/90 text-white text-xs h-8 cursor-pointer"
+                >
+                  <XCircle className="mr-1.5 h-3.5 w-3.5" />
+                  Reject ({selectedIds.size})
+                </Button>
+              </div>
+            )}
 
             <div className="space-y-2 max-h-[600px] overflow-y-auto pr-1">
               {queue.map((item) => {
                 const isSelected = selectedAssessment?.id === item.id;
+                const isChecked = selectedIds.has(item.augmentationResultId);
                 return (
                   <div
                     key={item.id}
@@ -123,13 +210,25 @@ export function QualityControlView() {
                     className={`p-3.5 rounded-lg border transition-all cursor-pointer ${
                       isSelected
                         ? "border-primary bg-primary/10 shadow-[0_0_12px_rgba(214,227,106,0.15)]"
+                        : isChecked
+                        ? "border-primary/40 bg-[#12151b]"
                         : "border-border/60 bg-[#0c0e12] hover:border-border"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-[11px] font-mono text-muted-foreground">
-                        {item.augmentationResultId.slice(0, 8)}...
-                      </span>
+                      <div className="flex items-center gap-2.5">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => toggleSelectId(item.augmentationResultId)}
+                          onClick={(e) => e.stopPropagation()}
+                          className="h-3.5 w-3.5 rounded border-border/70 bg-[#14171d] accent-primary cursor-pointer"
+                          aria-label={`Select ${item.augmentationResultId}`}
+                        />
+                        <span className="text-[11px] font-mono text-muted-foreground">
+                          {item.augmentationResultId.slice(0, 8)}...
+                        </span>
+                      </div>
                       <Badge
                         variant="outline"
                         className={`text-[9px] font-semibold ${
@@ -142,17 +241,17 @@ export function QualityControlView() {
                       </Badge>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-[10px] text-muted-foreground mt-2">
+                    <div className="grid grid-cols-2 gap-2 text-[10px] text-muted-foreground mt-2 pl-6">
                       <div>
                         FG Score:{" "}
                         <span className="font-mono text-foreground font-semibold">
-                          {Math.round(item.foregroundPreservationScore)}%
+                          {formatScorePct(item.foregroundPreservationScore)}%
                         </span>
                       </div>
                       <div>
                         Composite:{" "}
                         <span className="font-mono text-foreground font-semibold">
-                          {Math.round(item.compositeScore)}%
+                          {formatScorePct(item.compositeScore)}%
                         </span>
                       </div>
                     </div>
@@ -290,9 +389,9 @@ export function QualityControlView() {
 
                       <button
                         type="button"
-                        onClick={() => setDecision("FAIL")}
+                        onClick={() => setDecision("REJECT")}
                         className={`flex items-center justify-center gap-2 p-2.5 rounded-lg border text-xs font-semibold cursor-pointer transition-all ${
-                          decision === "FAIL"
+                          decision === "REJECT"
                             ? "border-destructive bg-destructive/20 text-destructive"
                             : "border-border/60 bg-[#14171d] text-muted-foreground hover:text-foreground"
                         }`}

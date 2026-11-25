@@ -388,7 +388,7 @@ export function ModelEvaluationView() {
                 />
 
                 <div className="text-[11px] text-muted-foreground leading-relaxed bg-[#12151b] p-3 rounded-lg border border-border/40">
-                  Embeds the query with L2-normalized 512-dim visual encoder and scans the index using cosine similarity metric.
+                  Embeds the query with our fine-tuned L2-normalized 256-dim PyTorch ResNet-18 encoder and scans the catalog using cosine similarity.
                 </div>
               </div>
 

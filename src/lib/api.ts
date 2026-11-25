@@ -346,13 +346,16 @@ export const api = {
     fetchJson<{ assessment: QualityAssessment }>(`/api/quality/assess/${resultId}`, { method: "POST" }),
   submitQualityReview: (
     resultId: string,
-    decision: "PASS" | "FAIL" | "NEEDS_REVIEW",
+    decision: "PASS" | "REJECT" | "NEEDS_REVIEW",
     feedbackNotes?: string
   ) =>
     fetchJson<{ assessment: QualityAssessment }>(`/api/quality/review/${resultId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ decision, feedbackNotes }),
+      body: JSON.stringify({
+        decision,
+        ...(feedbackNotes?.trim() ? { reviewNotes: feedbackNotes.trim() } : {}),
+      }),
     }),
 
   // Datasets

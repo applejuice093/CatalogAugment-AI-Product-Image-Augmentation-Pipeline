@@ -85,7 +85,11 @@ export function ProductIntelligenceView({ initialProductId }: ProductIntelligenc
     setError("");
     try {
       const res = await api.analyzeProduct(selectedProductId);
-      setAnalyses((prev) => [res.analysis, ...prev]);
+      if (res?.analysis) {
+        setAnalyses((prev) => [res.analysis, ...prev]);
+      } else {
+        await loadProductAnalyses(selectedProductId);
+      }
     } catch (err: any) {
       setError(err.message || "Failed to execute VLM analysis.");
     } finally {
@@ -191,10 +195,19 @@ export function ProductIntelligenceView({ initialProductId }: ProductIntelligenc
             onClick={handleRunAnalysis}
             disabled={analyzing || !selectedProductId}
             size="sm"
-            className="mt-4 bg-primary text-primary-foreground text-xs"
+            className="mt-4 bg-primary text-primary-foreground text-xs cursor-pointer"
           >
-            <Sparkles className="mr-1.5 h-3.5 w-3.5" />
-            Analyze Visual Features
+            {analyzing ? (
+              <>
+                <RefreshCw className="mr-1.5 h-3.5 w-3.5 animate-spin" />
+                VLM Inspecting...
+              </>
+            ) : (
+              <>
+                <Sparkles className="mr-1.5 h-3.5 w-3.5" />
+                Analyze Visual Features
+              </>
+            )}
           </Button>
         </div>
       ) : (

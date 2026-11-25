@@ -59,7 +59,6 @@ const WORKSPACE_TABS: readonly string[] = [
   "quality",
   "evaluation",
   "datasets",
-  "workflows",
 ];
 
 function parseCurrentRoute(): RouteState {

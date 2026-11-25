@@ -61,7 +61,7 @@ export class VLMService {
     );
 
     // Persist VLM analysis record
-    await this.vlmRepo.create({
+    const savedAnalysis = await this.vlmRepo.create({
       productId: product.id,
       taskType: result.taskType,
       provider: result.provider,
@@ -82,7 +82,10 @@ export class VLMService {
       });
     }
 
-    return result;
+    return {
+      ...result,
+      analysis: savedAnalysis,
+    } as VLMExecutionResult<ProductAnalysisOutput> & { analysis: typeof savedAnalysis };
   }
 
   /**

@@ -45,6 +45,7 @@ export function AuthSpa({
     setMode(initialMode);
   }, [initialMode]);
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -60,8 +61,8 @@ export function AuthSpa({
 
     try {
       if (mode === "sign-up") {
-        if (password.length < 8) {
-          setError("Password must be at least 8 characters long.");
+        if (password.length < 4) {
+          setError("Password must be at least 4 characters long.");
           setPending(false);
           return;
         }
@@ -70,10 +71,11 @@ export function AuthSpa({
           email: email.trim(),
           password,
           name: name.trim() || "Catalog Operator",
+          ...(username.trim() ? { username: username.trim() } : {}),
         });
 
         if (res.error) {
-          setError(res.error.message ?? "Registration failed. Email may already be in use.");
+          setError(res.error.message ?? "Registration failed. Email or username may already be in use.");
           setPending(false);
           return;
         }
@@ -95,13 +97,19 @@ export function AuthSpa({
           onSuccess?.(redirectTarget, resolvedUser);
         }, 350);
       } else {
-        const res = await authClient.signIn.email({
-          email: email.trim(),
-          password,
-        });
+        const identifier = email.trim();
+        const res = identifier.includes("@")
+          ? await authClient.signIn.email({
+              email: identifier,
+              password,
+            })
+          : await authClient.signIn.username({
+              username: identifier,
+              password,
+            });
 
         if (res.error) {
-          setError(res.error.message ?? "Invalid email or password. Check credentials or create an account.");
+          setError(res.error.message ?? "Invalid username/email or password. Check credentials or create an account.");
           setPending(false);
           return;
         }
@@ -275,38 +283,59 @@ export function AuthSpa({
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-3.5">
               {mode === "sign-up" && (
-                <div className="space-y-1">
-                  <Label htmlFor="auth-name" className="text-[11px] font-mono text-muted-foreground ml-1">
-                    Operator / Organization Name
-                  </Label>
-                  <div className="relative">
-                    <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
-                    <Input
-                      id="auth-name"
-                      name="name"
-                      type="text"
-                      placeholder="e.g. Acme Studio"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      required={mode === "sign-up"}
-                      className="h-10 pl-9 rounded-2xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
-                    />
+                <>
+                  <div className="space-y-1">
+                    <Label htmlFor="auth-name" className="text-[11px] font-mono text-muted-foreground ml-1">
+                      Operator / Organization Name
+                    </Label>
+                    <div className="relative">
+                      <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
+                      <Input
+                        id="auth-name"
+                        name="name"
+                        type="text"
+                        placeholder="e.g. Acme Studio"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required={mode === "sign-up"}
+                        className="h-10 pl-9 rounded-2xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
+                      />
+                    </div>
                   </div>
-                </div>
+
+                  <div className="space-y-1">
+                    <Label htmlFor="auth-username" className="text-[11px] font-mono text-muted-foreground ml-1">
+                      Username
+                    </Label>
+                    <div className="relative">
+                      <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
+                      <Input
+                        id="auth-username"
+                        name="username"
+                        type="text"
+                        placeholder="e.g. operator1"
+                        autoComplete="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        className="h-10 pl-9 rounded-2xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
+                      />
+                    </div>
+                  </div>
+                </>
               )}
 
               <div className="space-y-1">
                 <Label htmlFor="auth-email" className="text-[11px] font-mono text-muted-foreground ml-1">
-                  Email Address
+                  {mode === "sign-in" ? "Username or Email" : "Email Address"}
                 </Label>
                 <div className="relative">
                   <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
                   <Input
                     id="auth-email"
                     name="email"
-                    type="email"
-                    placeholder="operator@catalogaugment.ai"
-                    autoComplete="email"
+                    type={mode === "sign-in" ? "text" : "email"}
+                    placeholder={mode === "sign-in" ? "admin or operator@catalogaugment.ai" : "operator@catalogaugment.ai"}
+                    autoComplete={mode === "sign-in" ? "username" : "email"}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -321,7 +350,7 @@ export function AuthSpa({
                     Password
                   </Label>
                   {mode === "sign-up" && (
-                    <span className="text-[10px] font-mono text-muted-foreground">Min. 8 chars</span>
+                    <span className="text-[10px] font-mono text-muted-foreground">Min. 4 chars</span>
                   )}
                 </div>
                 <div className="relative">
@@ -334,7 +363,7 @@ export function AuthSpa({
                     autoComplete={mode === "sign-up" ? "new-password" : "current-password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    minLength={8}
+                    minLength={4}
                     required
                     className="h-10 pl-9 pr-9 rounded-2xl border-white/10 bg-black/40 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                   />

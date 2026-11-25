@@ -37,13 +37,17 @@ class FineTunedEmbedder(nn.Module):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", required=True, help="Path to image file")
+    parser.add_argument("--input", help="Path to single image file")
+    parser.add_argument("--inputs-json", help="Path to JSON file containing an array of image paths for batch embedding")
     parser.add_argument(
         "--checkpoint",
         default=str(Path(__file__).resolve().parent.parent.parent / "ml_pipeline" / "outputs" / "models" / "resnet18_exp_d_combined.pt"),
         help="Optional fine-tuned CatalogAugment PyTorch checkpoint",
     )
     args = parser.parse_args()
+
+    if not args.input and not args.inputs_json:
+        parser.error("Either --input or --inputs-json is required")
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     tf = transforms.Compose([
@@ -52,9 +56,6 @@ def main():
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
 
-    img = Image.open(args.input).convert("RGB")
-    tensor = tf(img).unsqueeze(0).to(device)
-
     ckpt_path = Path(args.checkpoint)
     if ckpt_path.exists():
         ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
@@ -62,16 +63,60 @@ def main():
         model = FineTunedEmbedder(num_classes=num_classes, embedding_dim=256).to(device)
         model.load_state_dict(ckpt["model_state_dict"])
         model.eval()
-        with torch.no_grad():
-            vec = model(tensor).squeeze(0).cpu().tolist()
         model_name = "pytorch-resnet18-catalogaugment-256"
+        dim = 256
+
+        def infer_batch(batch_tensor):
+            with torch.no_grad():
+                return model(batch_tensor).cpu().tolist()
     else:
         backbone = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
         backbone.fc = nn.Identity()
         backbone = backbone.to(device).eval()
-        with torch.no_grad():
-            vec = F.normalize(backbone(tensor), p=2, dim=1).squeeze(0).cpu().tolist()
         model_name = "pytorch-resnet18-imagenet-512"
+        dim = 512
+
+        def infer_batch(batch_tensor):
+            with torch.no_grad():
+                return F.normalize(backbone(batch_tensor), p=2, dim=1).cpu().tolist()
+
+    if args.inputs_json:
+        paths = json.loads(Path(args.inputs_json).read_text(encoding="utf-8"))
+        embeddings = {}
+        batch_tensors = []
+        batch_paths = []
+        batch_size = 32
+
+        for p in paths:
+            try:
+                img = Image.open(p).convert("RGB")
+                batch_tensors.append(tf(img))
+                batch_paths.append(p)
+            except Exception:
+                continue
+
+            if len(batch_tensors) >= batch_size:
+                vecs = infer_batch(torch.stack(batch_tensors).to(device))
+                for bp, v in zip(batch_paths, vecs):
+                    embeddings[bp] = [round(float(x), 6) for x in v]
+                batch_tensors.clear()
+                batch_paths.clear()
+
+        if batch_tensors:
+            vecs = infer_batch(torch.stack(batch_tensors).to(device))
+            for bp, v in zip(batch_paths, vecs):
+                embeddings[bp] = [round(float(x), 6) for x in v]
+
+        print(json.dumps({
+            "model": model_name,
+            "dimension": dim,
+            "embeddings": embeddings,
+        }))
+        return
+
+    img = Image.open(args.input).convert("RGB")
+    tensor = tf(img).unsqueeze(0).to(device)
+    vec = infer_batch(tensor)[0]
 
     print(json.dumps({
         "model": model_name,

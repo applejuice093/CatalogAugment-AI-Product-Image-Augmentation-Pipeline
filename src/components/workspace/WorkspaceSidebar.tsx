@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   Database,
   LineChart,
-  Cpu,
   Settings,
   Layers,
 } from "lucide-react";
@@ -22,7 +21,6 @@ export type WorkspaceTab =
   | "quality"
   | "datasets"
   | "evaluation"
-  | "workflows"
   | "settings";
 
 interface WorkspaceSidebarProps {
@@ -58,7 +56,6 @@ export function WorkspaceSidebar({
     },
     { id: "datasets", label: "Dataset Manager", icon: Database },
     { id: "evaluation", label: "Visual Search Eval", icon: LineChart },
-    { id: "workflows", label: "ComfyUI Workflows", icon: Cpu },
     { id: "settings", label: "Settings", icon: Settings },
   ];
 

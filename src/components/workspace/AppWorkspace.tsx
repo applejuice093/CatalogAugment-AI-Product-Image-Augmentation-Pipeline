@@ -8,7 +8,6 @@ import { ProductIntelligenceView } from "./views/ProductIntelligenceView";
 import { QualityControlView } from "./views/QualityControlView";
 import { DatasetManagerView } from "./views/DatasetManagerView";
 import { ModelEvaluationView } from "./views/ModelEvaluationView";
-import { WorkflowManagerView } from "./views/WorkflowManagerView";
 import { api } from "@/lib/api";
 
 interface AppWorkspaceProps {
@@ -115,8 +114,6 @@ export function AppWorkspace({
         {currentTab === "datasets" && <DatasetManagerView />}
 
         {currentTab === "evaluation" && <ModelEvaluationView />}
-
-        {currentTab === "workflows" && <WorkflowManagerView />}
       </main>
     </div>
   );

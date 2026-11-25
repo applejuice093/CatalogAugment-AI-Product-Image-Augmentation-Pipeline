@@ -1,5 +1,6 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { username } from "better-auth/plugins";
 import { config } from "./config/unifiedConfig.ts";
 import { db } from "./db/index.ts";
 import { authSchema } from "./db/schema.ts";
@@ -14,6 +15,12 @@ export const auth = betterAuth({
   }),
   emailAndPassword: {
     enabled: true,
-    minPasswordLength: 8,
+    minPasswordLength: 4,
   },
+  plugins: [
+    username({
+      minUsernameLength: 3,
+      maxUsernameLength: 32,
+    }),
+  ],
 });

@@ -7,6 +7,7 @@ import { EvaluationRunRepository } from "../../repositories/EvaluationRunReposit
 import { ProductRepository } from "../../repositories/ProductRepository.ts";
 import { defaultConventionalAugmenter, ConventionalAugmenter } from "./conventionalAugmenter.ts";
 import { defaultFeatureEncoder } from "./encoders/featureEncoder.ts";
+import { defaultPyTorchEncoder, PyTorchImageEncoder } from "./encoders/pytorchEncoder.ts";
 import { defaultMetricsCalculator, MetricsCalculator, type QueryEvaluation } from "./metricsCalculator.ts";
 import type {
   EvaluationRunReport,
@@ -344,39 +345,57 @@ export class EvaluationBenchmarkService {
 
   /**
    * Interactive Visual Search endpoint: Search active catalog using an input image
+   * Uses our fine-tuned PyTorch ResNet-18 256-D embedder (with in-memory catalog cache).
    */
   async searchCatalog(
     userId: string,
     queryImageBuffer: Buffer,
-    topK = 5
+    topK = 5,
+    pytorchEncoder: PyTorchImageEncoder = defaultPyTorchEncoder
   ): Promise<SearchResult[]> {
     const products = await this.productRepo.findByUserId(userId);
     const index = new VectorIndex();
+
+    const candidates: Array<{
+      prodId: string;
+      sku: string;
+      relPath: string;
+      fullPath: string;
+    }> = [];
 
     for (const prod of products) {
       const images = (prod as unknown as { images?: Array<{ id: string; relativePath: string }> }).images || [];
       if (images.length === 0) continue;
 
-      try {
-        const fullPath = path.resolve(config.storage.uploadRoot, images[0].relativePath);
-        const buf = await fs.readFile(fullPath);
-        const emb = await this.encoder.generateEmbedding(buf);
-
-        index.add({
-          id: `search-${prod.id}`,
-          productId: prod.id,
-          sku: prod.sku || prod.id,
-          imagePath: images[0].relativePath,
-          isAugmented: false,
-          augmentationType: "original",
-          embedding: emb,
-        });
-      } catch {
-        // Skip unresolvable image files
-      }
+      const fullPath = path.resolve(config.storage.uploadRoot, images[0].relativePath);
+      candidates.push({
+        prodId: prod.id,
+        sku: prod.sku || prod.id,
+        relPath: images[0].relativePath,
+        fullPath,
+      });
     }
 
-    const queryEmbedding = await this.encoder.generateEmbedding(queryImageBuffer);
+    const [catalogEmbeddings, queryEmbedding] = await Promise.all([
+      pytorchEncoder.batchEmbedFiles(candidates.map((c) => c.fullPath)),
+      pytorchEncoder.generateEmbedding(queryImageBuffer),
+    ]);
+
+    for (const c of candidates) {
+      const emb = catalogEmbeddings.get(c.fullPath);
+      if (!emb) continue;
+
+      index.add({
+        id: `search-${c.prodId}`,
+        productId: c.prodId,
+        sku: c.sku,
+        imagePath: c.relPath,
+        isAugmented: false,
+        augmentationType: "original",
+        embedding: emb,
+      });
+    }
+
     return index.search(queryEmbedding, topK);
   }
 
